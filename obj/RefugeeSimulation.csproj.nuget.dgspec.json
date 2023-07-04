@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vivia\\mars\\Bachelorarbeit\\RefugeeSimulation\\RefugeeSimulation.csproj": {}
+    "C:\\Users\\vivia\\mars\\RefugeeSimulation\\RefugeeSimulation.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vivia\\mars\\Bachelorarbeit\\RefugeeSimulation\\RefugeeSimulation.csproj": {
+    "C:\\Users\\vivia\\mars\\RefugeeSimulation\\RefugeeSimulation.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vivia\\mars\\Bachelorarbeit\\RefugeeSimulation\\RefugeeSimulation.csproj",
+        "projectUniqueName": "C:\\Users\\vivia\\mars\\RefugeeSimulation\\RefugeeSimulation.csproj",
         "projectName": "RefugeeSimulation",
-        "projectPath": "C:\\Users\\vivia\\mars\\Bachelorarbeit\\RefugeeSimulation\\RefugeeSimulation.csproj",
+        "projectPath": "C:\\Users\\vivia\\mars\\RefugeeSimulation\\RefugeeSimulation.csproj",
         "packagesPath": "C:\\Users\\vivia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vivia\\mars\\Bachelorarbeit\\RefugeeSimulation\\obj\\",
+        "outputPath": "C:\\Users\\vivia\\mars\\RefugeeSimulation\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vivia\\AppData\\Roaming\\NuGet\\NuGet.Config"
