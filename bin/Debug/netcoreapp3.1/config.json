@@ -1,0 +1,39 @@
+{
+  "globals": {
+    "startTime": "2011-03-01T00:00",
+    "endTime": "2011-03-10T00:00",
+    "deltaTUnit": "days",
+    "console": false
+    },
+  "agents": [
+    {
+      "name": "SingleRefugeeGroup",
+      "file": "Resources/refugee_group_config.csv"
+    }
+  ],
+  "layers": [
+    {
+      "name": "CityLayer",
+      "file": "Resources/cities.geojson"
+    },
+    {
+      "name": "RefugeeLayer"
+    },
+    {
+      "name": "CampLayer",
+      "file": "Resources/refugee_camps.geojson",
+      "mapping": [
+        {
+          "parameter": "ExcludedCountries",
+          "value": [ "Lebanon", "Iraq", "Jordan"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ConflictLayer",
+      "file": "Resources/conflicts.json"
+    }
+    
+    ]
+}
