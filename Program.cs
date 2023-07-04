@@ -30,7 +30,7 @@ namespace RefugeeSimulation
             var file = File.ReadAllText("config.json");
             var config = SimulationConfig.Deserialize(file);
             
-            // Create simulation task
+            
             var task = SimulationStarter.Start(description, config);
             
             // Run simulation
