@@ -1,9 +1,10 @@
 ﻿using System;
 using System.IO;
+using LaserTagBox.Model.Model.Location;
+using LaserTagBox.Model.Model.Location.LocationNodes;
 using Mars.Components.Starter;
 using Mars.Interfaces.Model;
 using RefugeeSimulation.Model.Model.Refugee;
-using RefugeeSimulation.Model.Model.Sites;
 
 namespace RefugeeSimulation
 {
@@ -19,7 +20,7 @@ namespace RefugeeSimulation
             description.AddLayer<RefugeeLayer>();
             description.AddAgent<SingleRefugeeGroup, RefugeeLayer>();
             
-            description.AddLayer<CityLayer>();
+            description.AddLayer<NodeLayer>();
             description.AddLayer<ConflictLayer>();
             description.AddLayer<CampLayer>();
            

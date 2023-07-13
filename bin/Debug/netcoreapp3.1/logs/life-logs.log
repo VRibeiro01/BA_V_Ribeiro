@@ -1,0 +1,29 @@
+[ERROR] 2023-07-12 01:23:14,798 | Mars.Core.Executor.Implementation.StepExecutionUseCase - Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index') 
+[ERROR] 2023-07-12 01:23:14,819 | Mars.Components.Starter.SimulationStarter - MARS simulation execution crashed by AggregateException 
+[ERROR] 2023-07-12 01:23:14,819 | Mars.Components.Starter.SimulationStarter - Exception message: 
+[ERROR] 2023-07-12 01:23:14,820 | Mars.Components.Starter.SimulationStarter - ######################################################## 
+[ERROR] 2023-07-12 01:23:14,820 | Mars.Components.Starter.SimulationStarter - One or more errors occurred. (Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')) 
+[ERROR] 2023-07-12 01:23:14,821 | Mars.Components.Starter.SimulationStarter - ######################################################## 
+[ERROR] 2023-07-12 01:23:56,530 | Mars.Core.Executor.Implementation.StepExecutionUseCase - Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index') 
+[ERROR] 2023-07-12 01:23:56,546 | Mars.Components.Starter.SimulationStarter - MARS simulation execution crashed by AggregateException 
+[ERROR] 2023-07-12 01:23:56,546 | Mars.Components.Starter.SimulationStarter - Exception message: 
+[ERROR] 2023-07-12 01:23:56,547 | Mars.Components.Starter.SimulationStarter - ######################################################## 
+[ERROR] 2023-07-12 01:23:56,548 | Mars.Components.Starter.SimulationStarter - One or more errors occurred. (Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')) 
+[ERROR] 2023-07-12 01:23:56,551 | Mars.Components.Starter.SimulationStarter - ######################################################## 
+[ERROR] 2023-07-12 03:03:35,996 | Mars.Core.Executor.Implementation.StepExecutionUseCase - Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index') 
+[ERROR] 2023-07-12 03:03:36,016 | Mars.Components.Starter.SimulationStarter - MARS simulation execution crashed by AggregateException 
+[ERROR] 2023-07-12 03:03:36,017 | Mars.Components.Starter.SimulationStarter - Exception message: 
+[ERROR] 2023-07-12 03:03:36,018 | Mars.Components.Starter.SimulationStarter - ######################################################## 
+[ERROR] 2023-07-12 03:03:36,018 | Mars.Components.Starter.SimulationStarter - One or more errors occurred. (Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')) 
+[ERROR] 2023-07-12 03:03:36,019 | Mars.Components.Starter.SimulationStarter - ######################################################## 
+[ERROR] 2023-07-12 19:19:51,069 | Mars.Core.Executor.Implementation.StepExecutionUseCase - Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index') 
+[ERROR] 2023-07-12 19:19:51,093 | Mars.Components.Starter.SimulationStarter - MARS simulation execution crashed by AggregateException 
+[ERROR] 2023-07-12 19:19:51,094 | Mars.Components.Starter.SimulationStarter - Exception message: 
+[ERROR] 2023-07-12 19:19:51,095 | Mars.Components.Starter.SimulationStarter - ######################################################## 
+[ERROR] 2023-07-12 19:19:51,095 | Mars.Components.Starter.SimulationStarter - One or more errors occurred. (Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')) 
+[ERROR] 2023-07-12 19:19:51,097 | Mars.Components.Starter.SimulationStarter - ######################################################## 
+[ERROR] 2023-07-13 20:11:11,872 | Mars.Components.Starter.SimulationStarter - MARS simulation execution crashed by NotImplementedException 
+[ERROR] 2023-07-13 20:11:11,891 | Mars.Components.Starter.SimulationStarter - Exception message: 
+[ERROR] 2023-07-13 20:11:11,892 | Mars.Components.Starter.SimulationStarter - ######################################################## 
+[ERROR] 2023-07-13 20:11:11,892 | Mars.Components.Starter.SimulationStarter - The method or operation is not implemented. 
+[ERROR] 2023-07-13 20:11:11,893 | Mars.Components.Starter.SimulationStarter - ######################################################## 

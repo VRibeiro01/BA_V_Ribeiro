@@ -1,9 +1,15 @@
 ﻿using System;
+using System.Collections.Specialized;
+using System.Linq;
+using LaserTagBox.Model.Model.Location;
+using LaserTagBox.Model.Model.Location.LocationNodes;
 using Mars.Common;
 using Mars.Interfaces.Agents;
 using Mars.Interfaces.Annotations;
-using Mars.Interfaces.Environments;
-using RefugeeSimulation.Model.Model.Sites;
+using Mars.Numerics;
+using Microsoft.CodeAnalysis.Text;
+using NetTopologySuite.Geometries;
+using Position = Mars.Interfaces.Environments.Position;
 
 namespace RefugeeSimulation.Model.Model.Refugee;
 
@@ -13,7 +19,7 @@ public class SingleRefugeeGroup : IAgent<RefugeeLayer>
     // Group Attributes
     
     //---------------- Properties defined in input file ------------------------------------
-    public City OriginCity;
+    public LocationNode OriginCity;
 
     [PropertyDescription]
     public String OriginCityName { get; set; }
@@ -40,36 +46,66 @@ public class SingleRefugeeGroup : IAgent<RefugeeLayer>
 
     // Layers
     public RefugeeLayer RefugeeLayer { get; private set; }
-    public CityLayer CityLayer { get; private set; }
+    public NodeLayer NodeLayer { get; private set; }
     
     public ConflictLayer ConflictLayer { get; private set; }
+    
+    public CampLayer CampLayer { get; private set; }
     
     public void Init(RefugeeLayer layer)
     {
         RefugeeLayer = layer;
-        OriginCity = CityLayer.getCityByName(OriginCityName);
-        LastVisitedSite = OriginCity;
-        Position = OriginCity.GetCoordinate().ToPosition();
+        OriginCity = NodeLayer.GetCityByName(OriginCityName);
+        Position = OriginCity.GetCentroidPosition();
         Console.WriteLine("Refugee agent created in " + OriginCityName + " with group ID " + groupID);
 
     }
     
     public void Tick()
     {
-        Console.WriteLine("Current Location is " + LastVisitedSite.GetName());
+        /*Console.WriteLine("Current Location is " + LastVisitedSite.GetName());
        AbstractSite nextDestination = selectNextDestination();
-       moveToNextDestination(nextDestination);
+       moveToNextDestination(nextDestination);*/
+        /*Console.WriteLine(OriginCity.GetName() + " 's Coordinate: " + OriginCity.GetCoordinate());
+        var c = OriginCity.GetCoordinates();
+        var cams = CampLayer.GetCampsAroundPosition(Position, 20);
+       Console.WriteLine("No of Residents: " + OriginCity.GetResidents());
+
+        for (int x = 0; x < cams.Count; x++)
+        {
+            var camp = cams[x];
+            if (camp.GetCoordinates().IsWithinDistance(c,0))
+            {
+                Console.WriteLine("Camp " + x + " in Al-Hole" + "\n" + "Camp coordinates: " + camp.GetCoordinate());
+            }
+        }
+        
+        OriginCity.EnterCity();
+        Console.WriteLine("No of Residents after Entering: " + OriginCity.GetResidents());*/
+        Console.WriteLine(OriginCity.GetName() + " 's Coordinate: " + OriginCity.GetCentroidPosition());
+      // TODO remove duplicate city Suran
+        /*var i = 0;
+        foreach (var dupe in CityLayer.DuplicateCitiesCount())
+        {
+            
+            Console.WriteLine(i + " : " + dupe);
+            i++;
+        }
+        
+        Console.WriteLine("Agent ID: " + ID);*/
+
+
 
 
     }
 
-    private void moveToNextDestination(AbstractSite nextDestination)
+    /*private void moveToNextDestination(AbstractSite nextDestination)
     {
         LastVisitedSite = nextDestination;
         Position = nextDestination.GetCoordinate().ToPosition();
-    }
+    }*/
 
-    private AbstractSite selectNextDestination()
+    /*private AbstractSite selectNextDestination()
     {
         City nearestCity = CityLayer.GetNearestCity(LastVisitedSite.GetCoordinate().ToPosition());
         if (!ConflictLayer.GetConflictStateForCity(nearestCity
@@ -87,7 +123,7 @@ public class SingleRefugeeGroup : IAgent<RefugeeLayer>
         }
 
         return null;
-    }
+    }*/
     
     public Guid ID { get; set; }
 }

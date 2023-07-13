@@ -1,7 +1,7 @@
 {
   "globals": {
     "startTime": "2011-03-01T00:00",
-    "endTime": "2011-03-10T00:00",
+    "endTime": "2011-03-02T00:00",
     "deltaTUnit": "days",
     "console": false
     },
@@ -13,8 +13,8 @@
   ],
   "layers": [
     {
-      "name": "CityLayer",
-      "file": "Resources/cities.geojson"
+      "name": "NodeLayer",
+      "file": "Resources/syrian_districts_3.geojson"
     },
     {
       "name": "RefugeeLayer"
@@ -25,7 +25,7 @@
       "mapping": [
         {
           "parameter": "ExcludedCountries",
-          "value": [ "Lebanon", "Iraq", "Jordan"
+          "value": [  
           ]
         }
       ]

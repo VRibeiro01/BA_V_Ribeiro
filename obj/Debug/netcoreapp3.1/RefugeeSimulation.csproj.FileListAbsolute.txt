@@ -474,3 +474,5 @@ C:\Users\vivia\mars\RefugeeSimulation\obj\Debug\netcoreapp3.1\RefugeeSimulation.
 C:\Users\vivia\mars\RefugeeSimulation\obj\Debug\netcoreapp3.1\RefugeeSimulation.dll
 C:\Users\vivia\mars\RefugeeSimulation\obj\Debug\netcoreapp3.1\RefugeeSimulation.pdb
 C:\Users\vivia\mars\RefugeeSimulation\obj\Debug\netcoreapp3.1\RefugeeSimulation.genruntimeconfig.cache
+C:\Users\vivia\mars\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\syrian_districts_3.geojson
+C:\Users\vivia\mars\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\syrian_districts_3.qmd
