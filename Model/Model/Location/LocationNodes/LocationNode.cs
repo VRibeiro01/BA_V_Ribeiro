@@ -1,4 +1,5 @@
-﻿using Mars.Interfaces.Data;
+﻿using System;
+using Mars.Interfaces.Data;
 using Mars.Interfaces.Layers;
 using NetTopologySuite.Geometries;
 using ServiceStack;
@@ -12,10 +13,10 @@ public class LocationNode : IVectorFeature
         VectorStructured = data;
 
         var name = "Unknown";
-        var dupe = 0;
 
 
-        if (VectorStructured.Data.ContainsKey("ADM3_EN"))
+
+        if (VectorStructured.Data.ContainsKey("ADM3_EN") && !VectorStructured.Data.ContainsKey("ADM3_EN").ToString().EqualsIgnoreCase("null"))
             name = VectorStructured.Data["ADM3_EN"].ToString();
         else if (VectorStructured.Data.ContainsKey("ADM3_REF"))
             name = VectorStructured.Data["ADM3_REF"].ToString();
@@ -25,10 +26,14 @@ public class LocationNode : IVectorFeature
             name = VectorStructured.Data["ADM3ALT2EN"].ToString();
         else if (VectorStructured.Data.ContainsKey("ADM2_EN"))
             name = VectorStructured.Data["ADM2_EN"].ToString();
+        else if (VectorStructured.Data.ContainsKey("adm2_en"))
+            name = VectorStructured.Data["adm2_en"].ToString();
+        else if (VectorStructured.Data.ContainsKey("adm1_en"))
+            name = VectorStructured.Data["adm1_en"].ToString();
         
         VectorStructured.Data.Add("Name", name);
-
-      
+        
+        
         
     }
     public string GetName()

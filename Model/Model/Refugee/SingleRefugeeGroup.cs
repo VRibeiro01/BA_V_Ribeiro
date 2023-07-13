@@ -2,6 +2,7 @@
 using System.Collections.Specialized;
 using System.Linq;
 using LaserTagBox.Model.Model.Location;
+using LaserTagBox.Model.Model.Location.Camps;
 using LaserTagBox.Model.Model.Location.LocationNodes;
 using Mars.Common;
 using Mars.Interfaces.Agents;
@@ -66,12 +67,12 @@ public class SingleRefugeeGroup : IAgent<RefugeeLayer>
         /*Console.WriteLine("Current Location is " + LastVisitedSite.GetName());
        AbstractSite nextDestination = selectNextDestination();
        moveToNextDestination(nextDestination);*/
-        /*Console.WriteLine(OriginCity.GetName() + " 's Coordinate: " + OriginCity.GetCoordinate());
-        var c = OriginCity.GetCoordinates();
-        var cams = CampLayer.GetCampsAroundPosition(Position, 20);
-       Console.WriteLine("No of Residents: " + OriginCity.GetResidents());
+        //Console.WriteLine(OriginCity.GetName() + " 's Coordinate: " + OriginCity.GetCoordinate());
+        //var c = OriginCity.GetCoordinates();
+        //var cams = CampLayer.GetCampsAroundPosition(Position, 20);
+       //Console.WriteLine("No of Residents: " + OriginCity.GetResidents());
 
-        for (int x = 0; x < cams.Count; x++)
+        /*for (int x = 0; x < cams.Count; x++)
         {
             var camp = cams[x];
             if (camp.GetCoordinates().IsWithinDistance(c,0))
@@ -80,9 +81,9 @@ public class SingleRefugeeGroup : IAgent<RefugeeLayer>
             }
         }
         
-        OriginCity.EnterCity();
-        Console.WriteLine("No of Residents after Entering: " + OriginCity.GetResidents());*/
-        Console.WriteLine(OriginCity.GetName() + " 's Coordinate: " + OriginCity.GetCentroidPosition());
+        OriginCity.EnterCity();*/
+        
+        
      
 
 

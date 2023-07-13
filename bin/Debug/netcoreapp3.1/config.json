@@ -21,7 +21,7 @@
     },
     {
       "name": "CampLayer",
-      "file": "Resources/refugee_camps.geojson",
+      "file": "Resources/active_turkey_camps.geojson",
       "mapping": [
         {
           "parameter": "ExcludedCountries",
