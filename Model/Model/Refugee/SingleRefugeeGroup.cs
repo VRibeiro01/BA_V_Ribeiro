@@ -83,18 +83,7 @@ public class SingleRefugeeGroup : IAgent<RefugeeLayer>
         OriginCity.EnterCity();
         Console.WriteLine("No of Residents after Entering: " + OriginCity.GetResidents());*/
         Console.WriteLine(OriginCity.GetName() + " 's Coordinate: " + OriginCity.GetCentroidPosition());
-      // TODO remove duplicate city Suran
-        /*var i = 0;
-        foreach (var dupe in CityLayer.DuplicateCitiesCount())
-        {
-            
-            Console.WriteLine(i + " : " + dupe);
-            i++;
-        }
-        
-        Console.WriteLine("Agent ID: " + ID);*/
-
-
+     
 
 
     }
