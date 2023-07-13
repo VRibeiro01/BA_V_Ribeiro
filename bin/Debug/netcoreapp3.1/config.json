@@ -21,18 +21,11 @@
     },
     {
       "name": "CampLayer",
-      "file": "Resources/active_turkey_camps.geojson",
-      "mapping": [
-        {
-          "parameter": "ExcludedCountries",
-          "value": [  
-          ]
-        }
-      ]
+      "file": "Resources/active_turkey_camps.geojson"
     },
     {
       "name": "ConflictLayer",
-      "file": "Resources/conflicts.json"
+      "file": "Resources/Conflicts_Syr_Tur_2023.csv"
     }
     
     ]

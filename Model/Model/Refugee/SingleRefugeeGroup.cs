@@ -49,7 +49,7 @@ public class SingleRefugeeGroup : IAgent<RefugeeLayer>
     public RefugeeLayer RefugeeLayer { get; private set; }
     public NodeLayer NodeLayer { get; private set; }
     
-    public ConflictLayer ConflictLayer { get; private set; }
+   
     
     public CampLayer CampLayer { get; private set; }
     
