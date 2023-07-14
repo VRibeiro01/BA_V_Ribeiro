@@ -14,7 +14,7 @@
   "layers": [
     {
       "name": "NodeLayer",
-      "file": "Resources/syrian_districts_3.geojson"
+      "file": "Resources/turkey2_syria3_districts.geojson"
     },
     {
       "name": "RefugeeLayer"
