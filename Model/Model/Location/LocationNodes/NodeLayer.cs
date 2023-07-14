@@ -14,7 +14,7 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
     public override bool InitLayer(LayerInitData layerInitData, RegisterAgent registerAgentHandle = null, UnregisterAgent unregisterAgentHandle = null)
     {
         base.InitLayer(layerInitData, registerAgentHandle, unregisterAgentHandle);
-        Console.WriteLine(Entities.Count() + " Cities created!");
+        debug();
         return true;
     }
     
@@ -27,6 +27,16 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         }
         throw new ArgumentException("The city you input does cannot be found in the system.");
        
+    }
+
+    private void debug()
+    {
+        Console.WriteLine(Entities.Count() + " Cities created!");
+        var unknownCountries = Entities.ToList().Where(city => city.GetCountry().EqualsIgnoreCase("Unknown"));
+        foreach (var c in unknownCountries)
+        {
+            Console.WriteLine(c.GetName());
+        }
     }
     
  

@@ -32,13 +32,32 @@ public class LocationNode : IVectorFeature
             name = VectorStructured.Data["adm1_en"].ToString();
         
         VectorStructured.Data.Add("Name", name);
+
+        var country = "Unknown";
+
+        if (VectorStructured.Data.ContainsKey("layer"))
+        {
+            if (!(VectorStructured.Data["layer"] is null) &&
+                VectorStructured.Data["layer"].ToString().Contains("turkey"))
+            {
+                country = "Turkey";
+            } else if (!(VectorStructured.Data["layer"] is null) &&
+                       VectorStructured.Data["layer"].ToString().Contains("syria"))
+            {
+                country = "Syria";
+            }
+        }
         
-        
-        
+        VectorStructured.Data.Add("Country", country);
+
     }
     public string GetName()
     {
         return VectorStructured.Data["Name"].ToString();
+    }
+    public string GetCountry()
+    {
+        return VectorStructured.Data["Country"].ToString();
     }
     public Mars.Interfaces.Environments.Position GetCentroidPosition()
     {

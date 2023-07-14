@@ -59,6 +59,7 @@ public class SingleRefugeeGroup : IAgent<RefugeeLayer>
         OriginCity = NodeLayer.GetCityByName(OriginCityName);
         Position = OriginCity.GetCentroidPosition();
         Console.WriteLine("Refugee agent created in " + OriginCityName + " with group ID " + groupID);
+        Console.WriteLine("Country of origin city: " + OriginCity.GetCountry());
 
     }
     
