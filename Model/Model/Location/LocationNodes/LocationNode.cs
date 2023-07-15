@@ -46,6 +46,15 @@ public class LocationNode : IVectorFeature
             {
                 country = "Syria";
             }
+        } else if (VectorStructured.Data.ContainsKey("ADM0_EN") && !(VectorStructured.Data["ADM0_EN"] is null))
+        {
+            if (VectorStructured.Data["ADM0_EN"].ToString().EqualsIgnoreCase("Syrian Arab Republic"))
+            {
+                country = "Syria";
+            } else if (VectorStructured.Data["ADM0_EN"].ToString().EqualsIgnoreCase("Turkey"))
+            {
+                country = "Turkey";
+            }
         }
         
         VectorStructured.Data.Add("Country", country);

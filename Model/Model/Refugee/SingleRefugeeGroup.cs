@@ -22,25 +22,13 @@ public class SingleRefugeeGroup : IAgent<RefugeeLayer>
     //---------------- Properties defined in input file ------------------------------------
     public LocationNode OriginCity;
 
-    [PropertyDescription]
+    
     public String OriginCityName { get; set; }
     
-    [PropertyDescription]
-    public int AdultMembers { get; set; }
-    [PropertyDescription]
-    public int ChildMembers { get; set; }
     
-    [PropertyDescription]
-    public int OldMembers { get; set; }
-    
-    [PropertyDescription]
-    public int groupID { get; set; }
 
     //--------------------------------------------------------------------------------------------
-    public AbstractSite LastVisitedSite;
-    public int HungerLevel;
-    public int HealthLevel;
-    public int DeathToll;
+
     public Position Position;
     
 
@@ -58,8 +46,7 @@ public class SingleRefugeeGroup : IAgent<RefugeeLayer>
         RefugeeLayer = layer;
         OriginCity = NodeLayer.GetCityByName(OriginCityName);
         Position = OriginCity.GetCentroidPosition();
-        Console.WriteLine("Refugee agent created in " + OriginCityName + " with group ID " + groupID);
-        Console.WriteLine("Country of origin city: " + OriginCity.GetCountry());
+     
 
     }
     
@@ -88,6 +75,13 @@ public class SingleRefugeeGroup : IAgent<RefugeeLayer>
      
 
 
+    }
+
+    public void Spawn(LocationNode node)
+    {
+        OriginCity = node;
+        OriginCityName = node.GetName();
+        Position = node.GetCentroidPosition();
     }
 
     /*private void moveToNextDestination(AbstractSite nextDestination)

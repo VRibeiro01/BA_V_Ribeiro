@@ -7,17 +7,17 @@
     },
   "agents": [
     {
-      "name": "SingleRefugeeGroup",
-      "file": "Resources/refugee_group_config.csv"
+      "name": "SingleRefugeeGroup"
     }
   ],
   "layers": [
     {
       "name": "NodeLayer",
-      "file": "Resources/turkey2_syria3_districts.geojson"
+      "file": "Resources/syrian_districts_3.geojson"
     },
     {
-      "name": "RefugeeLayer"
+      "name": "RefugeeLayer",
+      "file": "Resources/idp_pop_syr_0922.csv"
     },
     {
       "name": "CampLayer",
@@ -25,7 +25,7 @@
     },
     {
       "name": "ConflictLayer",
-      "file": "Resources/Conflicts_Syr_Tur_2023.csv"
+      "file": "Resources/Conflicts_Syr_Tur_2022.geojson"
     }
     
     ]
