@@ -17,7 +17,10 @@ public class RefugeeLayer : AbstractLayer
 {
     private System.Collections.Generic.Dictionary<String,int> InitDistributionData { get; set; }
     private NodeLayer nodeLayer;
-
+    public List<RefugeeAgent> RefugeeAgents = new List<RefugeeAgent>();
+    
+    
+    
     public RefugeeLayer(NodeLayer nodeLayer)
     {
         this.nodeLayer = nodeLayer;
@@ -26,6 +29,7 @@ public class RefugeeLayer : AbstractLayer
         UnregisterAgent unregisterAgent = null)
     {
         base.InitLayer(layerInitData, registerAgentHandle, unregisterAgent);
+       
         
         InitDistributionData = layerInitData.LayerInitConfig.Inputs.Import()
             .OfType<IStructuredData>()
@@ -33,17 +37,28 @@ public class RefugeeLayer : AbstractLayer
         
         
        IAgentManager agentManager =  layerInitData.Container.Resolve<IAgentManager>();
-       var refugeeGroupsSpawned = new List<SingleRefugeeGroup>();
        
        
-       foreach(var nodePopPair in InitDistributionData)
-       {
-          refugeeGroupsSpawned.AddRange( agentManager.Spawn<SingleRefugeeGroup, RefugeeLayer>(null,
-               agent => agent.Spawn(nodeLayer.GetCityByName(nodePopPair.Key))).Take(nodePopPair.Value).ToList());
-       }
+       
+       distributeRefs(RefugeeAgents, agentManager);
          
-       Console.WriteLine(refugeeGroupsSpawned.Count + " refugee agent(s) spawned");
+       Console.WriteLine(RefugeeAgents.Count + " refugee agent(s) spawned");
 
         return true;
+    }
+
+    private void distributeRefs(List<RefugeeAgent> refugeeAgentsSpawned, IAgentManager agentManager)
+    {
+        
+        foreach (var nodePopPair in InitDistributionData)
+        {
+            var spawnCity = nodeLayer.GetCityByName(nodePopPair.Key);
+            refugeeAgentsSpawned.AddRange(agentManager.Spawn<RefugeeAgent, RefugeeLayer>(null,
+                agent => agent.Spawn(spawnCity)).Take(nodePopPair.Value).ToList());
+
+          //TODO refactor to object attribute and change name to refPop
+            spawnCity.VectorStructured.Data["Residents"] = nodePopPair.Value;
+
+        }
     }
 }

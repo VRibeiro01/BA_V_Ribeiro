@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using LaserTagBox.Model.Model.Location;
@@ -7,6 +8,7 @@ using LaserTagBox.Model.Model.Location.LocationNodes;
 using Mars.Common;
 using Mars.Interfaces.Agents;
 using Mars.Interfaces.Annotations;
+using Mars.Interfaces.Environments;
 using Mars.Numerics;
 using Microsoft.CodeAnalysis.Text;
 using NetTopologySuite.Geometries;
@@ -14,39 +16,36 @@ using Position = Mars.Interfaces.Environments.Position;
 
 namespace RefugeeSimulation.Model.Model.Refugee;
 
-public class SingleRefugeeGroup : IAgent<RefugeeLayer>
+public class RefugeeAgent : IAgent<RefugeeLayer>, IPositionable
 {
     
-    // Group Attributes
-    
-    //---------------- Properties defined in input file ------------------------------------
-    public LocationNode OriginCity;
 
-    
-    public String OriginCityName { get; set; }
-    
-    
-
-    //--------------------------------------------------------------------------------------------
-
-    public Position Position;
-    
+    public Position Position { get; set; }
+    public HashSet<RefugeeAgent> Friends { get; set; }
+    public HashSet<RefugeeAgent> Kins { get; set; }
+    public string LocationName { get; set; }
 
 
     // Layers
     public RefugeeLayer RefugeeLayer { get; private set; }
-    public NodeLayer NodeLayer { get; private set; }
+
+    public LocationNode CurrentNode{ get; set; }
+    
+    
+    private static int _initNumKins;
+
+    private static int _initNumFriends;
+    
     
    
     
-    public CampLayer CampLayer { get; private set; }
+   
     
     public void Init(RefugeeLayer layer)
     {
         RefugeeLayer = layer;
-        OriginCity = NodeLayer.GetCityByName(OriginCityName);
-        Position = OriginCity.GetCentroidPosition();
-     
+        Friends = new HashSet<RefugeeAgent>();
+        Kins = new HashSet<RefugeeAgent>();
 
     }
     
@@ -77,11 +76,36 @@ public class SingleRefugeeGroup : IAgent<RefugeeLayer>
 
     }
 
+    private bool Activate()
+    {
+        return false;
+    }
+
+    private LocationNode Assess()
+    {
+        return CurrentNode;
+    }
+
+    private double CalcNodeDesirability(LocationNode node, int numFriendsAtNode, int numKinsAtNode)
+    {
+        return 0.0;
+    }
+
+    private void MoveToNode(LocationNode newNode) {}
+
+    private void InitSocialLinks(){}
+
+    public void UpdateSocialNetwork(RefugeeAgent newFriend){}
+
     public void Spawn(LocationNode node)
     {
-        OriginCity = node;
-        OriginCityName = node.GetName();
-        Position = node.GetCentroidPosition();
+        CurrentNode = node;
+        LocationName = node.GetName();
+        Position = Position.CreateGeoPosition(node.GetCentroidPosition().Longitude,
+            node.GetCentroidPosition().Latitude);
+       
+        
+        // TODO create social links
     }
 
     /*private void moveToNextDestination(AbstractSite nextDestination)
@@ -111,4 +135,5 @@ public class SingleRefugeeGroup : IAgent<RefugeeLayer>
     }*/
     
     public Guid ID { get; set; }
+    
 }

@@ -4,12 +4,23 @@ using System.Linq;
 using Mars.Components.Layers;
 using Mars.Interfaces.Data;
 using Mars.Interfaces.Layers;
+using NetTopologySuite.Geometries;
 using ServiceStack;
 
 namespace LaserTagBox.Model.Model.Location.LocationNodes;
 
 public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 {
+    
+ private double PopulationWeight { get; set; }
+
+    private double CampWeight { get; set; }
+
+    private double ConflictWeight { get; set; }
+
+    private double LocationWeight{ get; set; }
+
+    private Coordinate AnchorCoordinates { get; set; }
     
     public override bool InitLayer(LayerInitData layerInitData, RegisterAgent registerAgentHandle = null, UnregisterAgent unregisterAgentHandle = null)
     {
@@ -53,5 +64,11 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
     public void PostTick()
     {
         
+    }
+
+
+    private double CalcScores()
+    {
+        return 0.0;
     }
 }

@@ -20,7 +20,7 @@ namespace RefugeeSimulation
             // Create a new model description that holds all parts of the model (agents, entities, layers)
             var description = new ModelDescription();
             description.AddLayer<RefugeeLayer>();
-            description.AddAgent<SingleRefugeeGroup, RefugeeLayer>();
+            description.AddAgent<RefugeeAgent, RefugeeLayer>();
             
             description.AddLayer<NodeLayer>();
             description.AddLayer<ConflictLayer>();

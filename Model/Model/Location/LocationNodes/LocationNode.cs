@@ -1,16 +1,42 @@
 ﻿using System;
+using Mars.Common.IO.Mapped.Collections;
 using Mars.Interfaces.Data;
 using Mars.Interfaces.Layers;
 using NetTopologySuite.Geometries;
+using RefugeeSimulation.Model.Model.Refugee;
 using ServiceStack;
 
 namespace LaserTagBox.Model.Model.Location.LocationNodes;
 
 public class LocationNode : IVectorFeature
 {
+    public VectorStructuredData VectorStructured { get; private set; }
+    
+    private double Score { get; set; }
+
+    private string Name { get; set; }
+
+    private string Country { get; set; }
+
+    private int NumCamps;
+
+    private int NumConflicts;
+
+    private double NormNumCamps { get; set; }
+
+    private double NormNumConflicts { get; set; }
+
+    private double NormRefPop { get; set; }
+
+    private double NormAnchorScore { get; set; }
+
+    private List<RefugeeAgent> RefugeesInLocation { get; set; }
     public void Init(ILayer layer, VectorStructuredData data)
     {
         VectorStructured = data;
+        
+        // TODO add normalized camp and conflict attributes and initialize them
+        //TODO initialize location score (first check if necessary)
 
         var name = "Unknown";
 
@@ -58,8 +84,12 @@ public class LocationNode : IVectorFeature
         }
         
         VectorStructured.Data.Add("Country", country);
+        
+        VectorStructured.Data.Add("Residents", 0);
 
     }
+    
+    // TODO Safe erase methods
     public string GetName()
     {
         return VectorStructured.Data["Name"].ToString();
@@ -80,6 +110,35 @@ public class LocationNode : IVectorFeature
     {
         throw new System.NotImplementedException();
     }
+    
+    public void EnterNewLocation() {}
 
-    public VectorStructuredData VectorStructured { get; private set; }
+    public void LeavePreviousLocation() {}
+
+    public int GetNumCampsAtNode()
+    {
+        return 0;
+    }
+
+    public int GetNumConflictsAtNode()
+    {
+        return 0;
+    }
+
+    public List<LocationNode> GetNeighboursAndScores()
+    {
+        return null;
+    }
+
+    private void GetRandomRefugeesAtNode()
+    {
+        
+    }
+
+    private int UpdateNormRefPop(int maxRefPop)
+    {
+        return 0;
+    }
+
+    
 }

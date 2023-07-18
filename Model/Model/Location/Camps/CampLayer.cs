@@ -3,6 +3,7 @@ using System.Linq;
 using Mars.Components.Layers;
 using Mars.Interfaces.Data;
 using Mars.Interfaces.Layers;
+using NetTopologySuite.Geometries;
 
 namespace LaserTagBox.Model.Model.Location.Camps;
 
@@ -13,5 +14,10 @@ public class CampLayer : VectorLayer<Camp>
         base.InitLayer(layerInitData, registerAgentHandle, unregisterAgentHandle);
         Console.WriteLine(Entities.Count() + " Camps created!");
         return true;
+    }
+
+    public Geometry[] GetCamps()
+    {
+        return null;
     }
 }
