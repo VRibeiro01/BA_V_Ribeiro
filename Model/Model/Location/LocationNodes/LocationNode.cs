@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using LaserTagBox.Model.Model.Location.Camps;
+using LaserTagBox.Model.Model.Location.Conflict;
 using Mars.Interfaces.Agents;
 using Mars.Interfaces.Data;
 using Mars.Interfaces.Environments;
@@ -17,9 +19,7 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
     public VectorStructuredData VectorStructured { get; private set; }
 
     public double Score { private get; set; }
-
-    public string Country { get; set; }
-
+    
     public  int NumCamps { private get; set; }
 
     public int NumConflicts { private get; set; }
@@ -33,8 +33,17 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
     public double NormAnchorScore { get; set; }
 
     private List<ILocation> neighbours;
-    
 
+   
+
+
+
+
+    // Layers
+
+    public ConflictLayer ConflictLayer => ConflictLayer.CreateInstance();
+
+    public CampLayer CampLayer => CampLayer.CreateInstance();
 
 
     public void Init(ILayer layer, VectorStructuredData data)
@@ -69,6 +78,7 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
         
         
         
+        
 
         var country = "Unknown";
 
@@ -95,16 +105,39 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
         }
         
         VectorStructured.Data.Add("Country", country);
+
         
-        VectorStructured.Data.Add("Residents", 0);
+       InitCamps();
 
-
-       
-        
-
+        InitConflicts();
     }
-    
-    // TODO Safe erase methods
+
+    private void InitConflicts()
+    {
+        var conflicts = ConflictLayer.GetConflictCoordinates();
+
+        foreach (var conflict in conflicts)
+        {
+            if (conflict.IsWithinDistance(VectorStructured.Geometry, 5))
+            {
+                NumConflicts++;
+            }
+        }
+    }
+
+    private void InitCamps()
+    {
+        var camps = CampLayer.GetCamps();
+
+        foreach (var camp in camps)
+        {
+            if (camp.IsWithinDistance(VectorStructured.Geometry, 0))
+            {
+                NumCamps++;
+            }
+        }
+    }
+
     public string GetName()
     {
         return VectorStructured.Data["Name"].ToString();
@@ -115,6 +148,7 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
     }
     public Mars.Interfaces.Environments.Position GetCentroidPosition()
     {
+        
         Point centroidPoint = VectorStructured.Geometry.Centroid;
         return new Mars.Interfaces.Environments.Position(centroidPoint.X, centroidPoint.Y);
     }

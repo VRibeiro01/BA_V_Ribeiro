@@ -9,6 +9,11 @@ namespace LaserTagBox.Model.Model.Location.Camps;
 
 public class CampLayer : VectorLayer<Camp>
 {
+    public static CampLayer CreateInstance()
+    {
+        return new CampLayer();
+    }
+
     public override bool InitLayer(LayerInitData layerInitData, RegisterAgent registerAgentHandle = null, UnregisterAgent unregisterAgentHandle = null)
     {
         base.InitLayer(layerInitData, registerAgentHandle, unregisterAgentHandle);
@@ -18,6 +23,6 @@ public class CampLayer : VectorLayer<Camp>
 
     public Geometry[] GetCamps()
     {
-        return null;
+        return Entities.Select(camp => camp.GetCoordinates()).ToArray();
     }
 }

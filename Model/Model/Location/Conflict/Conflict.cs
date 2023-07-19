@@ -1,5 +1,6 @@
 ﻿using Mars.Interfaces.Data;
 using Mars.Interfaces.Layers;
+using NetTopologySuite.Geometries;
 
 namespace LaserTagBox.Model.Model.Location.Conflict;
 
@@ -15,5 +16,9 @@ public class Conflict : IVectorFeature
         throw new System.NotImplementedException();
     }
 
+    public Geometry GetCoordinates()
+    {
+        return this.GetCoordinates();
+    }
     public VectorStructuredData VectorStructured { get; private set; }
 }

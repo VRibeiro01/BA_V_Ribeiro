@@ -11,6 +11,7 @@ using Mars.Interfaces.Annotations;
 using Mars.Interfaces.Environments;
 using Mars.Numerics;
 using Microsoft.CodeAnalysis.Text;
+using MongoDB.Driver.Core.Operations;
 using NetTopologySuite.Geometries;
 using RefugeeSimulation.Model.Model.Shared;
 using Position = Mars.Interfaces.Environments.Position;
@@ -32,9 +33,14 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>
     public RefugeeLayer RefugeeLayer { get; private set; }
 
     
-    
-    
-    
+    // Parameters
+    private double moveProbabilityCamp;
+
+    private double moveProbabilityOther;
+
+
+
+
     // Properties
     private static int _initNumKins;
 
@@ -56,6 +62,17 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>
     public void Tick()
     {
 
+        var numCamps = CurrentNode.GetNumCampsAtNode();
+        var numConflicts = CurrentNode.GetNumConflictsAtNode();
+
+        if (!Activate(numCamps, numConflicts))
+        {
+            return;
+        }
+      
+        
+        
+
         /*Console.WriteLine("Current Location is " + LastVisitedSite.GetName());
        AbstractSite nextDestination = selectNextDestination();
        moveToNextDestination(nextDestination);*/
@@ -73,7 +90,7 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>
             }
         }
         
-        OriginCity.EnterCity();*/
+     */
 
 
 
@@ -81,8 +98,20 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>
 
     }
 
-    private bool Activate()
+    private bool Activate(int numCamps, int numConflicts)
     {
+        var move = false;
+        if (numCamps > 0)
+        {
+            move = new Random().NextDouble() < moveProbabilityCamp;
+        } else if (numConflicts > 0)
+        {
+            move = true;
+        }
+        else
+        {
+            move = new Random().NextDouble() < moveProbabilityOther;
+        }
         return false;
     }
 
