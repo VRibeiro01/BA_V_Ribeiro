@@ -4,9 +4,11 @@ using LaserTagBox.Model.Model.Location;
 using LaserTagBox.Model.Model.Location.Camps;
 using LaserTagBox.Model.Model.Location.Conflict;
 using LaserTagBox.Model.Model.Location.LocationNodes;
+using Mars.Components.Environments;
 using Mars.Components.Starter;
 using Mars.Interfaces.Model;
 using RefugeeSimulation.Model.Model.Refugee;
+using RefugeeSimulation.Model.Model.Shared;
 
 namespace RefugeeSimulation
 {
@@ -19,12 +21,17 @@ namespace RefugeeSimulation
             
             // Create a new model description that holds all parts of the model (agents, entities, layers)
             var description = new ModelDescription();
+
+            
+            description.AddLayer<NodeLayer>();
             description.AddLayer<RefugeeLayer>();
             description.AddAgent<RefugeeAgent, RefugeeLayer>();
             
-            description.AddLayer<NodeLayer>();
+            
             description.AddLayer<ConflictLayer>();
             description.AddLayer<CampLayer>();
+            
+            
            
             
             

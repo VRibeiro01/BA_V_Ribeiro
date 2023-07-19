@@ -27,3 +27,11 @@
 [ERROR] 2023-07-13 20:11:11,892 | Mars.Components.Starter.SimulationStarter - ######################################################## 
 [ERROR] 2023-07-13 20:11:11,892 | Mars.Components.Starter.SimulationStarter - The method or operation is not implemented. 
 [ERROR] 2023-07-13 20:11:11,893 | Mars.Components.Starter.SimulationStarter - ######################################################## 
+[ERROR] 2023-07-19 14:38:17,977 | Mars.Core.Model.Implementation.ModelBuilder - An exception was thrown while activating RefugeeSimulation.Model.Model.Refugee.RefugeeLayer -> LaserTagBox.Model.Model.Location.LocationNodes.NodeLayer. 
+[ERROR] 2023-07-19 14:38:17,999 | Mars.Core.Model.Implementation.ModelBuilder - Circular component dependency detected: RefugeeSimulation.Model.Model.Refugee.RefugeeLayer -> LaserTagBox.Model.Model.Location.LocationNodes.NodeLayer -> RefugeeSimulation.Model.Model.Refugee.RefugeeLayer. 
+[ERROR] 2023-07-20 00:08:33,902 | Mars.Core.Model.Implementation.ModelBuilder - An exception was thrown while activating RefugeeSimulation.Model.Model.Refugee.RefugeeLayer. 
+[ERROR] 2023-07-20 00:08:33,922 | Mars.Core.Model.Implementation.ModelBuilder - None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'RefugeeSimulation.Model.Model.Refugee.RefugeeLayer' can be invoked with the available services and parameters:
+Cannot resolve parameter 'LaserTagBox.Model.Model.Location.LocationNodes.IEnvironment environment' of constructor 'Void .ctor(LaserTagBox.Model.Model.Location.LocationNodes.IEnvironment)'. 
+[ERROR] 2023-07-20 00:11:02,527 | Mars.Core.Model.Implementation.ModelBuilder - An exception was thrown while activating RefugeeSimulation.Model.Model.Refugee.RefugeeLayer. 
+[ERROR] 2023-07-20 00:11:02,552 | Mars.Core.Model.Implementation.ModelBuilder - None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'RefugeeSimulation.Model.Model.Refugee.RefugeeLayer' can be invoked with the available services and parameters:
+Cannot resolve parameter 'LaserTagBox.Model.Model.Location.LocationNodes.IEnvironment environment' of constructor 'Void .ctor(LaserTagBox.Model.Model.Location.LocationNodes.IEnvironment)'. 

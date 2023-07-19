@@ -1,10 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Mars.Components.Environments;
 using Mars.Components.Layers;
+using Mars.Interfaces.Agents;
+using Mars.Interfaces.Annotations;
 using Mars.Interfaces.Data;
+using Mars.Interfaces.Environments;
 using Mars.Interfaces.Layers;
 using NetTopologySuite.Geometries;
+using RefugeeSimulation.Model.Model.Refugee;
+using RefugeeSimulation.Model.Model.Shared;
 using ServiceStack;
 
 namespace LaserTagBox.Model.Model.Location.LocationNodes;
@@ -12,35 +18,65 @@ namespace LaserTagBox.Model.Model.Location.LocationNodes;
 public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 {
     
- private double PopulationWeight { get; set; }
+    [PropertyDescription]                                       
+    public double PopulationWeight { get; set; }
 
-    private double CampWeight { get; set; }
+    [PropertyDescription]
+    public double CampWeight { get; set; }
 
-    private double ConflictWeight { get; set; }
+    [PropertyDescription]
+    public double ConflictWeight { get; set; }
 
-    private double LocationWeight{ get; set; }
+    [PropertyDescription]
+    public double LocationWeight{ get; set; }
 
-    private Coordinate AnchorCoordinates { get; set; }
+    [PropertyDescription]
+    public double AnchorLong { get; set; }
     
+    [PropertyDescription]
+    public double AnchorLat { get; set; }
+    
+    private Coordinate AnchorCoordinates { get; set; } // Lat= 41.015137, Long= 28.979530
+
+    private List<LocationNode> EntitiesList;
+
+    
+
+    
+
     public override bool InitLayer(LayerInitData layerInitData, RegisterAgent registerAgentHandle = null, UnregisterAgent unregisterAgentHandle = null)
     {
         base.InitLayer(layerInitData, registerAgentHandle, unregisterAgentHandle);
-        debug();
+        Debug();
         return true;
     }
-    
-    public LocationNode GetCityByName(String cityName)
+
+    public GeoHashEnvironment<AbstractEnvironmentObject> GetEnvironment()
     {
-        var cityByName = Entities.ToList().Where(city => city.GetName().EqualsIgnoreCase(cityName));
-        if (cityByName.Any())
+        return null;
+    }
+    
+
+    public ILocation GetLocationByName(string locationName)
+    {
+        var locationByName = Entities.ToList().Where(city =>
+            city.GetName().Trim().EqualsIgnoreCase(locationName.Trim()));
+
+        // put collected results in a list
+        var locationNodes = locationByName.ToList();
+        
+        // return result
+        if (locationNodes.Any())
         {
-            return cityByName.First();
+            return locationNodes.First();
         }
-        throw new ArgumentException("The city you input does cannot be found in the system.");
+
+        // error handling
+        throw new ArgumentException("The location "+ locationName + "  cannot be found in the system.");
        
     }
 
-    private void debug()
+    private void Debug()
     {
         Console.WriteLine(Entities.Count() + " Cities created!");
         var unknownCountries = Entities.ToList().Where(city => city.GetCountry().EqualsIgnoreCase("Unknown"));
@@ -48,6 +84,8 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         {
             Console.WriteLine(c.GetName());
         }
+        
+        Console.WriteLine("Conflict Weight Data Type Test:  " + (ConflictWeight + LocationWeight));
     }
     
  
@@ -63,12 +101,17 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 
     public void PostTick()
     {
-        
+     
     }
 
 
     private double CalcScores()
     {
         return 0.0;
+    }
+
+    private int MaxRefPop()
+    {
+        return 0;
     }
 }

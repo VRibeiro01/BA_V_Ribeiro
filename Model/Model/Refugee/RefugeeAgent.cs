@@ -12,26 +12,30 @@ using Mars.Interfaces.Environments;
 using Mars.Numerics;
 using Microsoft.CodeAnalysis.Text;
 using NetTopologySuite.Geometries;
+using RefugeeSimulation.Model.Model.Shared;
 using Position = Mars.Interfaces.Environments.Position;
 
 namespace RefugeeSimulation.Model.Model.Refugee;
 
-public class RefugeeAgent : IAgent<RefugeeLayer>, IPositionable
+public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>
 {
     
-
-    public Position Position { get; set; }
+    
     public HashSet<RefugeeAgent> Friends { get; set; }
     public HashSet<RefugeeAgent> Kins { get; set; }
     public string LocationName { get; set; }
+    
+    public ILocation CurrentNode{ get; set; }
 
 
-    // Layers
+    // Layer
     public RefugeeLayer RefugeeLayer { get; private set; }
 
-    public LocationNode CurrentNode{ get; set; }
     
     
+    
+    
+    // Properties
     private static int _initNumKins;
 
     private static int _initNumFriends;
@@ -51,13 +55,14 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, IPositionable
     
     public void Tick()
     {
+
         /*Console.WriteLine("Current Location is " + LastVisitedSite.GetName());
        AbstractSite nextDestination = selectNextDestination();
        moveToNextDestination(nextDestination);*/
         //Console.WriteLine(OriginCity.GetName() + " 's Coordinate: " + OriginCity.GetCoordinate());
         //var c = OriginCity.GetCoordinates();
         //var cams = CampLayer.GetCampsAroundPosition(Position, 20);
-       //Console.WriteLine("No of Residents: " + OriginCity.GetResidents());
+        //Console.WriteLine("No of Residents: " + OriginCity.GetResidents());
 
         /*for (int x = 0; x < cams.Count; x++)
         {
@@ -69,9 +74,9 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, IPositionable
         }
         
         OriginCity.EnterCity();*/
-        
-        
-     
+
+
+
 
 
     }
@@ -81,7 +86,7 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, IPositionable
         return false;
     }
 
-    private LocationNode Assess()
+    private ILocation Assess()
     {
         return CurrentNode;
     }
@@ -97,12 +102,14 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, IPositionable
 
     public void UpdateSocialNetwork(RefugeeAgent newFriend){}
 
-    public void Spawn(LocationNode node)
+    public void Spawn(ILocation node)
     {
         CurrentNode = node;
         LocationName = node.GetName();
         Position = Position.CreateGeoPosition(node.GetCentroidPosition().Longitude,
             node.GetCentroidPosition().Latitude);
+        
+        
        
         
         // TODO create social links
@@ -134,6 +141,6 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, IPositionable
         return null;
     }*/
     
-    public Guid ID { get; set; }
+    
     
 }

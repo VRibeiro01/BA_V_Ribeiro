@@ -1,42 +1,50 @@
 ﻿using System;
-using Mars.Common.IO.Mapped.Collections;
+using System.Collections.Generic;
+using Mars.Interfaces.Agents;
 using Mars.Interfaces.Data;
+using Mars.Interfaces.Environments;
 using Mars.Interfaces.Layers;
 using NetTopologySuite.Geometries;
 using RefugeeSimulation.Model.Model.Refugee;
+using RefugeeSimulation.Model.Model.Shared;
 using ServiceStack;
+using Position = Mars.Interfaces.Environments.Position;
 
 namespace LaserTagBox.Model.Model.Location.LocationNodes;
 
-public class LocationNode : IVectorFeature
+public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
 {
     public VectorStructuredData VectorStructured { get; private set; }
+
+    public double Score { private get; set; }
+
+    public string Country { get; set; }
+
+    public  int NumCamps { private get; set; }
+
+    public int NumConflicts { private get; set; }
+
+    public double NormNumCamps { get; private set; }
+
+    public double NormNumConflicts { get; private set; }
+
+    public double NormRefPop { get; private set; }
+
+    public double NormAnchorScore { get; set; }
+
+    private List<ILocation> neighbours;
     
-    private double Score { get; set; }
 
-    private string Name { get; set; }
 
-    private string Country { get; set; }
 
-    private int NumCamps;
-
-    private int NumConflicts;
-
-    private double NormNumCamps { get; set; }
-
-    private double NormNumConflicts { get; set; }
-
-    private double NormRefPop { get; set; }
-
-    private double NormAnchorScore { get; set; }
-
-    private List<RefugeeAgent> RefugeesInLocation { get; set; }
     public void Init(ILayer layer, VectorStructuredData data)
     {
         VectorStructured = data;
         
         // TODO add normalized camp and conflict attributes and initialize them
         //TODO initialize location score (first check if necessary)
+        // TODO initialize norm anchor score (check if necessary)
+        // TODO initialize a neighbours list
 
         var name = "Unknown";
 
@@ -58,6 +66,9 @@ public class LocationNode : IVectorFeature
             name = VectorStructured.Data["adm1_en"].ToString();
         
         VectorStructured.Data.Add("Name", name);
+        
+        
+        
 
         var country = "Unknown";
 
@@ -87,6 +98,10 @@ public class LocationNode : IVectorFeature
         
         VectorStructured.Data.Add("Residents", 0);
 
+
+       
+        
+
     }
     
     // TODO Safe erase methods
@@ -108,13 +123,8 @@ public class LocationNode : IVectorFeature
 
     public void Update(VectorStructuredData data)
     {
-        throw new System.NotImplementedException();
     }
     
-    public void EnterNewLocation() {}
-
-    public void LeavePreviousLocation() {}
-
     public int GetNumCampsAtNode()
     {
         return 0;
@@ -125,20 +135,27 @@ public class LocationNode : IVectorFeature
         return 0;
     }
 
-    public List<LocationNode> GetNeighboursAndScores()
+    public System.Collections.Generic.List<ILocation> GetNeighbours()
     {
-        return null;
+        return neighbours;
     }
+
+    public int GetScore()
+    {
+        return 0;
+    }
+    
 
     private void GetRandomRefugeesAtNode()
     {
         
+        
     }
 
-    private int UpdateNormRefPop(int maxRefPop)
+    public int UpdateNormRefPop(int maxRefPop)
     {
         return 0;
     }
-
+    
     
 }

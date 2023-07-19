@@ -8,27 +8,33 @@ using Mars.Components.Environments;
 using Mars.Components.Layers;
 using Mars.Components.Services;
 using Mars.Core.Data;
+using Mars.Interfaces.Annotations;
 using Mars.Interfaces.Data;
 using Mars.Interfaces.Layers;
+using NetTopologySuite.GeometriesGraph;
 
 namespace RefugeeSimulation.Model.Model.Refugee;
 
 public class RefugeeLayer : AbstractLayer
 {
     private System.Collections.Generic.Dictionary<String,int> InitDistributionData { get; set; }
-    private NodeLayer nodeLayer;
+    public NodeLayer Environment;
+    
     public List<RefugeeAgent> RefugeeAgents = new List<RefugeeAgent>();
+
     
-    
-    
-    public RefugeeLayer(NodeLayer nodeLayer)
+    public RefugeeLayer(NodeLayer environment)
     {
-        this.nodeLayer = nodeLayer;
+        Environment = environment;
     }
+
+
     public override bool InitLayer(LayerInitData layerInitData, RegisterAgent registerAgentHandle = null,
         UnregisterAgent unregisterAgent = null)
     {
         base.InitLayer(layerInitData, registerAgentHandle, unregisterAgent);
+
+        
        
         
         InitDistributionData = layerInitData.LayerInitConfig.Inputs.Import()
@@ -40,24 +46,28 @@ public class RefugeeLayer : AbstractLayer
        
        
        
-       distributeRefs(RefugeeAgents, agentManager);
+       DistributeRefs(RefugeeAgents, agentManager);
          
        Console.WriteLine(RefugeeAgents.Count + " refugee agent(s) spawned");
 
         return true;
     }
 
-    private void distributeRefs(List<RefugeeAgent> refugeeAgentsSpawned, IAgentManager agentManager)
+    private void DistributeRefs(List<RefugeeAgent> refugeeAgentsSpawned, IAgentManager agentManager)
     {
         
         foreach (var nodePopPair in InitDistributionData)
         {
-            var spawnCity = nodeLayer.GetCityByName(nodePopPair.Key);
-            refugeeAgentsSpawned.AddRange(agentManager.Spawn<RefugeeAgent, RefugeeLayer>(null,
-                agent => agent.Spawn(spawnCity)).Take(nodePopPair.Value).ToList());
+            var agents = agentManager.Spawn<RefugeeAgent, RefugeeLayer>(null,
+                agent => agent.Spawn(Environment.GetLocationByName(nodePopPair.Key))).Take(nodePopPair.Value);
+           foreach (var agent in agents)
+           {
+              // Environment.GetEnvironment().Insert(agent);
+               refugeeAgentsSpawned.Add(agent);
+           }
+           
+           
 
-          //TODO refactor to object attribute and change name to refPop
-            spawnCity.VectorStructured.Data["Residents"] = nodePopPair.Value;
 
         }
     }

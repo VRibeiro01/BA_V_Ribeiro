@@ -13,7 +13,33 @@
   "layers": [
     {
       "name": "NodeLayer",
-      "file": "Resources/syrian_districts_3.geojson"
+      "file": "Resources/syrian_districts_3.geojson",
+      "mapping": [
+        {
+          "parameter": "PopulationWeight",
+          "value": 0.1
+        },
+        {
+          "parameter": "CampWeight",
+          "value": 0.2
+        },
+        {
+          "parameter": "ConflictWeight",
+          "value": 0.3
+        },
+        {
+          "parameter": "LocationWeight",
+          "value": 0.2
+        }, 
+        {
+          "parameter": "AnchorLong",
+          "value": 28.979530
+        },
+        {
+          "parameter": "AnchorLat",
+          "value": 41.015137
+        }
+      ]
     },
     {
       "name": "RefugeeLayer",
