@@ -107,7 +107,8 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 
     private void Debug()
     {
-        if (Entities.Count() < 1) throw new ArgumentException("No Entities in Nodelayer");
+        if (!Entities.Any()) throw new ArgumentException("No Entities in Nodelayer");
+        
         Console.WriteLine(Entities.Count() + " Cities created!");
         var unknownCountries = Entities.ToList().Where(city => city.GetCountry().EqualsIgnoreCase("Unknown"));
         foreach (var c in unknownCountries)
@@ -148,7 +149,14 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 
     private int MaxRefPop()
     {
-        return 0;
+        
+        foreach (var location in Entities)
+        {
+           location.RefPop = Environment.Explore(location.GetCentroidPosition(), 0.01, -1, elem => elem is ISocialNetwork).Count();
+            
+        }
+
+        return Entities.Max(location => location.RefPop);
     }
 
    

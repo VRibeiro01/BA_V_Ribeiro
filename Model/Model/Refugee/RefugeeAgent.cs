@@ -19,7 +19,7 @@ using Position = Mars.Interfaces.Environments.Position;
 
 namespace RefugeeSimulation.Model.Model.Refugee;
 
-public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>
+public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>, ISocialNetwork
 {
     
     
@@ -168,7 +168,11 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>
 
     private void InitSocialLinks(){}
 
-    public void UpdateSocialNetwork(RefugeeAgent newFriend){}
+    public void UpdateSocialNetwork(RefugeeAgent newFriend)
+    {
+        Friends.Add(newFriend);
+        newFriend.Friends.Add(this);
+    }
 
     private int GetNumFriendsAtNode(ILocation node)
     {

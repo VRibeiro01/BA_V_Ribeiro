@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using LaserTagBox.Model.Model.Location.Camps;
 using LaserTagBox.Model.Model.Location.Conflict;
+using Mars.Components.Environments;
 using Mars.Interfaces.Agents;
 using Mars.Interfaces.Data;
 using Mars.Interfaces.Environments;
@@ -33,8 +35,12 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
     public double NormAnchorScore { get; set; }
 
     public List<ILocation> Neighbours = new List<ILocation>();
+    
+    public int RefPop { get; set; }
 
-   
+    public GeoHashEnvironment<AbstractEnvironmentObject> Environment;
+
+
 
 
 
@@ -111,7 +117,8 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
        InitConflicts();
        
        this.Position = Position.CreateGeoPosition(GetCentroidPosition().Longitude, GetCentroidPosition().Latitude);
-       
+       NodeLayer nodeLayer = (NodeLayer) layer;
+       Environment = nodeLayer.GetEnvironment();
 
     }
 
@@ -185,8 +192,21 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
 
     private void GetRandomRefugeesAtNode()
     {
-        
-        
+        ISocialNetwork[] refsAtNode = Environment.Explore(Position, 0.01, -1, elem => elem is ISocialNetwork)
+           .Select(elem => (ISocialNetwork) elem).ToArray();
+        if (refsAtNode.Length > 1)
+        {
+            var ref1 = refsAtNode[new Random().Next(refsAtNode.Length - 1)];
+            var ref2 = ref1;
+
+            while (ref2 == ref1)
+            {
+                ref2 = refsAtNode[new Random().Next(refsAtNode.Length - 1)];
+            }
+            
+            ref1.updateSocialNetwork(ref2);
+
+        }
     }
 
     public int UpdateNormRefPop(int maxRefPop)
