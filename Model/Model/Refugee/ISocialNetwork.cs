@@ -9,5 +9,5 @@ public interface ISocialNetwork
  /// </summary>
  /// <param name="other"> Another class that implements the ISocialNetwork interface and has a set of friends to update</param>
  
- public void updateSocialNetwork(ISocialNetwork other){}
+ public void UpdateSocialNetwork(ISocialNetwork other){}
 }

@@ -174,16 +174,34 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>, ISo
         IGeoEnvironment.GetEnvironment().MoveTo((AbstractEnvironmentObject)newNode);
     }
 
-    private void InitSocialLinks()
+    // TODO call this method from refugee layer after ref init
+    public void InitSocialLinks()
     {
-        
+        var rand = new Random();
+        for (int i = 0; i < _initNumKins; i++)
+        {
+            var nextKin = this;
+            while (nextKin == this)
+            {
+                nextKin = RefugeeLayer.RefugeeAgents[rand.Next(RefugeeLayer.RefugeeAgents.Count)];
+            }
+
+            Kins.Add(nextKin);
+        }
+
+        for (int j = 0; j < _initNumFriends; j++)
+        {
+            var nextFriend = this;
+            while (nextFriend == this)
+            {
+                nextFriend = RefugeeLayer.RefugeeAgents[rand.Next(RefugeeLayer.RefugeeAgents.Count)];
+            }
+
+            Kins.Add(nextFriend);
+        }
     }
 
-    public void UpdateSocialNetwork(RefugeeAgent newFriend)
-    {
-        Friends.Add(newFriend);
-        newFriend.Friends.Add(this);
-    }
+    
 
     private int GetNumFriendsAtNode(ILocation node)
     {
@@ -211,6 +229,13 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>, ISo
         return friendsAtNode.Count();
     }
 
+    public void UpdateSocialNetwork(ISocialNetwork newFriend)
+    {
+        var other = (RefugeeAgent) newFriend;
+        Friends.Add(other);
+        other.Friends.Add(this);
+    }
+
     public void Spawn(ILocation node)
     {
         CurrentNode = node;
@@ -218,12 +243,10 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>, ISo
         Position = Position.CreateGeoPosition(node.GetCentroidPosition().Longitude,
             node.GetCentroidPosition().Latitude);
         MostDesirableNode = node;
-
-
-
-
-        InitSocialLinks();
+        
     }
+    
+    
 
     
     

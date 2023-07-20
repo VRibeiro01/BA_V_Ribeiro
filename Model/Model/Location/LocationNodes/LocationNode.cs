@@ -210,7 +210,7 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
                 ref2 = refsAtNode[new Random().Next(refsAtNode.Length - 1)];
             }
             
-            ref1.updateSocialNetwork(ref2);
+            ref1.UpdateSocialNetwork(ref2);
 
         }
     }

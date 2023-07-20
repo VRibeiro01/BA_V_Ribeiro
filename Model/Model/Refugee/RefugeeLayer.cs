@@ -44,10 +44,20 @@ public class RefugeeLayer : AbstractLayer
        
        
        DistributeRefs(RefugeeAgents, agentManager);
+
+       InitSocialNetworks();
          
        Console.WriteLine(RefugeeAgents.Count + " refugee agent(s) spawned");
 
         return true;
+    }
+
+    private void InitSocialNetworks()
+    {
+        foreach (var agent in RefugeeAgents)
+        {
+            agent.InitSocialLinks();
+        }
     }
 
     private void DistributeRefs(List<RefugeeAgent> refugeeAgentsSpawned, IAgentManager agentManager)
