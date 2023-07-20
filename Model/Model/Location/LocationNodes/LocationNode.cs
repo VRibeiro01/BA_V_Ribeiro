@@ -32,7 +32,7 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
 
     public double NormAnchorScore { get; set; }
 
-    private List<ILocation> neighbours;
+    public List<ILocation> Neighbours = new List<ILocation>();
 
    
 
@@ -53,7 +53,7 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
         // TODO add normalized camp and conflict attributes and initialize them
         //TODO initialize location score (first check if necessary)
         // TODO initialize norm anchor score (check if necessary)
-        // TODO initialize a neighbours list
+        // TODO initialize a Neighbours list
 
         var name = "Unknown";
 
@@ -112,6 +112,7 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
        
        this.Position = Position.CreateGeoPosition(GetCentroidPosition().Longitude, GetCentroidPosition().Latitude);
        
+
     }
 
     private void InitConflicts()
@@ -163,22 +164,22 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
     
     public int GetNumCampsAtNode()
     {
-        return 0;
+        return NumCamps;
     }
 
     public int GetNumConflictsAtNode()
     {
-        return 0;
+        return NumConflicts;
     }
 
     public System.Collections.Generic.List<ILocation> GetNeighbours()
     {
-        return neighbours;
+        return Neighbours;
     }
 
-    public int GetScore()
+    public double GetScore()
     {
-        return 0;
+        return Score;
     }
     
 

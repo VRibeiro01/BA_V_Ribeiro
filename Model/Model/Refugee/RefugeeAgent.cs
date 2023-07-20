@@ -69,7 +69,7 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>
     
     public void Tick()
     {
-        
+
         
         var numCamps = CurrentNode.GetNumCampsAtNode();
         var numConflicts = CurrentNode.GetNumConflictsAtNode();
@@ -140,7 +140,7 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>
         return false;
     }
 
-    private void Assess(ILocation node, int score)
+    private void Assess(ILocation node, double score)
     {
 
         var nodeDesirability =
@@ -155,12 +155,16 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>
         
     }
 
-    private double CalcNodeDesirability(ILocation node, int numFriendsAtNode, int numKinsAtNode, int score)
+    private double CalcNodeDesirability(ILocation node, int numFriendsAtNode, int numKinsAtNode, double score)
     {
         return ( (numKinsAtNode * KinWeight) + (numFriendsAtNode * FriendWeight) + score) ;
     }
 
-    private void MoveToNode(ILocation newNode) {}
+    private void MoveToNode(ILocation newNode)
+    {
+        CurrentNode = newNode;
+        IGeoEnvironment.GetEnvironment().MoveTo((AbstractEnvironmentObject)newNode);
+    }
 
     private void InitSocialLinks(){}
 
@@ -168,13 +172,28 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>
 
     private int GetNumFriendsAtNode(ILocation node)
     {
-      
-        return 0;
+        var agentsInRadius = IGeoEnvironment
+            .GetEnvironment().Explore(node.GetCentroidPosition(),0.1,-1, el => el is RefugeeAgent);
+        
+       var friendsAtNode = agentsInRadius.Select(elem => (RefugeeAgent) elem)
+           .Where(agent => Friends.Contains(agent));
+
+
+       
+        return friendsAtNode.Count();
     }
 
     private int GetNumKinsAtNode(ILocation node)
     {
-        return 0;
+        var agentsInRadius = IGeoEnvironment
+            .GetEnvironment().Explore(node.GetCentroidPosition(),0.1,-1, el => el is RefugeeAgent);
+        
+        var friendsAtNode = agentsInRadius.Select(elem => (RefugeeAgent) elem)
+            .Where(agent => Kins.Contains(agent));
+
+
+       
+        return friendsAtNode.Count();
     }
 
     public void Spawn(ILocation node)
@@ -188,7 +207,7 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>
 
 
 
-        // TODO create social links
+        InitSocialLinks();
     }
 
     

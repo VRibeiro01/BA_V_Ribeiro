@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Mars.Common.Core.Collections;
 using Mars.Components.Environments;
 using Mars.Components.Layers;
 using Mars.Interfaces.Agents;
@@ -51,9 +52,10 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
     public override bool InitLayer(LayerInitData layerInitData, RegisterAgent registerAgentHandle = null, UnregisterAgent unregisterAgentHandle = null)
     {
         base.InitLayer(layerInitData, registerAgentHandle, unregisterAgentHandle);
-        Environment = GeoHashEnvironment<AbstractEnvironmentObject>.BuildEnvironment(this.MaxLat, this.MinLat, this.MaxLon, this.MinLon);
+        Environment = GeoHashEnvironment<AbstractEnvironmentObject>.BuildEnvironment(this.MaxLat, this.MinLat, this.MaxLon, this.MinLon, 100000);
         Debug();
         InsertLocationsInEnvironment();
+        FillNeighboursList();
         NodeLayerInstance = this;
         return true;
     }
@@ -68,6 +70,18 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         foreach (var location in Entities)
         {
             Environment.Insert(location);
+        }
+    }
+
+    public void FillNeighboursList()
+    {
+        
+        foreach (var locationNode in Entities)
+        {
+             locationNode.Neighbours.AddRange(Entities.Where(location =>
+                location.GetCentroidPosition().DistanceInKmTo(locationNode.GetCentroidPosition()) > 5 &&
+                location.GetCentroidPosition().DistanceInKmTo(locationNode.GetCentroidPosition()) <= 100  
+            ).ToList());
         }
     }
     
@@ -121,9 +135,15 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
     }
 
 
-    private double CalcScores()
+    private void CalcScores()
     {
-        return 0.0;
+        foreach (var location in Entities)
+        {
+            location.Score = (location.NormRefPop * PopulationWeight) + (location.NormAnchorScore * LocationWeight)
+                                                                      + (location.NormNumCamps * CampWeight) +
+                                                                      (location.NormNumConflicts * (-1) *
+                                                                       ConflictWeight);
+        }
     }
 
     private int MaxRefPop()

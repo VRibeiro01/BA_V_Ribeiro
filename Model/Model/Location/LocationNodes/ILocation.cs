@@ -30,8 +30,8 @@ public interface ILocation
     /// <summary>
     /// Return the previously calculated location score of the node 
     /// </summary>
-    /// <returns> int </returns>
-    public int GetScore();
+    /// <returns> double </returns>
+    public double GetScore();
     
     /// <summary>
     ///  Return the name of this location
