@@ -108,8 +108,10 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
 
         
        InitCamps();
-
-        InitConflicts();
+       InitConflicts();
+       
+       this.Position = Position.CreateGeoPosition(GetCentroidPosition().Longitude, GetCentroidPosition().Latitude);
+       
     }
 
     private void InitConflicts()

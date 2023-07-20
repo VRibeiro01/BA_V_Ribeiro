@@ -5,7 +5,7 @@ using RefugeeSimulation.Model.Model.Shared;
 
 namespace LaserTagBox.Model.Model.Location.LocationNodes;
 
-public interface IEnvironment
+public interface IGeoEnvironment
 {
     
     /// <summary>

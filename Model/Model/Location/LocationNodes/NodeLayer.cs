@@ -17,7 +17,9 @@ namespace LaserTagBox.Model.Model.Location.LocationNodes;
 
 public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 {
-    
+    public static NodeLayer NodeLayerInstance { get; private set; }
+
+
     [PropertyDescription]                                       
     public double PopulationWeight { get; set; }
 
@@ -38,22 +40,35 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
     
     private Coordinate AnchorCoordinates { get; set; } // Lat= 41.015137, Long= 28.979530
 
-    private List<LocationNode> EntitiesList;
+    private GeoHashEnvironment<AbstractEnvironmentObject> Environment;
 
-    
 
-    
+
+
+
+
 
     public override bool InitLayer(LayerInitData layerInitData, RegisterAgent registerAgentHandle = null, UnregisterAgent unregisterAgentHandle = null)
     {
         base.InitLayer(layerInitData, registerAgentHandle, unregisterAgentHandle);
+        Environment = GeoHashEnvironment<AbstractEnvironmentObject>.BuildEnvironment(this.MaxLat, this.MinLat, this.MaxLon, this.MinLon);
         Debug();
+        InsertLocationsInEnvironment();
+        NodeLayerInstance = this;
         return true;
     }
 
     public GeoHashEnvironment<AbstractEnvironmentObject> GetEnvironment()
     {
-        return null;
+        return Environment;
+    }
+
+    public void InsertLocationsInEnvironment()
+    {
+        foreach (var location in Entities)
+        {
+            Environment.Insert(location);
+        }
     }
     
 
@@ -78,6 +93,7 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 
     private void Debug()
     {
+        if (Entities.Count() < 1) throw new ArgumentException("No Entities in Nodelayer");
         Console.WriteLine(Entities.Count() + " Cities created!");
         var unknownCountries = Entities.ToList().Where(city => city.GetCountry().EqualsIgnoreCase("Unknown"));
         foreach (var c in unknownCountries)
@@ -114,4 +130,6 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
     {
         return 0;
     }
+
+   
 }

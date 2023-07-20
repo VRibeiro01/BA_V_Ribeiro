@@ -14,6 +14,7 @@ using Microsoft.CodeAnalysis.Text;
 using MongoDB.Driver.Core.Operations;
 using NetTopologySuite.Geometries;
 using RefugeeSimulation.Model.Model.Shared;
+using IEnvironment = Mars.Interfaces.Environments.IEnvironment;
 using Position = Mars.Interfaces.Environments.Position;
 
 namespace RefugeeSimulation.Model.Model.Refugee;
@@ -33,6 +34,7 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>
 
     // Layer
     public RefugeeLayer RefugeeLayer { get; private set; }
+    public IGeoEnvironment IGeoEnvironment;
 
     
     // Parameters
@@ -61,12 +63,14 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>
         RefugeeLayer = layer;
         Friends = new HashSet<RefugeeAgent>();
         Kins = new HashSet<RefugeeAgent>();
+        IGeoEnvironment = new IEnvironmentImpl();
 
     }
     
     public void Tick()
     {
-
+        
+        
         var numCamps = CurrentNode.GetNumCampsAtNode();
         var numConflicts = CurrentNode.GetNumConflictsAtNode();
 
@@ -78,6 +82,7 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>
         HighestDesirabilityScore = 0;
 
         var neighbours = CurrentNode.GetNeighbours();
+        
 
         if (neighbours.Count >= 1)
         {
@@ -163,6 +168,7 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>
 
     private int GetNumFriendsAtNode(ILocation node)
     {
+      
         return 0;
     }
 

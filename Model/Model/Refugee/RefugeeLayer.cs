@@ -62,7 +62,7 @@ public class RefugeeLayer : AbstractLayer
                 agent => agent.Spawn(Environment.GetLocationByName(nodePopPair.Key))).Take(nodePopPair.Value);
            foreach (var agent in agents)
            {
-              // Environment.GetEnvironment().Insert(agent);
+              Environment.GetEnvironment().Insert(agent);
                refugeeAgentsSpawned.Add(agent);
            }
            

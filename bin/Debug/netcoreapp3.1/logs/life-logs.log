@@ -35,3 +35,9 @@ Cannot resolve parameter 'LaserTagBox.Model.Model.Location.LocationNodes.IEnviro
 [ERROR] 2023-07-20 00:11:02,527 | Mars.Core.Model.Implementation.ModelBuilder - An exception was thrown while activating RefugeeSimulation.Model.Model.Refugee.RefugeeLayer. 
 [ERROR] 2023-07-20 00:11:02,552 | Mars.Core.Model.Implementation.ModelBuilder - None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'RefugeeSimulation.Model.Model.Refugee.RefugeeLayer' can be invoked with the available services and parameters:
 Cannot resolve parameter 'LaserTagBox.Model.Model.Location.LocationNodes.IEnvironment environment' of constructor 'Void .ctor(LaserTagBox.Model.Model.Location.LocationNodes.IEnvironment)'. 
+[ERROR] 2023-07-20 02:57:35,297 | Mars.Core.Executor.Implementation.StepExecutionUseCase - Object reference not set to an instance of an object. 
+[ERROR] 2023-07-20 02:57:35,321 | Mars.Components.Starter.SimulationStarter - MARS simulation execution crashed by AggregateException 
+[ERROR] 2023-07-20 02:57:35,321 | Mars.Components.Starter.SimulationStarter - Exception message: 
+[ERROR] 2023-07-20 02:57:35,322 | Mars.Components.Starter.SimulationStarter - ######################################################## 
+[ERROR] 2023-07-20 02:57:35,323 | Mars.Components.Starter.SimulationStarter - One or more errors occurred. (Object reference not set to an instance of an object.) (Object reference not set to an instance of an object.) (Object reference not set to an instance of an object.) (Object reference not set to an instance of an object.) (Object reference not set to an instance of an object.) (Object reference not set to an instance of an object.) 
+[ERROR] 2023-07-20 02:57:35,323 | Mars.Components.Starter.SimulationStarter - ######################################################## 
