@@ -28,6 +28,8 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>
     
     public ILocation CurrentNode{ get; set; }
 
+    private double HighestDesirabilityScore;
+    private ILocation MostDesirableNode;
 
     // Layer
     public RefugeeLayer RefugeeLayer { get; private set; }
@@ -69,9 +71,24 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>
         {
             return;
         }
-      
-        
-        
+
+        HighestDesirabilityScore = 0;
+
+        var neighbours = CurrentNode.GetNeighbours();
+
+        if (neighbours.Count >= 1)
+        {
+
+            foreach (var n in neighbours)
+            {
+                Assess(n, n.GetScore());
+            }
+            
+            MoveToNode(MostDesirableNode);
+        }
+       
+
+
 
         /*Console.WriteLine("Current Location is " + LastVisitedSite.GetName());
        AbstractSite nextDestination = selectNextDestination();
@@ -115,21 +132,41 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>
         return false;
     }
 
-    private ILocation Assess()
+    private void Assess(ILocation node, int score)
     {
-        return CurrentNode;
+
+        var nodeDesirability =
+            CalcNodeDesirability(node, GetNumFriendsAtNode(node), GetNumKinsAtNode(node), node.GetScore());
+
+        if (nodeDesirability > HighestDesirabilityScore)
+        {
+            HighestDesirabilityScore = nodeDesirability;
+            MostDesirableNode = node;
+        }
+        
+        
     }
 
-    private double CalcNodeDesirability(LocationNode node, int numFriendsAtNode, int numKinsAtNode)
+    private double CalcNodeDesirability(ILocation node, int numFriendsAtNode, int numKinsAtNode, int score)
     {
         return 0.0;
     }
 
-    private void MoveToNode(LocationNode newNode) {}
+    private void MoveToNode(ILocation newNode) {}
 
     private void InitSocialLinks(){}
 
     public void UpdateSocialNetwork(RefugeeAgent newFriend){}
+
+    private int GetNumFriendsAtNode(ILocation node)
+    {
+        return 0;
+    }
+
+    private int GetNumKinsAtNode(ILocation node)
+    {
+        return 0;
+    }
 
     public void Spawn(ILocation node)
     {
@@ -137,39 +174,14 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>
         LocationName = node.GetName();
         Position = Position.CreateGeoPosition(node.GetCentroidPosition().Longitude,
             node.GetCentroidPosition().Latitude);
-        
-        
-       
-        
+        MostDesirableNode = node;
+
+
+
+
         // TODO create social links
     }
 
-    /*private void moveToNextDestination(AbstractSite nextDestination)
-    {
-        LastVisitedSite = nextDestination;
-        Position = nextDestination.GetCoordinate().ToPosition();
-    }*/
-
-    /*private AbstractSite selectNextDestination()
-    {
-        City nearestCity = CityLayer.GetNearestCity(LastVisitedSite.GetCoordinate().ToPosition());
-        if (!ConflictLayer.GetConflictStateForCity(nearestCity
-                .GetName()))
-        {
-            Console.WriteLine("No conflict detected at nearest City");
-            return nearestCity;
-        }
-
-        if (!(LastVisitedSite is City) || ((LastVisitedSite is City) &&
-                                           !ConflictLayer.GetConflictStateForCity(LastVisitedSite.GetName())))
-        {
-            Console.WriteLine("Conflict at nearest city but current location is fine");
-            return LastVisitedSite;    
-        }
-
-        return null;
-    }*/
-    
     
     
 }
