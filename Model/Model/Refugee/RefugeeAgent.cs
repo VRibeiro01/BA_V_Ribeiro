@@ -37,21 +37,29 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>, ISo
     public IGeoEnvironment IGeoEnvironment;
 
     
-    // Parameters
-    private double moveProbabilityCamp;
+    
+    
+    
+    
+    
+    // Parameter Properties
+    
+    [PropertyDescription]
+    public double moveProbabilityCamp { get; set; }
 
-    private double moveProbabilityOther;
+    [PropertyDescription]
+    public double moveProbabilityOther { get; set; }
 
-    private double KinWeight;
-    private double FriendWeight;
-
-
-
-
-    // Properties
-    private static int _initNumKins;
-
-    private static int _initNumFriends;
+    [PropertyDescription]
+    public double KinWeight { get; set; }
+    
+    [PropertyDescription]
+    public double FriendWeight { get; set; }
+    
+    [PropertyDescription]
+    public static int _initNumKins { get; set; }
+    [PropertyDescription]
+    public static int _initNumFriends { get; set; }
     
     
    
@@ -166,7 +174,10 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>, ISo
         IGeoEnvironment.GetEnvironment().MoveTo((AbstractEnvironmentObject)newNode);
     }
 
-    private void InitSocialLinks(){}
+    private void InitSocialLinks()
+    {
+        
+    }
 
     public void UpdateSocialNetwork(RefugeeAgent newFriend)
     {

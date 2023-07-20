@@ -22,17 +22,19 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
 
     public double Score { private get; set; }
     
-    public  int NumCamps { private get; set; }
+    public  int NumCamps { get; set; }
 
-    public int NumConflicts { private get; set; }
+    public int NumConflicts { get; set; }
 
-    public double NormNumCamps { get; private set; }
+    public double NormNumCamps { get; set; }
 
-    public double NormNumConflicts { get; private set; }
+    public double NormNumConflicts { get; set; }
 
-    public double NormRefPop { get; private set; }
+    public double NormRefPop { get; set; }
 
     public double NormAnchorScore { get; set; }
+    
+    public double AnchorScore { get; private set; }
 
     public List<ILocation> Neighbours = new List<ILocation>();
     
@@ -56,10 +58,7 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
     {
         VectorStructured = data;
         
-        // TODO add normalized camp and conflict attributes and initialize them
-        //TODO initialize location score (first check if necessary)
-        // TODO initialize norm anchor score (check if necessary)
-        // TODO initialize a Neighbours list
+        
 
         var name = "Unknown";
 
@@ -111,14 +110,21 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
         }
         
         VectorStructured.Data.Add("Country", country);
-
+        
         
        InitCamps();
        InitConflicts();
        
+       
        this.Position = Position.CreateGeoPosition(GetCentroidPosition().Longitude, GetCentroidPosition().Latitude);
        NodeLayer nodeLayer = (NodeLayer) layer;
        Environment = nodeLayer.GetEnvironment();
+       
+
+      
+       AnchorScore = Math.Sqrt(Math.Pow(Position.X - NodeLayer.AnchorCoordinates.X, 2) + Math.Pow(Position.Y - NodeLayer.AnchorCoordinates.Y, 2)
+       );
+
 
     }
 
@@ -190,7 +196,7 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
     }
     
 
-    private void GetRandomRefugeesAtNode()
+    public void GetRandomRefugeesAtNode()
     {
         ISocialNetwork[] refsAtNode = Environment.Explore(Position, 0.01, -1, elem => elem is ISocialNetwork)
            .Select(elem => (ISocialNetwork) elem).ToArray();
@@ -209,9 +215,9 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
         }
     }
 
-    public int UpdateNormRefPop(int maxRefPop)
+    public void UpdateNormRefPop(int maxRefPop)
     {
-        return 0;
+        NormRefPop = RefPop * 1.0 / maxRefPop;
     }
     
     

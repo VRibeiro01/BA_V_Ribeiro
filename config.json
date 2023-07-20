@@ -7,7 +7,33 @@
     },
   "agents": [
     {
-      "name": "SingleRefugeeGroup"
+      "name": "RefugeeAgent",
+      "mapping": [
+        {
+          "parameter": "_initNumKins",
+          "value": 5
+        },
+        {
+          "parameter": "_initNumFriends",
+          "value": 5
+        },
+        {
+          "parameter": "KinWeight",
+          "value": 0.2
+        },
+        {
+          "parameter": "FriendWeight",
+          "value": 0.3
+        },
+        {
+          "parameter": "moveProbabilityCamp",
+          "value": 0.3
+        },
+        {
+          "parameter": "moveProbabilityOther",
+          "value": 0.3
+        }
+      ]
     }
   ],
   "layers": [
@@ -38,6 +64,10 @@
         {
           "parameter": "AnchorLat",
           "value": 41.015137
+        },
+        {
+          "parameter": "NumberNewTies",
+          "value": 6
         }
       ]
     },

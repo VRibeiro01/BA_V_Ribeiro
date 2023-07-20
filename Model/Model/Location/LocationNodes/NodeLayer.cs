@@ -13,6 +13,7 @@ using NetTopologySuite.Geometries;
 using RefugeeSimulation.Model.Model.Refugee;
 using RefugeeSimulation.Model.Model.Shared;
 using ServiceStack;
+using Position = Mars.Interfaces.Environments.Position;
 
 namespace LaserTagBox.Model.Model.Location.LocationNodes;
 
@@ -34,12 +35,15 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
     public double LocationWeight{ get; set; }
 
     [PropertyDescription]
-    public double AnchorLong { get; set; }
+    public static double AnchorLong { get; set; }
     
     [PropertyDescription]
-    public double AnchorLat { get; set; }
+    public static double AnchorLat { get; set; }
     
-    private Coordinate AnchorCoordinates { get; set; } // Lat= 41.015137, Long= 28.979530
+    [PropertyDescription]
+    public int NumberNewTies { get; set; }
+
+    public static Position AnchorCoordinates=  Position.CreateGeoPosition(AnchorLong, AnchorLat);// Lat= 41.015137, Long= 28.979530
 
     private GeoHashEnvironment<AbstractEnvironmentObject> Environment;
 
@@ -55,7 +59,7 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         Environment = GeoHashEnvironment<AbstractEnvironmentObject>.BuildEnvironment(this.MaxLat, this.MinLat, this.MaxLon, this.MinLon, 100000);
         Debug();
         InsertLocationsInEnvironment();
-        FillNeighboursList();
+        InitLocationParams();
         NodeLayerInstance = this;
         return true;
     }
@@ -73,8 +77,11 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         }
     }
 
-    public void FillNeighboursList()
+    public void InitLocationParams()
     {
+        var maxNumCamps = Entities.Max(location => location.NumCamps) + 1; // add one to prevent division by zero
+        var maxNumConflicts = Entities.Max(location => location.NumConflicts) +1;
+        var maxAnchorScore = Entities.Max(location => location.AnchorScore);
         
         foreach (var locationNode in Entities)
         {
@@ -82,8 +89,15 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
                 location.GetCentroidPosition().DistanceInKmTo(locationNode.GetCentroidPosition()) > 5 &&
                 location.GetCentroidPosition().DistanceInKmTo(locationNode.GetCentroidPosition()) <= 100  
             ).ToList());
+             
+             
+             locationNode.NormNumCamps = locationNode.NumCamps * 1.0 / maxNumCamps;
+             locationNode.NormNumConflicts = locationNode.NumConflicts  * 1.0/ maxNumConflicts;
+             locationNode.NormAnchorScore = locationNode.AnchorScore * 1.0 / maxAnchorScore;
         }
     }
+
+  
     
 
     public ILocation GetLocationByName(string locationName)
@@ -127,24 +141,38 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 
     public void PreTick()
     {
-        
+        var maxRefPop = MaxRefPop();
+        foreach (var location in Entities)
+        {
+            location.UpdateNormRefPop(maxRefPop);
+             CalcScore(location);
+        }
     }
 
     public void PostTick()
     {
+        foreach (var location in Entities)
+        {
+            if (location.NumCamps > 0)
+            {
+                for (int i = 0; i < NumberNewTies; i++)
+                {
+                    location.GetRandomRefugeesAtNode();
+                }
+            }
+        }
      
     }
 
 
-    private void CalcScores()
+    private void CalcScore(LocationNode location)
     {
-        foreach (var location in Entities)
-        {
+        
             location.Score = (location.NormRefPop * PopulationWeight) + (location.NormAnchorScore * LocationWeight)
                                                                       + (location.NormNumCamps * CampWeight) +
                                                                       (location.NormNumConflicts * (-1) *
                                                                        ConflictWeight);
-        }
+        
     }
 
     private int MaxRefPop()
@@ -158,6 +186,8 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 
         return Entities.Max(location => location.RefPop);
     }
+
+    
 
    
 }

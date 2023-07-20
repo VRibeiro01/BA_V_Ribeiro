@@ -21,7 +21,7 @@ public class Camp : IVectorFeature
 
     public void Update(VectorStructuredData data)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public Geometry GetCoordinates()
