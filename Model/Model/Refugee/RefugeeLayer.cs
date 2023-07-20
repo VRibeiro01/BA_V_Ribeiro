@@ -18,15 +18,12 @@ namespace RefugeeSimulation.Model.Model.Refugee;
 public class RefugeeLayer : AbstractLayer
 {
     private System.Collections.Generic.Dictionary<String,int> InitDistributionData { get; set; }
-    public NodeLayer Environment;
+    public IGeoEnvironment Environment => new IEnvironmentImpl();
     
     public List<RefugeeAgent> RefugeeAgents = new List<RefugeeAgent>();
 
     
-    public RefugeeLayer(NodeLayer environment)
-    {
-        Environment = environment;
-    }
+ 
 
 
     public override bool InitLayer(LayerInitData layerInitData, RegisterAgent registerAgentHandle = null,
