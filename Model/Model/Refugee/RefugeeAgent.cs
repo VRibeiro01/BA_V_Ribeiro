@@ -40,6 +40,9 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>
 
     private double moveProbabilityOther;
 
+    private double KinWeight;
+    private double FriendWeight;
+
 
 
 
@@ -149,7 +152,7 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>
 
     private double CalcNodeDesirability(ILocation node, int numFriendsAtNode, int numKinsAtNode, int score)
     {
-        return 0.0;
+        return ( (numKinsAtNode * KinWeight) + (numFriendsAtNode * FriendWeight) + score) ;
     }
 
     private void MoveToNode(ILocation newNode) {}
