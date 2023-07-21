@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IBe3HMULgmA21a83fcjBDq08oaXD/U1D2s9DAHGefjRAlVz1yQTQFMCOeGvWOLcWypPiEYqruNZwrh9siJOqog==",
+  "dgSpecHash": "18EDjW/DpNyItdvE/tmw84+o5X+eBH5PtVteptcH0Q5hve1VbJaVv9H8nkkp/mDQ3KrEOCfwz7Pp5gRCtbspzg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\vivia\\mars\\RefugeeSimulation\\RefugeeSimulation.csproj",
+  "projectFilePath": "C:\\Users\\vivia\\mars\\RefugeeSimulationSolution\\RefugeeSimulation\\RefugeeSimulation.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vivia\\.nuget\\packages\\autofac\\6.1.0\\autofac.6.1.0.nupkg.sha512",
     "C:\\Users\\vivia\\.nuget\\packages\\commandlineparser\\2.8.0\\commandlineparser.2.8.0.nupkg.sha512",
