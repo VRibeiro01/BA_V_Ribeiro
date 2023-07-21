@@ -23,8 +23,6 @@
 
     <ItemGroup>
       <Folder Include="Model" />
-      <Folder Include="Tests\Refugee" />
-      <Folder Include="Tests\Sites" />
     </ItemGroup>
 
 </Project>

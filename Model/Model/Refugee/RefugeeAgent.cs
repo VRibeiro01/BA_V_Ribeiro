@@ -173,8 +173,7 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>, ISo
         CurrentNode = newNode;
         IGeoEnvironment.GetEnvironment().MoveTo((AbstractEnvironmentObject)newNode);
     }
-
-    // TODO call this method from refugee layer after ref init
+    
     public void InitSocialLinks()
     {
         var rand = new Random();
