@@ -2,7 +2,7 @@
 using Mars.Interfaces.Layers;
 using NetTopologySuite.Geometries;
 
-namespace LaserTagBox.Model.Model.Location.Conflict;
+namespace LaserTagBox.Model.Location.Conflict;
 
 public class Conflict : IVectorFeature
 {

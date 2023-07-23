@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Mars.Components.Layers;
 using Mars.Interfaces.Data;
 using Mars.Interfaces.Layers;
 using NetTopologySuite.Geometries;
 
-namespace LaserTagBox.Model.Model.Location.Conflict;
+namespace LaserTagBox.Model.Location.Conflict;
 
 public class ConflictLayer : VectorLayer<Conflict>
 {

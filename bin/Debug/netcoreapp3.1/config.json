@@ -77,11 +77,11 @@
     },
     {
       "name": "CampLayer",
-      "file": "Resources/active_turkey_camps.geojson"
+      "file": "Resources/turkey_camps_idps.geojson"
     },
     {
       "name": "ConflictLayer",
-      "file": "Resources/Conflicts_Syr_Tur_2022.geojson"
+      "file": "Resources/Conflicts_Syr_Tur_0922.geojson"
     }
     
     ]

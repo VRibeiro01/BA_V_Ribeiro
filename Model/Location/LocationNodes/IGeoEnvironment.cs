@@ -1,9 +1,7 @@
-﻿using Mars.Components.Environments;
-using Mars.Interfaces.Data;
-using Mars.Interfaces.Layers;
-using RefugeeSimulation.Model.Model.Shared;
+﻿using LaserTagBox.Model.Shared;
+using Mars.Components.Environments;
 
-namespace LaserTagBox.Model.Model.Location.LocationNodes;
+namespace LaserTagBox.Model.Location.LocationNodes;
 
 public interface IGeoEnvironment
 {

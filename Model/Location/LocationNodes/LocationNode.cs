@@ -1,20 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using LaserTagBox.Model.Model.Location.Camps;
-using LaserTagBox.Model.Model.Location.Conflict;
+using LaserTagBox.Model.Location.Camps;
+using LaserTagBox.Model.Location.Conflict;
+using LaserTagBox.Model.Refugee;
+using LaserTagBox.Model.Shared;
 using Mars.Components.Environments;
-using Mars.Interfaces.Agents;
 using Mars.Interfaces.Data;
-using Mars.Interfaces.Environments;
 using Mars.Interfaces.Layers;
 using NetTopologySuite.Geometries;
-using RefugeeSimulation.Model.Model.Refugee;
-using RefugeeSimulation.Model.Model.Shared;
 using ServiceStack;
 using Position = Mars.Interfaces.Environments.Position;
 
-namespace LaserTagBox.Model.Model.Location.LocationNodes;
+namespace LaserTagBox.Model.Location.LocationNodes;
 
 public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
 {

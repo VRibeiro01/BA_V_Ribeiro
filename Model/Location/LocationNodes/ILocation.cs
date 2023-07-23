@@ -2,7 +2,7 @@
 
 using System.Collections.Generic;
 
-namespace LaserTagBox.Model.Model.Location.LocationNodes;
+namespace LaserTagBox.Model.Location.LocationNodes;
 
 public interface ILocation
 {

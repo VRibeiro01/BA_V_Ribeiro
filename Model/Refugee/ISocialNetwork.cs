@@ -1,4 +1,4 @@
-﻿namespace RefugeeSimulation.Model.Model.Refugee;
+﻿namespace LaserTagBox.Model.Refugee;
 
 public interface ISocialNetwork
 {

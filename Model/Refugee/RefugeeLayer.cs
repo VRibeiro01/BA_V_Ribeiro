@@ -1,19 +1,14 @@
 ﻿using System;
 using System.Linq;
-using LaserTagBox.Model.Model.Location.LocationNodes;
-using Mars.Common.Core.Collections;
+using LaserTagBox.Model.Location.LocationNodes;
 using Mars.Common.Data;
 using Mars.Common.IO.Mapped.Collections;
-using Mars.Components.Environments;
 using Mars.Components.Layers;
-using Mars.Components.Services;
 using Mars.Core.Data;
-using Mars.Interfaces.Annotations;
 using Mars.Interfaces.Data;
 using Mars.Interfaces.Layers;
-using NetTopologySuite.GeometriesGraph;
 
-namespace RefugeeSimulation.Model.Model.Refugee;
+namespace LaserTagBox.Model.Refugee;
 
 public class RefugeeLayer : AbstractLayer
 {

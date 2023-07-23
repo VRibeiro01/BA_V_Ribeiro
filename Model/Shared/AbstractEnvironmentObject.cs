@@ -2,7 +2,7 @@
 using Mars.Interfaces.Agents;
 using Mars.Interfaces.Environments;
 
-namespace RefugeeSimulation.Model.Model.Shared;
+namespace LaserTagBox.Model.Shared;
 
 public abstract class AbstractEnvironmentObject : IPositionable, IEntity
 {

@@ -1,16 +1,13 @@
 ﻿using System;
 using System.IO;
-using LaserTagBox.Model.Model.Location;
-using LaserTagBox.Model.Model.Location.Camps;
-using LaserTagBox.Model.Model.Location.Conflict;
-using LaserTagBox.Model.Model.Location.LocationNodes;
-using Mars.Components.Environments;
+using LaserTagBox.Model.Location.Camps;
+using LaserTagBox.Model.Location.Conflict;
+using LaserTagBox.Model.Location.LocationNodes;
+using LaserTagBox.Model.Refugee;
 using Mars.Components.Starter;
 using Mars.Interfaces.Model;
-using RefugeeSimulation.Model.Model.Refugee;
-using RefugeeSimulation.Model.Model.Shared;
 
-namespace RefugeeSimulation
+namespace LaserTagBox
 {
     internal static class Program
     {

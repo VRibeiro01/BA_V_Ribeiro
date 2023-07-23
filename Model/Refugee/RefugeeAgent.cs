@@ -1,23 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Linq;
-using LaserTagBox.Model.Model.Location;
-using LaserTagBox.Model.Model.Location.Camps;
-using LaserTagBox.Model.Model.Location.LocationNodes;
-using Mars.Common;
+using LaserTagBox.Model.Location.LocationNodes;
+using LaserTagBox.Model.Shared;
 using Mars.Interfaces.Agents;
 using Mars.Interfaces.Annotations;
-using Mars.Interfaces.Environments;
-using Mars.Numerics;
-using Microsoft.CodeAnalysis.Text;
-using MongoDB.Driver.Core.Operations;
-using NetTopologySuite.Geometries;
-using RefugeeSimulation.Model.Model.Shared;
-using IEnvironment = Mars.Interfaces.Environments.IEnvironment;
 using Position = Mars.Interfaces.Environments.Position;
 
-namespace RefugeeSimulation.Model.Model.Refugee;
+namespace LaserTagBox.Model.Refugee;
 
 public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>, ISocialNetwork
 {
@@ -145,7 +135,7 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>, ISo
         {
             move = new Random().NextDouble() < moveProbabilityOther;
         }
-        return false;
+        return move;
     }
 
     private void Assess(ILocation node, double score)

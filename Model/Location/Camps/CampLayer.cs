@@ -5,7 +5,7 @@ using Mars.Interfaces.Data;
 using Mars.Interfaces.Layers;
 using NetTopologySuite.Geometries;
 
-namespace LaserTagBox.Model.Model.Location.Camps;
+namespace LaserTagBox.Model.Location.Camps;
 
 public class CampLayer : VectorLayer<Camp>
 {

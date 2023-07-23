@@ -77,7 +77,7 @@
     },
     {
       "name": "CampLayer",
-      "file": "Resources/active_turkey_camps.geojson"
+      "file": "Resources/turkey_camps_idps.geojson"
     },
     {
       "name": "ConflictLayer",

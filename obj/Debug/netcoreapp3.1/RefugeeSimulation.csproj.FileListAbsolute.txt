@@ -498,7 +498,6 @@ C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcor
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\Conflicts_Syr_Tur_2022.geojson
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\Conflicts_Syr_Tur_2022.qmd
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\idp_pop_syr_0922.csv
-C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\refugee_group_config.csv
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\syrian_districts_2.geojson
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\syrian_districts_2.qmd
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\syrian_districts_3.geojson
@@ -626,3 +625,6 @@ C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\obj\Debug\netcor
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\obj\Debug\netcoreapp3.1\RefugeeSimulation.dll
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\obj\Debug\netcoreapp3.1\RefugeeSimulation.pdb
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\obj\Debug\netcoreapp3.1\RefugeeSimulation.genruntimeconfig.cache
+C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\Conflicts_Syr_Tur_0922.geojson
+C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\turkey_camps_idps.geojson
+C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\turkey_camps_idps.qmd
