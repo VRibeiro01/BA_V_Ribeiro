@@ -171,7 +171,7 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         
     }
 
-    private int MaxRefPop()
+    public int MaxRefPop()
     {
         
         foreach (var location in Entities)

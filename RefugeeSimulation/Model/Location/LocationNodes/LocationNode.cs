@@ -18,7 +18,7 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
 {
     public VectorStructuredData VectorStructured { get; private set; }
 
-    public double Score { private get; set; }
+    public double Score { get; set; }
     
     public  int NumCamps { get; set; }
 
@@ -108,6 +108,8 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
         }
         
         VectorStructured.Data.Add("Country", country);
+
+
         
         
        InitCamps();
