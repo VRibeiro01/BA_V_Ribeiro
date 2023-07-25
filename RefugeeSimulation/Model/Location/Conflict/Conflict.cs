@@ -16,9 +16,9 @@ public class Conflict : IVectorFeature
         
     }
 
-    public Geometry GetCoordinates()
+    public Geometry GetConflictGeometry()
     {
-        return this.GetCoordinates();
+        return VectorStructured.Geometry;
     }
     public VectorStructuredData VectorStructured { get; private set; }
 }

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using LaserTagBox.Model.Location.LocationNodes;
 using LaserTagBox.Model.Shared;
+using Mars.Components.Environments;
 using Mars.Interfaces.Agents;
 using Mars.Interfaces.Annotations;
+using ServiceStack;
 using Position = Mars.Interfaces.Environments.Position;
 
 namespace LaserTagBox.Model.Refugee;
@@ -24,7 +26,7 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>, ISo
 
     // Layer
     public RefugeeLayer RefugeeLayer { get; private set; }
-    public IGeoEnvironment IGeoEnvironment;
+    public GeoHashEnvironment<AbstractEnvironmentObject> Environment;
 
     
     
@@ -61,7 +63,7 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>, ISo
         RefugeeLayer = layer;
         Friends = new HashSet<RefugeeAgent>();
         Kins = new HashSet<RefugeeAgent>();
-        IGeoEnvironment = new IEnvironmentImpl();
+        Environment = new EnvironmentImpl().GetEnvironment();
 
     }
     
@@ -87,7 +89,7 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>, ISo
 
             foreach (var n in neighbours)
             {
-                Assess(n, n.GetScore());
+                Assess(n);
             }
             
             MoveToNode(MostDesirableNode);
@@ -100,14 +102,14 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>, ISo
        AbstractSite nextDestination = selectNextDestination();
        moveToNextDestination(nextDestination);*/
         //Console.WriteLine(OriginCity.GetName() + " 's Coordinate: " + OriginCity.GetCoordinate());
-        //var c = OriginCity.GetCoordinates();
+        //var c = OriginCity.GetConflictGeometry();
         //var cams = CampLayer.GetCampsAroundPosition(Position, 20);
         //Console.WriteLine("No of Residents: " + OriginCity.GetResidents());
 
         /*for (int x = 0; x < cams.Count; x++)
         {
             var camp = cams[x];
-            if (camp.GetCoordinates().IsWithinDistance(c,0))
+            if (camp.GetConflictGeometry().IsWithinDistance(c,0))
             {
                 Console.WriteLine("Camp " + x + " in Al-Hole" + "\n" + "Camp coordinates: " + camp.GetCoordinate());
             }
@@ -138,11 +140,11 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>, ISo
         return move;
     }
 
-    private void Assess(ILocation node, double score)
+    private void Assess(ILocation node)
     {
 
         var nodeDesirability =
-            CalcNodeDesirability(node, GetNumFriendsAtNode(node), GetNumKinsAtNode(node), node.GetScore());
+            CalcNodeDesirability(GetNumFriendsAtNode(node), GetNumKinsAtNode(node), node.GetScore());
 
         if (nodeDesirability > HighestDesirabilityScore)
         {
@@ -153,7 +155,7 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>, ISo
         
     }
 
-    private double CalcNodeDesirability(ILocation node, int numFriendsAtNode, int numKinsAtNode, double score)
+    private double CalcNodeDesirability(int numFriendsAtNode, int numKinsAtNode, double score)
     {
         return ( (numKinsAtNode * KinWeight) + (numFriendsAtNode * FriendWeight) + score) ;
     }
@@ -161,7 +163,7 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>, ISo
     private void MoveToNode(ILocation newNode)
     {
         CurrentNode = newNode;
-        IGeoEnvironment.GetEnvironment().MoveTo((AbstractEnvironmentObject)newNode);
+        Environment.MoveTo((AbstractEnvironmentObject)newNode);
     }
     
     public void InitSocialLinks()
@@ -192,10 +194,11 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>, ISo
 
     
 
-    private int GetNumFriendsAtNode(ILocation node)
+    public int GetNumFriendsAtNode(ILocation node)
     {
-        var agentsInRadius = IGeoEnvironment
-            .GetEnvironment().Explore(node.GetCentroidPosition(),0.1,-1, el => el is RefugeeAgent);
+        var agentsInRadius = Environment.Explore(node.GetCentroidPosition(),-1D,-1, 
+                el => el is RefugeeAgent).Select(e => (RefugeeAgent)e)
+            .Where(e=> e.LocationName.EqualsIgnoreCase(node.GetName()));
         
        var friendsAtNode = agentsInRadius.Select(elem => (RefugeeAgent) elem)
            .Where(agent => Friends.Contains(agent));
@@ -205,10 +208,11 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>, ISo
         return friendsAtNode.Count();
     }
 
-    private int GetNumKinsAtNode(ILocation node)
+    public int GetNumKinsAtNode(ILocation node)
     {
-        var agentsInRadius = IGeoEnvironment
-            .GetEnvironment().Explore(node.GetCentroidPosition(),0.1,-1, el => el is RefugeeAgent);
+        var agentsInRadius = Environment.Explore(node.GetCentroidPosition(),-1D,-1, 
+            el => el is RefugeeAgent).Select(e => (RefugeeAgent)e)
+            .Where(e=> e.LocationName.EqualsIgnoreCase(node.GetName()));
         
         var friendsAtNode = agentsInRadius.Select(elem => (RefugeeAgent) elem)
             .Where(agent => Kins.Contains(agent));
@@ -232,7 +236,7 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>, ISo
         Position = Position.CreateGeoPosition(node.GetCentroidPosition().Longitude,
             node.GetCentroidPosition().Latitude);
         MostDesirableNode = node;
-        
+
     }
     
     

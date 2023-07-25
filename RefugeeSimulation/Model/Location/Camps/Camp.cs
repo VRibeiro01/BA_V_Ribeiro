@@ -26,7 +26,7 @@ public class Camp : IVectorFeature
 
     public Geometry GetCoordinates()
     {
-        return this.GetCoordinates();
+        return VectorStructured.Geometry;
     }
 
     public VectorStructuredData VectorStructured { get; private set; }

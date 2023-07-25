@@ -7,6 +7,7 @@ using LaserTagBox.Model.Refugee;
 using LaserTagBox.Model.Shared;
 using Mars.Components.Environments;
 using Mars.Interfaces.Data;
+using Mars.Interfaces.Environments;
 using Mars.Interfaces.Layers;
 using NetTopologySuite.Geometries;
 using ServiceStack;
@@ -34,11 +35,12 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
     
     public double AnchorScore { get; private set; }
 
-    public List<ILocation> Neighbours = new List<ILocation>();
+    public HashSet<ILocation> Neighbours = new HashSet<ILocation>();
     
     public int RefPop { get; set; }
+    
+    
 
-    public GeoHashEnvironment<AbstractEnvironmentObject> Environment;
 
 
 
@@ -112,13 +114,13 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
 
         
         
-       InitCamps();
-       InitConflicts();
+       InitCamps(CampLayer);
+       InitConflicts(ConflictLayer);
        
        
        this.Position = Position.CreateGeoPosition(GetCentroidPosition().Longitude, GetCentroidPosition().Latitude);
        NodeLayer nodeLayer = (NodeLayer) layer;
-       Environment = nodeLayer.GetEnvironment();
+       
        
 
       
@@ -128,22 +130,22 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
 
     }
 
-    private void InitConflicts()
+    public void InitConflicts(ConflictLayer conflictLayer)
     {
-        var conflicts = ConflictLayer.GetConflictCoordinates();
+        var conflicts = conflictLayer.GetConflictCoordinates();
 
         foreach (var conflict in conflicts)
         {
-            if (conflict.IsWithinDistance(VectorStructured.Geometry, 5))
+            if (conflict.IsWithinDistance(VectorStructured.Geometry, 0))
             {
                 NumConflicts++;
             }
         }
     }
 
-    private void InitCamps()
+    public void InitCamps(CampLayer campLayer)
     {
-        var camps = CampLayer.GetCamps();
+        var camps = campLayer.GetCamps();
 
         foreach (var camp in camps)
         {
@@ -154,6 +156,12 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
         }
     }
 
+    public Geometry GetBoundary()
+    {
+        return VectorStructured.Geometry.Boundary;
+
+    }
+
     public string GetName()
     {
         return VectorStructured.Data["Name"].ToString();
@@ -162,11 +170,11 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
     {
         return VectorStructured.Data["Country"].ToString();
     }
-    public Mars.Interfaces.Environments.Position GetCentroidPosition()
+    public Position GetCentroidPosition()
     {
         
         Point centroidPoint = VectorStructured.Geometry.Centroid;
-        return new Mars.Interfaces.Environments.Position(centroidPoint.X, centroidPoint.Y);
+        return new Position(centroidPoint.X, centroidPoint.Y);
     }
 
 
@@ -185,7 +193,7 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
         return NumConflicts;
     }
 
-    public System.Collections.Generic.List<ILocation> GetNeighbours()
+    public HashSet<ILocation> GetNeighbours()
     {
         return Neighbours;
     }
@@ -196,9 +204,11 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
     }
     
 
-    public void GetRandomRefugeesAtNode()
+    public void GetRandomRefugeesAtNode(GeoHashEnvironment<AbstractEnvironmentObject> environment)
     {
-        ISocialNetwork[] refsAtNode = Environment.Explore(Position, 0.01, -1, elem => elem is ISocialNetwork)
+        ISocialNetwork[] refsAtNode = environment.Explore(Position, -1D, -1, elem => elem is ISocialNetwork && 
+                elem.Position.DistanceInKmTo(Position) < 1)
+            
            .Select(elem => (ISocialNetwork) elem).ToArray();
         if (refsAtNode.Length > 1)
         {
@@ -207,7 +217,7 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
 
             while (ref2 == ref1)
             {
-                ref2 = refsAtNode[new Random().Next(refsAtNode.Length - 1)];
+                ref2 = refsAtNode[new Random().Next(refsAtNode.Length )];
             }
             
             ref1.UpdateSocialNetwork(ref2);
@@ -217,7 +227,7 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
 
     public void UpdateNormRefPop(int maxRefPop)
     {
-        NormRefPop = RefPop * 1.0 / maxRefPop;
+        NormRefPop = RefPop * 1.0 / (maxRefPop * 1.0 );
     }
     
     

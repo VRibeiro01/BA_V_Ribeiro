@@ -14,7 +14,7 @@ namespace LaserTagBox
         public static void Main(string[] args)
         {
             // the scenario consist of the model (represented by the model description)
-            // an the simulation configuration (see config.json)
+            // an the simulation configuration (see testConfig.json)
             
             // Create a new model description that holds all parts of the model (agents, entities, layers)
             var description = new ModelDescription();
@@ -33,7 +33,7 @@ namespace LaserTagBox
             
             
             // scenario definition
-            // use config.json that holds the specification of the scenario
+            // use testConfig.json that holds the specification of the scenario
             var file = File.ReadAllText("config.json");
             var config = SimulationConfig.Deserialize(file);
             

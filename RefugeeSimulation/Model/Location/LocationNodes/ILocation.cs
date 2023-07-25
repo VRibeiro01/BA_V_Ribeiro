@@ -23,8 +23,8 @@ public interface ILocation
     ///  Returns a list of the location nodes within a radius of 100 km.
     /// If there are no neighbours, then an empty list is returned.
     /// </summary>
-    /// <returns> list of neighbouring location nodes </returns>
-    public List<ILocation> GetNeighbours();
+    /// <returns> set of neighbouring location nodes </returns>
+    public HashSet<ILocation> GetNeighbours();
     
     
     /// <summary>

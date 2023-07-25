@@ -3,7 +3,7 @@ using Mars.Components.Environments;
 
 namespace LaserTagBox.Model.Location.LocationNodes;
 
-public class IEnvironmentImpl : IGeoEnvironment
+public class EnvironmentImpl : IGeoEnvironment
 {
     public NodeLayer NodeLayer => NodeLayer.NodeLayerInstance;
 

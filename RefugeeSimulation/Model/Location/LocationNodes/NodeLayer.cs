@@ -2,6 +2,7 @@
 using System.Linq;
 using LaserTagBox.Model.Refugee;
 using LaserTagBox.Model.Shared;
+using Mars.Common.Core.Collections;
 using Mars.Components.Environments;
 using Mars.Components.Layers;
 using Mars.Interfaces.Annotations;
@@ -82,14 +83,16 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         foreach (var locationNode in Entities)
         {
              locationNode.Neighbours.AddRange(Entities.Where(location =>
-                location.GetCentroidPosition().DistanceInKmTo(locationNode.GetCentroidPosition()) > 5 &&
-                location.GetCentroidPosition().DistanceInKmTo(locationNode.GetCentroidPosition()) <= 100  
+                location != locationNode &&
+                location.GetCentroidPosition().DistanceInKmTo(locationNode.GetCentroidPosition()) <= 25
             ).ToList());
              
              
-             locationNode.NormNumCamps = locationNode.NumCamps * 1.0 / maxNumCamps;
-             locationNode.NormNumConflicts = locationNode.NumConflicts  * 1.0/ maxNumConflicts;
-             locationNode.NormAnchorScore = locationNode.AnchorScore * 1.0 / maxAnchorScore;
+             
+             
+             locationNode.NormNumCamps = locationNode.NumCamps * 1.0 / (maxNumCamps * 1.0);
+             locationNode.NormNumConflicts = locationNode.NumConflicts  * 1.0/ (maxNumConflicts * 1.0);
+             locationNode.NormAnchorScore = locationNode.AnchorScore * 1.0 / (maxAnchorScore * 1.0 );
         }
     }
 
@@ -153,7 +156,7 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
             {
                 for (int i = 0; i < NumberNewTies; i++)
                 {
-                    location.GetRandomRefugeesAtNode();
+                    location.GetRandomRefugeesAtNode(Environment);
                 }
             }
         }
@@ -176,7 +179,8 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         
         foreach (var location in Entities)
         {
-           location.RefPop = Environment.Explore(location.GetCentroidPosition(), 0.01, -1, elem => elem is ISocialNetwork).Count();
+           location.RefPop = Environment.Explore(location.GetCentroidPosition(), -1D, -1, elem => elem is ISocialNetwork 
+               && location.GetCentroidPosition().DistanceInKmTo(elem.Position) < 1).Count();
             
         }
 

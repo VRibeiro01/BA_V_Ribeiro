@@ -28,7 +28,9 @@ public class ConflictLayer : VectorLayer<Conflict>
     /// <returns></returns>
     public  Geometry[] GetConflictCoordinates()
     {
-        return  Entities.Select(con => con.GetCoordinates()).ToArray();
+        
+            return Entities.Select(con => con.GetConflictGeometry()).ToArray();
+       
     }
     
 }
