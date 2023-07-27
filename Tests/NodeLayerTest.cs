@@ -331,6 +331,7 @@ public class NodeLayerTest
         var agent = new RefugeeAgent();
         var agent1 = new RefugeeAgent();
         var environment = nodeLayer.GetEnvironment();
+        var agentList = new List<RefugeeAgent>();
         foreach(var node in nodeLayer.Entities)
         {
 
@@ -341,12 +342,14 @@ public class NodeLayerTest
                 nodeLayer.GetEnvironment().Insert(agent);
                 agent.Friends = new HashSet<RefugeeAgent>();
                 agent.Environment = environment;
+                agentList.Add(agent);
             }
             agent1 = new RefugeeAgent();
             agent1.Spawn(node);
             nodeLayer.GetEnvironment().Insert(agent1);
             agent1.Friends = new HashSet<RefugeeAgent>();
             agent1.Environment = environment;
+            agentList.Add(agent1);
 
         }
         
@@ -361,8 +364,8 @@ public class NodeLayerTest
         
         
         testNode.GetRandomRefugeesAtNode(environment);
-        int calcNumFriendsAtNode = agent.GetNumFriendsAtNode(testNode);
-        int calcNumFriendsAtNode1 = agent1.GetNumFriendsAtNode(testNode);
+        int calcNumFriendsAtNode = agent.GetNumFriendsAtNode(testNode, agentList);
+        int calcNumFriendsAtNode1 = agent1.GetNumFriendsAtNode(testNode, agentList);
         
         
         //Assert

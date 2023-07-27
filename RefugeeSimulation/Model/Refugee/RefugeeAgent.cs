@@ -143,8 +143,9 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, ISocialNetwork
     private void Assess(ILocation node)
     {
 
+        var agentList = RefugeeLayer.RefugeeAgents;
         var nodeDesirability =
-            CalcNodeDesirability(GetNumFriendsAtNode(node), GetNumKinsAtNode(node), node.GetScore());
+            CalcNodeDesirability(GetNumFriendsAtNode(node, agentList), GetNumKinsAtNode(node, agentList), node.GetScore());
 
         if (nodeDesirability > HighestDesirabilityScore)
         {
@@ -194,9 +195,9 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, ISocialNetwork
 
     
 
-    public int GetNumFriendsAtNode(ILocation node)
+    public int GetNumFriendsAtNode(ILocation node, List<RefugeeAgent> agentList)
     {
-        var agentsInRadius = GetAgentsAtNode(node);
+        var agentsInRadius = GetAgentsAtNode(node, agentList);
         
        var friendsAtNode = agentsInRadius.Where(agent => Friends.Contains(agent)).ToList();
 
@@ -205,16 +206,18 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, ISocialNetwork
         return friendsAtNode.Count;
     }
 
-    private List<ISocialNetwork> GetAgentsAtNode(ILocation node)
+    private List<RefugeeAgent> GetAgentsAtNode(ILocation node, List<RefugeeAgent> agentList)
     {
-        var agentsInRadius = Environment.Explore(node.GetPosition(), -1, -1,
-            el => el.Position.DistanceInKmTo(node.GetPosition()) < 1).ToList();
+        var agentsInRadius = agentList
+            .Where(a => a.LocationName.EqualsIgnoreCase(node.GetName())).ToList();
+        
+        
         return agentsInRadius;
     }
 
-    public int GetNumKinsAtNode(ILocation node)
+    public int GetNumKinsAtNode(ILocation node, List<RefugeeAgent> agentList)
     {
-        var agentsInRadius = GetAgentsAtNode(node);
+        var agentsInRadius = GetAgentsAtNode(node, agentList);
         
         var kinsAtNode = agentsInRadius
             .Where(agent => Kins.Contains(agent)).ToList();

@@ -65,3 +65,9 @@ Cannot resolve parameter 'LaserTagBox.Model.Model.Location.LocationNodes.IEnviro
 [ERROR] 2023-07-27 15:08:05,866 | Mars.Components.Starter.SimulationStarter - ######################################################## 
 [ERROR] 2023-07-27 15:08:05,867 | Mars.Components.Starter.SimulationStarter - One or more errors occurred. (Destination array is not long enough to copy all the items in the collection. Check array index and length.) (Destination array is not long enough to copy all the items in the collection. Check array index and length.) (Destination array is not long enough to copy all the items in the collection. Check array index and length.) (Destination array is not long enough to copy all the items in the collection. Check array index and length.) 
 [ERROR] 2023-07-27 15:08:05,867 | Mars.Components.Starter.SimulationStarter - ######################################################## 
+[ERROR] 2023-07-27 17:10:01,698 | Mars.Core.Executor.Implementation.StepExecutionUseCase - Destination array is not long enough to copy all the items in the collection. Check array index and length. 
+[ERROR] 2023-07-27 17:10:01,735 | Mars.Components.Starter.SimulationStarter - MARS simulation execution crashed by AggregateException 
+[ERROR] 2023-07-27 17:10:01,735 | Mars.Components.Starter.SimulationStarter - Exception message: 
+[ERROR] 2023-07-27 17:10:01,736 | Mars.Components.Starter.SimulationStarter - ######################################################## 
+[ERROR] 2023-07-27 17:10:01,737 | Mars.Components.Starter.SimulationStarter - One or more errors occurred. (Destination array is not long enough to copy all the items in the collection. Check array index and length.) 
+[ERROR] 2023-07-27 17:10:01,737 | Mars.Components.Starter.SimulationStarter - ######################################################## 
