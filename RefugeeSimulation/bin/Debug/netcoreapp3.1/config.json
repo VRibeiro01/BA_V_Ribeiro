@@ -1,7 +1,7 @@
 {
   "globals": {
     "startTime": "2011-03-01T00:00",
-    "endTime": "2011-03-02T00:00",
+    "endTime": "2011-03-03T00:00",
     "deltaTUnit": "days",
     "console": false
     },
@@ -82,6 +82,9 @@
     {
       "name": "ConflictLayer",
       "file": "Resources/Conflicts_Syr_Tur_0922.geojson"
+    },
+    {
+      "name": "SpawnScheduleLayer"
     }
     
     ]

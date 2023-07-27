@@ -1,9 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using LaserTagBox.Model.Location.LocationNodes;
 using Mars.Common.Core.Collections;
 using Mars.Common.Data;
-using Mars.Common.IO.Mapped.Collections;
 using Mars.Components.Layers;
 using Mars.Core.Data;
 using Mars.Interfaces.Data;
@@ -13,10 +13,12 @@ namespace LaserTagBox.Model.Refugee;
 
 public class RefugeeLayer : AbstractLayer
 {
-    private System.Collections.Generic.Dictionary<String,int> InitDistributionData { get; set; }
+    private Dictionary<String,int> InitDistributionData { get; set; }
     public IGeoEnvironment Environment => new EnvironmentImpl();
-    
-    public List<RefugeeAgent> RefugeeAgents = new List<RefugeeAgent>();
+
+    public  List<RefugeeAgent> RefugeeAgents;
+
+    public IAgentManager AgentManager;
 
     
  
@@ -35,45 +37,37 @@ public class RefugeeLayer : AbstractLayer
             .ToDictionary(data => Convert.ToString(data.Data["Nahya"]), data=> Convert.ToInt32(data.Data["IDPs"]));
 
         
-            IAgentManager agentManager = layerInitData.Container.Resolve<IAgentManager>();
-        
-
-
-
-        DistributeRefs(RefugeeAgents, agentManager);
-
-       InitSocialNetworks();
-         
-       Console.WriteLine(RefugeeAgents.Count + " refugee agent(s) spawned");
-
+            AgentManager = layerInitData.Container.Resolve<IAgentManager>();
+            RefugeeAgents = new List<RefugeeAgent>();
+           
+       
         return true;
     }
 
-    private void InitSocialNetworks()
+    private void InitSocialNetwork(List<RefugeeAgent> refs)
     {
-        foreach (var agent in RefugeeAgents)
+        foreach (var agent in refs)
         {
+            Environment.GetEnvironment().Insert(agent);
             agent.InitSocialLinks();
         }
     }
 
     
-    private void DistributeRefs(List<RefugeeAgent> refugeeAgentsSpawned, IAgentManager agentManager)
+    public void DistributeRefs()
     {
-        
+        var newRefs = new List<RefugeeAgent>();
         foreach (var nodePopPair in InitDistributionData)
         {
-            var agents = agentManager.Spawn<RefugeeAgent, RefugeeLayer>(null,
-                agent => agent.Spawn(Environment.GetLocationByName(nodePopPair.Key))).Take(nodePopPair.Value);
-            foreach (var agent in agents)
-            {
-                Environment.GetEnvironment().Insert(agent);
-                refugeeAgentsSpawned.Add(agent);
-            }
-           
-           
-
+            newRefs.AddRange(AgentManager.Spawn<RefugeeAgent, RefugeeLayer>(null,
+                agent => agent.Spawn(Environment.GetLocationByName(nodePopPair.Key)))
+                .Take(nodePopPair.Value < 30 ?  new Random().Next(2) : nodePopPair.Value/30
+                ));
 
         }
+        
+        RefugeeAgents.AddRange(newRefs);
+        Console.WriteLine(newRefs.Count + " refugee agent(s) spawned");
+        InitSocialNetwork(newRefs);
     }
 }

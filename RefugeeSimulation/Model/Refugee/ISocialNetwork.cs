@@ -1,6 +1,9 @@
-﻿namespace LaserTagBox.Model.Refugee;
+﻿using Mars.Interfaces.Agents;
+using Mars.Interfaces.Environments;
 
-public interface ISocialNetwork
+namespace LaserTagBox.Model.Refugee;
+
+public interface ISocialNetwork : IPositionable, IEntity
 {
  /// <summary>
  /// Adds "other" to the set of friends and adds callee to the "other"'s set of friends.

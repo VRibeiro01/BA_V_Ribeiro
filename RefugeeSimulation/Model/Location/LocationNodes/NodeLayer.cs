@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using LaserTagBox.Model.Location.Camps;
+using LaserTagBox.Model.Location.Conflict;
 using LaserTagBox.Model.Refugee;
-using LaserTagBox.Model.Shared;
 using Mars.Common.Core.Collections;
 using Mars.Components.Environments;
 using Mars.Components.Layers;
@@ -42,7 +44,17 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 
     public static Position AnchorCoordinates=  Position.CreateGeoPosition(AnchorLong, AnchorLat);// Lat= 41.015137, Long= 28.979530
 
-    private GeoHashEnvironment<AbstractEnvironmentObject> Environment;
+    private GeoHashEnvironment<ISocialNetwork> Environment;
+    
+    
+    
+    // Layers
+    
+    [PropertyDescription]
+    public CampLayer CampLayer { get; set; }
+    
+    [PropertyDescription]
+    public ConflictLayer ConflictLayer { get; set; }
 
 
 
@@ -53,27 +65,19 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
     public override bool InitLayer(LayerInitData layerInitData, RegisterAgent registerAgentHandle = null, UnregisterAgent unregisterAgentHandle = null)
     {
         base.InitLayer(layerInitData, registerAgentHandle, unregisterAgentHandle);
-        Environment = GeoHashEnvironment<AbstractEnvironmentObject>.BuildEnvironment(this.MaxLat, this.MinLat, this.MaxLon, this.MinLon, 100000);
+        Environment = GeoHashEnvironment<ISocialNetwork>.BuildEnvironment(this.MaxLat, this.MinLat, this.MaxLon, this.MinLon, 100000);
         Debug();
-        InsertLocationsInEnvironment();
         InitLocationParams();
         NodeLayerInstance = this;
         return true;
     }
 
-    public GeoHashEnvironment<AbstractEnvironmentObject> GetEnvironment()
+    public GeoHashEnvironment<ISocialNetwork> GetEnvironment()
     {
         return Environment;
     }
 
-    public void InsertLocationsInEnvironment()
-    {
-        foreach (var location in Entities)
-        {
-            Environment.Insert(location);
-        }
-    }
-
+  
     public void InitLocationParams()
     {
         var maxNumCamps = Entities.Max(location => location.NumCamps) + 1; // add one to prevent division by zero
@@ -84,7 +88,7 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         {
              locationNode.Neighbours.AddRange(Entities.Where(location =>
                 location != locationNode &&
-                location.GetCentroidPosition().DistanceInKmTo(locationNode.GetCentroidPosition()) <= 25
+                location.GetPosition().DistanceInKmTo(locationNode.GetPosition()) <= 25
             ).ToList());
              
              
@@ -179,12 +183,17 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         
         foreach (var location in Entities)
         {
-           location.RefPop = Environment.Explore(location.GetCentroidPosition(), -1D, -1, elem => elem is ISocialNetwork 
-               && location.GetCentroidPosition().DistanceInKmTo(elem.Position) < 1).Count();
+           location.RefPop = Environment.Explore(location.Position, -1D, -1, elem => 
+               location.Position.DistanceInKmTo(elem.Position) < 1).Count();
             
         }
 
         return Entities.Max(location => location.RefPop);
+    }
+
+    public List<LocationNode> GetEntities()
+    {
+        return Entities.ToList();
     }
 
     

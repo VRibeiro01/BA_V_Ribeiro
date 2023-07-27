@@ -214,4 +214,3 @@ C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\obj\Debug\net6.0\refint\Test
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\obj\Debug\net6.0\Tests.pdb
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\obj\Debug\net6.0\Tests.genruntimeconfig.cache
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\obj\Debug\net6.0\ref\Tests.dll
-C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\TestData\testConfig.json

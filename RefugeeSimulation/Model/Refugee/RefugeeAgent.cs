@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using LaserTagBox.Model.Location.LocationNodes;
-using LaserTagBox.Model.Shared;
 using Mars.Components.Environments;
 using Mars.Interfaces.Agents;
 using Mars.Interfaces.Annotations;
+using Mars.Interfaces.Environments;
 using ServiceStack;
 using Position = Mars.Interfaces.Environments.Position;
 
 namespace LaserTagBox.Model.Refugee;
 
-public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>, ISocialNetwork
+public class RefugeeAgent : IAgent<RefugeeLayer>, ISocialNetwork
 {
     
     
@@ -26,7 +26,7 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>, ISo
 
     // Layer
     public RefugeeLayer RefugeeLayer { get; private set; }
-    public GeoHashEnvironment<AbstractEnvironmentObject> Environment;
+    public GeoHashEnvironment<ISocialNetwork> Environment;
 
     
     
@@ -163,7 +163,7 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>, ISo
     private void MoveToNode(ILocation newNode)
     {
         CurrentNode = newNode;
-        Environment.MoveTo((AbstractEnvironmentObject)newNode);
+        Environment.MoveTo(this, newNode.GetPosition().X, newNode.GetPosition().Y);
     }
     
     public void InitSocialLinks()
@@ -196,30 +196,32 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>, ISo
 
     public int GetNumFriendsAtNode(ILocation node)
     {
-        var agentsInRadius = Environment.Explore(node.GetCentroidPosition(),-1D,-1, 
-                el => el is RefugeeAgent).Select(e => (RefugeeAgent)e)
-            .Where(e=> e.LocationName.EqualsIgnoreCase(node.GetName()));
+        var agentsInRadius = GetAgentsAtNode(node);
         
-       var friendsAtNode = agentsInRadius.Select(elem => (RefugeeAgent) elem)
-           .Where(agent => Friends.Contains(agent));
+       var friendsAtNode = agentsInRadius.Where(agent => Friends.Contains(agent)).ToList();
 
 
        
-        return friendsAtNode.Count();
+        return friendsAtNode.Count;
+    }
+
+    private List<ISocialNetwork> GetAgentsAtNode(ILocation node)
+    {
+        var agentsInRadius = Environment.Explore(node.GetPosition(), -1, -1,
+            el => el.Position.DistanceInKmTo(node.GetPosition()) < 1).ToList();
+        return agentsInRadius;
     }
 
     public int GetNumKinsAtNode(ILocation node)
     {
-        var agentsInRadius = Environment.Explore(node.GetCentroidPosition(),-1D,-1, 
-            el => el is RefugeeAgent).Select(e => (RefugeeAgent)e)
-            .Where(e=> e.LocationName.EqualsIgnoreCase(node.GetName()));
+        var agentsInRadius = GetAgentsAtNode(node);
         
-        var friendsAtNode = agentsInRadius.Select(elem => (RefugeeAgent) elem)
-            .Where(agent => Kins.Contains(agent));
+        var kinsAtNode = agentsInRadius
+            .Where(agent => Kins.Contains(agent)).ToList();
 
 
        
-        return friendsAtNode.Count();
+        return kinsAtNode.Count;
     }
 
     public void UpdateSocialNetwork(ISocialNetwork newFriend)
@@ -233,14 +235,13 @@ public class RefugeeAgent : AbstractEnvironmentObject, IAgent<RefugeeLayer>, ISo
     {
         CurrentNode = node;
         LocationName = node.GetName();
-        Position = Position.CreateGeoPosition(node.GetCentroidPosition().Longitude,
-            node.GetCentroidPosition().Latitude);
+        Position = Position.CreateGeoPosition(node.GetPosition().Longitude,
+            node.GetPosition().Latitude);
         MostDesirableNode = node;
 
     }
-    
-    
 
-    
-    
+
+    public Guid ID { get; set; }
+    public Position Position { get; set; }
 }

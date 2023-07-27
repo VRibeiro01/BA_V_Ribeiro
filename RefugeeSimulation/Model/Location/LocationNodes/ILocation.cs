@@ -41,7 +41,7 @@ public interface ILocation
     public string GetName();
 
 
-    public Mars.Interfaces.Environments.Position GetCentroidPosition();
+    public Mars.Interfaces.Environments.Position GetPosition();
 
 
 

@@ -23,6 +23,7 @@
 
     <ItemGroup>
       <Folder Include="Model" />
+      <Folder Include="Model\Shared" />
     </ItemGroup>
 
 </Project>

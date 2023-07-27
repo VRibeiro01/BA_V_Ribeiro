@@ -9,11 +9,6 @@ namespace LaserTagBox.Model.Location.Conflict;
 
 public class ConflictLayer : VectorLayer<Conflict>
 {
-    public static ConflictLayer CreateInstance()
-    {
-        return new ConflictLayer();
-    }
-
 
     public override bool InitLayer(LayerInitData layerInitData, RegisterAgent registerAgentHandle = null, UnregisterAgent unregisterAgentHandle = null)
     {

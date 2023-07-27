@@ -19,14 +19,14 @@ namespace LaserTagBox
             // Create a new model description that holds all parts of the model (agents, entities, layers)
             var description = new ModelDescription();
 
-            
+            description.AddLayer<ConflictLayer>();
+            description.AddLayer<CampLayer>();
             description.AddLayer<NodeLayer>();
             description.AddLayer<RefugeeLayer>();
+            description.AddLayer<SpawnScheduleLayer>();
             description.AddAgent<RefugeeAgent, RefugeeLayer>();
             
             
-            description.AddLayer<ConflictLayer>();
-            description.AddLayer<CampLayer>();
             
             
            

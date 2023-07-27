@@ -1,4 +1,4 @@
-﻿using LaserTagBox.Model.Shared;
+﻿using LaserTagBox.Model.Refugee;
 using Mars.Components.Environments;
 
 namespace LaserTagBox.Model.Location.LocationNodes;
@@ -10,7 +10,7 @@ public interface IGeoEnvironment
     /// Returns the environment that contains refugees and locations
     /// </summary>
     /// <returns></returns>
-    public GeoHashEnvironment<AbstractEnvironmentObject> GetEnvironment();
+    public GeoHashEnvironment<ISocialNetwork> GetEnvironment();
 
    /// <summary>
     /// Returns a reference to the location that corresponds to the name paremeter.

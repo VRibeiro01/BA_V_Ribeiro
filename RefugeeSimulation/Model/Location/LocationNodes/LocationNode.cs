@@ -4,7 +4,6 @@ using System.Linq;
 using LaserTagBox.Model.Location.Camps;
 using LaserTagBox.Model.Location.Conflict;
 using LaserTagBox.Model.Refugee;
-using LaserTagBox.Model.Shared;
 using Mars.Components.Environments;
 using Mars.Interfaces.Data;
 using Mars.Interfaces.Environments;
@@ -15,7 +14,7 @@ using Position = Mars.Interfaces.Environments.Position;
 
 namespace LaserTagBox.Model.Location.LocationNodes;
 
-public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
+public class LocationNode : IVectorFeature, ILocation
 {
     public VectorStructuredData VectorStructured { get; private set; }
 
@@ -39,6 +38,8 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
     
     public int RefPop { get; set; }
     
+    public Position Position { get; set; }
+    
     
 
 
@@ -47,17 +48,17 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
 
 
 
-    // Layers
+    
 
-    public ConflictLayer ConflictLayer => ConflictLayer.CreateInstance();
+    
 
-    public CampLayer CampLayer => CampLayer.CreateInstance();
+    
 
 
     public void Init(ILayer layer, VectorStructuredData data)
     {
         VectorStructured = data;
-        
+
         
 
         var name = "Unknown";
@@ -112,19 +113,19 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
         VectorStructured.Data.Add("Country", country);
 
 
-        
-        
-       InitCamps(CampLayer);
-       InitConflicts(ConflictLayer);
-       
-       
-       this.Position = Position.CreateGeoPosition(GetCentroidPosition().Longitude, GetCentroidPosition().Latitude);
-       NodeLayer nodeLayer = (NodeLayer) layer;
-       
-       
 
-      
+        NodeLayer nodeLayer = (NodeLayer) layer;
+
+        if (!(nodeLayer.CampLayer is null) && !(nodeLayer.ConflictLayer is null))
+        {
+            InitCamps(nodeLayer.CampLayer);
+            InitConflicts(nodeLayer.ConflictLayer);
+        }
+
+
+        Position = Position.CreateGeoPosition(GetPosition().Longitude, GetPosition().Latitude);
        AnchorScore = Math.Sqrt(Math.Pow(Position.X - NodeLayer.AnchorCoordinates.X, 2) + Math.Pow(Position.Y - NodeLayer.AnchorCoordinates.Y, 2)
+       
        );
 
 
@@ -170,7 +171,7 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
     {
         return VectorStructured.Data["Country"].ToString();
     }
-    public Position GetCentroidPosition()
+    public Position GetPosition()
     {
         
         Point centroidPoint = VectorStructured.Geometry.Centroid;
@@ -204,12 +205,12 @@ public class LocationNode : AbstractEnvironmentObject, IVectorFeature, ILocation
     }
     
 
-    public void GetRandomRefugeesAtNode(GeoHashEnvironment<AbstractEnvironmentObject> environment)
+    public void GetRandomRefugeesAtNode(GeoHashEnvironment<ISocialNetwork> environment)
     {
-        ISocialNetwork[] refsAtNode = environment.Explore(Position, -1D, -1, elem => elem is ISocialNetwork && 
-                elem.Position.DistanceInKmTo(Position) < 1)
+        ISocialNetwork[] refsAtNode = environment.Explore(Position, -1D, -1, elem => elem is not null &&
+            elem.Position.DistanceInKmTo(Position) < 1).ToArray();
             
-           .Select(elem => (ISocialNetwork) elem).ToArray();
+           
         if (refsAtNode.Length > 1)
         {
             var ref1 = refsAtNode[new Random().Next(refsAtNode.Length - 1)];

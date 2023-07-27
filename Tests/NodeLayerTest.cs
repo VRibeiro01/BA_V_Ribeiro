@@ -44,35 +44,35 @@ public class NodeLayerTest
 
        
        
+        foreach(var node in nodeLayer.Entities)
+        {
 
+            if (node.GetName().EqualsIgnoreCase("Tell Abiad"))
+            {
+                var agent = new RefugeeAgent();
+                agent.Spawn(node);
+                nodeLayer.GetEnvironment().Insert(agent);
+            }
+            var agent1 = new RefugeeAgent();
+            agent1.Spawn(node);
+            nodeLayer.GetEnvironment().Insert(agent1);
+            
+            
+        }
 
 
         // Act
-        nodeLayer.InsertLocationsInEnvironment();
+      
         var environment = nodeLayer.GetEnvironment();
         
-        var locations = environment.Explore(new Position(), -1D, -1, e => e is LocationNode);
-        var abstractEnvironmentObjects = locations.ToList();
+        var agents = environment.Explore();
+        var abstractEnvironmentObjects = agents.ToList();
 
        
         
 
         // Assert
-        Assert.True(abstractEnvironmentObjects.Count == 4);
-        Assert.DoesNotContain(abstractEnvironmentObjects, e => e is RefugeeAgent);
-        Assert.True(abstractEnvironmentObjects.All(e=> e is LocationNode));
-
-        
-       
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        Assert.True(abstractEnvironmentObjects.Count == 5);
         
        
     }
@@ -231,15 +231,13 @@ public class NodeLayerTest
             
             
         }
+
+
+        LocationNode? updateNormRefPopTestNode = nodeLayer.Entities
+            .First(n => n.GetName().EqualsIgnoreCase("Tell Abiad"));
         
-        
-        
-        LocationNode? updateNormRefPopTestNode;
         var environment = nodeLayer.GetEnvironment();
-        updateNormRefPopTestNode = environment
-            .Explore(new Position(), -1D, -1, e => e is LocationNode)
-            .Select(e => (LocationNode) e)
-            .FirstOrDefault(node => StringExtensions.EqualsIgnoreCase(node.GetName(), "Tell Abiad"));
+        
 
         // Act
 
@@ -299,22 +297,17 @@ public class NodeLayerTest
        
         
         var environment = nodeLayer.GetEnvironment();
-        var testNode = environment
-            .Explore(new Position(), -1D, -1, e => e is LocationNode)
-            .Select(e => (LocationNode) e)
-            .FirstOrDefault(node => StringExtensions.EqualsIgnoreCase(node.GetName(), "Tell Abiad"));
-
-        nodeLayer.MaxRefPop();
+        var testNode = nodeLayer.Entities
+            .First(n => n.GetName().EqualsIgnoreCase("Tell Abiad"));
+        
         
         //act
-        
-        
-        
+        nodeLayer.MaxRefPop();
         testNode.GetRandomRefugeesAtNode(environment);
+        
         //Assert
         
-        Assert.Contains(environment.Explore().Where(e=> e is RefugeeAgent)
-            .Select(e => (RefugeeAgent)e).ToList(), e => !e.Friends.IsEmpty());
+        Assert.Contains(environment.Explore().Select(e => (RefugeeAgent)e), e => !e.Friends.IsEmpty());
         
     }
 
@@ -358,11 +351,8 @@ public class NodeLayerTest
         }
         
         
-        var testNode = environment
-            .Explore(new Position(), -1D, -1, e => e is LocationNode)
-            .Select(e => (LocationNode) e)
-            .FirstOrDefault(node => StringExtensions.EqualsIgnoreCase(node.GetName(), "Tell Abiad"));
-
+        var testNode = nodeLayer.Entities
+            .First(n => n.GetName().EqualsIgnoreCase("Tell Abiad"));
         nodeLayer.MaxRefPop();
         
         
@@ -377,8 +367,7 @@ public class NodeLayerTest
         
         //Assert
         
-        Assert.Contains(environment.Explore().Where(e=> e is RefugeeAgent)
-            .Select(e => (RefugeeAgent)e).ToList(), e => !e.Friends.IsEmpty());
+        
         Assert.Equal(1,calcNumFriendsAtNode);
         Assert.Equal(1, calcNumFriendsAtNode1);
     }
