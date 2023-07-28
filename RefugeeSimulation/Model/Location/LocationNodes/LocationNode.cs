@@ -123,7 +123,7 @@ public class LocationNode : IVectorFeature, ILocation
         }
 
 
-        Position = Position.CreateGeoPosition(GetPosition().Longitude, GetPosition().Latitude);
+        Position = Position.CreateGeoPosition(GetCentroidPosition().Longitude, GetCentroidPosition().Latitude);
        AnchorScore = Math.Sqrt(Math.Pow(Position.X - NodeLayer.AnchorCoordinates.X, 2) + Math.Pow(Position.Y - NodeLayer.AnchorCoordinates.Y, 2)
        
        );
@@ -171,14 +171,17 @@ public class LocationNode : IVectorFeature, ILocation
     {
         return VectorStructured.Data["Country"].ToString();
     }
-    public Position GetPosition()
+    public Position GetCentroidPosition()
     {
         
         Point centroidPoint = VectorStructured.Geometry.Centroid;
         return new Position(centroidPoint.X, centroidPoint.Y);
     }
 
-
+    public Position GetPosition()
+    {
+        return Position;
+    }
 
     public void Update(VectorStructuredData data)
     {

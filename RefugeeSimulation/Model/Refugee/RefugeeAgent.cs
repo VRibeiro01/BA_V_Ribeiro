@@ -19,6 +19,8 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, ISocialNetwork
     public HashSet<RefugeeAgent> Kins { get; set; }
     public string LocationName { get; set; }
     
+    public ILocation OriginNode { get; set; }
+    
     public ILocation CurrentNode{ get; set; }
 
     private double HighestDesirabilityScore;
@@ -164,7 +166,9 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, ISocialNetwork
     private void MoveToNode(ILocation newNode)
     {
         CurrentNode = newNode;
-        Environment.MoveTo(this, newNode.GetPosition().X, newNode.GetPosition().Y);
+        LocationName = newNode.GetName();
+        
+        Environment.MoveToPosition(this, newNode.GetPosition().Latitude, newNode.GetPosition().Longitude);
     }
     
     public void InitSocialLinks()
@@ -236,11 +240,13 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, ISocialNetwork
 
     public void Spawn(ILocation node)
     {
+        OriginNode = node;
         CurrentNode = node;
         LocationName = node.GetName();
         Position = Position.CreateGeoPosition(node.GetPosition().Longitude,
             node.GetPosition().Latitude);
         MostDesirableNode = node;
+        
 
     }
 
