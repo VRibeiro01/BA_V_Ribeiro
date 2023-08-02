@@ -10,7 +10,7 @@ public interface IGeoEnvironment
     /// Returns the environment that contains refugees and locations
     /// </summary>
     /// <returns></returns>
-    public GeoHashEnvironment<ISocialNetwork> GetEnvironment();
+    public GeoHashEnvironment<RefugeeAgent> GetEnvironment();
 
    /// <summary>
     /// Returns a reference to the location that corresponds to the name paremeter.

@@ -628,3 +628,4 @@ C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\obj\Debug\netcor
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\Conflicts_Syr_Tur_0922.geojson
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\turkey_camps_idps.geojson
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\turkey_camps_idps.qmd
+C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\idp_pop_syr_0922_adm2.csv

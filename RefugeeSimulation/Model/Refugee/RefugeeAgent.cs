@@ -5,7 +5,6 @@ using LaserTagBox.Model.Location.LocationNodes;
 using Mars.Components.Environments;
 using Mars.Interfaces.Agents;
 using Mars.Interfaces.Annotations;
-using Mars.Interfaces.Environments;
 using ServiceStack;
 using Position = Mars.Interfaces.Environments.Position;
 
@@ -23,12 +22,12 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, ISocialNetwork
     
     public ILocation CurrentNode{ get; set; }
 
-    private double HighestDesirabilityScore;
-    private ILocation MostDesirableNode;
+    private double _highestDesirabilityScore;
+    private ILocation _mostDesirableNode;
 
     // Layer
     public RefugeeLayer RefugeeLayer { get; private set; }
-    public GeoHashEnvironment<ISocialNetwork> Environment;
+    public GeoHashEnvironment<RefugeeAgent> Environment;
 
     
     
@@ -65,7 +64,7 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, ISocialNetwork
         RefugeeLayer = layer;
         Friends = new HashSet<RefugeeAgent>();
         Kins = new HashSet<RefugeeAgent>();
-        Environment = new EnvironmentImpl().GetEnvironment();
+        Environment = RefugeeLayer.Environment;
 
     }
     
@@ -81,7 +80,7 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, ISocialNetwork
             return;
         }
 
-        HighestDesirabilityScore = 0;
+        _highestDesirabilityScore = 0;
 
         var neighbours = CurrentNode.GetNeighbours();
         
@@ -94,7 +93,7 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, ISocialNetwork
                 Assess(n);
             }
             
-            MoveToNode(MostDesirableNode);
+            MoveToNode(_mostDesirableNode);
         }
        
 
@@ -127,7 +126,7 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, ISocialNetwork
 
     private bool Activate(int numCamps, int numConflicts)
     {
-        var move = false;
+        bool move;
         if (numCamps > 0)
         {
             move = new Random().NextDouble() < moveProbabilityCamp;
@@ -149,10 +148,10 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, ISocialNetwork
         var nodeDesirability =
             CalcNodeDesirability(GetNumFriendsAtNode(node, agentList), GetNumKinsAtNode(node, agentList), node.GetScore());
 
-        if (nodeDesirability > HighestDesirabilityScore)
+        if (nodeDesirability > _highestDesirabilityScore)
         {
-            HighestDesirabilityScore = nodeDesirability;
-            MostDesirableNode = node;
+            _highestDesirabilityScore = nodeDesirability;
+            _mostDesirableNode = node;
         }
         
         
@@ -245,7 +244,7 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, ISocialNetwork
         LocationName = node.GetName();
         Position = Position.CreateGeoPosition(node.GetPosition().Longitude,
             node.GetPosition().Latitude);
-        MostDesirableNode = node;
+        _mostDesirableNode = node;
         
 
     }

@@ -1,29 +1,29 @@
 {
   "globals": {
     "startTime": "2011-03-01T00:00",
-    "endTime": "2011-03-03T00:00",
+    "endTime": "2011-03-04T00:00",
     "deltaTUnit": "days",
-    "console": false
-    },
+    "output": "trips"
+  },
   "agents": [
     {
       "name": "RefugeeAgent",
       "mapping": [
         {
           "parameter": "_initNumKins",
-          "value": 5
+          "value": 2
         },
         {
           "parameter": "_initNumFriends",
-          "value": 5
+          "value": 2
         },
         {
           "parameter": "KinWeight",
-          "value": 0.2
+          "value": 0.25
         },
         {
           "parameter": "FriendWeight",
-          "value": 0.3
+          "value": 0.25
         },
         {
           "parameter": "moveProbabilityCamp",
@@ -31,8 +31,13 @@
         },
         {
           "parameter": "moveProbabilityOther",
-          "value": 0.3
+          "value": 0.7
         }
+      ],
+      "outputs": 
+      [
+        {"kind":"trips"},
+        {"kind": "csv"}
       ]
     }
   ],
@@ -43,19 +48,19 @@
       "mapping": [
         {
           "parameter": "PopulationWeight",
-          "value": 0.1
+          "value": 0.25
         },
         {
           "parameter": "CampWeight",
-          "value": 0.2
+          "value": 0.25
         },
         {
           "parameter": "ConflictWeight",
-          "value": 0.3
+          "value": 0.25
         },
         {
           "parameter": "LocationWeight",
-          "value": 0.2
+          "value": 0.25
         }, 
         {
           "parameter": "AnchorLong",
@@ -67,13 +72,16 @@
         },
         {
           "parameter": "NumberNewTies",
-          "value": 6
+          "value": 2
         }
       ]
     },
     {
       "name": "RefugeeLayer",
-      "file": "Resources/idp_pop_syr_0922.csv"
+      "file": "Resources/idp_pop_syr_0922.csv",
+      "outputs": [
+        { "kind": "csv" }
+      ]
     },
     {
       "name": "CampLayer",

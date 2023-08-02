@@ -71,3 +71,13 @@ Cannot resolve parameter 'LaserTagBox.Model.Model.Location.LocationNodes.IEnviro
 [ERROR] 2023-07-27 17:10:01,736 | Mars.Components.Starter.SimulationStarter - ######################################################## 
 [ERROR] 2023-07-27 17:10:01,737 | Mars.Components.Starter.SimulationStarter - One or more errors occurred. (Destination array is not long enough to copy all the items in the collection. Check array index and length.) 
 [ERROR] 2023-07-27 17:10:01,737 | Mars.Components.Starter.SimulationStarter - ######################################################## 
+[ERROR] 2023-08-02 12:35:29,155 | Mars.Components.Starter.SimulationStarter - MARS simulation execution crashed by ArgumentException 
+[ERROR] 2023-08-02 12:35:29,174 | Mars.Components.Starter.SimulationStarter - Exception message: 
+[ERROR] 2023-08-02 12:35:29,175 | Mars.Components.Starter.SimulationStarter - ######################################################## 
+[ERROR] 2023-08-02 12:35:29,177 | Mars.Components.Starter.SimulationStarter - The location A'rima  cannot be found in the system. 
+[ERROR] 2023-08-02 12:35:29,177 | Mars.Components.Starter.SimulationStarter - ######################################################## 
+[ERROR] 2023-08-02 12:59:39,332 | Mars.Components.Starter.SimulationStarter - MARS simulation execution crashed by IOException 
+[ERROR] 2023-08-02 12:59:39,350 | Mars.Components.Starter.SimulationStarter - Exception message: 
+[ERROR] 2023-08-02 12:59:39,351 | Mars.Components.Starter.SimulationStarter - ######################################################## 
+[ERROR] 2023-08-02 12:59:39,352 | Mars.Components.Starter.SimulationStarter - The process cannot access the file 'C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\trips.geojson' because it is being used by another process. 
+[ERROR] 2023-08-02 12:59:39,352 | Mars.Components.Starter.SimulationStarter - ######################################################## 

@@ -1,10 +1,20 @@
 {
   "globals": {
-    "startTime": "2011-03-01T00:00",
-    "endTime": "2011-03-03T00:00",
+    "startTime": "2022-09-01T00:00",
+    "endTime": "2022-10-01T00:00",
     "deltaTUnit": "days",
-    "console": false
+    "output": "csv",
+    "options": {
+      "delimiter": ";",
+      "format": "en-EN"
     },
+    "csvOptions" : {
+      "outputPath": "../../../."
+    },
+    "tripsOptions" : {
+      "outputPath": "../../../."
+    }
+  },
   "agents": [
     {
       "name": "RefugeeAgent",
@@ -35,13 +45,16 @@
         }
       ],
       "outputs": 
-      [{"kind":"trips"}]
+      [
+        {"kind":"trips"},
+        {"kind": "csv"}
+      ]
     }
   ],
   "layers": [
     {
       "name": "NodeLayer",
-      "file": "Resources/syrian_districts_3.geojson",
+      "file": "Resources/turkey1_syria2_districts.geojson",
       "mapping": [
         {
           "parameter": "PopulationWeight",
@@ -71,14 +84,11 @@
           "parameter": "NumberNewTies",
           "value": 2
         }
-      ],
-      "outputs": [
-        { "kind": "csv" }
       ]
     },
     {
       "name": "RefugeeLayer",
-      "file": "Resources/idp_pop_syr_0922.csv",
+      "file": "Resources/idp_pop_syr_0922_adm2.csv",
       "outputs": [
         { "kind": "csv" }
       ]

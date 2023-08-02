@@ -8,7 +8,7 @@ public class EnvironmentImpl : IGeoEnvironment
     public NodeLayer NodeLayer => NodeLayer.NodeLayerInstance;
 
 
-    public GeoHashEnvironment<ISocialNetwork> GetEnvironment()
+    public GeoHashEnvironment<RefugeeAgent> GetEnvironment()
     {
        return  NodeLayer.GetEnvironment();
     }

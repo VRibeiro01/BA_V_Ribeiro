@@ -208,7 +208,7 @@ public class LocationNode : IVectorFeature, ILocation
     }
     
 
-    public void GetRandomRefugeesAtNode(GeoHashEnvironment<ISocialNetwork> environment)
+    public void GetRandomRefugeesAtNode(GeoHashEnvironment<RefugeeAgent> environment)
     {
         ISocialNetwork[] refsAtNode = environment.Explore(Position, -1D, -1, elem => elem is not null &&
             elem.Position.DistanceInKmTo(Position) < 1).ToArray();

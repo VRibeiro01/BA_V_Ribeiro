@@ -42,9 +42,9 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
     [PropertyDescription]
     public int NumberNewTies { get; set; }
 
-    public static Position AnchorCoordinates=  Position.CreateGeoPosition(AnchorLong, AnchorLat);// Lat= 41.015137, Long= 28.979530
+    public static Position AnchorCoordinates= Position.CreateGeoPosition(AnchorLong, AnchorLat);// Lat= 41.015137, Long= 28.979530
 
-    private GeoHashEnvironment<ISocialNetwork> Environment;
+    private GeoHashEnvironment<RefugeeAgent> Environment;
     
     
     
@@ -65,14 +65,14 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
     public override bool InitLayer(LayerInitData layerInitData, RegisterAgent registerAgentHandle = null, UnregisterAgent unregisterAgentHandle = null)
     {
         base.InitLayer(layerInitData, registerAgentHandle, unregisterAgentHandle);
-        Environment = GeoHashEnvironment<ISocialNetwork>.BuildEnvironment(this.MaxLat, this.MinLat, this.MaxLon, this.MinLon, 100000);
+        Environment = GeoHashEnvironment<RefugeeAgent>.BuildEnvironment(this.MaxLat, this.MinLat, this.MaxLon, this.MinLon);
         Debug();
         InitLocationParams();
         NodeLayerInstance = this;
         return true;
     }
 
-    public GeoHashEnvironment<ISocialNetwork> GetEnvironment()
+    public GeoHashEnvironment<RefugeeAgent> GetEnvironment()
     {
         return Environment;
     }
