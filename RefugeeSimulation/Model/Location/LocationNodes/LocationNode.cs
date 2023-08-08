@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using LaserTagBox.Model.Location.Camps;
 using LaserTagBox.Model.Location.Conflict;
 using LaserTagBox.Model.Refugee;
 using Mars.Components.Environments;
+using Mars.Interfaces;
 using Mars.Interfaces.Data;
 using Mars.Interfaces.Environments;
 using Mars.Interfaces.Layers;
@@ -17,6 +19,8 @@ namespace LaserTagBox.Model.Location.LocationNodes;
 public class LocationNode : IVectorFeature, ILocation
 {
     public VectorStructuredData VectorStructured { get; private set; }
+    
+    
 
     public double Score { get; set; }
     
@@ -39,6 +43,8 @@ public class LocationNode : IVectorFeature, ILocation
     public int RefPop { get; set; }
     
     public Position Position { get; set; }
+
+    public NodeLayer nodeLayer;
     
     
 
@@ -79,6 +85,8 @@ public class LocationNode : IVectorFeature, ILocation
             name = VectorStructured.Data["adm2_en"].ToString();
         else if (VectorStructured.Data.ContainsKey("adm1_en") && !(VectorStructured.Data["adm1_en"] is null))
             name = VectorStructured.Data["adm1_en"].ToString();
+        else if (VectorStructured.Data.ContainsKey("ADM1_EN") && !(VectorStructured.Data["ADM1_EN"] is null))
+            name = VectorStructured.Data["ADM1_EN"].ToString();
         
         VectorStructured.Data.Add("Name", name);
         
@@ -114,7 +122,7 @@ public class LocationNode : IVectorFeature, ILocation
 
 
 
-        NodeLayer nodeLayer = (NodeLayer) layer;
+        nodeLayer = (NodeLayer) layer;
 
         if (!(nodeLayer.CampLayer is null) && !(nodeLayer.ConflictLayer is null))
         {
@@ -133,15 +141,18 @@ public class LocationNode : IVectorFeature, ILocation
 
     public void InitConflicts(ConflictLayer conflictLayer)
     {
-        var conflicts = conflictLayer.GetConflictCoordinates();
+        var conflicts = conflictLayer.GetConflicts();
 
-        foreach (var conflict in conflicts)
-        {
-            if (conflict.IsWithinDistance(VectorStructured.Geometry, 0))
-            {
-                NumConflicts++;
-            }
-        }
+    
+         foreach (var conflict in conflicts)
+         {
+             if (conflict.Month == nodeLayer.StartMonth &&
+                 conflict.GetConflictGeometry().IsWithinDistance(VectorStructured.Geometry, 0))
+             {
+                 NumConflicts++;
+             }
+         }
+     
     }
 
     public void InitCamps(CampLayer campLayer)
@@ -156,12 +167,7 @@ public class LocationNode : IVectorFeature, ILocation
             }
         }
     }
-
-    public Geometry GetBoundary()
-    {
-        return VectorStructured.Geometry.Boundary;
-
-    }
+    
 
     public string GetName()
     {

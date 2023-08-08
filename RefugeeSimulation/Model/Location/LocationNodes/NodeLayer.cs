@@ -7,6 +7,7 @@ using LaserTagBox.Model.Refugee;
 using Mars.Common.Core.Collections;
 using Mars.Components.Environments;
 using Mars.Components.Layers;
+using Mars.Interfaces;
 using Mars.Interfaces.Annotations;
 using Mars.Interfaces.Data;
 using Mars.Interfaces.Environments;
@@ -20,6 +21,9 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 {
     public static NodeLayer NodeLayerInstance { get; private set; }
 
+    public ISimulationContext SimulationContext;
+
+    public int StartMonth;
 
     [PropertyDescription]                                       
     public double PopulationWeight { get; set; }
@@ -64,6 +68,12 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 
     public override bool InitLayer(LayerInitData layerInitData, RegisterAgent registerAgentHandle = null, UnregisterAgent unregisterAgentHandle = null)
     {
+        SimulationContext = layerInitData.Context;
+        if (StartMonth <= 0 && SimulationContext.StartTimePoint != null)
+        {
+            StartMonth = SimulationContext.StartTimePoint.Value.Month;
+        }
+
         base.InitLayer(layerInitData, registerAgentHandle, unregisterAgentHandle);
         Environment = GeoHashEnvironment<RefugeeAgent>.BuildEnvironment(this.MaxLat, this.MinLat, this.MaxLon, this.MinLon);
         Debug();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using LaserTagBox.Model.Location.Camps;
 using LaserTagBox.Model.Location.Conflict;
 using LaserTagBox.Model.Location.LocationNodes;
@@ -23,7 +24,7 @@ namespace LaserTagBox
             description.AddLayer<CampLayer>();
             description.AddLayer<NodeLayer>();
             description.AddLayer<RefugeeLayer>();
-            description.AddLayer<SpawnScheduleLayer>();
+           // description.AddLayer<SpawnScheduleLayer>();
             description.AddAgent<RefugeeAgent, RefugeeLayer>();
             
             
@@ -42,6 +43,19 @@ namespace LaserTagBox
             
             // Run simulation
             var loopResults = task.Run();
+            
+            var basePath = @"..\..\..\Resources";
+
+            RefugeeLayer refugeeLayer = (RefugeeLayer)loopResults.Model.Layers.Values.First(layer => layer is RefugeeLayer);
+            foreach (var agent in refugeeLayer.RefugeeAgents)
+            {
+                if (!agent.OriginNode.GetName().Equals(agent.LocationName))
+                {
+                    var agentStat = agent.OriginNode.GetName() + "," + agent.CurrentNode.GetName() + "," + 1 + '\n';
+                    File.AppendAllText(Path.Combine(basePath, "agentStats.txt"), agentStat);
+                }
+            }
+
             
             // Feedback to user that simulation run was successful
             Console.WriteLine($"Simulation execution finished after {loopResults.Iterations} steps");

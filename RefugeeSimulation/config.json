@@ -1,7 +1,7 @@
 {
   "globals": {
-    "startTime": "2022-09-01T00:00",
-    "endTime": "2022-10-01T00:00",
+    "startTime": "2022-05-01T00:00",
+    "endTime": "2022-06-01T00:00",
     "deltaTUnit": "days",
     "output": "csv",
     "options": {
@@ -46,7 +46,6 @@
       ],
       "outputs": 
       [
-        {"kind":"trips"},
         {"kind": "csv"}
       ]
     }
@@ -82,16 +81,13 @@
         },
         {
           "parameter": "NumberNewTies",
-          "value": 2
+          "value": 3
         }
       ]
     },
     {
       "name": "RefugeeLayer",
-      "file": "Resources/idp_pop_syr_0922_adm2.csv",
-      "outputs": [
-        { "kind": "csv" }
-      ]
+      "file": "Resources/refpop_syr2_tur1_0422.csv"
     },
     {
       "name": "CampLayer",
@@ -99,7 +95,7 @@
     },
     {
       "name": "ConflictLayer",
-      "file": "Resources/Conflicts_Syr_Tur_0922.geojson"
+      "file": "Resources/Conflicts_Syr_Tur_2022.geojson"
     },
     {
       "name": "SpawnScheduleLayer"

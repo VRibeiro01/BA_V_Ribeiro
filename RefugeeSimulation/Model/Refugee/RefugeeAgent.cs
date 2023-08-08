@@ -127,12 +127,12 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, ISocialNetwork
     private bool Activate(int numCamps, int numConflicts)
     {
         bool move;
-        if (numCamps > 0)
-        {
-            move = new Random().NextDouble() < moveProbabilityCamp;
-        } else if (numConflicts > 0)
+        if (numConflicts > 0)
         {
             move = true;
+        } else if (numCamps > 0)
+        {
+            move = new Random().NextDouble() < moveProbabilityCamp;
         }
         else
         {

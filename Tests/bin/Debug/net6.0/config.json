@@ -1,9 +1,19 @@
 {
   "globals": {
-    "startTime": "2011-03-01T00:00",
-    "endTime": "2011-03-04T00:00",
+    "startTime": "2022-05-01T00:00",
+    "endTime": "2022-06-01T00:00",
     "deltaTUnit": "days",
-    "output": "trips"
+    "output": "csv",
+    "options": {
+      "delimiter": ";",
+      "format": "en-EN"
+    },
+    "csvOptions" : {
+      "outputPath": "../../../."
+    },
+    "tripsOptions" : {
+      "outputPath": "../../../."
+    }
   },
   "agents": [
     {
@@ -36,7 +46,6 @@
       ],
       "outputs": 
       [
-        {"kind":"trips"},
         {"kind": "csv"}
       ]
     }
@@ -44,7 +53,7 @@
   "layers": [
     {
       "name": "NodeLayer",
-      "file": "Resources/syrian_districts_3.geojson",
+      "file": "Resources/turkey1_syria2_districts.geojson",
       "mapping": [
         {
           "parameter": "PopulationWeight",
@@ -72,16 +81,13 @@
         },
         {
           "parameter": "NumberNewTies",
-          "value": 2
+          "value": 3
         }
       ]
     },
     {
       "name": "RefugeeLayer",
-      "file": "Resources/idp_pop_syr_0922.csv",
-      "outputs": [
-        { "kind": "csv" }
-      ]
+      "file": "Resources/refpop_syr2_tur1_0422.csv"
     },
     {
       "name": "CampLayer",
@@ -89,7 +95,7 @@
     },
     {
       "name": "ConflictLayer",
-      "file": "Resources/Conflicts_Syr_Tur_0922.geojson"
+      "file": "Resources/Conflicts_Syr_Tur_2022.geojson"
     },
     {
       "name": "SpawnScheduleLayer"

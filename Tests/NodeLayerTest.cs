@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using LaserTagBox.Model.Location.Camps;
@@ -83,12 +84,14 @@ public class NodeLayerTest
         // Arrange
      
         var nodeLayer = new NodeLayer();
+        nodeLayer.StartMonth = 9;
         nodeLayer.InitLayer(new LayerInitData
         {
             LayerInitConfig =
             {
                 File = Path.Combine("C:\\Users\\vivia\\mars\\RefugeeSimulationSolution\\Tests\\TestData", "selected_districts_for_test.geojson")
             }
+           
         });
         
      
@@ -97,7 +100,7 @@ public class NodeLayerTest
         {
             LayerInitConfig =
             {
-                File = Path.Combine("C:\\Users\\vivia\\mars\\RefugeeSimulationSolution\\RefugeeSimulation\\Resources\\Conflicts_Syr_Tur_0922.geojson")
+                File = Path.Combine("C:\\Users\\vivia\\mars\\RefugeeSimulationSolution\\RefugeeSimulation\\Resources\\Conflicts_Syr_Tur_2022.geojson")
             }
         });
         

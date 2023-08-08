@@ -21,11 +21,11 @@ public class ConflictLayer : VectorLayer<Conflict>
     /// Return an array with Geometry objects. If there are no conflicts, the array will be empty.
     /// </summary>
     /// <returns></returns>
-    public  Geometry[] GetConflictCoordinates()
+    public  Conflict[] GetConflicts()
     {
-        
-            return Entities.Select(con => con.GetConflictGeometry()).ToArray();
-       
+
+        return Entities.ToArray();
+
     }
     
 }

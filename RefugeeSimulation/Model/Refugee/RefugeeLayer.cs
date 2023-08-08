@@ -45,6 +45,8 @@ public class RefugeeLayer : AbstractLayer
         
             AgentManager = layerInitData.Container.Resolve<IAgentManager>();
             RefugeeAgents = new List<RefugeeAgent>();
+            
+            DistributeRefs();
            
        
         return true;
@@ -67,7 +69,7 @@ public class RefugeeLayer : AbstractLayer
         {
             newRefs.AddRange(AgentManager.Spawn<RefugeeAgent, RefugeeLayer>(null,
                 agent => agent.Spawn(NodeLayer.GetLocationByName(nodePopPair.Key)))
-                .Take(nodePopPair.Value < 30 ?  new Random().Next(2) : (nodePopPair.Value/30)/5
+                .Take(nodePopPair.Value
                 ));
 
         }

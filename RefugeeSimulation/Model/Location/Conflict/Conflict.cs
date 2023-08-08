@@ -6,9 +6,12 @@ namespace LaserTagBox.Model.Location.Conflict;
 
 public class Conflict : IVectorFeature
 {
+    public long Month { get; set; }
     public void Init(ILayer layer, VectorStructuredData data)
     {
         VectorStructured = data;
+
+        Month =  (long) VectorStructured.Data["month"];
     }
 
     public void Update(VectorStructuredData data)
