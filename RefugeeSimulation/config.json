@@ -87,7 +87,7 @@
     },
     {
       "name": "RefugeeLayer",
-      "file": "Resources/refpop_syr2_tur1_0422.csv"
+      "file": "Resources/refpop_turkey.csv"
     },
     {
       "name": "CampLayer",

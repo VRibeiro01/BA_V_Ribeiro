@@ -62,6 +62,8 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 
 
 
+    public String[] BorderCrossingNodes;
+
 
 
 
@@ -73,6 +75,10 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         {
             StartMonth = SimulationContext.StartTimePoint.Value.Month;
         }
+
+        BorderCrossingNodes = new[]{"Lattakia", "Jisr-Ash-Shugur","Afrin","Al-Malikeyyeh", 
+            "KILIS", "SANLIURFA", "MARDIN", "HATAY"};
+        
 
         base.InitLayer(layerInitData, registerAgentHandle, unregisterAgentHandle);
         Environment = GeoHashEnvironment<RefugeeAgent>.BuildEnvironment(this.MaxLat, this.MinLat, this.MaxLon, this.MinLon);
@@ -113,7 +119,7 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
   
     
 
-    public ILocation GetLocationByName(string locationName)
+    public LocationNode GetLocationByName(string locationName)
     {
         var locationByName = Entities.ToList().Where(city =>
             city.GetName().Trim().EqualsIgnoreCase(locationName.Trim()));
