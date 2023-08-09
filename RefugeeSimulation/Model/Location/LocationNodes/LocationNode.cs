@@ -48,6 +48,8 @@ public class LocationNode : IVectorFeature, ILocation
 
     public NodeLayer nodeLayer;
     
+    public String Country { get; set; }
+    
     
 
 
@@ -119,8 +121,8 @@ public class LocationNode : IVectorFeature, ILocation
                 country = "Turkey";
             }
         }
-        
-        VectorStructured.Data.Add("Country", country);
+
+        Country = country;
 
 
 
@@ -177,13 +179,18 @@ public class LocationNode : IVectorFeature, ILocation
     }
     public string GetCountry()
     {
-        return VectorStructured.Data["Country"].ToString();
+        return Country;
     }
     public Position GetCentroidPosition()
     {
         
         Point centroidPoint = VectorStructured.Geometry.Centroid;
         return new Position(centroidPoint.X, centroidPoint.Y);
+    }
+
+    public Geometry GetGeometry()
+    {
+       return VectorStructured.Geometry;
     }
 
     public Position GetPosition()

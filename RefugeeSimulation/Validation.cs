@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using LaserTagBox.Model.Location.LocationNodes;
 using LaserTagBox.Model.Refugee;
+using NetTopologySuite.Geometries;
 using ServiceStack;
 
 namespace LaserTagBox;
@@ -12,8 +14,9 @@ public class Validation
     //
     public static Dictionary<Tuple<string,string>, int> Routes = new Dictionary<Tuple<string, string>, int>();
 
-   
-    public static Hashtable TurkishDistrictsPop;
+
+    public static Dictionary<Tuple<string, Geometry>, int> TurkishDistrictsPop =
+        new Dictionary<Tuple<string, Geometry>, int>();
     
     public static int NumRuns;
 
@@ -60,6 +63,10 @@ public class Validation
         Routes.Select(
             i
                 => string.Join(",",i.Key)+" => "+ i.Value).ToList().ForEach(Console.WriteLine);
+        
+        Console.WriteLine("-------------------- Districts Refpop > 0 ---------------");
+        TurkishDistrictsPop.Where(i => i.Value>0)
+            .Select(i => $"{i.Key.Item1} => {i.Value}").ToList().ForEach(Console.WriteLine);
     }
 
     public static double CalcPercentageRefsActivated()
@@ -97,6 +104,17 @@ public class Validation
         }
         
         
+    }
+
+    public static void FillTurkishDistrictsPop(List<LocationNode> districts)
+    {
+        //TODO do I want initPop or Refpop or the addition?
+        var turkeyDistricts = districts.Where(d => d.Country.EqualsIgnoreCase("Turkey"));
+        foreach (var district in turkeyDistricts)
+        {
+            var tuple = new Tuple<string, Geometry>(district.GetName(), district.GetGeometry());
+            TurkishDistrictsPop.Add(tuple, district.RefPop);
+        }
     }
 
     //TODO num refs that crossed into Turkey
