@@ -1,7 +1,7 @@
 {
   "globals": {
     "startTime": "2022-05-01T00:00",
-    "endTime": "2022-06-01T00:00",
+    "endTime": "2022-05-14T00:00",
     "deltaTUnit": "days",
     "output": "csv",
     "options": {
@@ -37,11 +37,19 @@
         },
         {
           "parameter": "moveProbabilityCamp",
-          "value": 0.3
+          "value": 1.0
+        },
+        {
+          "parameter": "moveProbabilityConflict",
+          "value": 0.7
         },
         {
           "parameter": "moveProbabilityOther",
-          "value": 0.7
+          "value": 1.0
+        },
+        {
+         "parameter": "Validate",
+         "value": true
         }
       ],
       "outputs": 
@@ -57,15 +65,15 @@
       "mapping": [
         {
           "parameter": "PopulationWeight",
-          "value": 0.25
+          "value": 0.75
         },
         {
           "parameter": "CampWeight",
-          "value": 0.25
+          "value": 1.0
         },
         {
           "parameter": "ConflictWeight",
-          "value": 0.25
+          "value": 0.75
         },
         {
           "parameter": "LocationWeight",
@@ -80,8 +88,12 @@
           "value": 41.015137
         },
         {
-          "parameter": "NumberNewTies",
-          "value": 3
+          "parameter": "NumberNewTiesLower",
+          "value": 5
+        },
+        {
+          "parameter": "NumberNewTiesUpper",
+          "value": 10
         }
       ]
     },

@@ -43,17 +43,13 @@ namespace LaserTagBox
             
             // Run simulation
             var loopResults = task.Run();
-            
-            var basePath = @"..\..\..\Resources";
-
-            RefugeeLayer refugeeLayer = (RefugeeLayer)loopResults.Model.Layers.Values.First(layer => layer is RefugeeLayer);
-            foreach (var agent in refugeeLayer.RefugeeAgents)
+            RefugeeLayer refugeeLayer = loopResults.Model.Layers.Values.OfType<RefugeeLayer>().First();
+       
+            if (RefugeeAgent.Validate)
             {
-                if (!agent.OriginNode.GetName().Equals(agent.LocationName))
-                {
-                    var agentStat = agent.OriginNode.GetName() + "," + agent.CurrentNode.GetName() + "," + 1 + '\n';
-                    File.AppendAllText(Path.Combine(basePath, "agentStats.txt"), agentStat);
-                }
+                Validation.NumRuns = (int)loopResults.Iterations;
+                Validation.FillRoutes(refugeeLayer.RefugeeAgents);
+                Validation.Print();
             }
 
             

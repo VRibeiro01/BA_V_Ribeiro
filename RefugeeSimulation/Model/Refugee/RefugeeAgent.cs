@@ -24,11 +24,16 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, ISocialNetwork
 
     private double _highestDesirabilityScore;
     private ILocation _mostDesirableNode;
+    
+    
+    [PropertyDescription]
+    public static bool Validate { get; set; }
 
     // Layer
     public RefugeeLayer RefugeeLayer { get; private set; }
     public GeoHashEnvironment<RefugeeAgent> Environment;
 
+   
     
     
     
@@ -39,6 +44,9 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, ISocialNetwork
     
     [PropertyDescription]
     public double moveProbabilityCamp { get; set; }
+    
+    [PropertyDescription]
+    public double moveProbabilityConflict { get; set; }
 
     [PropertyDescription]
     public double moveProbabilityOther { get; set; }
@@ -65,6 +73,7 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, ISocialNetwork
         Friends = new HashSet<RefugeeAgent>();
         Kins = new HashSet<RefugeeAgent>();
         Environment = RefugeeLayer.Environment;
+        
 
     }
     
@@ -94,33 +103,56 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, ISocialNetwork
             }
             
             MoveToNode(_mostDesirableNode);
-        }
-       
-
-
-
-        /*Console.WriteLine("Current Location is " + LastVisitedSite.GetName());
-       AbstractSite nextDestination = selectNextDestination();
-       moveToNextDestination(nextDestination);*/
-        //Console.WriteLine(OriginCity.GetName() + " 's Coordinate: " + OriginCity.GetCoordinate());
-        //var c = OriginCity.GetConflictGeometry();
-        //var cams = CampLayer.GetCampsAroundPosition(Position, 20);
-        //Console.WriteLine("No of Residents: " + OriginCity.GetResidents());
-
-        /*for (int x = 0; x < cams.Count; x++)
-        {
-            var camp = cams[x];
-            if (camp.GetConflictGeometry().IsWithinDistance(c,0))
+            if (Validate)
             {
-                Console.WriteLine("Camp " + x + " in Al-Hole" + "\n" + "Camp coordinates: " + camp.GetCoordinate());
+                Validation.NumDecisions++;
+                if (_mostDesirableNode.GetNumConflictsAtNode() > 0)
+                {
+                    if (_mostDesirableNode.GetNumCampsAtNode() > 0)
+                    {
+                        if (GetNumFriendsAtNode(_mostDesirableNode, RefugeeLayer.RefugeeAgents) > 0 ||
+                            GetNumKinsAtNode(_mostDesirableNode, RefugeeLayer.RefugeeAgents) > 0)
+                        {
+                            Validation.HasAll++;
+                        }
+                        else
+                        {
+                            Validation.HasConflictAndCamp++;
+                        }
+                    }
+                    else if(GetNumFriendsAtNode(_mostDesirableNode, RefugeeLayer.RefugeeAgents) > 0 ||
+                            GetNumKinsAtNode(_mostDesirableNode, RefugeeLayer.RefugeeAgents) > 0) 
+                    {
+                        Validation.HasConflictAndContacts++;
+                    }
+                    else
+                    {
+                        Validation.OnlyHasConflict++;
+                    }
+                    
+                } else if (GetNumFriendsAtNode(_mostDesirableNode, RefugeeLayer.RefugeeAgents) > 0 ||
+                           GetNumKinsAtNode(_mostDesirableNode, RefugeeLayer.RefugeeAgents) > 0)
+                {
+                    if (_mostDesirableNode.GetNumCampsAtNode() > 0)
+                    {
+                        Validation.HasCampAndContacts++;
+                    }
+                    else
+                    {
+                        Validation.OnlyHasContacts++;
+                    }
+                } else if (_mostDesirableNode.GetNumCampsAtNode() > 0)
+                {
+                    Validation.OnlyHasCamp++;
+                }
+                else
+                {
+                    Validation.HasNone++;
+                }
+   
             }
         }
         
-     */
-
-
-
-
 
     }
 
@@ -129,7 +161,7 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, ISocialNetwork
         bool move;
         if (numConflicts > 0)
         {
-            move = true;
+            move = new Random().NextDouble() < moveProbabilityConflict;
         } else if (numCamps > 0)
         {
             move = new Random().NextDouble() < moveProbabilityCamp;
@@ -137,6 +169,11 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, ISocialNetwork
         else
         {
             move = new Random().NextDouble() < moveProbabilityOther;
+        }
+
+        if (Validate && move)
+        {
+            Validation.RefsActivated++;
         }
         return move;
     }
@@ -164,6 +201,7 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, ISocialNetwork
 
     private void MoveToNode(ILocation newNode)
     {
+        
         CurrentNode = newNode;
         LocationName = newNode.GetName();
         
@@ -182,6 +220,7 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, ISocialNetwork
             }
 
             Kins.Add(nextKin);
+            nextKin.Kins.Add(this);
         }
 
         for (int j = 0; j < _initNumFriends; j++)
@@ -193,6 +232,7 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, ISocialNetwork
             }
 
             Kins.Add(nextFriend);
+            nextFriend.Friends.Add(this);
         }
     }
 

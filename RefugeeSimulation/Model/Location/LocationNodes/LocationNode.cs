@@ -42,6 +42,8 @@ public class LocationNode : IVectorFeature, ILocation
     
     public int RefPop { get; set; }
     
+    public int InitRefPop { get; set; }
+    
     public Position Position { get; set; }
 
     public NodeLayer nodeLayer;
@@ -237,7 +239,7 @@ public class LocationNode : IVectorFeature, ILocation
 
     public void UpdateNormRefPop(int maxRefPop)
     {
-        NormRefPop = RefPop * 1.0 / (maxRefPop * 1.0 );
+        NormRefPop = (InitRefPop+RefPop) * 1.0 / (maxRefPop * 1.0 );
     }
     
     

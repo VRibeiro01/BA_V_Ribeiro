@@ -23,18 +23,19 @@ hgh*/
 public class NodeLayerTest
 {
     private readonly ITestOutputHelper _testOutputHelper;
+    private NodeLayer nodeLayer;
+    private ConflictLayer conflictLayer = new ConflictLayer();
+
+
+    private CampLayer campLayer;
+
+
+
 
     public NodeLayerTest(ITestOutputHelper testOutputHelper)
     {
         _testOutputHelper = testOutputHelper;
-    }
-
-    [Fact]
-    public void EnvironmentTest()
-    {
-        
-        // Arrange
-        var nodeLayer = new NodeLayer();
+        nodeLayer = new NodeLayer();
         nodeLayer.InitLayer(new LayerInitData
         {
             LayerInitConfig =
@@ -43,9 +44,33 @@ public class NodeLayerTest
             }
         });
 
-       
-       
-        foreach(var node in nodeLayer.Entities)
+
+
+        conflictLayer = new ConflictLayer();
+        conflictLayer.InitLayer(new LayerInitData
+        {
+            LayerInitConfig =
+            {
+                File = Path.Combine("C:\\Users\\vivia\\mars\\RefugeeSimulationSolution\\RefugeeSimulation\\Resources\\Conflicts_Syr_Tur_2022.geojson")
+            }
+        });
+        
+        
+        campLayer = new CampLayer();
+        campLayer.InitLayer(new LayerInitData
+        {
+            LayerInitConfig =
+            {
+                File = Path.Combine("C:\\Users\\vivia\\mars\\RefugeeSimulationSolution\\RefugeeSimulation\\Resources\\turkey_camps_idps.geojson")
+            }
+        });
+    }
+
+    [Fact]
+    public void EnvironmentTest()
+    {
+        
+       foreach(var node in nodeLayer.Entities)
         {
 
             if (node.GetName().EqualsIgnoreCase("Tell Abiad"))
@@ -82,37 +107,8 @@ public class NodeLayerTest
     public void LocationInitializationTest()
     {
         // Arrange
-     
-        var nodeLayer = new NodeLayer();
+
         nodeLayer.StartMonth = 9;
-        nodeLayer.InitLayer(new LayerInitData
-        {
-            LayerInitConfig =
-            {
-                File = Path.Combine("C:\\Users\\vivia\\mars\\RefugeeSimulationSolution\\Tests\\TestData", "selected_districts_for_test.geojson")
-            }
-           
-        });
-        
-     
-        var conflictLayer = new ConflictLayer();
-        conflictLayer.InitLayer(new LayerInitData
-        {
-            LayerInitConfig =
-            {
-                File = Path.Combine("C:\\Users\\vivia\\mars\\RefugeeSimulationSolution\\RefugeeSimulation\\Resources\\Conflicts_Syr_Tur_2022.geojson")
-            }
-        });
-        
-        var campLayer = new CampLayer();
-        campLayer.InitLayer(new LayerInitData
-        {
-            LayerInitConfig =
-            {
-                File = Path.Combine("C:\\Users\\vivia\\mars\\RefugeeSimulationSolution\\RefugeeSimulation\\Resources\\turkey_camps_idps.geojson")
-            }
-        });
-        
         
         // Act
 
@@ -207,17 +203,7 @@ public class NodeLayerTest
     {
         //Arrange
         
-        
-        var nodeLayer = new NodeLayer();
-        nodeLayer.InitLayer(new LayerInitData
-        {
-            LayerInitConfig =
-            {
-                File = Path.Combine("C:\\Users\\vivia\\mars\\RefugeeSimulationSolution\\Tests\\TestData", "selected_districts_for_test.geojson")
-            }
-        });
-
-
+     
         
         foreach(var node in nodeLayer.Entities)
         {
@@ -267,14 +253,7 @@ public class NodeLayerTest
         //Arrange
         
         
-        var nodeLayer = new NodeLayer();
-        nodeLayer.InitLayer(new LayerInitData
-        {
-            LayerInitConfig =
-            {
-                File = Path.Combine("C:\\Users\\vivia\\mars\\RefugeeSimulationSolution\\Tests\\TestData", "selected_districts_for_test.geojson")
-            }
-        });
+    
 
 
         var agent = new RefugeeAgent();
@@ -320,15 +299,7 @@ public class NodeLayerTest
     {
         //Arrange
         
-        
-        var nodeLayer = new NodeLayer();
-        nodeLayer.InitLayer(new LayerInitData
-        {
-            LayerInitConfig =
-            {
-                File = Path.Combine("C:\\Users\\vivia\\mars\\RefugeeSimulationSolution\\Tests\\TestData", "selected_districts_for_test.geojson")
-            }
-        });
+    
 
 
         var agent = new RefugeeAgent();

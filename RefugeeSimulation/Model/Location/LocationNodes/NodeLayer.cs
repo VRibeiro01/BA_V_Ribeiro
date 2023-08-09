@@ -44,7 +44,10 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
     public static double AnchorLat { get; set; }
     
     [PropertyDescription]
-    public int NumberNewTies { get; set; }
+    public int NumberNewTiesUpper { get; set; }
+    
+    [PropertyDescription]
+    public int NumberNewTiesLower { get; set; }
 
     public static Position AnchorCoordinates= Position.CreateGeoPosition(AnchorLong, AnchorLat);// Lat= 41.015137, Long= 28.979530
 
@@ -170,15 +173,22 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 
     public void PostTick()
     {
+        var random = new Random();
         foreach (var location in Entities)
         {
             if (location.NumCamps > 0)
             {
-                for (int i = 0; i < NumberNewTies; i++)
+                var bound = random.Next(NumberNewTiesLower, NumberNewTiesUpper + 1);
+                for (int i = 0; i < bound; i++)
                 {
                     location.GetRandomRefugeesAtNode(Environment);
                 }
             }
+        }
+
+        if (RefugeeAgent.Validate)
+        {
+            Validation.IncrementPercentageActivatedRefs();
         }
      
     }
@@ -204,7 +214,7 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
             
         }
 
-        return Entities.Max(location => location.RefPop);
+        return Entities.Max(location => location.InitRefPop+location.RefPop);
     }
 
     public List<LocationNode> GetEntities()
