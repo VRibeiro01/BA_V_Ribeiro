@@ -24,7 +24,7 @@ namespace LaserTagBox
             description.AddLayer<CampLayer>();
             description.AddLayer<NodeLayer>();
             description.AddLayer<RefugeeLayer>();
-           // description.AddLayer<SpawnScheduleLayer>();
+            description.AddLayer<SpawnScheduleLayer>();
             description.AddAgent<RefugeeAgent, RefugeeLayer>();
             
             

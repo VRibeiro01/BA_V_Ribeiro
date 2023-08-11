@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using LaserTagBox.Model.Location.Camps;
 using LaserTagBox.Model.Location.Conflict;
@@ -65,7 +66,7 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 
 
 
-    public String[] BorderCrossingNodes;
+    public List<String> BorderCrossingNodes;
 
 
 
@@ -79,8 +80,8 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
             StartMonth = SimulationContext.StartTimePoint.Value.Month;
         }
 
-        BorderCrossingNodes = new[]{"Lattakia", "Jisr-Ash-Shugur","Afrin","Al-Malikeyyeh", 
-            "KILIS", "SANLIURFA", "MARDIN", "HATAY"};
+        BorderCrossingNodes = new();
+        InitBorderCrossingsFromFile("Turkey","");
         
 
         base.InitLayer(layerInitData, registerAgentHandle, unregisterAgentHandle);
@@ -107,7 +108,7 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         {
              locationNode.Neighbours.AddRange(Entities.Where(location =>
                 location != locationNode &&
-                location.GetPosition().DistanceInKmTo(locationNode.GetPosition()) <= 25
+                location.GetPosition().DistanceInKmTo(locationNode.GetPosition()) <= 450
             ).ToList());
              
              
@@ -153,6 +154,9 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         }
         
         Console.WriteLine("Conflict Weight Data Type Test:  " + (ConflictWeight + LocationWeight));
+       BorderCrossingNodes.Select(
+            i
+                => string.Join(",",i)).ToList().ForEach(Console.WriteLine);
     }
     
  
@@ -206,20 +210,29 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 
     public int MaxRefPop()
     {
-        
-        foreach (var location in Entities)
-        {
-           location.RefPop = Environment.Explore(location.Position, -1D, -1, elem => 
-               location.Position.DistanceInKmTo(elem.Position) < 1).Count();
-            
-        }
-
-        return Entities.Max(location => location.InitRefPop+location.RefPop);
+        return Entities.Max(location => location.RefPop);
     }
 
     public List<LocationNode> GetEntities()
     {
         return Entities.ToList();
+    }
+
+    public void InitBorderCrossingsFromFile(string country1, string country2)
+    {
+        string basepath = @"..\..\..\..\RefugeeSimulation\Resources";
+        
+
+        string[] lines = System.IO.File.ReadAllLines(Path.Combine(basepath,"border_crossing_points.csv"));
+        foreach(string line in lines)
+        {
+            string[] columns = line.Split(',');
+            if (columns[1].EqualsIgnoreCase(country1) || columns[1].EqualsIgnoreCase(country2))
+            {
+                BorderCrossingNodes.Add(columns[0]);
+                
+            }
+        }
     }
 
     

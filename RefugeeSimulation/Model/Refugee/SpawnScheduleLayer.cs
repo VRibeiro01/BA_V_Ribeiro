@@ -37,7 +37,7 @@ public class SpawnScheduleLayer : ISteppedActiveLayer
 
     public void PreTick()
     {
-        RefugeeLayer.DistributeRefs();
+        RefugeeLayer.SpawnNewRefs();
     }
 
     public void PostTick()

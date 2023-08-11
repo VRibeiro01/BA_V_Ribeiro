@@ -48,8 +48,8 @@ public class RefugeeLayer : AbstractLayer
             AgentManager = layerInitData.Container.Resolve<IAgentManager>();
             RefugeeAgents = new List<RefugeeAgent>();
             
-            InitRefPop();
-            DistributeRefs();
+            InitRefs();
+            //SpawnNewRefs();
             
         
        
@@ -65,23 +65,32 @@ public class RefugeeLayer : AbstractLayer
         }
     }
 
-    public void InitRefPop()
+    public void InitRefs()
     {
+        var newRefs = new List<RefugeeAgent>();
         foreach (var nodePopPair in InitDistributionData)
         {
-            NodeLayer.GetLocationByName(nodePopPair.Key).InitRefPop = nodePopPair.Value;
+            newRefs.AddRange(AgentManager.Spawn<RefugeeAgent, RefugeeLayer>(null,
+                    agent => agent.Spawn(NodeLayer.GetLocationByName(nodePopPair.Key)))
+                .Take(nodePopPair.Value/5000
+                ));
 
         }
-        Console.WriteLine("Starting Refugee Population initialized!");
+        RefugeeAgents.AddRange(newRefs);
+        
+        if (RefugeeAgent.Validate) Validation.RefsSpawned += newRefs.Count;
+        
+        Console.WriteLine(newRefs.Count + " refugee agent(s) spawned");
+        InitSocialNetwork(newRefs);
     }
-    public void DistributeRefs()
+    public void SpawnNewRefs()
     {
         var newRefs = new List<RefugeeAgent>();
         foreach (var borderCrossingNode in NodeLayer.BorderCrossingNodes)
         {
             newRefs.AddRange(AgentManager.Spawn<RefugeeAgent, RefugeeLayer>(null,
                 agent => agent.Spawn(NodeLayer.GetLocationByName(borderCrossingNode)))
-                .Take(25
+                .Take(5
                 ));
 
         }

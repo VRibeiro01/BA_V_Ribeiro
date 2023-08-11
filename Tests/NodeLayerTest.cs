@@ -142,7 +142,7 @@ public class NodeLayerTest
                 Assert.True(node.AnchorScore > 0);
                 Assert.True(node.NormAnchorScore > 0);
                 Assert.True(node.Score != 0);
-                Assert.True(node.GetNeighbours().Count == 0);
+                Assert.True(node.GetNeighbours().Count> 0);
             }
             
             
@@ -159,7 +159,7 @@ public class NodeLayerTest
                 Assert.True(node.AnchorScore > 0);
                 Assert.True(node.NormAnchorScore > 0);
                 Assert.True(node.Score != 0);
-                Assert.True(node.GetNeighbours().Count == 1);
+                Assert.True(node.GetNeighbours().Count > 0);
             }
             
             if(node.GetName().EqualsIgnoreCase("Abu Qalqal"))
@@ -175,7 +175,7 @@ public class NodeLayerTest
                 Assert.True(node.AnchorScore > 0);
                 Assert.True(node.NormAnchorScore > 0);
                 Assert.True(node.Score != 0);
-                Assert.True(node.GetNeighbours().Count == 0);
+                Assert.True(node.GetNeighbours().Count > 0);
             }
             
             if(node.GetName().EqualsIgnoreCase("Jarablus"))
@@ -191,7 +191,7 @@ public class NodeLayerTest
                 Assert.True(node.AnchorScore > 0);
                 Assert.True(node.NormAnchorScore > 0);
                 Assert.True(node.Score != 0);
-                Assert.True(node.GetNeighbours().Count == 1);
+                Assert.True(node.GetNeighbours().Count > 0);
             }
         }
 
@@ -347,5 +347,82 @@ public class NodeLayerTest
         
         Assert.Equal(1,calcNumFriendsAtNode);
         Assert.Equal(1, calcNumFriendsAtNode1);
+    }
+
+
+    [Fact]
+    public void TurkeyDistrictsNeighboursTest()
+    {
+        // Arrange
+        var turkeyNodeLayer = new NodeLayer();
+        turkeyNodeLayer.InitLayer(new LayerInitData
+        {
+            LayerInitConfig =
+            {
+                File = Path.Combine("C:\\Users\\vivia\\mars\\RefugeeSimulationSolution\\Tests\\TestData", "turkey_districts_test.geojson")
+            }
+        });
+        
+        turkeyNodeLayer.StartMonth = 9;
+        
+        // Act
+
+        foreach (var node in nodeLayer.Entities)
+        {
+            node.InitConflicts(conflictLayer);
+            node.InitCamps(campLayer);
+        }
+
+        nodeLayer.InitLocationParams();
+        nodeLayer.PreTick();
+        
+       
+        
+        
+        
+        //Assert
+
+        foreach (var node in turkeyNodeLayer.Entities)
+        {
+            if (node.GetName().EqualsIgnoreCase("SANLIURFA"))
+            {
+                _testOutputHelper.WriteLine("Node: " + node.GetName());
+                _testOutputHelper.WriteLine("Camps: " + node.GetNumCampsAtNode());
+                _testOutputHelper.WriteLine("Conflicts: " + node.NumConflicts);
+                _testOutputHelper.WriteLine("Neighbours: " + node.GetNeighbours().Count);
+                _testOutputHelper.WriteLine("---------------------------------------------");
+                Assert.Equal(3,node.GetNeighbours().Count);
+            }
+            
+            if (node.GetName().EqualsIgnoreCase("MARDIN"))
+            {
+                _testOutputHelper.WriteLine("Node: " + node.GetName());
+                _testOutputHelper.WriteLine("Camps: " + node.GetNumCampsAtNode());
+                _testOutputHelper.WriteLine("Conflicts: " + node.NumConflicts);
+                _testOutputHelper.WriteLine("Neighbours: " + node.GetNeighbours().Count);
+                _testOutputHelper.WriteLine("---------------------------------------------");
+                Assert.Equal(3,node.GetNeighbours().Count);
+            }
+            
+            if (node.GetName().EqualsIgnoreCase("KILIS"))
+            {
+                _testOutputHelper.WriteLine("Node: " + node.GetName());
+                _testOutputHelper.WriteLine("Camps: " + node.GetNumCampsAtNode());
+                _testOutputHelper.WriteLine("Conflicts: " + node.NumConflicts);
+                _testOutputHelper.WriteLine("Neighbours: " + node.GetNeighbours().Count);
+                _testOutputHelper.WriteLine("---------------------------------------------");
+                Assert.Equal(3,node.GetNeighbours().Count);
+            }
+            
+            if (node.GetName().EqualsIgnoreCase("HATAY"))
+            {
+                _testOutputHelper.WriteLine("Node: " + node.GetName());
+                _testOutputHelper.WriteLine("Camps: " + node.GetNumCampsAtNode());
+                _testOutputHelper.WriteLine("Conflicts: " + node.NumConflicts);
+                _testOutputHelper.WriteLine("Neighbours: " + node.GetNeighbours().Count);
+                _testOutputHelper.WriteLine("---------------------------------------------");
+                Assert.True(node.GetNeighbours().Count>2 && node.GetNeighbours().Count<5);
+            }
+        }
     }
 }

@@ -117,5 +117,5 @@ public class Validation
         }
     }
 
-    //TODO num refs that crossed into Turkey
+    //TODO num refs that crossed into Turkey or leave the border
 }

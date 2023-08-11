@@ -38,11 +38,10 @@ public class LocationNode : IVectorFeature, ILocation
     
     public double AnchorScore { get; private set; }
 
-    public HashSet<ILocation> Neighbours = new HashSet<ILocation>();
+    public HashSet<LocationNode> Neighbours = new HashSet<LocationNode>();
     
     public int RefPop { get; set; }
     
-    public int InitRefPop { get; set; }
     
     public Position Position { get; set; }
 
@@ -120,7 +119,13 @@ public class LocationNode : IVectorFeature, ILocation
             {
                 country = "Turkey";
             }
+        } else if(VectorStructured.Data.ContainsKey("adm0_en") && !(VectorStructured.Data["adm0_en"] is null && VectorStructured.Data["adm0_en"].ToString().EqualsIgnoreCase("Turkey")))
+
+        {
+            country = "Turkey";
         }
+
+        
 
         Country = country;
 
@@ -212,7 +217,7 @@ public class LocationNode : IVectorFeature, ILocation
         return NumConflicts;
     }
 
-    public HashSet<ILocation> GetNeighbours()
+    public HashSet<LocationNode> GetNeighbours()
     {
         return Neighbours;
     }
@@ -246,7 +251,7 @@ public class LocationNode : IVectorFeature, ILocation
 
     public void UpdateNormRefPop(int maxRefPop)
     {
-        NormRefPop = (InitRefPop+RefPop) * 1.0 / (maxRefPop * 1.0 );
+        NormRefPop = RefPop * 1.0 / (maxRefPop * 1.0 );
     }
     
     

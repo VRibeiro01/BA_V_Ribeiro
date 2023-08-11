@@ -18,12 +18,12 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, ISocialNetwork
     public HashSet<RefugeeAgent> Kins { get; set; }
     public string LocationName { get; set; }
     
-    public ILocation OriginNode { get; set; }
+    public LocationNode OriginNode { get; set; }
     
-    public ILocation CurrentNode{ get; set; }
+    public LocationNode CurrentNode{ get; set; }
 
     private double _highestDesirabilityScore;
-    private ILocation _mostDesirableNode;
+    private LocationNode _mostDesirableNode;
     
     
     [PropertyDescription]
@@ -178,7 +178,7 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, ISocialNetwork
         return move;
     }
 
-    private void Assess(ILocation node)
+    private void Assess(LocationNode node)
     {
 
         var agentList = RefugeeLayer.RefugeeAgents;
@@ -199,13 +199,14 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, ISocialNetwork
         return ( (numKinsAtNode * KinWeight) + (numFriendsAtNode * FriendWeight) + score) ;
     }
 
-    private void MoveToNode(ILocation newNode)
+    private void MoveToNode(LocationNode newNode)
     {
-        
+        CurrentNode.RefPop--;
         CurrentNode = newNode;
         LocationName = newNode.GetName();
         
         Environment.MoveToPosition(this, newNode.GetPosition().Latitude, newNode.GetPosition().Longitude);
+        newNode.RefPop++;
     }
     
     public void InitSocialLinks()
@@ -277,11 +278,12 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, ISocialNetwork
         other.Friends.Add(this);
     }
 
-    public void Spawn(ILocation node)
+    public void Spawn(LocationNode node)
     {
         OriginNode = node;
         CurrentNode = node;
         LocationName = node.GetName();
+        CurrentNode.RefPop++;
         Position = Position.CreateGeoPosition(node.GetPosition().Longitude,
             node.GetPosition().Latitude);
         _mostDesirableNode = node;

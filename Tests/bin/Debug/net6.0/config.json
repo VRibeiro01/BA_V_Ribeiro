@@ -1,7 +1,7 @@
 {
   "globals": {
     "startTime": "2022-05-01T00:00",
-    "endTime": "2022-05-14T00:00",
+    "endTime": "2022-06-01T00:00",
     "deltaTUnit": "days",
     "output": "csv",
     "options": {
@@ -61,7 +61,7 @@
   "layers": [
     {
       "name": "NodeLayer",
-      "file": "Resources/turkey1_syria2_districts.geojson",
+      "file": "Resources/turkey_districts_1.geojson",
       "mapping": [
         {
           "parameter": "PopulationWeight",

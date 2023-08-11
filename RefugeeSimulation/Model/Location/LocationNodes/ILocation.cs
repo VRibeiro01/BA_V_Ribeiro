@@ -24,7 +24,7 @@ public interface ILocation
     /// If there are no neighbours, then an empty list is returned.
     /// </summary>
     /// <returns> set of neighbouring location nodes </returns>
-    public HashSet<ILocation> GetNeighbours();
+    public HashSet<LocationNode> GetNeighbours();
     
     
     /// <summary>

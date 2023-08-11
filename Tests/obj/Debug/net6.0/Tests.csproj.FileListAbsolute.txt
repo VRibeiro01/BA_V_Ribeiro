@@ -216,3 +216,4 @@ C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\i
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\idp_pop_syr_0922_adm3.csv
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\refpop_syr2_tur1_0422.csv
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\refpop_turkey.csv
+C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\border_crossing_points.csv

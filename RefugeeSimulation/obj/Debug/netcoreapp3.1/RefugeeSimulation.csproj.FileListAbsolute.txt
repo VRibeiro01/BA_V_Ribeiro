@@ -630,3 +630,4 @@ C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcor
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\idp_pop_syr_0922_adm3.csv
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\refpop_syr2_tur1_0422.csv
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\refpop_turkey.csv
+C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\border_crossing_points.csv
