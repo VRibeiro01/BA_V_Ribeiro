@@ -16,7 +16,7 @@ namespace LaserTagBox
         {
             // the scenario consist of the model (represented by the model description)
             // an the simulation configuration (see testConfig.json)
-            
+
             // Create a new model description that holds all parts of the model (agents, entities, layers)
             var description = new ModelDescription();
 
@@ -26,35 +26,30 @@ namespace LaserTagBox
             description.AddLayer<RefugeeLayer>();
             description.AddLayer<SpawnScheduleLayer>();
             description.AddAgent<RefugeeAgent, RefugeeLayer>();
-            
-            
-            
-            
-           
-            
-            
+
+
             // scenario definition
             // use testConfig.json that holds the specification of the scenario
             var file = File.ReadAllText("config.json");
             var config = SimulationConfig.Deserialize(file);
-            
-            
+
+
             var task = SimulationStarter.Start(description, config);
-            
+
             // Run simulation
             var loopResults = task.Run();
             RefugeeLayer refugeeLayer = loopResults.Model.Layers.Values.OfType<RefugeeLayer>().First();
             NodeLayer nodeLayer = loopResults.Model.Layers.Values.OfType<NodeLayer>().First();
-       
+
             if (RefugeeAgent.Validate)
             {
-                Validation.NumRuns = (int)loopResults.Iterations;
+                Validation.NumRuns = (int) loopResults.Iterations;
                 Validation.FillRoutes(refugeeLayer.RefugeeAgents);
                 Validation.FillTurkishDistrictsPop(nodeLayer.GetEntities().ToList());
                 Validation.Print();
             }
 
-            
+
             // Feedback to user that simulation run was successful
             Console.WriteLine($"Simulation execution finished after {loopResults.Iterations} steps");
         }

@@ -81,3 +81,8 @@ Cannot resolve parameter 'LaserTagBox.Model.Model.Location.LocationNodes.IEnviro
 [ERROR] 2023-08-02 12:59:39,351 | Mars.Components.Starter.SimulationStarter - ######################################################## 
 [ERROR] 2023-08-02 12:59:39,352 | Mars.Components.Starter.SimulationStarter - The process cannot access the file 'C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\trips.geojson' because it is being used by another process. 
 [ERROR] 2023-08-02 12:59:39,352 | Mars.Components.Starter.SimulationStarter - ######################################################## 
+[ERROR] 2023-08-12 02:29:43,277 | Mars.Components.Starter.SimulationStarter - MARS simulation execution crashed by ArgumentException 
+[ERROR] 2023-08-12 02:29:43,287 | Mars.Components.Starter.SimulationStarter - Exception message: 
+[ERROR] 2023-08-12 02:29:43,288 | Mars.Components.Starter.SimulationStarter - ######################################################## 
+[ERROR] 2023-08-12 02:29:43,289 | Mars.Components.Starter.SimulationStarter - The location YAYLADAGI  cannot be found in the system. 
+[ERROR] 2023-08-12 02:29:43,290 | Mars.Components.Starter.SimulationStarter - ######################################################## 

@@ -20,59 +20,44 @@ namespace LaserTagBox.Model.Location.LocationNodes;
 
 public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 {
-    public static NodeLayer NodeLayerInstance { get; private set; }
-
     public ISimulationContext SimulationContext;
 
     public int StartMonth;
 
-    [PropertyDescription]                                       
-    public double PopulationWeight { get; set; }
+    [PropertyDescription] public double PopulationWeight { get; set; }
 
-    [PropertyDescription]
-    public double CampWeight { get; set; }
+    [PropertyDescription] public double CampWeight { get; set; }
 
-    [PropertyDescription]
-    public double ConflictWeight { get; set; }
+    [PropertyDescription] public double ConflictWeight { get; set; }
 
-    [PropertyDescription]
-    public double LocationWeight{ get; set; }
+    [PropertyDescription] public double LocationWeight { get; set; }
 
-    [PropertyDescription]
-    public static double AnchorLong { get; set; }
-    
-    [PropertyDescription]
-    public static double AnchorLat { get; set; }
-    
-    [PropertyDescription]
-    public int NumberNewTiesUpper { get; set; }
-    
-    [PropertyDescription]
-    public int NumberNewTiesLower { get; set; }
+    [PropertyDescription] public static double AnchorLong { get; set; }
 
-    public static Position AnchorCoordinates= Position.CreateGeoPosition(AnchorLong, AnchorLat);// Lat= 41.015137, Long= 28.979530
+    [PropertyDescription] public static double AnchorLat { get; set; }
 
-    private GeoHashEnvironment<RefugeeAgent> Environment;
-    
-    
-    
+    [PropertyDescription] public int NumberNewTiesUpper { get; set; }
+
+    [PropertyDescription] public int NumberNewTiesLower { get; set; }
+
+    public static Position
+        AnchorCoordinates = Position.CreateGeoPosition(AnchorLong, AnchorLat); // Lat= 41.015137, Long= 28.979530
+
+    private GeoHashEnvironment<RefugeeAgent> _environment;
+
+
     // Layers
-    
-    [PropertyDescription]
-    public CampLayer CampLayer { get; set; }
-    
-    [PropertyDescription]
-    public ConflictLayer ConflictLayer { get; set; }
 
+    [PropertyDescription] public CampLayer CampLayer { get; set; }
+
+    [PropertyDescription] public ConflictLayer ConflictLayer { get; set; }
 
 
     public List<String> BorderCrossingNodes;
 
 
-
-
-
-    public override bool InitLayer(LayerInitData layerInitData, RegisterAgent registerAgentHandle = null, UnregisterAgent unregisterAgentHandle = null)
+    public override bool InitLayer(LayerInitData layerInitData, RegisterAgent registerAgentHandle = null,
+        UnregisterAgent unregisterAgentHandle = null)
     {
         SimulationContext = layerInitData.Context;
         if (StartMonth <= 0 && SimulationContext.StartTimePoint != null)
@@ -81,47 +66,43 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         }
 
         BorderCrossingNodes = new();
-        InitBorderCrossingsFromFile("Turkey","");
-        
+        InitBorderCrossingsFromFile("Turkey", "");
+
 
         base.InitLayer(layerInitData, registerAgentHandle, unregisterAgentHandle);
-        Environment = GeoHashEnvironment<RefugeeAgent>.BuildEnvironment(this.MaxLat, this.MinLat, this.MaxLon, this.MinLon);
+        _environment =
+            GeoHashEnvironment<RefugeeAgent>.BuildEnvironment(this.MaxLat, this.MinLat, this.MaxLon, this.MinLon);
         Debug();
         InitLocationParams();
-        NodeLayerInstance = this;
         return true;
     }
 
     public GeoHashEnvironment<RefugeeAgent> GetEnvironment()
     {
-        return Environment;
+        return _environment;
     }
 
-  
+
     public void InitLocationParams()
     {
         var maxNumCamps = Entities.Max(location => location.NumCamps) + 1; // add one to prevent division by zero
-        var maxNumConflicts = Entities.Max(location => location.NumConflicts) +1;
+        var maxNumConflicts = Entities.Max(location => location.NumConflicts) + 1;
         var maxAnchorScore = Entities.Max(location => location.AnchorScore);
-        
+
         foreach (var locationNode in Entities)
         {
-             locationNode.Neighbours.AddRange(Entities.Where(location =>
+            locationNode.Neighbours.AddRange(Entities.Where(location =>
                 location != locationNode &&
-                location.GetPosition().DistanceInKmTo(locationNode.GetPosition()) <= 450
+                location.Position.DistanceInKmTo(locationNode.Position) <= 70
             ).ToList());
-             
-             
-             
-             
-             locationNode.NormNumCamps = locationNode.NumCamps * 1.0 / (maxNumCamps * 1.0);
-             locationNode.NormNumConflicts = locationNode.NumConflicts  * 1.0/ (maxNumConflicts * 1.0);
-             locationNode.NormAnchorScore = locationNode.AnchorScore * 1.0 / (maxAnchorScore * 1.0 );
+
+
+            locationNode.NormNumCamps = locationNode.NumCamps * 1.0 / (maxNumCamps * 1.0);
+            locationNode.NormNumConflicts = locationNode.NumConflicts * 1.0 / (maxNumConflicts * 1.0);
+            locationNode.NormAnchorScore = locationNode.AnchorScore * 1.0 / (maxAnchorScore * 1.0);
         }
     }
 
-  
-    
 
     public LocationNode GetLocationByName(string locationName)
     {
@@ -130,7 +111,7 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 
         // put collected results in a list
         var locationNodes = locationByName.ToList();
-        
+
         // return result
         if (locationNodes.Any())
         {
@@ -138,31 +119,47 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         }
 
         // error handling
-        throw new ArgumentException("The location "+ locationName + "  cannot be found in the system.");
-       
+        throw new ArgumentException("The location " + locationName + "  cannot be found in the system.");
+    }
+
+    public List<LocationNode> GetLocationsInProvince(string provinceName)
+    {
+        var locationsInProvince = Entities.ToList().Where(prov =>
+            prov.GetProvinceName().Trim().EqualsIgnoreCase(provinceName.Trim()));
+
+        // put collected results in a list
+        var locationNodes = locationsInProvince.ToList();
+
+        // return result
+        if (locationNodes.Any())
+        {
+            return locationNodes;
+        }
+
+        // error handling
+        throw new ArgumentException("The province " + provinceName + "  cannot be found in the system.");
     }
 
     private void Debug()
     {
         if (!Entities.Any()) throw new ArgumentException("No Entities in Nodelayer");
-        
+
         Console.WriteLine(Entities.Count() + " Cities created!");
-        var unknownCountries = Entities.ToList().Where(city => city.GetCountry().EqualsIgnoreCase("Unknown"));
+        var unknownCountries = Entities.ToList().Where(city => city.Country.EqualsIgnoreCase("Unknown"));
         foreach (var c in unknownCountries)
         {
             Console.WriteLine(c.GetName());
         }
-        
+
         Console.WriteLine("Conflict Weight Data Type Test:  " + (ConflictWeight + LocationWeight));
-       BorderCrossingNodes.Select(
+        BorderCrossingNodes.Select(
             i
-                => string.Join(",",i)).ToList().ForEach(Console.WriteLine);
+                => string.Join(",", i)).ToList().ForEach(Console.WriteLine);
     }
-    
- 
+
+
     public void Tick()
     {
-        
     }
 
     public void PreTick()
@@ -171,7 +168,7 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         foreach (var location in Entities)
         {
             location.UpdateNormRefPop(maxRefPop);
-             CalcScore(location);
+            CalcScore(location);
         }
     }
 
@@ -185,7 +182,7 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
                 var bound = random.Next(NumberNewTiesLower, NumberNewTiesUpper + 1);
                 for (int i = 0; i < bound; i++)
                 {
-                    location.GetRandomRefugeesAtNode(Environment);
+                    location.GetRandomRefugeesAtNode(_environment);
                 }
             }
         }
@@ -194,18 +191,15 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         {
             Validation.IncrementPercentageActivatedRefs();
         }
-     
     }
 
 
     private void CalcScore(LocationNode location)
     {
-        
-            location.Score = (location.NormRefPop * PopulationWeight) + (location.NormAnchorScore * LocationWeight)
-                                                                      + (location.NormNumCamps * CampWeight) +
-                                                                      (location.NormNumConflicts * (-1) *
-                                                                       ConflictWeight);
-        
+        location.Score = (location.NormRefPop * PopulationWeight) + (location.NormAnchorScore * LocationWeight)
+                                                                  + (location.NormNumCamps * CampWeight) +
+                                                                  (location.NormNumConflicts * (-1) *
+                                                                   ConflictWeight);
     }
 
     public int MaxRefPop()
@@ -221,21 +215,16 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
     public void InitBorderCrossingsFromFile(string country1, string country2)
     {
         string basepath = @"..\..\..\..\RefugeeSimulation\Resources";
-        
 
-        string[] lines = System.IO.File.ReadAllLines(Path.Combine(basepath,"border_crossing_points.csv"));
-        foreach(string line in lines)
+
+        string[] lines = System.IO.File.ReadAllLines(Path.Combine(basepath, "border_crossing_points.csv"));
+        foreach (string line in lines)
         {
             string[] columns = line.Split(',');
             if (columns[1].EqualsIgnoreCase(country1) || columns[1].EqualsIgnoreCase(country2))
             {
                 BorderCrossingNodes.Add(columns[0]);
-                
             }
         }
     }
-
-    
-
-   
 }

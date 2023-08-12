@@ -8,10 +8,10 @@
       "delimiter": ";",
       "format": "en-EN"
     },
-    "csvOptions" : {
+    "csvOptions": {
       "outputPath": "../../../."
     },
-    "tripsOptions" : {
+    "tripsOptions": {
       "outputPath": "../../../."
     }
   },
@@ -36,32 +36,33 @@
           "value": 0.25
         },
         {
-          "parameter": "moveProbabilityCamp",
+          "parameter": "MoveProbabilityCamp",
           "value": 1.0
         },
         {
-          "parameter": "moveProbabilityConflict",
+          "parameter": "MoveProbabilityConflict",
           "value": 0.7
         },
         {
-          "parameter": "moveProbabilityOther",
+          "parameter": "MoveProbabilityOther",
           "value": 1.0
         },
         {
-         "parameter": "Validate",
-         "value": true
+          "parameter": "Validate",
+          "value": true
         }
       ],
-      "outputs": 
-      [
-        {"kind": "csv"}
+      "outputs": [
+        {
+          "kind": "csv"
+        }
       ]
     }
   ],
   "layers": [
     {
       "name": "NodeLayer",
-      "file": "Resources/turkey_districts_1.geojson",
+      "file": "Resources/turkey_districts_2.geojson",
       "mapping": [
         {
           "parameter": "PopulationWeight",
@@ -78,7 +79,7 @@
         {
           "parameter": "LocationWeight",
           "value": 0.25
-        }, 
+        },
         {
           "parameter": "AnchorLong",
           "value": 28.979530
@@ -99,7 +100,13 @@
     },
     {
       "name": "RefugeeLayer",
-      "file": "Resources/refpop_turkey.csv"
+      "file": "Resources/refpop_turkey.csv",
+      "mapping": [
+        {
+          "parameter": "RefsToSpawnAtBorder",
+          "value": 0.75
+        }
+      ]
     },
     {
       "name": "CampLayer",
@@ -112,6 +119,5 @@
     {
       "name": "SpawnScheduleLayer"
     }
-    
-    ]
+  ]
 }

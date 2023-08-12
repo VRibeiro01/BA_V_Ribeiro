@@ -15,20 +15,17 @@ namespace LaserTagBox.Model.Refugee;
 
 public class RefugeeLayer : AbstractLayer
 {
-    private Dictionary<String,int> InitDistributionData { get; set; }
-    
-    [PropertyDescription]
-    public NodeLayer NodeLayer { get; set; }
+    private Dictionary<String, int> InitDistributionData { get; set; }
+
+    [PropertyDescription] public NodeLayer NodeLayer { get; set; }
     public GeoHashEnvironment<RefugeeAgent> Environment { get; set; }
 
-    public  List<RefugeeAgent> RefugeeAgents;
+    public List<RefugeeAgent> RefugeeAgents;
 
     public IAgentManager AgentManager;
 
-   
 
-    
- 
+    [PropertyDescription] public int RefsToSpawnAtBorder { get; set; }
 
 
     public override bool InitLayer(LayerInitData layerInitData, RegisterAgent registerAgentHandle = null,
@@ -36,23 +33,19 @@ public class RefugeeLayer : AbstractLayer
     {
         base.InitLayer(layerInitData, registerAgentHandle, unregisterAgent);
 
-        
-       
-        
+
         InitDistributionData = layerInitData.LayerInitConfig.Inputs.Import()
             .OfType<IStructuredData>()
-            .ToDictionary(data => Convert.ToString(data.Data["Region"]), data=> Convert.ToInt32(data.Data["IDPs"]));
+            .ToDictionary(data => Convert.ToString(data.Data["Region"]), data => Convert.ToInt32(data.Data["IDPs"]));
 
         Environment = NodeLayer.GetEnvironment();
-        
-            AgentManager = layerInitData.Container.Resolve<IAgentManager>();
-            RefugeeAgents = new List<RefugeeAgent>();
-            
-            InitRefs();
-            //SpawnNewRefs();
-            
-        
-       
+
+        AgentManager = layerInitData.Container.Resolve<IAgentManager>();
+        RefugeeAgents = new List<RefugeeAgent>();
+
+        InitRefs();
+
+
         return true;
     }
 
@@ -70,36 +63,38 @@ public class RefugeeLayer : AbstractLayer
         var newRefs = new List<RefugeeAgent>();
         foreach (var nodePopPair in InitDistributionData)
         {
-            newRefs.AddRange(AgentManager.Spawn<RefugeeAgent, RefugeeLayer>(null,
-                    agent => agent.Spawn(NodeLayer.GetLocationByName(nodePopPair.Key)))
-                .Take(nodePopPair.Value/5000
-                ));
-
+            var provinces = NodeLayer.GetLocationsInProvince(nodePopPair.Key);
+            foreach (var province in provinces)
+            {
+                newRefs.AddRange(AgentManager.Spawn<RefugeeAgent, RefugeeLayer>(null,
+                        agent => agent.Spawn(province))
+                    .Take(nodePopPair.Value / provinces.Count / 4000
+                    ));
+            }
         }
-        RefugeeAgents.AddRange(newRefs);
-        
-        if (RefugeeAgent.Validate) Validation.RefsSpawned += newRefs.Count;
-        
-        Console.WriteLine(newRefs.Count + " refugee agent(s) spawned");
-        InitSocialNetwork(newRefs);
+
+        PostSpawnWork(newRefs);
     }
+
     public void SpawnNewRefs()
     {
         var newRefs = new List<RefugeeAgent>();
         foreach (var borderCrossingNode in NodeLayer.BorderCrossingNodes)
         {
             newRefs.AddRange(AgentManager.Spawn<RefugeeAgent, RefugeeLayer>(null,
-                agent => agent.Spawn(NodeLayer.GetLocationByName(borderCrossingNode)))
-                .Take(5
+                    agent => agent.Spawn(NodeLayer.GetLocationByName(borderCrossingNode)))
+                .Take(RefsToSpawnAtBorder
                 ));
-
         }
-        
+
+        PostSpawnWork(newRefs);
+    }
+
+    private void PostSpawnWork(List<RefugeeAgent> newRefs)
+    {
         RefugeeAgents.AddRange(newRefs);
-        
-        if (RefugeeAgent.Validate) Validation.RefsSpawned += newRefs.Count;
-        
         Console.WriteLine(newRefs.Count + " refugee agent(s) spawned");
+        if (RefugeeAgent.Validate) Validation.RefsSpawned += newRefs.Count;
         InitSocialNetwork(newRefs);
     }
 }

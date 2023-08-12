@@ -7,12 +7,10 @@ namespace LaserTagBox.Model.Refugee;
 
 public class SpawnScheduleLayer : ISteppedActiveLayer
 {
-    
     private ISimulationContext _simulationContext;
-    
-    [PropertyDescription]
-    public RefugeeLayer RefugeeLayer { get; set; }
-    
+
+    [PropertyDescription] public RefugeeLayer RefugeeLayer { get; set; }
+
     public bool InitLayer(LayerInitData layerInitData, RegisterAgent registerAgentHandle = null,
         UnregisterAgent unregisterAgent = null)
     {
@@ -22,17 +20,15 @@ public class SpawnScheduleLayer : ISteppedActiveLayer
 
     public long GetCurrentTick()
     {
-      return _simulationContext.CurrentTick;
+        return _simulationContext.CurrentTick;
     }
 
     public void SetCurrentTick(long currentStep)
     {
-        
     }
 
     public void Tick()
     {
-        
     }
 
     public void PreTick()
@@ -42,6 +38,5 @@ public class SpawnScheduleLayer : ISteppedActiveLayer
 
     public void PostTick()
     {
-        
     }
 }

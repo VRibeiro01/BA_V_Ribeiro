@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using LaserTagBox.Model.Location.Camps;
 using LaserTagBox.Model.Location.Conflict;
 using LaserTagBox.Model.Refugee;
 using Mars.Components.Environments;
-using Mars.Interfaces;
 using Mars.Interfaces.Data;
 using Mars.Interfaces.Environments;
 using Mars.Interfaces.Layers;
@@ -16,15 +14,14 @@ using Position = Mars.Interfaces.Environments.Position;
 
 namespace LaserTagBox.Model.Location.LocationNodes;
 
-public class LocationNode : IVectorFeature, ILocation
+public class LocationNode : IVectorFeature
 {
     public VectorStructuredData VectorStructured { get; private set; }
-    
-    
+
 
     public double Score { get; set; }
-    
-    public  int NumCamps { get; set; }
+
+    public int NumCamps { get; set; }
 
     public int NumConflicts { get; set; }
 
@@ -35,67 +32,70 @@ public class LocationNode : IVectorFeature, ILocation
     public double NormRefPop { get; set; }
 
     public double NormAnchorScore { get; set; }
-    
+
     public double AnchorScore { get; private set; }
 
-    public HashSet<LocationNode> Neighbours = new HashSet<LocationNode>();
-    
+    public HashSet<LocationNode> Neighbours = new();
+
     public int RefPop { get; set; }
-    
-    
+
+
     public Position Position { get; set; }
 
-    public NodeLayer nodeLayer;
-    
+    public NodeLayer NodeLayer;
+
     public String Country { get; set; }
-    
-    
-
-
-
-
-
-
-
-    
-
-    
-
-    
 
 
     public void Init(ILayer layer, VectorStructuredData data)
     {
         VectorStructured = data;
 
-        
 
-        var name = "Unknown";
-
+        var name1 = "Unknown";
+        var name2 = "Unknown";
+        var name3 = "Unknown";
 
 
         if (VectorStructured.Data.ContainsKey("ADM3_EN") && !(VectorStructured.Data["ADM3_EN"] is null))
-            name = VectorStructured.Data["ADM3_EN"].ToString();
+        {
+            name3 = VectorStructured.Data["ADM3_EN"].ToString();
+        }
         else if (VectorStructured.Data.ContainsKey("ADM3_REF") && !(VectorStructured.Data["ADM3_REF"] is null))
-            name = VectorStructured.Data["ADM3_REF"].ToString();
+        {
+            name3 = VectorStructured.Data["ADM3_REF"].ToString();
+        }
         else if (VectorStructured.Data.ContainsKey("ADM3ALT1EN") && !(VectorStructured.Data["ADM3ALT1EN"] is null))
-            name = VectorStructured.Data["ADM3ALT1EN"].ToString();
+        {
+            name3 = VectorStructured.Data["ADM3ALT1EN"].ToString();
+        }
         else if (VectorStructured.Data.ContainsKey("ADM3ALT2EN") && !(VectorStructured.Data["ADM3ALT2EN"] is null))
-            name = VectorStructured.Data["ADM3ALT2EN"].ToString();
-        else if (VectorStructured.Data.ContainsKey("ADM2_EN") && !(VectorStructured.Data["ADM2_EN"] is null))
-            name = VectorStructured.Data["ADM2_EN"].ToString();
-        else if (VectorStructured.Data.ContainsKey("adm2_en")&& !(VectorStructured.Data["adm2_en"] is null))
-            name = VectorStructured.Data["adm2_en"].ToString();
-        else if (VectorStructured.Data.ContainsKey("adm1_en") && !(VectorStructured.Data["adm1_en"] is null))
-            name = VectorStructured.Data["adm1_en"].ToString();
+        {
+            name3 = VectorStructured.Data["ADM3ALT2EN"].ToString();
+        }
+
+        if (VectorStructured.Data.ContainsKey("ADM2_EN") && !(VectorStructured.Data["ADM2_EN"] is null))
+        {
+            name2 = VectorStructured.Data["ADM2_EN"].ToString();
+        }
+        else if (VectorStructured.Data.ContainsKey("adm2_en") && !(VectorStructured.Data["adm2_en"] is null))
+        {
+            name2 = VectorStructured.Data["adm2_en"].ToString();
+        }
+
+        if (VectorStructured.Data.ContainsKey("adm1_en") && !(VectorStructured.Data["adm1_en"] is null))
+        {
+            name1 = VectorStructured.Data["adm1_en"].ToString();
+        }
         else if (VectorStructured.Data.ContainsKey("ADM1_EN") && !(VectorStructured.Data["ADM1_EN"] is null))
-            name = VectorStructured.Data["ADM1_EN"].ToString();
-        
-        VectorStructured.Data.Add("Name", name);
-        
-        
-        
-        
+        {
+            name1 = VectorStructured.Data["ADM1_EN"].ToString();
+        }
+
+        VectorStructured.Data.Add("Name1", name1);
+        VectorStructured.Data.Add("Name2", name2);
+        VectorStructured.Data.Add("Name3", name3);
+
 
         var country = "Unknown";
 
@@ -105,63 +105,54 @@ public class LocationNode : IVectorFeature, ILocation
                 VectorStructured.Data["layer"].ToString().Contains("turkey"))
             {
                 country = "Turkey";
-            } else if (!(VectorStructured.Data["layer"] is null) &&
-                       VectorStructured.Data["layer"].ToString().Contains("syria"))
+            }
+            else if (!(VectorStructured.Data["layer"] is null) &&
+                     VectorStructured.Data["layer"].ToString().Contains("syria"))
             {
                 country = "Syria";
             }
-        } else if (VectorStructured.Data.ContainsKey("ADM0_EN") && !(VectorStructured.Data["ADM0_EN"] is null))
+        }
+        else if (VectorStructured.Data.ContainsKey("ADM0_EN") && !(VectorStructured.Data["ADM0_EN"] is null) &&
+                 VectorStructured.Data["ADM0_EN"].ToString().EqualsIgnoreCase("Syrian Arab Republic"))
         {
-            if (VectorStructured.Data["ADM0_EN"].ToString().EqualsIgnoreCase("Syrian Arab Republic"))
-            {
-                country = "Syria";
-            } else if (VectorStructured.Data["ADM0_EN"].ToString().EqualsIgnoreCase("Turkey"))
-            {
-                country = "Turkey";
-            }
-        } else if(VectorStructured.Data.ContainsKey("adm0_en") && !(VectorStructured.Data["adm0_en"] is null && VectorStructured.Data["adm0_en"].ToString().EqualsIgnoreCase("Turkey")))
-
+            country = "Syria";
+        }
+        else if (VectorStructured.Data.ContainsKey("adm1_tr") && !(VectorStructured.Data["adm1_tr"] is null))
         {
             country = "Turkey";
         }
 
-        
-
         Country = country;
 
 
+        NodeLayer = (NodeLayer) layer;
 
-        nodeLayer = (NodeLayer) layer;
-
-        if (!(nodeLayer.CampLayer is null) && !(nodeLayer.ConflictLayer is null))
+        if (!(NodeLayer.CampLayer is null) && !(NodeLayer.ConflictLayer is null))
         {
-            InitCamps(nodeLayer.CampLayer);
-            InitConflicts(nodeLayer.ConflictLayer);
+            InitCamps(NodeLayer.CampLayer);
+            InitConflicts(NodeLayer.ConflictLayer);
         }
 
 
         Position = Position.CreateGeoPosition(GetCentroidPosition().Longitude, GetCentroidPosition().Latitude);
-       AnchorScore = Math.Sqrt(Math.Pow(Position.X - NodeLayer.AnchorCoordinates.X, 2) + Math.Pow(Position.Y - NodeLayer.AnchorCoordinates.Y, 2)
-       
-       );
-
-
+        AnchorScore = Math.Sqrt(Math.Pow(Position.X - NodeLayer.AnchorCoordinates.X, 2) +
+                                Math.Pow(Position.Y - NodeLayer.AnchorCoordinates.Y, 2)
+        );
     }
 
     public void InitConflicts(ConflictLayer conflictLayer)
     {
         var conflicts = conflictLayer.GetConflicts();
 
-    
-         foreach (var conflict in conflicts)
-         {
-             if (conflict.Month == nodeLayer.StartMonth &&
-                 conflict.GetConflictGeometry().IsWithinDistance(VectorStructured.Geometry, 0))
-             {
-                 NumConflicts++;
-             }
-         }
-     
+
+        foreach (var conflict in conflicts)
+        {
+            if (conflict.Month == NodeLayer.StartMonth &&
+                conflict.GetConflictGeometry().IsWithinDistance(VectorStructured.Geometry, 0))
+            {
+                NumConflicts++;
+            }
+        }
     }
 
     public void InitCamps(CampLayer campLayer)
@@ -176,64 +167,61 @@ public class LocationNode : IVectorFeature, ILocation
             }
         }
     }
-    
+
 
     public string GetName()
     {
-        return VectorStructured.Data["Name"].ToString();
+        if (!VectorStructured.Data["Name3"].ToString().EqualsIgnoreCase("Unknown"))
+        {
+            return VectorStructured.Data["Name3"].ToString();
+        }
+
+        if (!VectorStructured.Data["Name2"].ToString().EqualsIgnoreCase("Unknown"))
+        {
+            return VectorStructured.Data["Name2"].ToString();
+        }
+
+        return VectorStructured.Data["Name1"].ToString();
     }
-    public string GetCountry()
+
+    public string GetProvinceName()
     {
-        return Country;
+        if (!VectorStructured.Data["Name1"].ToString().EqualsIgnoreCase("Unknown"))
+        {
+            return VectorStructured.Data["Name1"].ToString();
+        }
+
+        if (!VectorStructured.Data["Name2"].ToString().EqualsIgnoreCase("Unknown"))
+        {
+            return VectorStructured.Data["Name2"].ToString();
+        }
+
+        return VectorStructured.Data["Name3"].ToString();
     }
+
     public Position GetCentroidPosition()
     {
-        
         Point centroidPoint = VectorStructured.Geometry.Centroid;
         return new Position(centroidPoint.X, centroidPoint.Y);
     }
 
     public Geometry GetGeometry()
     {
-       return VectorStructured.Geometry;
+        return VectorStructured.Geometry;
     }
 
-    public Position GetPosition()
-    {
-        return Position;
-    }
 
     public void Update(VectorStructuredData data)
     {
     }
-    
-    public int GetNumCampsAtNode()
-    {
-        return NumCamps;
-    }
 
-    public int GetNumConflictsAtNode()
-    {
-        return NumConflicts;
-    }
-
-    public HashSet<LocationNode> GetNeighbours()
-    {
-        return Neighbours;
-    }
-
-    public double GetScore()
-    {
-        return Score;
-    }
-    
 
     public void GetRandomRefugeesAtNode(GeoHashEnvironment<RefugeeAgent> environment)
     {
-        ISocialNetwork[] refsAtNode = environment.Explore(Position, -1D, -1, elem => elem is not null &&
+        RefugeeAgent[] refsAtNode = environment.Explore(Position, -1D, -1, elem => elem is not null &&
             elem.Position.DistanceInKmTo(Position) < 1).ToArray();
-            
-           
+
+
         if (refsAtNode.Length > 1)
         {
             var ref1 = refsAtNode[new Random().Next(refsAtNode.Length - 1)];
@@ -241,18 +229,15 @@ public class LocationNode : IVectorFeature, ILocation
 
             while (ref2 == ref1)
             {
-                ref2 = refsAtNode[new Random().Next(refsAtNode.Length )];
+                ref2 = refsAtNode[new Random().Next(refsAtNode.Length)];
             }
-            
-            ref1.UpdateSocialNetwork(ref2);
 
+            ref1.UpdateSocialNetwork(ref2);
         }
     }
 
     public void UpdateNormRefPop(int maxRefPop)
     {
-        NormRefPop = RefPop * 1.0 / (maxRefPop * 1.0 );
+        NormRefPop = RefPop * 1.0 / (maxRefPop * 1.0);
     }
-    
-    
 }
