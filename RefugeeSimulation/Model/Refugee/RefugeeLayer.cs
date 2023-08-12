@@ -44,6 +44,10 @@ public class RefugeeLayer : AbstractLayer
         RefugeeAgents = new List<RefugeeAgent>();
 
         InitRefs();
+        if (RefugeeAgent.Validate)
+        {
+            Validation.FillTurkishDistrictsInitPop(NodeLayer.GetEntities());
+        }
 
 
         return true;

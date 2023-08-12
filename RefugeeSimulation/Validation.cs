@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using LaserTagBox.Model.Location.LocationNodes;
 using LaserTagBox.Model.Refugee;
+using Mars.Common.Core;
 using NetTopologySuite.Geometries;
 using ServiceStack;
 
@@ -12,13 +13,18 @@ namespace LaserTagBox;
 public class Validation
 {
     //
-    public static Dictionary<Tuple<string, string>, int> Routes = new Dictionary<Tuple<string, string>, int>();
+    public static Dictionary<Tuple<string, string>, int> Routes = new();
 
 
-    public static Dictionary<Tuple<string, Geometry>, int> TurkishDistrictsPop =
-        new Dictionary<Tuple<string, Geometry>, int>();
+    public static Dictionary<Tuple<string>, int> TurkishDistrictsPop =
+        new();
+    
+    public static Dictionary<Tuple<string>, int> TurkishDistrictsInitPop =
+        new();
 
     public static int NumRuns;
+
+    public static int NumSimRuns;
 
     public static int RefsSpawned;
 
@@ -58,7 +64,6 @@ public class Validation
         Console.WriteLine(
             "----------------Routes -----------------"
         );
-        //Routes.Select(i => $"{i.Key} => {i.Value}").ToList().ForEach(Console.WriteLine);
         Routes.Select(
             i
                 => string.Join(",", i.Key) + " => " + i.Value).ToList().ForEach(Console.WriteLine);
@@ -107,8 +112,42 @@ public class Validation
         var turkeyDistricts = districts.Where(d => d.Country.EqualsIgnoreCase("Turkey"));
         foreach (var district in turkeyDistricts)
         {
-            var tuple = new Tuple<string, Geometry>(district.GetName(), district.GetGeometry());
+            var tuple = new Tuple<string>(district.GetName());
+            if (!TurkishDistrictsPop.ContainsKey(tuple))
+            {
+                TurkishDistrictsPop.Add(tuple, district.RefPop);
+            }
+            else
+            {
+                TurkishDistrictsPop[tuple] += district.RefPop;
+            }
+            
+        }
+    }
+    
+    public static void FillTurkishDistrictsInitPop(List<LocationNode> districts)
+    {
+        var turkeyDistricts = districts.Where(d => d.Country.EqualsIgnoreCase("Turkey"));
+        foreach (var district in turkeyDistricts)
+        {
+            var tuple = new Tuple<string>(district.GetName());
             TurkishDistrictsPop.Add(tuple, district.RefPop);
         }
     }
+
+    public static void CalcAverageDistribution()
+    {
+        foreach (var keyValuePair in TurkishDistrictsPop)
+        {
+            TurkishDistrictsPop[keyValuePair.Key] = keyValuePair.Value / NumSimRuns;
+        }
+        
+        foreach (var keyValuePair in Routes)
+        {
+            Routes[keyValuePair.Key] = keyValuePair.Value / NumSimRuns;
+        }
+    }
+    
+    // TODO write routes ann district pops to files
+    
 }
