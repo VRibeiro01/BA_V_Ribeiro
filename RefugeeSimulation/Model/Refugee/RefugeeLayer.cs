@@ -72,7 +72,7 @@ public class RefugeeLayer : AbstractLayer
             {
                 newRefs.AddRange(AgentManager.Spawn<RefugeeAgent, RefugeeLayer>(null,
                         agent => agent.Spawn(province))
-                    .Take(nodePopPair.Value / provinces.Count / 4000
+                    .Take(nodePopPair.Value / provinces.Count / 5000
                     ));
             }
         }

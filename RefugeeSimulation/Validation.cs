@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using LaserTagBox.Model.Location.LocationNodes;
 using LaserTagBox.Model.Refugee;
-using Mars.Common.Core;
-using NetTopologySuite.Geometries;
 using ServiceStack;
 
 namespace LaserTagBox;
@@ -16,10 +14,10 @@ public class Validation
     public static Dictionary<Tuple<string, string>, int> Routes = new();
 
 
-    public static Dictionary<Tuple<string>, int> TurkishDistrictsPop =
+    public static Dictionary<string, int> TurkishDistrictsPop =
         new();
     
-    public static Dictionary<Tuple<string>, int> TurkishDistrictsInitPop =
+    public static Dictionary<string, int> TurkishDistrictsInitPop =
         new();
 
     public static int NumRuns;
@@ -70,7 +68,7 @@ public class Validation
 
         Console.WriteLine("-------------------- Districts Refpop > 0 ---------------");
         TurkishDistrictsPop.Where(i => i.Value > 0)
-            .Select(i => $"{i.Key.Item1} => {i.Value}").ToList().ForEach(Console.WriteLine);
+            .Select(i => $"{i.Key} => {i.Value}").ToList().ForEach(Console.WriteLine);
     }
 
     public static double CalcPercentageRefsActivated()
@@ -112,14 +110,14 @@ public class Validation
         var turkeyDistricts = districts.Where(d => d.Country.EqualsIgnoreCase("Turkey"));
         foreach (var district in turkeyDistricts)
         {
-            var tuple = new Tuple<string>(district.GetName());
-            if (!TurkishDistrictsPop.ContainsKey(tuple))
+            var name = district.GetName();
+            if (!TurkishDistrictsPop.ContainsKey(name))
             {
-                TurkishDistrictsPop.Add(tuple, district.RefPop);
+                TurkishDistrictsPop.Add(name, district.RefPop);
             }
             else
             {
-                TurkishDistrictsPop[tuple] += district.RefPop;
+                TurkishDistrictsPop[name] += district.RefPop;
             }
             
         }
@@ -127,27 +125,54 @@ public class Validation
     
     public static void FillTurkishDistrictsInitPop(List<LocationNode> districts)
     {
+        if (TurkishDistrictsInitPop.Count > 0) return;
         var turkeyDistricts = districts.Where(d => d.Country.EqualsIgnoreCase("Turkey"));
         foreach (var district in turkeyDistricts)
         {
-            var tuple = new Tuple<string>(district.GetName());
-            TurkishDistrictsPop.Add(tuple, district.RefPop);
+            var name = district.GetName();
+            TurkishDistrictsInitPop.Add(name, district.RefPop);
         }
     }
 
     public static void CalcAverageDistribution()
     {
-        foreach (var keyValuePair in TurkishDistrictsPop)
+        foreach (var key in TurkishDistrictsPop.Keys.ToList())
         {
-            TurkishDistrictsPop[keyValuePair.Key] = keyValuePair.Value / NumSimRuns;
+            TurkishDistrictsPop[key]   /= NumSimRuns;
         }
         
-        foreach (var keyValuePair in Routes)
+        foreach (var key in Routes.Keys.ToList())
         {
-            Routes[keyValuePair.Key] = keyValuePair.Value / NumSimRuns;
+            Routes[key] /= NumSimRuns;
         }
     }
     
     // TODO write routes ann district pops to files
-    
+
+    public static void WriteToFile(int numRuns)
+    {
+        var docPath = Path.Combine(Environment.CurrentDirectory, @"Resources\Validation");
+            File.WriteAllText(Path.Combine(docPath,"InitPop.csv"),"Region,InitPop\n");
+        foreach (var districtPopPair in TurkishDistrictsInitPop)
+        {
+            File.AppendAllText(Path.Combine(docPath,"InitPop.csv"),districtPopPair.Key+","+districtPopPair.Value+'\n');
+        }
+        
+        
+        File.WriteAllText(Path.Combine(docPath,"RefPop"+numRuns+".csv"),"Region,RefPop\n");
+        foreach (var districtPopPair in TurkishDistrictsPop)
+        {
+            File.AppendAllText(Path.Combine(docPath,"RefPop"+numRuns+".csv"),districtPopPair.Key+","+districtPopPair.Value+'\n');
+        }
+        
+        File.WriteAllText(Path.Combine(docPath,"Routes"+numRuns+".csv"),"Origin,Destination,Number\n");
+        foreach (var routeNumberPair in Routes)
+        {
+            File.AppendAllText(Path.Combine(docPath,"Routes"+numRuns+".csv"),
+                routeNumberPair.Key.Item1+","+
+                routeNumberPair.Key.Item2+"," + 
+                routeNumberPair.Value+'\n');
+        }
+        
+    }
 }

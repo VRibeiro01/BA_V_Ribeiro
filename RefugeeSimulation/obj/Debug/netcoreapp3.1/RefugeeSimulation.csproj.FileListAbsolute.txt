@@ -492,7 +492,6 @@ C:\Users\vivia\mars\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\Conflict
 C:\Users\vivia\mars\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\Conflicts_Syr_Tur_2022.qmd
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\config.json
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\active_turkey_camps.geojson
-C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\conflicts.json
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\Conflicts_Syr_Turk_23.geojson
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\Conflicts_Syr_Turk_23.qmd
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\Conflicts_Syr_Tur_2022.geojson

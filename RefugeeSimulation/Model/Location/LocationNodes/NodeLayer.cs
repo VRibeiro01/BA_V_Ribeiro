@@ -55,6 +55,8 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 
     public List<String> BorderCrossingNodes;
 
+    public List<LocationNode> EntitiesList { get; set; }
+
 
     public override bool InitLayer(LayerInitData layerInitData, RegisterAgent registerAgentHandle = null,
         UnregisterAgent unregisterAgentHandle = null)
@@ -72,9 +74,28 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         base.InitLayer(layerInitData, registerAgentHandle, unregisterAgentHandle);
         _environment =
             GeoHashEnvironment<RefugeeAgent>.BuildEnvironment(this.MaxLat, this.MinLat, this.MaxLon, this.MinLon);
+        EntitiesList = Entities.ToList();
+        RemoveDupes();
         Debug();
         InitLocationParams();
         return true;
+    }
+
+    private void RemoveDupes()
+    {
+        var list = new List<String>();
+        
+        foreach (var locationNode in Entities)
+        {
+            if (!list.Contains(locationNode.GetName()))
+            {
+                list.Add(locationNode.GetName());
+            }
+            else
+            {
+                EntitiesList.Remove(locationNode);
+            }
+        }
     }
 
     public GeoHashEnvironment<RefugeeAgent> GetEnvironment()
@@ -85,13 +106,13 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 
     public void InitLocationParams()
     {
-        var maxNumCamps = Entities.Max(location => location.NumCamps) + 1; // add one to prevent division by zero
-        var maxNumConflicts = Entities.Max(location => location.NumConflicts) + 1;
-        var maxAnchorScore = Entities.Max(location => location.AnchorScore);
+        var maxNumCamps = EntitiesList.Max(location => location.NumCamps) + 1; // add one to prevent division by zero
+        var maxNumConflicts = EntitiesList.Max(location => location.NumConflicts) + 1;
+        var maxAnchorScore = EntitiesList.Max(location => location.AnchorScore);
 
-        foreach (var locationNode in Entities)
+        foreach (var locationNode in EntitiesList)
         {
-            locationNode.Neighbours.AddRange(Entities.Where(location =>
+            locationNode.Neighbours.AddRange(EntitiesList.Where(location =>
                 location != locationNode &&
                 location.Position.DistanceInKmTo(locationNode.Position) <= 70
             ).ToList());
@@ -106,7 +127,7 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 
     public LocationNode GetLocationByName(string locationName)
     {
-        var locationByName = Entities.ToList().Where(city =>
+        var locationByName = EntitiesList.Where(city =>
             city.GetName().Trim().EqualsIgnoreCase(locationName.Trim()));
 
         // put collected results in a list
@@ -124,7 +145,7 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 
     public List<LocationNode> GetLocationsInProvince(string provinceName)
     {
-        var locationsInProvince = Entities.ToList().Where(prov =>
+        var locationsInProvince = EntitiesList.Where(prov =>
             prov.GetProvinceName().Trim().EqualsIgnoreCase(provinceName.Trim()));
 
         // put collected results in a list
@@ -142,10 +163,10 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 
     private void Debug()
     {
-        if (!Entities.Any()) throw new ArgumentException("No Entities in Nodelayer");
+        if (!EntitiesList.Any()) throw new ArgumentException("No Entities in Nodelayer");
 
-        Console.WriteLine(Entities.Count() + " Cities created!");
-        var unknownCountries = Entities.ToList().Where(city => city.Country.EqualsIgnoreCase("Unknown"));
+        Console.WriteLine(EntitiesList.Count + " Cities created!");
+        var unknownCountries = EntitiesList.Where(city => city.Country.EqualsIgnoreCase("Unknown"));
         foreach (var c in unknownCountries)
         {
             Console.WriteLine(c.GetName());
@@ -165,7 +186,7 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
     public void PreTick()
     {
         var maxRefPop = MaxRefPop();
-        foreach (var location in Entities)
+        foreach (var location in EntitiesList)
         {
             location.UpdateNormRefPop(maxRefPop);
             CalcScore(location);
@@ -175,7 +196,7 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
     public void PostTick()
     {
         var random = new Random();
-        foreach (var location in Entities)
+        foreach (var location in EntitiesList)
         {
             if (location.NumCamps > 0)
             {
@@ -204,19 +225,19 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 
     public int MaxRefPop()
     {
-        return Entities.Max(location => location.RefPop);
+        return EntitiesList.Max(location => location.RefPop);
     }
 
     public List<LocationNode> GetEntities()
     {
-        return Entities.ToList();
+        return EntitiesList;
     }
 
     public void InitBorderCrossingsFromFile(string country1, string country2)
     {
-        string basepath = @"..\..\..\..\RefugeeSimulation\Resources";
+        string basepath = Path.Combine(Environment.CurrentDirectory, @"Resources");
 
-
+        Path.Combine(Environment.CurrentDirectory, @"Resources");
         string[] lines = System.IO.File.ReadAllLines(Path.Combine(basepath, "border_crossing_points.csv"));
         foreach (string line in lines)
         {

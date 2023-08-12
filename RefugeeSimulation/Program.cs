@@ -51,9 +51,11 @@ namespace LaserTagBox
                     Validation.FillRoutes(refugeeLayer.RefugeeAgents);
                     Validation.FillTurkishDistrictsPop(nodeLayer.GetEntities().ToList());
                     //Validation.Print();
+                    task = SimulationStarter.Start(description, config);
                     loopResults = task.Run();
                 }
                 Validation.CalcAverageDistribution();
+                Validation.WriteToFile(1);
             }
 
 

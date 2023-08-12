@@ -1,17 +1,17 @@
 {
   "globals": {
     "startTime": "2022-05-01T00:00",
-    "endTime": "2022-06-01T00:00",
+    "endTime": "2022-05-15T00:00",
     "deltaTUnit": "days",
     "output": "csv",
     "options": {
       "delimiter": ";",
       "format": "en-EN"
     },
-    "csvOptions" : {
+    "csvOptions": {
       "outputPath": "../../../."
     },
-    "tripsOptions" : {
+    "tripsOptions": {
       "outputPath": "../../../."
     }
   },
@@ -52,9 +52,10 @@
           "value": true
         }
       ],
-      "outputs":
-      [
-        {"kind": "csv"}
+      "outputs": [
+        {
+          "kind": "csv"
+        }
       ]
     }
   ],
@@ -103,9 +104,9 @@
       "mapping": [
         {
           "parameter": "RefsToSpawnAtBorder",
-          "value": 0.75
+          "value": 2
         }
-        ]
+      ]
     },
     {
       "name": "CampLayer",
@@ -118,6 +119,5 @@
     {
       "name": "SpawnScheduleLayer"
     }
-
   ]
 }
