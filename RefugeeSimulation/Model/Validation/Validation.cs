@@ -151,7 +151,7 @@ public class Validation
 
     public static void WriteToFile(int numRuns)
     {
-        var docPath = Path.Combine(Environment.CurrentDirectory, @"Resources\Validation");
+        var docPath = Environment.CurrentDirectory;
             File.WriteAllText(Path.Combine(docPath,"InitPop.csv"),"Region,InitPop\n");
         foreach (var districtPopPair in TurkishDistrictsInitPop)
         {

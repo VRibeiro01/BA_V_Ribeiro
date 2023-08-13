@@ -1,7 +1,7 @@
 {
   "globals": {
     "startTime": "2022-05-01T00:00",
-    "endTime": "2022-05-15T00:00",
+    "endTime": "2022-07-01T00:00",
     "deltaTUnit": "days",
     "output": "csv",
     "options": {
@@ -104,7 +104,7 @@
       "mapping": [
         {
           "parameter": "RefsToSpawnAtBorder",
-          "value": 2
+          "value": 5
         }
       ]
     },

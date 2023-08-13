@@ -13,26 +13,8 @@ namespace LaserTagBox.Model.Refugee;
 
 public class RefugeeAgent : IAgent<RefugeeLayer>, IPositionable
 {
-    public HashSet<RefugeeAgent> Friends { get; set; }
-    public HashSet<RefugeeAgent> Kins { get; set; }
-    public string LocationName { get; set; }
-
-    public LocationNode OriginNode { get; set; }
-
-    public LocationNode CurrentNode { get; set; }
-
-    private double _highestDesirabilityScore;
-    private LocationNode _mostDesirableNode;
-
-
-    [PropertyDescription] public static bool Validate { get; set; }
-
-    // Layer
-    public RefugeeLayer RefugeeLayer { get; private set; }
-    public GeoHashEnvironment<RefugeeAgent> Environment;
-
-
-    // Parameter Properties
+    
+  //------------------------------- Parameters needed to calculate location desirability ------------------------
 
     [PropertyDescription] public double MoveProbabilityConflict { get; set; }
 
@@ -47,6 +29,33 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, IPositionable
 
     [PropertyDescription] public static int InitNumKins { get; set; }
     [PropertyDescription] public static int InitNumFriends { get; set; }
+    
+    private double _highestDesirabilityScore;
+    private LocationNode _mostDesirableNode;
+    
+    
+    
+    // --------------------------------Layers--------------------------------------------------------------
+    public RefugeeLayer RefugeeLayer { get; private set; }
+   
+    
+    // ------------------------------------------- Agent information ---------------------------------
+    
+    public HashSet<RefugeeAgent> Friends { get; set; }
+    public HashSet<RefugeeAgent> Kins { get; set; }
+    public string LocationName { get; set; }
+
+    public LocationNode OriginNode { get; set; }
+
+    public LocationNode CurrentNode { get; set; }
+    
+    
+    // Validation mode
+    [PropertyDescription] public static bool Validate { get; set; }
+    
+    
+    
+    public GeoHashEnvironment<RefugeeAgent> Environment;
 
 
     public void Init(RefugeeLayer layer)

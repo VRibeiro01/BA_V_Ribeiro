@@ -20,10 +20,8 @@ namespace LaserTagBox.Model.Location.LocationNodes;
 
 public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 {
-    public ISimulationContext SimulationContext;
 
-    public int StartMonth;
-
+    //------------------------------- Parameters needed to calculate location scores ------------------------
     [PropertyDescription] public double PopulationWeight { get; set; }
 
     [PropertyDescription] public double CampWeight { get; set; }
@@ -41,22 +39,26 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
     [PropertyDescription] public int NumberNewTiesLower { get; set; }
 
     public static Position
-        AnchorCoordinates = Position.CreateGeoPosition(AnchorLong, AnchorLat); // Lat= 41.015137, Long= 28.979530
+        AnchorCoordinates = Position.CreateGeoPosition(AnchorLong, AnchorLat); 
 
-    private GeoHashEnvironment<RefugeeAgent> _environment;
+    
 
 
-    // Layers
+    // -----------------------------------------Layers -------------------------------------
 
     [PropertyDescription] public CampLayer CampLayer { get; set; }
 
     [PropertyDescription] public ConflictLayer ConflictLayer { get; set; }
 
-
+//-----------------------------------------------------------------------------------------------
+    
     public List<String> BorderCrossingNodes;
-
     public List<LocationNode> EntitiesList { get; set; }
-
+    public ISimulationContext SimulationContext;
+    private GeoHashEnvironment<RefugeeAgent> _environment;
+    public int StartMonth;
+    
+    // ----------------------------------------------------------------------------------------------
 
     public override bool InitLayer(LayerInitData layerInitData, RegisterAgent registerAgentHandle = null,
         UnregisterAgent unregisterAgentHandle = null)
@@ -233,7 +235,7 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         return EntitiesList;
     }
 
-    public void InitBorderCrossingsFromFile(string country1, string country2)
+    private void InitBorderCrossingsFromFile(string country1, string country2)
     {
         string basepath = Path.Combine(Environment.CurrentDirectory, @"Resources");
 

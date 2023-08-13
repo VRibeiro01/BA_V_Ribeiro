@@ -5,7 +5,7 @@ using Mars.Interfaces.Layers;
 
 namespace LaserTagBox.Model.Refugee;
 
-public class SpawnScheduleLayer : ISteppedActiveLayer
+public class BorderCrossingScheduleLayer : ISteppedActiveLayer
 {
     private ISimulationContext _simulationContext;
 

@@ -22,9 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Model" />
         <Folder Include="Model\Shared" />
-        <Folder Include="Resources\Validation" />
     </ItemGroup>
 
 </Project>

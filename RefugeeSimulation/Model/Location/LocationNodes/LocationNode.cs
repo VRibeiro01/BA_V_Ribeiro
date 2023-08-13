@@ -16,9 +16,9 @@ namespace LaserTagBox.Model.Location.LocationNodes;
 
 public class LocationNode : IVectorFeature
 {
-    public VectorStructuredData VectorStructured { get; private set; }
+    
 
-
+    //------------------------------- Parameters needed to calculate location scores ------------------------
     public double Score { get; set; }
 
     public int NumCamps { get; set; }
@@ -40,10 +40,13 @@ public class LocationNode : IVectorFeature
     public int RefPop { get; set; }
 
 
-    public Position Position { get; set; }
-
+    // -----------------------------------------Layers -------------------------------------
     public NodeLayer NodeLayer;
-
+    
+    
+    // ----------------------------------------------------------------------------------------------
+    public VectorStructuredData VectorStructured { get; private set; }
+    public Position Position { get; set; }
     public String Country { get; set; }
 
 
@@ -51,7 +54,7 @@ public class LocationNode : IVectorFeature
     {
         VectorStructured = data;
 
-
+// Extract names of administrative levels
         var name1 = "Unknown";
         var name2 = "Unknown";
         var name3 = "Unknown";
@@ -97,6 +100,7 @@ public class LocationNode : IVectorFeature
         VectorStructured.Data.Add("Name3", name3);
 
 
+        // Extract name of country
         var country = "Unknown";
 
         if (VectorStructured.Data.ContainsKey("layer"))
@@ -148,7 +152,7 @@ public class LocationNode : IVectorFeature
         foreach (var conflict in conflicts)
         {
             if (conflict.Month == NodeLayer.StartMonth &&
-                conflict.GetConflictGeometry().IsWithinDistance(VectorStructured.Geometry, 0))
+                conflict.GetCoordinates().IsWithinDistance(VectorStructured.Geometry, 0))
             {
                 NumConflicts++;
             }
@@ -205,12 +209,7 @@ public class LocationNode : IVectorFeature
         return new Position(centroidPoint.X, centroidPoint.Y);
     }
 
-    public Geometry GetGeometry()
-    {
-        return VectorStructured.Geometry;
-    }
-
-
+   
     public void Update(VectorStructuredData data)
     {
     }

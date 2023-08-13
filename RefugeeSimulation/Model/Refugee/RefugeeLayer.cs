@@ -15,17 +15,21 @@ namespace LaserTagBox.Model.Refugee;
 
 public class RefugeeLayer : AbstractLayer
 {
-    private Dictionary<String, int> InitDistributionData { get; set; }
-
-    [PropertyDescription] public NodeLayer NodeLayer { get; set; }
+    private Dictionary<String, int> RefugeeDistributionData { get; set; }
+    
     public GeoHashEnvironment<RefugeeAgent> Environment { get; set; }
 
     public List<RefugeeAgent> RefugeeAgents;
 
-    public IAgentManager AgentManager;
+    private IAgentManager AgentManager;
 
 
-    [PropertyDescription] public int RefsToSpawnAtBorder { get; set; }
+    [PropertyDescription] 
+    public int RefsToSpawnAtBorder { get; set; }
+    
+    
+    // -------------------------------------- Layers ----------------------------------------
+    [PropertyDescription] public NodeLayer NodeLayer { get; set; }
 
 
     public override bool InitLayer(LayerInitData layerInitData, RegisterAgent registerAgentHandle = null,
@@ -34,7 +38,7 @@ public class RefugeeLayer : AbstractLayer
         base.InitLayer(layerInitData, registerAgentHandle, unregisterAgent);
 
 
-        InitDistributionData = layerInitData.LayerInitConfig.Inputs.Import()
+        RefugeeDistributionData = layerInitData.LayerInitConfig.Inputs.Import()
             .OfType<IStructuredData>()
             .ToDictionary(data => Convert.ToString(data.Data["Region"]), data => Convert.ToInt32(data.Data["IDPs"]));
 
@@ -62,17 +66,17 @@ public class RefugeeLayer : AbstractLayer
         }
     }
 
-    public void InitRefs()
+    private void InitRefs()
     {
         var newRefs = new List<RefugeeAgent>();
-        foreach (var nodePopPair in InitDistributionData)
+        foreach (var nodePopPair in RefugeeDistributionData)
         {
             var provinces = NodeLayer.GetLocationsInProvince(nodePopPair.Key);
             foreach (var province in provinces)
             {
                 newRefs.AddRange(AgentManager.Spawn<RefugeeAgent, RefugeeLayer>(null,
                         agent => agent.Spawn(province))
-                    .Take(nodePopPair.Value / provinces.Count / 5000
+                    .Take(nodePopPair.Value /1000 /provinces.Count 
                     ));
             }
         }

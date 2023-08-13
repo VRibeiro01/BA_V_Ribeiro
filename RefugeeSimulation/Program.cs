@@ -24,7 +24,7 @@ namespace LaserTagBox
             description.AddLayer<CampLayer>();
             description.AddLayer<NodeLayer>();
             description.AddLayer<RefugeeLayer>();
-            description.AddLayer<SpawnScheduleLayer>();
+            description.AddLayer<BorderCrossingScheduleLayer>();
             description.AddAgent<RefugeeAgent, RefugeeLayer>();
 
 
@@ -42,7 +42,7 @@ namespace LaserTagBox
 
             if (RefugeeAgent.Validate)
             {
-                for (int i = 0; i < 1; i++)
+                for (int i = 0; i < 10; i++)
                 {
                     RefugeeLayer refugeeLayer = loopResults.Model.Layers.Values.OfType<RefugeeLayer>().First();
                     NodeLayer nodeLayer = loopResults.Model.Layers.Values.OfType<NodeLayer>().First();
@@ -55,7 +55,7 @@ namespace LaserTagBox
                     loopResults = task.Run();
                 }
                 Validation.CalcAverageDistribution();
-                Validation.WriteToFile(1);
+                Validation.WriteToFile(10);
             }
 
 

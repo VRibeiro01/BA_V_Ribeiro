@@ -19,7 +19,7 @@ public class Conflict : IVectorFeature
     {
     }
 
-    public Geometry GetConflictGeometry()
+    public Geometry GetCoordinates()
     {
         return VectorStructured.Geometry;
     }
