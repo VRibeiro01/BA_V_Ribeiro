@@ -5,7 +5,6 @@ C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\RefugeeSimu
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\RefugeeSimulation.runtimeconfig.dev.json
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\config.json
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\active_turkey_camps.geojson
-C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\conflicts.json
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\Conflicts_Syr_Turk_23.geojson
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\Conflicts_Syr_Turk_23.qmd
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\Conflicts_Syr_Tur_2022.geojson

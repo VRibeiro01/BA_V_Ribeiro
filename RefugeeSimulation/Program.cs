@@ -42,21 +42,21 @@ namespace LaserTagBox
 
             if (RefugeeAgent.Validate)
             {
-                for (int i = 0; i < 10; i++)
-                {
+                //for (int i = 0; i < 4; i++)
+               // {
                     RefugeeLayer refugeeLayer = loopResults.Model.Layers.Values.OfType<RefugeeLayer>().First();
                     NodeLayer nodeLayer = loopResults.Model.Layers.Values.OfType<NodeLayer>().First();
                     Validation.NumSimRuns++;
                     Validation.NumRuns = (int) loopResults.Iterations;
                     Validation.FillRoutes(refugeeLayer.RefugeeAgents);
                     Validation.FillTurkishDistrictsPop(nodeLayer.GetEntities().ToList());
-                    //Validation.Print();
-                    task = SimulationStarter.Start(description, config);
-                    loopResults = task.Run();
+                    Validation.Print();
+                  //  task = SimulationStarter.Start(description, config);
+                    //loopResults = task.Run();
                 }
                 Validation.CalcAverageDistribution();
                 Validation.WriteToFile(10);
-            }
+            //}
 
 
             // Feedback to user that simulation run was successful

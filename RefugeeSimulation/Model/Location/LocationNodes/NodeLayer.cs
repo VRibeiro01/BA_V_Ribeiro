@@ -13,6 +13,8 @@ using Mars.Interfaces.Annotations;
 using Mars.Interfaces.Data;
 using Mars.Interfaces.Environments;
 using Mars.Interfaces.Layers;
+using Mars.Interfaces.Model;
+using Mars.Interfaces.Model.Options;
 using ServiceStack;
 using Position = Mars.Interfaces.Environments.Position;
 
@@ -50,12 +52,15 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 
     [PropertyDescription] public ConflictLayer ConflictLayer { get; set; }
 
-//-----------------------------------------------------------------------------------------------
+ //-----------------------------------------Environments------------------------------------------------------
+    private GeoHashEnvironment<RefugeeAgent> _refugeeEnvironment;
+    
+    
+    // ---------------------------------------------------------------------------------------------------------
     
     public List<String> BorderCrossingNodes;
     public List<LocationNode> EntitiesList { get; set; }
     public ISimulationContext SimulationContext;
-    private GeoHashEnvironment<RefugeeAgent> _environment;
     public int StartMonth;
     
     // ----------------------------------------------------------------------------------------------
@@ -64,6 +69,8 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         UnregisterAgent unregisterAgentHandle = null)
     {
         SimulationContext = layerInitData.Context;
+        
+        
         if (StartMonth <= 0 && SimulationContext.StartTimePoint != null)
         {
             StartMonth = SimulationContext.StartTimePoint.Value.Month;
@@ -71,10 +78,12 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 
         BorderCrossingNodes = new();
         InitBorderCrossingsFromFile("Turkey", "");
-
-
+        
+        
         base.InitLayer(layerInitData, registerAgentHandle, unregisterAgentHandle);
-        _environment =
+       
+        
+        _refugeeEnvironment =
             GeoHashEnvironment<RefugeeAgent>.BuildEnvironment(this.MaxLat, this.MinLat, this.MaxLon, this.MinLon);
         EntitiesList = Entities.ToList();
         RemoveDupes();
@@ -102,22 +111,29 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 
     public GeoHashEnvironment<RefugeeAgent> GetEnvironment()
     {
-        return _environment;
+        return _refugeeEnvironment;
     }
-
+   
 
     public void InitLocationParams()
     {
         var maxNumCamps = EntitiesList.Max(location => location.NumCamps) + 1; // add one to prevent division by zero
         var maxNumConflicts = EntitiesList.Max(location => location.NumConflicts) + 1;
         var maxAnchorScore = EntitiesList.Max(location => location.AnchorScore);
+        
+        
 
         foreach (var locationNode in EntitiesList)
         {
+            
+
             locationNode.Neighbours.AddRange(EntitiesList.Where(location =>
                 location != locationNode &&
-                location.Position.DistanceInKmTo(locationNode.Position) <= 70
-            ).ToList());
+                location.Position.DistanceInKmTo(locationNode.Position) <= 150
+            ).OrderBy(n => locationNode.Position.DistanceInKmTo(n.Position))
+                .Take(4));
+            
+         
 
 
             locationNode.NormNumCamps = locationNode.NumCamps * 1.0 / (maxNumCamps * 1.0);
@@ -145,6 +161,7 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         throw new ArgumentException("The location " + locationName + "  cannot be found in the system.");
     }
 
+  
     public List<LocationNode> GetLocationsInProvince(string provinceName)
     {
         var locationsInProvince = EntitiesList.Where(prov =>
@@ -197,6 +214,7 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 
     public void PostTick()
     {
+
         var random = new Random();
         foreach (var location in EntitiesList)
         {
@@ -205,7 +223,7 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
                 var bound = random.Next(NumberNewTiesLower, NumberNewTiesUpper + 1);
                 for (int i = 0; i < bound; i++)
                 {
-                    location.GetRandomRefugeesAtNode(_environment);
+                    location.GetRandomRefugeesAtNode(_refugeeEnvironment);
                 }
             }
         }

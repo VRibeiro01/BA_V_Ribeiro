@@ -91,3 +91,8 @@ Cannot resolve parameter 'LaserTagBox.Model.Model.Location.LocationNodes.IEnviro
 [ERROR] 2023-08-12 17:45:16,146 | Mars.Components.Starter.SimulationStarter - ######################################################## 
 [ERROR] 2023-08-12 17:45:16,146 | Mars.Components.Starter.SimulationStarter - Start may not be called on a task that has completed. 
 [ERROR] 2023-08-12 17:45:16,147 | Mars.Components.Starter.SimulationStarter - ######################################################## 
+[ERROR] 2023-09-02 12:07:07,686 | Mars.Components.Starter.SimulationStarter - MARS simulation execution crashed by ArgumentException 
+[ERROR] 2023-09-02 12:07:07,703 | Mars.Components.Starter.SimulationStarter - Exception message: 
+[ERROR] 2023-09-02 12:07:07,705 | Mars.Components.Starter.SimulationStarter - ######################################################## 
+[ERROR] 2023-09-02 12:07:07,705 | Mars.Components.Starter.SimulationStarter - The location YAYLADAGI  cannot be found in the system. 
+[ERROR] 2023-09-02 12:07:07,706 | Mars.Components.Starter.SimulationStarter - ######################################################## 

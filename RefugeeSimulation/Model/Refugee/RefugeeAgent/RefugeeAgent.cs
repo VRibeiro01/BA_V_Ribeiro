@@ -184,7 +184,7 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, IPositionable
         return ((numKinsAtNode * KinWeight) + (numFriendsAtNode * FriendWeight) + score);
     }
 
-    private void MoveToNode(LocationNode newNode)
+    public void MoveToNode(LocationNode newNode)
     {
         CurrentNode.RefPop--;
         CurrentNode = newNode;

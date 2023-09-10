@@ -37,7 +37,7 @@ public class LocationNode : IVectorFeature
 
     public HashSet<LocationNode> Neighbours = new();
 
-    public int RefPop { get; set; }
+    public int RefPop;
 
 
     // -----------------------------------------Layers -------------------------------------
@@ -48,6 +48,8 @@ public class LocationNode : IVectorFeature
     public VectorStructuredData VectorStructured { get; private set; }
     public Position Position { get; set; }
     public String Country { get; set; }
+
+    
 
 
     public void Init(ILayer layer, VectorStructuredData data)
@@ -138,10 +140,11 @@ public class LocationNode : IVectorFeature
         }
 
 
-        Position = Position.CreateGeoPosition(GetCentroidPosition().Longitude, GetCentroidPosition().Latitude);
-        AnchorScore = Math.Sqrt(Math.Pow(Position.X - NodeLayer.AnchorCoordinates.X, 2) +
-                                Math.Pow(Position.Y - NodeLayer.AnchorCoordinates.Y, 2)
+        Position = Position.CreatePosition(GetCentroidPosition().Longitude, GetCentroidPosition().Latitude);
+        AnchorScore = Math.Sqrt(Math.Pow(GetCentroidPosition().Longitude - NodeLayer.AnchorCoordinates.X, 2) +
+                                Math.Pow(GetCentroidPosition().Latitude - NodeLayer.AnchorCoordinates.Y, 2)
         );
+       
     }
 
     public void InitConflicts(ConflictLayer conflictLayer)
@@ -149,6 +152,7 @@ public class LocationNode : IVectorFeature
         var conflicts = conflictLayer.GetConflicts();
 
 
+        
         foreach (var conflict in conflicts)
         {
             if (conflict.Month == NodeLayer.StartMonth &&
@@ -237,6 +241,21 @@ public class LocationNode : IVectorFeature
 
     public void UpdateNormRefPop(int maxRefPop)
     {
+        // ReSharper disable once InconsistentlySynchronizedField
         NormRefPop = RefPop * 1.0 / (maxRefPop * 1.0);
+    }
+
+    public int GetRefPop()
+    {
+        
+            return RefPop;
+        
+    }
+
+    public void SetRefPop(int newRefPop)
+    {
+        
+            RefPop = newRefPop;
+        
     }
 }

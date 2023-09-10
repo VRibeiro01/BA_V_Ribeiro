@@ -319,6 +319,7 @@ public class NodeLayerTest
     }
 
 
+    [Fact]
     public void TurkeyDistrictsNeighboursTest()
     {
         // Arrange
@@ -327,8 +328,7 @@ public class NodeLayerTest
         {
             LayerInitConfig =
             {
-                File = Path.Combine("C:\\Users\\vivia\\mars\\RefugeeSimulationSolution\\Tests\\TestData",
-                    "turkey_districts_test.geojson")
+                File = Path.Combine("C:\\Users\\vivia\\mars\\RefugeeSimulationSolution\\RefugeeSimulation\\Resources\\turkey_districts_2.geojson")
             }
         });
 
@@ -336,59 +336,126 @@ public class NodeLayerTest
 
         // Act
 
-        foreach (var node in _nodeLayer.Entities)
+        foreach (var node in turkeyNodeLayer.Entities)
         {
             node.InitConflicts(_conflictLayer);
             node.InitCamps(_campLayer);
         }
 
-        _nodeLayer.InitLocationParams();
-        _nodeLayer.PreTick();
+        turkeyNodeLayer.InitLocationParams();
+        turkeyNodeLayer.PreTick();
 
 
         //Assert
 
         foreach (var node in turkeyNodeLayer.Entities)
         {
-            if (node.GetName().EqualsIgnoreCase("SANLIURFA"))
+            if (node.GetName().EqualsIgnoreCase("CEYLANPINAR"))
             {
                 _testOutputHelper.WriteLine("Node: " + node.GetName());
-                _testOutputHelper.WriteLine("Camps: " + node.NumCamps);
-                _testOutputHelper.WriteLine("Conflicts: " + node.NumConflicts);
                 _testOutputHelper.WriteLine("Neighbours: " + node.Neighbours.Count);
                 _testOutputHelper.WriteLine("---------------------------------------------");
-                Assert.Equal(3, node.Neighbours.Count);
+                Assert.Equal(5, node.Neighbours.Count);
+                foreach (var nodeNeighbour in node.Neighbours)
+                {
+                    Assert.NotNull(nodeNeighbour);
+                }
+            }
+            if (node.GetName().EqualsIgnoreCase("KIRIKHAN"))
+            {
+                _testOutputHelper.WriteLine("Node: " + node.GetName());
+                _testOutputHelper.WriteLine("Neighbours: " + node.Neighbours.Count);
+                _testOutputHelper.WriteLine("---------------------------------------------");
+                Assert.Equal(5, node.Neighbours.Count);
+                foreach (var nodeNeighbour in node.Neighbours)
+                {
+                    Assert.NotNull(nodeNeighbour);
+                }
+            }
+           
+
+            if (node.GetName().EqualsIgnoreCase("SILIFKE"))
+            {
+                _testOutputHelper.WriteLine("Node: " + node.GetName());
+                _testOutputHelper.WriteLine("Neighbours: " + node.Neighbours.Count);
+                _testOutputHelper.WriteLine("---------------------------------------------");
+                Assert.Equal(5, node.Neighbours.Count);
+                foreach (var nodeNeighbour in node.Neighbours)
+                {
+                    Assert.NotNull(nodeNeighbour);
+                }
             }
 
-            if (node.GetName().EqualsIgnoreCase("MARDIN"))
-            {
-                _testOutputHelper.WriteLine("Node: " + node.GetName());
-                _testOutputHelper.WriteLine("Camps: " + node.NumCamps);
-                _testOutputHelper.WriteLine("Conflicts: " + node.NumConflicts);
-                _testOutputHelper.WriteLine("Neighbours: " + node.Neighbours.Count);
-                _testOutputHelper.WriteLine("---------------------------------------------");
-                Assert.Equal(3, node.Neighbours.Count);
-            }
-
-            if (node.GetName().EqualsIgnoreCase("KILIS"))
-            {
-                _testOutputHelper.WriteLine("Node: " + node.GetName());
-                _testOutputHelper.WriteLine("Camps: " + node.NumCamps);
-                _testOutputHelper.WriteLine("Conflicts: " + node.NumConflicts);
-                _testOutputHelper.WriteLine("Neighbours: " + node.Neighbours.Count);
-                _testOutputHelper.WriteLine("---------------------------------------------");
-                Assert.Equal(3, node.Neighbours.Count);
-            }
-
-            if (node.GetName().EqualsIgnoreCase("HATAY"))
-            {
-                _testOutputHelper.WriteLine("Node: " + node.GetName());
-                _testOutputHelper.WriteLine("Camps: " + node.NumCamps);
-                _testOutputHelper.WriteLine("Conflicts: " + node.NumConflicts);
-                _testOutputHelper.WriteLine("Neighbours: " + node.Neighbours.Count);
-                _testOutputHelper.WriteLine("---------------------------------------------");
-                Assert.True(node.Neighbours.Count > 2 && node.Neighbours.Count < 5);
-            }
+            
         }
     }
+    
+    [Fact]
+    public void RefPopTest()
+    {
+        //Arrange
+
+
+        var agent = new RefugeeAgent();
+        var agent1 = new RefugeeAgent();
+        var environment = _nodeLayer.GetEnvironment();
+        var agentList = new List<RefugeeAgent>();
+        foreach (var node in _nodeLayer.Entities)
+        {
+            if (node.GetName().EqualsIgnoreCase("Tell Abiad"))
+            {
+                
+                agent.Spawn(node);
+                _nodeLayer.GetEnvironment().Insert(agent);
+                agent.Friends = new HashSet<RefugeeAgent>();
+                agent.Environment = environment;
+                agentList.Add(agent);
+                
+                agent1.Spawn(node);
+                _nodeLayer.GetEnvironment().Insert(agent1);
+                agent1.Friends = new HashSet<RefugeeAgent>();
+                agent1.Environment = environment;
+                agentList.Add(agent1);
+            }
+
+            
+        }
+
+
+        var testNode = _nodeLayer.Entities
+            .First(n => n.GetName().EqualsIgnoreCase("Tell Abiad"));
+      
+       
+        Assert.Equal(2, testNode.RefPop);
+
+        var otherNode = _nodeLayer.Entities.First(n => n.GetName().EqualsIgnoreCase("Jarablus"));
+
+        
+        //act
+
+
+        agent.MoveToNode(otherNode);
+
+
+        //Assert
+
+
+        Assert.Equal(1, testNode.RefPop);
+        Assert.Equal(1, otherNode.RefPop);
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

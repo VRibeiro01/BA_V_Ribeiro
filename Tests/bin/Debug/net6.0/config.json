@@ -1,17 +1,17 @@
 {
   "globals": {
     "startTime": "2022-05-01T00:00",
-    "endTime": "2022-06-01T00:00",
+    "endTime": "2022-05-10T00:00",
     "deltaTUnit": "days",
     "output": "csv",
     "options": {
       "delimiter": ";",
       "format": "en-EN"
     },
-    "csvOptions" : {
+    "csvOptions": {
       "outputPath": "../../../."
     },
-    "tripsOptions" : {
+    "tripsOptions": {
       "outputPath": "../../../."
     }
   },
@@ -29,19 +29,19 @@
         },
         {
           "parameter": "KinWeight",
-          "value": 0.25
+          "value": 0.1
         },
         {
           "parameter": "FriendWeight",
-          "value": 0.25
+          "value": 0.1
         },
         {
           "parameter": "MoveProbabilityCamp",
-          "value": 1.0
+          "value": 0.7
         },
         {
           "parameter": "MoveProbabilityConflict",
-          "value": 0.7
+          "value": 1.0
         },
         {
           "parameter": "MoveProbabilityOther",
@@ -52,9 +52,10 @@
           "value": true
         }
       ],
-      "outputs":
-      [
-        {"kind": "csv"}
+      "outputs": [
+        {
+          "kind": "csv"
+        }
       ]
     }
   ],
@@ -65,27 +66,27 @@
       "mapping": [
         {
           "parameter": "PopulationWeight",
-          "value": 0.75
+          "value": 0.3
         },
         {
           "parameter": "CampWeight",
-          "value": 1.0
+          "value": 0.5
         },
         {
           "parameter": "ConflictWeight",
-          "value": 0.75
+          "value": 0.5
         },
         {
           "parameter": "LocationWeight",
-          "value": 0.25
+          "value": 0.75
         },
         {
           "parameter": "AnchorLong",
-          "value": 28.979530
+          "value": -0.1278
         },
         {
           "parameter": "AnchorLat",
-          "value": 41.015137
+          "value": 51.5074
         },
         {
           "parameter": "NumberNewTiesLower",
@@ -103,21 +104,20 @@
       "mapping": [
         {
           "parameter": "RefsToSpawnAtBorder",
-          "value": 0.75
+          "value": 2
         }
-        ]
+      ]
     },
     {
       "name": "CampLayer",
-      "file": "Resources/turkey_camps_idps.geojson"
+      "file": "Resources/active_turkey_camps.geojson"
     },
     {
       "name": "ConflictLayer",
       "file": "Resources/Conflicts_Syr_Tur_2022.geojson"
     },
     {
-      "name": "SpawnScheduleLayer"
+      "name": "BorderCrossingScheduleLayer"
     }
-
   ]
 }

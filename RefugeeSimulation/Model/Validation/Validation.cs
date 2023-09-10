@@ -20,9 +20,9 @@ public class Validation
     public static Dictionary<string, int> TurkishDistrictsInitPop =
         new();
 
-    public static int NumRuns;
+    public static int NumRuns = 0;
 
-    public static int NumSimRuns;
+    public static int NumSimRuns = 0;
 
     public static int RefsSpawned;
 
@@ -59,16 +59,7 @@ public class Validation
             "HasAllPercentage: " + HasAll * 1.0 / NumDecisions * 100 + '\n'
         );
 
-        Console.WriteLine(
-            "----------------Routes -----------------"
-        );
-        Routes.Select(
-            i
-                => string.Join(",", i.Key) + " => " + i.Value).ToList().ForEach(Console.WriteLine);
-
-        Console.WriteLine("-------------------- Districts Refpop > 0 ---------------");
-        TurkishDistrictsPop.Where(i => i.Value > 0)
-            .Select(i => $"{i.Key} => {i.Value}").ToList().ForEach(Console.WriteLine);
+       
     }
 
     public static double CalcPercentageRefsActivated()
@@ -147,11 +138,10 @@ public class Validation
         }
     }
     
-    // TODO write routes ann district pops to files
 
     public static void WriteToFile(int numRuns)
     {
-        var docPath = Environment.CurrentDirectory;
+        var docPath = "Model/Validation";
             File.WriteAllText(Path.Combine(docPath,"InitPop.csv"),"Region,InitPop\n");
         foreach (var districtPopPair in TurkishDistrictsInitPop)
         {
