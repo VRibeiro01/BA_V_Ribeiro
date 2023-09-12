@@ -62,6 +62,7 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
     public List<LocationNode> EntitiesList { get; set; }
     public ISimulationContext SimulationContext;
     public int StartMonth;
+    public int EndMonth;
     
     // ----------------------------------------------------------------------------------------------
 
@@ -75,9 +76,13 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         {
             StartMonth = SimulationContext.StartTimePoint.Value.Month;
         }
+        if (EndMonth <= 0 && SimulationContext.EndTimePoint != null)
+        {
+            EndMonth = SimulationContext.EndTimePoint.Value.Month;
+        }
 
         BorderCrossingNodes = new();
-        InitBorderCrossingsFromFile("Turkey", "");
+        InitBorderCrossingsFromFile("Turkey");
         
         
         base.InitLayer(layerInitData, registerAgentHandle, unregisterAgentHandle);
@@ -129,7 +134,7 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 
             locationNode.Neighbours.AddRange(EntitiesList.Where(location =>
                 location != locationNode &&
-                location.Position.DistanceInKmTo(locationNode.Position) <= 150
+                location.Position.DistanceInKmTo(locationNode.Position) <= 200
             ).OrderBy(n => locationNode.Position.DistanceInKmTo(n.Position))
                 .Take(4));
             
@@ -204,6 +209,10 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 
     public void PreTick()
     {
+    }
+
+    public void UpdateNodeScores()
+    {
         var maxRefPop = MaxRefPop();
         foreach (var location in EntitiesList)
         {
@@ -232,6 +241,8 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         {
             Validation.IncrementPercentageActivatedRefs();
         }
+        
+        UpdateNodeScores();
     }
 
 
@@ -253,7 +264,7 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         return EntitiesList;
     }
 
-    private void InitBorderCrossingsFromFile(string country1, string country2)
+    private void InitBorderCrossingsFromFile(string country)
     {
         string basepath = Path.Combine(Environment.CurrentDirectory, @"Resources");
 
@@ -262,7 +273,7 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         foreach (string line in lines)
         {
             string[] columns = line.Split(',');
-            if (columns[1].EqualsIgnoreCase(country1) || columns[1].EqualsIgnoreCase(country2))
+            if (columns[1].EqualsIgnoreCase(country))
             {
                 BorderCrossingNodes.Add(columns[0]);
             }

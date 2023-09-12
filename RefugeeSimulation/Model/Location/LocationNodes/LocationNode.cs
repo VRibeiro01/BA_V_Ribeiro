@@ -155,7 +155,7 @@ public class LocationNode : IVectorFeature
         
         foreach (var conflict in conflicts)
         {
-            if (conflict.Month == NodeLayer.StartMonth &&
+            if (conflict.Month >= NodeLayer.StartMonth && conflict.Month <= NodeLayer.EndMonth &&
                 conflict.GetCoordinates().IsWithinDistance(VectorStructured.Geometry, 0))
             {
                 NumConflicts++;

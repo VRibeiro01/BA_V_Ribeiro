@@ -1,20 +1,9 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">C:\Users\vivia\AppData\Local\JetBrains\Rider2021.3\resharper-host\temp\Rider\vAny\CoverageData\_RefugeeSimulationSolution.76969557\Snapshot\snapshot.utdcvr</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1ff8de04_002D6d64_002D422a_002D9ecc_002D85438d48d2c4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="NodeLayerTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::72E25371-47CB-4F54-AC84-F6A73EE79A5C::net6.0::Tests.NodeLayerTest&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5082e19a_002D11ac_002D40ae_002Dbf38_002D958d8e2aa0f6/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="TurkeyDistrictsNeighboursTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::72E25371-47CB-4F54-AC84-F6A73EE79A5C::net6.0::Tests.NodeLayerTest.TurkeyDistrictsNeighboursTest&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7c189afb_002D3d1a_002D4bdc_002D9ec9_002Dfe40d61f016f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="NodeLayerTest #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::72E25371-47CB-4F54-AC84-F6A73EE79A5C::net6.0::Tests.NodeLayerTest&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
+	
+	
+	
+	
 	
 	
 	

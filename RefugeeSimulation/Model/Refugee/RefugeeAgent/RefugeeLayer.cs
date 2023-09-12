@@ -48,10 +48,11 @@ public class RefugeeLayer : AbstractLayer
         RefugeeAgents = new List<RefugeeAgent>();
 
         InitRefs();
-        if (RefugeeAgent.Validate)
-        {
-            Validation.FillTurkishDistrictsInitPop(NodeLayer.GetEntities());
-        }
+        
+        
+        Validation.FillTurkishDistrictsInitPop(NodeLayer.GetEntities());
+        Validation.FillSyrianDistrictsInitPop(NodeLayer.GetEntities());
+        
 
 
         return true;
@@ -76,7 +77,7 @@ public class RefugeeLayer : AbstractLayer
             {
                 newRefs.AddRange(AgentManager.Spawn<RefugeeAgent, RefugeeLayer>(null,
                         agent => agent.Spawn(province))
-                    .Take(nodePopPair.Value/provinces.Count/50
+                    .Take(nodePopPair.Value/provinces.Count/200
                     ));
             }
         }
@@ -101,8 +102,8 @@ public class RefugeeLayer : AbstractLayer
     private void PostSpawnWork(List<RefugeeAgent> newRefs)
     {
         RefugeeAgents.AddRange(newRefs);
-        Console.WriteLine(newRefs.Count + " refugee agent(s) spawned");
-        if (RefugeeAgent.Validate) Validation.RefsSpawned += newRefs.Count;
+        Console.WriteLine(newRefs.Count + " agent(s) spawned");
+        Validation.RefsSpawned += newRefs.Count;
         InitSocialNetwork(newRefs);
     }
 }

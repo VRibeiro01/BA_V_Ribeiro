@@ -1,0 +1,26 @@
+Origin,Destination,Number
+Quneitra,As-Sweida,16
+As-Sweida,Quneitra,31
+Tartous,Idleb,34
+Tartous,Aleppo,36
+Lattakia,Aleppo,39
+Lattakia,Idleb,38
+Damascus,Quneitra,60
+Damascus,As-Sweida,61
+Deir-ez-Zor,Idleb,111
+Deir-ez-Zor,Aleppo,99
+Deir-ez-Zor,Al-Hasakeh,0
+Hama,Idleb,128
+Hama,Aleppo,130
+Al-Hasakeh,Idleb,146
+Al-Hasakeh,Aleppo,150
+Homs,Aleppo,150
+Homs,Idleb,164
+Ar-Raqqa,Idleb,168
+Ar-Raqqa,Aleppo,157
+Rural Damascus,Quneitra,287
+Rural Damascus,As-Sweida,307
+Dar'a,Quneitra,555
+Dar'a,As-Sweida,553
+Idleb,Aleppo,1317
+Aleppo,Idleb,2060

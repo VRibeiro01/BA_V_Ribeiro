@@ -17,7 +17,13 @@ public class Validation
     public static Dictionary<string, int> TurkishDistrictsPop =
         new();
     
+    public static Dictionary<string, int> SyrianDistrictsPop =
+        new();
+    
     public static Dictionary<string, int> TurkishDistrictsInitPop =
+        new();
+    
+    public static Dictionary<string, int> SyrianDistrictsInitPop =
         new();
 
     public static int NumRuns = 0;
@@ -113,6 +119,23 @@ public class Validation
             
         }
     }
+    public static void FillSyrianDistrictsPop(List<LocationNode> districts)
+    {
+        var syrianDistricts = districts.Where(d => d.Country.EqualsIgnoreCase("Syria"));
+        foreach (var district in syrianDistricts)
+        {
+            var name = district.GetName();
+            if (!SyrianDistrictsPop.ContainsKey(name))
+            {
+                SyrianDistrictsPop.Add(name, district.RefPop);
+            }
+            else
+            {
+                SyrianDistrictsPop[name] += district.RefPop;
+            }
+            
+        }
+    }
     
     public static void FillTurkishDistrictsInitPop(List<LocationNode> districts)
     {
@@ -122,6 +145,17 @@ public class Validation
         {
             var name = district.GetName();
             TurkishDistrictsInitPop.Add(name, district.RefPop);
+        }
+    }
+    
+    public static void FillSyrianDistrictsInitPop(List<LocationNode> districts)
+    {
+        if (SyrianDistrictsInitPop.Count > 0) return;
+        var syrianDistricts = districts.Where(d => d.Country.EqualsIgnoreCase("Syria"));
+        foreach (var district in syrianDistricts)
+        {
+            var name = district.GetName();
+            SyrianDistrictsInitPop.Add(name, district.RefPop);
         }
     }
 
@@ -139,7 +173,7 @@ public class Validation
     }
     
 
-    public static void WriteToFile(int numRuns)
+    public static void WriteToFileTurkey(string identifier)
     {
         var docPath = "Model/Validation";
             File.WriteAllText(Path.Combine(docPath,"InitPop.csv"),"Region,InitPop\n");
@@ -149,16 +183,43 @@ public class Validation
         }
         
         
-        File.WriteAllText(Path.Combine(docPath,"RefPop"+numRuns+".csv"),"Region,RefPop\n");
+        File.WriteAllText(Path.Combine(docPath,"RefPop"+identifier+".csv"),"Region,RefPop\n");
         foreach (var districtPopPair in TurkishDistrictsPop)
         {
-            File.AppendAllText(Path.Combine(docPath,"RefPop"+numRuns+".csv"),districtPopPair.Key+","+districtPopPair.Value+'\n');
+            File.AppendAllText(Path.Combine(docPath,"RefPop"+identifier+".csv"),districtPopPair.Key+","+districtPopPair.Value+'\n');
         }
         
-        File.WriteAllText(Path.Combine(docPath,"Routes"+numRuns+".csv"),"Origin,Destination,Number\n");
+        File.WriteAllText(Path.Combine(docPath,"Routes"+identifier+".csv"),"Origin,Destination,Number\n");
         foreach (var routeNumberPair in Routes)
         {
-            File.AppendAllText(Path.Combine(docPath,"Routes"+numRuns+".csv"),
+            File.AppendAllText(Path.Combine(docPath,"Routes"+identifier+".csv"),
+                routeNumberPair.Key.Item1+","+
+                routeNumberPair.Key.Item2+"," + 
+                routeNumberPair.Value+'\n');
+        }
+        
+    }
+    
+    public static void WriteToFileSyria(string identifier)
+    {
+        var docPath = "Model/Validation";
+        File.WriteAllText(Path.Combine(docPath,"SyrInitPop.csv"),"Region,InitPop\n");
+        foreach (var districtPopPair in SyrianDistrictsInitPop)
+        {
+            File.AppendAllText(Path.Combine(docPath,"SyrInitPop.csv"),districtPopPair.Key+","+districtPopPair.Value+'\n');
+        }
+        
+        
+        File.WriteAllText(Path.Combine(docPath,"SyrRefPop"+identifier+".csv"),"Region,RefPop\n");
+        foreach (var districtPopPair in SyrianDistrictsPop)
+        {
+            File.AppendAllText(Path.Combine(docPath,"SyrRefPop"+identifier+".csv"),districtPopPair.Key+","+districtPopPair.Value+'\n');
+        }
+        
+        File.WriteAllText(Path.Combine(docPath,"SyrRoutes"+identifier+".csv"),"Origin,Destination,Number\n");
+        foreach (var routeNumberPair in Routes)
+        {
+            File.AppendAllText(Path.Combine(docPath,"SyrRoutes"+identifier+".csv"),
                 routeNumberPair.Key.Item1+","+
                 routeNumberPair.Key.Item2+"," + 
                 routeNumberPair.Value+'\n');

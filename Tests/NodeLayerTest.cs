@@ -6,6 +6,7 @@ using LaserTagBox.Model.Location.Camps;
 using LaserTagBox.Model.Location.Conflict;
 using LaserTagBox.Model.Location.LocationNodes;
 using LaserTagBox.Model.Refugee;
+using Mars.Components.Agents;
 using Mars.Interfaces.Data;
 using Mars.Interfaces.Environments;
 using ServiceStack;
@@ -68,31 +69,43 @@ public class NodeLayerTest
     [Fact]
     public void EnvironmentTest()
     {
+        var agent = new RefugeeAgent();
+        LocationNode moveTestNode = _nodeLayer.Entities.First();
+       
         foreach (var node in _nodeLayer.Entities)
         {
             if (node.GetName().EqualsIgnoreCase("Tell Abiad"))
             {
-                var agent = new RefugeeAgent();
                 agent.Spawn(node);
+                agent.Environment = _nodeLayer.GetEnvironment();
                 _nodeLayer.GetEnvironment().Insert(agent);
             }
-
+            
             var agent1 = new RefugeeAgent();
             agent1.Spawn(node);
             _nodeLayer.GetEnvironment().Insert(agent1);
         }
 
+        var environment = _nodeLayer.GetEnvironment();
+        RefugeeAgent[] refsAtNode = environment.Explore(_nodeLayer.GetLocationByName("Tell Abiad").Position,
+            -1D, -1, elem => elem is not null &&
+                             elem.Position.DistanceInKmTo(_nodeLayer.GetLocationByName("Tell Abiad").Position) < 1).ToArray();
 
         // Act
-
-        var environment = _nodeLayer.GetEnvironment();
-
-        var agents = environment.Explore();
-        var abstractEnvironmentObjects = agents.ToList();
+       
+       agent.MoveToNode(moveTestNode);
+        RefugeeAgent[] refsAtNodeAfterMoving = environment.Explore(_nodeLayer.GetLocationByName("Tell Abiad").Position,
+            -1D, -1, elem => elem is not null &&
+            elem.Position.DistanceInKmTo(_nodeLayer.GetLocationByName("Tell Abiad").Position) < 1).ToArray();
+        
+        
+        var abstractEnvironmentObjects = environment.Explore().ToList();
 
 
         // Assert
         Assert.True(abstractEnvironmentObjects.Count == 5);
+        Assert.True(refsAtNode.Length==2);
+        Assert.True(refsAtNodeAfterMoving.Length==1);
     }
 
     [Fact]
@@ -101,6 +114,7 @@ public class NodeLayerTest
         // Arrange
 
         _nodeLayer.StartMonth = 9;
+        _nodeLayer.EndMonth = 9;
 
         // Act
 
@@ -187,7 +201,7 @@ public class NodeLayerTest
 
 
     [Fact]
-    public void PreTickTest()
+    public void UpdateNodeScoresTest()
     {
         //Arrange
 
@@ -239,13 +253,11 @@ public class NodeLayerTest
         {
             if (node.GetName().EqualsIgnoreCase("Tell Abiad"))
             {
-                agent = new RefugeeAgent();
                 agent.Spawn(node);
                 _nodeLayer.GetEnvironment().Insert(agent);
                 agent.Friends = new HashSet<RefugeeAgent>();
             }
-
-            agent1 = new RefugeeAgent();
+            
             agent1.Spawn(node);
             _nodeLayer.GetEnvironment().Insert(agent1);
             agent1.Friends = new HashSet<RefugeeAgent>();
@@ -258,7 +270,6 @@ public class NodeLayerTest
 
 
         //act
-        _nodeLayer.MaxRefPop();
         testNode.GetRandomRefugeesAtNode(environment);
 
         //Assert
@@ -281,15 +292,13 @@ public class NodeLayerTest
         {
             if (node.GetName().EqualsIgnoreCase("Tell Abiad"))
             {
-                agent = new RefugeeAgent();
                 agent.Spawn(node);
                 _nodeLayer.GetEnvironment().Insert(agent);
                 agent.Friends = new HashSet<RefugeeAgent>();
                 agent.Environment = environment;
                 agentList.Add(agent);
             }
-
-            agent1 = new RefugeeAgent();
+            
             agent1.Spawn(node);
             _nodeLayer.GetEnvironment().Insert(agent1);
             agent1.Friends = new HashSet<RefugeeAgent>();
@@ -300,7 +309,7 @@ public class NodeLayerTest
 
         var testNode = _nodeLayer.Entities
             .First(n => n.GetName().EqualsIgnoreCase("Tell Abiad"));
-        _nodeLayer.MaxRefPop();
+       
 
 
         //act

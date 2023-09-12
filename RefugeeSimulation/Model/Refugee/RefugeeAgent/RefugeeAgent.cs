@@ -90,8 +90,8 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, IPositionable
             }
 
             MoveToNode(_mostDesirableNode);
-            if (Validate)
-            {
+            
+            // Collect Decision Making statistics
                 Validation.NumDecisions++;
                 if (_mostDesirableNode.NumConflicts > 0)
                 {
@@ -138,7 +138,7 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, IPositionable
                     Validation.HasNone++;
                 }
             }
-        }
+        
     }
 
     private bool Activate(int numCamps, int numConflicts)
@@ -158,10 +158,8 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, IPositionable
             move = random.NextDouble() < MoveProbabilityOther;
         }
 
-        if (Validate && move)
-        {
-            Validation.RefsActivated++;
-        }
+        if (move) Validation.RefsActivated++;
+        
 
         return move;
     }
@@ -225,29 +223,18 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, IPositionable
 
     public int GetNumFriendsAtNode(LocationNode node, List<RefugeeAgent> agentList)
     {
-        var agentsInRadius = GetAgentsAtNode(node, agentList);
 
-        var friendsAtNode = agentsInRadius.Where(agent => Friends.Contains(agent)).ToList();
+        var friendsAtNode = Friends.Where(agent => agent.LocationName.EqualsIgnoreCase(node.GetName())).ToList();
 
 
         return friendsAtNode.Count;
     }
-
-    private List<RefugeeAgent> GetAgentsAtNode(LocationNode node, List<RefugeeAgent> agentList)
-    {
-        var agentsInRadius = agentList
-            .Where(a => a.LocationName.EqualsIgnoreCase(node.GetName())).ToList();
-
-
-        return agentsInRadius;
-    }
-
+    
     public int GetNumKinsAtNode(LocationNode node, List<RefugeeAgent> agentList)
     {
-        var agentsInRadius = GetAgentsAtNode(node, agentList);
 
-        var kinsAtNode = agentsInRadius
-            .Where(agent => Kins.Contains(agent)).ToList();
+        var kinsAtNode = Kins
+            .Where(agent => agent.LocationName.EqualsIgnoreCase(node.GetName())).ToList();
 
 
         return kinsAtNode.Count;
