@@ -23,13 +23,13 @@ In my thesis, I take this model and reimplement it in C# using the MARS Framewor
 
 The repository is organized as follows:
 
-1. Project Solution File: This is the entry point for exploring and working with the codebase. You can open the solution file to access the entire project in your preferred Integrated Development Environment (IDE).
+1. **Project Solution File**: This is the entry point for exploring and working with the codebase. You can open the solution file to access the entire project in your preferred Integrated Development Environment (IDE).
 
-2. Refugee Simulation Project: This directory contains all the necessary files and code to run the agent-based simulation. It's the heart of the project, where you'll find the code responsible for modeling and predicting the routes of internally displaced persons (IDPs).
+2. **Refugee Simulation Project**: This directory contains all the necessary files and code to run the agent-based simulation.
+   
+3. **Tests Project**: The Tests Project contains the test class and test resources used during the verification process.
 
-3. Tests Project: The Tests Project contains the test class and test resources used during the verification process.
-
-4. Notebooks Directory: This section contains Jupyter Notebook files used for data preprocessing and analysis of the simulation outputs. Additionally, you will find the data sources used in these notebooks.
+4. **Notebooks Directory**: This section contains Jupyter Notebook files used for data preprocessing and analysis of the simulation outputs. Additionally, you will find the data sources used in these notebooks.
 
 ## Installation
 
