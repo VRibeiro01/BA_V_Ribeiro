@@ -49,9 +49,9 @@ To run the simulation, follow these steps:
 2. The first line of code in the Program file contains the string simulationMode. Initialize it with "Turkey" if you wish to simulate the movement of Syrian refugees in Turkey. Initialize it with "Syria" if you wish to simulate the movement of IDPs in Syria.
  ![image](https://github.com/VRibeiro01/BA_V_Ribeiro/assets/103310770/ee6f0127-3a2c-4d35-b91c-fbb67aac32c2)
 
-3. Configure the simulation if necessary. Click here for detailed information on the configuration options of the model: [Model Configuration Options](RefugeeSimulation/CONFIGURATION.md)
+3. Configure the simulation if necessary. Click here for detailed information on the configuration options of the model: [Model Configuration Options](RefugeeSimulation/README.md)
 4. The simulation outputs are created in the RefugeeSimulation/Model/Validation folder. You can analyse the output files as you wish or run them through the Jupyter Notebook designated for analysis.
-   For more information on the available Jupyter Notebooks, click here:<\br>
+   For more information on the available Jupyter Notebooks, click here: [Jupyter Notebooks Guide](Notebooks/README.md)
    Details on simulation output files can be found in the following section.<\br>
 
 ## Simulation Output
