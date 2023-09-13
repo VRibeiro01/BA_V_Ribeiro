@@ -14,7 +14,7 @@ The intent of the project is to replicate and extend the research presented in t
 
 ## Introduction
 
-This repository contains the code for the software developed as part of my bachelor thesis in computer science. revolves around the study and analysis of forced migration, particularly within the context of the Syrian Refugee Crisis.
+This repository contains the code for the software developed as part of my bachelor thesis in computer science. It revolves around the study and analysis of forced migration, particularly within the context of the Syrian Refugee Crisis.
 
 The core of this project revolves around the study and analysis of forced migration, particularly within the context of the Syrian Refugee Crisis. 
 The paper I base my work on introduces an agent-based model that predicts the distribution of refugees across a host country, taking social networks into account. 
