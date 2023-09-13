@@ -52,7 +52,8 @@ To run the simulation, follow these steps:
 3. Configure the simulation if necessary. Click here for detailed information on the configuration options of the model: [Model Configuration Options](RefugeeSimulation/README.md)
 4. The simulation outputs are created in the RefugeeSimulation/Model/Validation folder. You can analyse the output files as you wish or run them through the Jupyter Notebook designated for analysis.
    For more information on the available Jupyter Notebooks, click here: [Jupyter Notebooks Guide](Notebooks/README.md)
-   Details on simulation output files can be found in the following section.<\br>
+
+   Details on simulation output files can be found in the following section.
 
 ## Simulation Output
 
