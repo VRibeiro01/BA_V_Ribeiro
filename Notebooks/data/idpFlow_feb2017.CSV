@@ -1,0 +1,1028 @@
+D_Governorate;D_GPCODE;D_District;D_DPCODE;D_Sub_District;D_SD_PCODE;D_Community;D_CPCODE;IDP_Flow_Estimation
+Damascus;SY01;Damascus;SY0100;Damascus;SY010000;Damascus;C1001;7853
+Aleppo;SY02;Jebel Saman;SY0200;Atareb;SY020001;Tuwama;C1020;20
+Aleppo;SY02;Jebel Saman;SY0200;Atareb;SY020001;Babka;C1021;15
+Aleppo;SY02;Jebel Saman;SY0200;Atareb;SY020001;Atareb;C1022;50
+Aleppo;SY02;Jebel Saman;SY0200;Atareb;SY020001;Oweijel;C1024;100
+Aleppo;SY02;Jebel Saman;SY0200;Atareb;SY020001;Batbu;C1025;10
+Aleppo;SY02;Jebel Saman;SY0200;Atareb;SY020001;Abin Samaan;C1026;35
+Aleppo;SY02;Jebel Saman;SY0200;Atareb;SY020001;Big Orm;C1029;50
+Aleppo;SY02;Jebel Saman;SY0200;Atareb;SY020001;Abzemo;C1030;10
+Aleppo;SY02;Jebel Saman;SY0200;Atareb;SY020001;Sheikh Ali;C1031;5
+Aleppo;SY02;Jebel Saman;SY0200;Atareb;SY020001;Kafr Amma;C1033;21
+Aleppo;SY02;Jebel Saman;SY0200;Atareb;SY020001;Kafr Naha;C1034;120
+Aleppo;SY02;Jebel Saman;SY0200;Atareb;SY020001;Kafr Karmin;C1035;5
+Aleppo;SY02;Jebel Saman;SY0200;Atareb;SY020001;Kafr Naseh Elatareb;C1036;10
+Aleppo;SY02;Jebel Saman;SY0200;Atareb;SY020001;Kafr Taal;C1037;10
+Aleppo;SY02;Jebel Saman;SY0200;Atareb;SY020001;Maaret Atarib;C1038;105
+Aleppo;SY02;Jebel Saman;SY0200;Atareb;SY020001;Kafr Aleppo;C1039;60
+Aleppo;SY02;Jebel Saman;SY0200;Atareb;SY020001;Western Kafr Jum;C1040;15
+Aleppo;SY02;Jebel Saman;SY0200;Atareb;SY020001;Kafr Thoran;C1041;55
+Aleppo;SY02;Jebel Saman;SY0200;Daret Azza;SY020004;Daret Azza;C1139;45
+Aleppo;SY02;Jebel Saman;SY0200;Daret Azza;SY020004;Anjara;C1144;36
+Aleppo;SY02;Jebel Saman;SY0200;Daret Azza;SY020004;Bishqatine;C1145;15
+Aleppo;SY02;Jebel Saman;SY0200;Daret Azza;SY020004;Hoteh;C1146;24
+Aleppo;SY02;Jebel Saman;SY0200;Daret Azza;SY020004;Bsartun;C1147;30
+Aleppo;SY02;Jebel Saman;SY0200;Daret Azza;SY020004;Majbineh;C1148;20
+Aleppo;SY02;Jebel Saman;SY0200;Daret Azza;SY020004;Kafrantin;C1149;15
+Aleppo;SY02;Jebel Saman;SY0200;Zarbah;SY020005;Tal Heddiyeh;C1158;535
+Aleppo;SY02;Jebel Saman;SY0200;Zarbah;SY020005;Jeb Kas;C1166;750
+Aleppo;SY02;Jebel Saman;SY0200;Zarbah;SY020005;Hawir Elis;C1172;30
+Aleppo;SY02;Jebel Saman;SY0200;Zarbah;SY020005;Qamari;C1174;75
+Aleppo;SY02;Jebel Saman;SY0200;Zarbah;SY020005;Kusniya;C1175;215
+Aleppo;SY02;Jebel Saman;SY0200;Hadher;SY020006;Tal Dadine;C1180;30
+Aleppo;SY02;Jebel Saman;SY0200;Hadher;SY020006;Hadher;C1182;180
+Aleppo;SY02;Al Bab;SY0202;Al Bab;SY020200;Sosyan;C1187;6500
+Aleppo;SY02;Al Bab;SY0202;Al Bab;SY020200;Hazwan;C1191;3600
+Aleppo;SY02;Al Bab;SY0202;Al Bab;SY020200;Borj;C1192;30
+Aleppo;SY02;Al Bab;SY0202;Al Bab;SY020200;Maqri;C1193;1000
+Aleppo;SY02;Al Bab;SY0202;Al Bab;SY020200;Sheikh Jarrah;C1195;20
+Aleppo;SY02;Al Bab;SY0202;Al Bab;SY020200;Hadath;C1198;110
+Aleppo;SY02;Al Bab;SY0202;Al Bab;SY020200;Olan;C1204;185
+Aleppo;SY02;Al Bab;SY0202;Al Bab;SY020200;Qabasin;C1209;300
+Aleppo;SY02;Al Bab;SY0202;Al Bab;SY020200;Qubbet Elsheikh;C1214;2280
+Aleppo;SY02;Al Bab;SY0202;Ar-Ra'ee;SY020203;Sandi;C1248;35
+Aleppo;SY02;Al Bab;SY0202;Ar-Ra'ee;SY020203;Ar-Ra'ee;C1250;2800
+Aleppo;SY02;Al Bab;SY0202;Ar-Ra'ee;SY020203;Haji Wali;C1252;21
+Aleppo;SY02;Al Bab;SY0202;Ar-Ra'ee;SY020203;Haji Kusa;C1253;25
+Aleppo;SY02;Al Bab;SY0202;Ar-Ra'ee;SY020203;Misannah Bab;C1254;9
+Aleppo;SY02;Al Bab;SY0202;Ar-Ra'ee;SY020203;Jbine;C1256;30
+Aleppo;SY02;Al Bab;SY0202;Ar-Ra'ee;SY020203;Nahda;C1257;12
+Aleppo;SY02;Al Bab;SY0202;Ar-Ra'ee;SY020203;Ameriyeh;C1260;30
+Aleppo;SY02;Al Bab;SY0202;Ar-Ra'ee;SY020203;Tlilet Elbab;C1263;25
+Aleppo;SY02;Al Bab;SY0202;Ar-Ra'ee;SY020203;Tal Eisheh;C1267;24
+Aleppo;SY02;Al Bab;SY0202;Ar-Ra'ee;SY020203;Tal Elhawa;C1269;12
+Aleppo;SY02;Al Bab;SY0202;Ar-Ra'ee;SY020203;Karsanli;C1274;25
+Aleppo;SY02;Al Bab;SY0202;Ar-Ra'ee;SY020203;Qantaret Elbab;C1275;18
+Aleppo;SY02;Al Bab;SY0202;A'rima;SY020206;Little Sukariyeh;C1322;50
+Aleppo;SY02;Al Bab;SY0202;A'rima;SY020206;Jurneyyeh;C1327;1300
+Aleppo;SY02;Al Bab;SY0202;A'rima;SY020206;A'rima;C1329;735
+Aleppo;SY02;Al Bab;SY0202;A'rima;SY020206;Ilan;C1331;100
+Aleppo;SY02;Al Bab;SY0202;A'rima;SY020206;Sunbula - Saboyran;C1332;50
+Aleppo;SY02;Al Bab;SY0202;A'rima;SY020206;Jeb Eldam Elbab;C1333;1200
+Aleppo;SY02;Al Bab;SY0202;A'rima;SY020206;Thalabiyeh - Big Jqal;C1336;55
+Aleppo;SY02;Al Bab;SY0202;A'rima;SY020206;Oruba Bab - Arab Wiran;C1338;1500
+Aleppo;SY02;Al Bab;SY0202;A'rima;SY020206;Um Adae Ajami ;C1342;1200
+Aleppo;SY02;Al Bab;SY0202;A'rima;SY020206;Shdar;C1343;18
+Aleppo;SY02;Al Bab;SY0202;A'rima;SY020206;Shweiha ;C1344;600
+Aleppo;SY02;Al Bab;SY0202;A'rima;SY020206;Barshaya;C1346;30
+Aleppo;SY02;Al Bab;SY0202;A'rima;SY020206;Little Tafreeah;C1347;174
+Aleppo;SY02;Al Bab;SY0202;A'rima;SY020206;Big Nabata;C1349;400
+Aleppo;SY02;Al Bab;SY0202;A'rima;SY020206;Madiq Bu Azar;C1350;20
+Aleppo;SY02;Afrin;SY0203;Afrin;SY020300;Eskan;C1352;5
+Aleppo;SY02;Afrin;SY0203;Afrin;SY020300;Abin - Efrin;C1353;15
+Aleppo;SY02;Afrin;SY0203;Afrin;SY020300;Shawarghet Eljoz;C1356;12
+Aleppo;SY02;Afrin;SY0203;Afrin;SY020300;Ziyara Afrin;C1358;120
+Aleppo;SY02;Afrin;SY0203;Afrin;SY020300;Khaldiyet Afrin;C1364;18
+Aleppo;SY02;Afrin;SY0203;Afrin;SY020300;Afrin;C1366;60
+Aleppo;SY02;Afrin;SY0203;Afrin;SY020300;Baselhaya;C1371;5
+Aleppo;SY02;Afrin;SY0203;Jandairis;SY020302;Jalma;C1424;78
+Aleppo;SY02;Afrin;SY0203;Jandairis;SY020302;Jandairis;C1426;132
+Aleppo;SY02;Afrin;SY0203;Jandairis;SY020302;Burj Kmush;C1428;12
+Aleppo;SY02;Afrin;SY0203;Jandairis;SY020302;Tal Hamo;C1430;36
+Aleppo;SY02;Afrin;SY0203;Jandairis;SY020302;Upper Diwan;C1431;30
+Aleppo;SY02;Afrin;SY0203;Jandairis;SY020302;Zanda;C1438;12
+Aleppo;SY02;Afrin;SY0203;Jandairis;SY020302;Eastern Eshkan;C1441;18
+Aleppo;SY02;Afrin;SY0203;Jandairis;SY020302;Kafr Safra;C1449;28
+Aleppo;SY02;Afrin;SY0203;Raju;SY020303;Beit Adin;C1473;11
+Aleppo;SY02;Afrin;SY0203;Ma'btali;SY020306;Ma'btali;C1552;90
+Aleppo;SY02;Afrin;SY0203;Ma'btali;SY020306;Yakhur - Ayki Yakhur;C1555;60
+Aleppo;SY02;A'zaz;SY0204;A'zaz;SY020400;Shmarekh;C1557;154
+Aleppo;SY02;A'zaz;SY0204;A'zaz;SY020400;Talil Elsham;C1559;126
+Aleppo;SY02;A'zaz;SY0204;A'zaz;SY020400;Ferziyeh;C1560;100
+Aleppo;SY02;A'zaz;SY0204;A'zaz;SY020400;Salama;C1561;1440
+Aleppo;SY02;A'zaz;SY0204;A'zaz;SY020400;Jarez;C1562;75
+Aleppo;SY02;A'zaz;SY0204;A'zaz;SY020400;Azaz;C1564;1805
+Aleppo;SY02;A'zaz;SY0204;A'zaz;SY020400;Krum;C1565;1860
+Aleppo;SY02;A'zaz;SY0204;A'zaz;SY020400;Shamarin;C1566;108
+Aleppo;SY02;A'zaz;SY0204;A'zaz;SY020400;Kafr Kalbein;C1568;336
+Aleppo;SY02;A'zaz;SY0204;A'zaz;SY020400;Yahmul;C1571;25
+Aleppo;SY02;A'zaz;SY0204;A'zaz;SY020400;Nayara;C1573;308
+Aleppo;SY02;A'zaz;SY0204;A'zaz;SY020400;Maarin;C1574;210
+Aleppo;SY02;A'zaz;SY0204;A'zaz;SY020400;Kaljibrin;C1575;91
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Khalfatli;C1576;175
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Bhorta;C1577;800
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Aziziyeh;C1578;35
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Zayadiyeh;C1579;125
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Bayada - Aq Burhan;C1580;15
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Akhtrein;C1581;2100
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Baruz;C1582;75
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Bleikha;C1583;50
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Abla;C1584;70
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Hardana;C1585;150
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Dweir Elhawa;C1586;20
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Oweilin;C1587;55
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Tweis;C1589;15
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Eastern Tal Aar;C1594;75
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Western Tal Aar;C1595;50
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Samuqet Aazaz;C1596;15
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Dabeq;C1597;225
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Eskar;C1598;20
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Jakkeh;C1600;75
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Eastern Tal Battal;C1601;25
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Tat Hims;C1602;100
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Ghorur;C1603;100
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Ein Elosud;C1604;15
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Turkman Bareh;C1605;1000
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Teltana;C1606;90
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Ghoz;C1607;75
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Gheilaniyeh;C1608;50
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Kardish;C1610;125
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Qazam - Qesset Jak;C1613;150
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Ghaytun;C1614;20
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Wash;C1615;45
+Aleppo;SY02;A'zaz;SY0204;Aghtrin;SY020401;Qaar Kalbein;C1616;30
+Aleppo;SY02;A'zaz;SY0204;Tall Refaat;SY020402;Masqan;C1627;40
+Aleppo;SY02;A'zaz;SY0204;Mare';SY020403;Hiwar Elnahr;C1636;30
+Aleppo;SY02;A'zaz;SY0204;Mare';SY020403;Kafr Elward;C1642;20
+Aleppo;SY02;A'zaz;SY0204;Mare';SY020403;Mare';C1643;2625
+Aleppo;SY02;A'zaz;SY0204;Suran;SY020405;Yarobiyeh;C1657;35
+Aleppo;SY02;A'zaz;SY0204;Suran;SY020405;Zayzafun - Ekdeh;C1658;100
+Aleppo;SY02;A'zaz;SY0204;Suran;SY020405;Dweibeq;C1659;75
+Aleppo;SY02;A'zaz;SY0204;Suran;SY020405;Shweirin;C1660;25
+Aleppo;SY02;A'zaz;SY0204;Suran;SY020405;Hiwar Kalas;C1661;150
+Aleppo;SY02;A'zaz;SY0204;Suran;SY020405;Baraghideh;C1663;50
+Aleppo;SY02;A'zaz;SY0204;Suran;SY020405;Suran;C1664;2950
+Aleppo;SY02;A'zaz;SY0204;Suran;SY020405;Mreigel;C1670;60
+Aleppo;SY02;A'zaz;SY0204;Suran;SY020405;Kafr Barja;C1671;50
+Aleppo;SY02;A'zaz;SY0204;Suran;SY020405;Kafra;C1672;125
+Aleppo;SY02;A'zaz;SY0204;Suran;SY020405;Kafrshush;C1673;25
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Rasm Elmashrafeh;C1674;30
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Tal Yasti;C1676;24
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Btoshiyet Manbaj;C1677;6
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Asaliyeh;C1678;396
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Farat;C1679;30
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Little Osajli;C1682;5008
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Um Jalal;C1685;25
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Toq Elkhalil;C1686;90
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Big Osajli;C1687;4346
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Dandaniya;C1688;20
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Tal Rafei;C1689;143
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Amudiyeh;C1693;280
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Jeb Elhamam Sultan;C1695;85
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Khishfet Um Adaseh;C1696;911
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Jeb Elthor - Akrash;C1697;75
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Um Elsateh;C1700;20
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Tlilet Manbaj;C1705;200
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Big Jeb Elkalb;C1706;28
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Kherbet Nafakh;C1709;527
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Omriyeh;C1710;35
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Hamduniyeh;C1712;35
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Bir Kello;C1714;45
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Saan Elghazal - Buz Kij;C1715;599
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Khirfan;C1716;66
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Zornaqal;C1719;790
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Saidiyeh;C1720;1476
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Sultahiyeh;C1721;384
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Jeb Elarus;C1722;30
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Mahsana - Bak Weiran;C1723;923
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Himar Jis;C1725;1200
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Hamran;C1727;65
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Halisiyeh;C1728;28
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Ein Elnakhil;C1729;90
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Um Adaset Elfarat;C1730;715
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Big Hayyeh;C1731;45
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Little Kharufiyeh;C1733;52
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Um Myal Jafatlak;C1734;3667
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Um Myal Miri;C1736;400
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Sayada;C1737;30
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Mankubeh;C1738;45
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Rasm Elakhdar;C1739;20
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Janat Abu Jadha Jarkas;C1745;500
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Kabiret Manbaj - Bashli;C1748;30
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Big Tahna;C1749;1017
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Sheikh Yehya;C1750;42
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Abu Tawil;C1751;51
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Big Kharufiyeh;C1754;45
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Hajar Abyad;C1755;63
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Abu Kahf;C1757;900
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Big Abu Jadha ;C1759;33
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Tayha;C1760;65
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Little Jern;C1761;20
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Hudhud;C1764;85
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Manther Eljarf;C1766;102
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Karsan;C1768;24
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Qanat Elghrra;C1769;886
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Qatmet Manbaj - Qatma;C1771;682
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Middle Warideh;C1774;25
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Mashrafet Elbweir;C1775;584
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Nahliya - Nahliya;C1776;1900
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Nejem Castle;C1777;12
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Bir Quraa;C1779;182
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Little Madneh;C1780;18
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Big Madneh;C1781;18
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Big Mohtaraq;C1782;1314
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Big Kaber - Big Kaberjeh;C1783;36
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Little Mohtaraq;C1784;121
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Maqtala;C1787;35
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Moaysera;C1789;108
+Aleppo;SY02;Menbij;SY0205;Abu Qalqal;SY020501;Himar Labda;C1796;30
+Aleppo;SY02;Menbij;SY0205;Abu Qalqal;SY020501;Khofiyet Abu Qalqal;C1797;55
+Aleppo;SY02;Menbij;SY0205;Abu Qalqal;SY020501;Abu Qalqal;C1798;336
+Aleppo;SY02;Menbij;SY0205;Abu Qalqal;SY020501;Shjif Dahabiyeh;C1806;30
+Aleppo;SY02;Menbij;SY0205;Abu Qalqal;SY020501;Jeifiyet Elmashi ;C1807;70
+Aleppo;SY02;Menbij;SY0205;Abu Qalqal;SY020501;Hizeh;C1808;36
+Aleppo;SY02;Menbij;SY0205;Abu Qalqal;SY020501;Jeb Eltawil;C1811;25
+Aleppo;SY02;Menbij;SY0205;Abu Qalqal;SY020501;Kherbet Elsawda Manbaj;C1812;50
+Aleppo;SY02;Menbij;SY0205;Abu Qalqal;SY020501;Kherbet Elrus;C1814;48
+Aleppo;SY02;Menbij;SY0205;Abu Qalqal;SY020501;Kherbet Bashar;C1816;20
+Aleppo;SY02;Menbij;SY0205;Abu Qalqal;SY020501;Jeb Hassan Agha;C1819;25
+Aleppo;SY02;Menbij;SY0205;Abu Qalqal;SY020501;Kherbet Zamala;C1820;18
+Aleppo;SY02;Menbij;SY0205;Abu Qalqal;SY020501;Jeb Hamza;C1822;63
+Aleppo;SY02;Menbij;SY0205;Abu Qalqal;SY020501;Jeb Sheikh Obeid;C1823;30
+Aleppo;SY02;Menbij;SY0205;Abu Qalqal;SY020501;Lower Qana;C1824;15
+Aleppo;SY02;Menbij;SY0205;Abu Qalqal;SY020501;Qanaqebli;C1826;10
+Aleppo;SY02;Menbij;SY0205;Abu Qalqal;SY020501;Mahshiet Eltawahin;C1828;18
+Aleppo;SY02;Menbij;SY0205;Abu Qalqal;SY020501;Big Fors;C1830;40
+Aleppo;SY02;Menbij;SY0205;Abu Qalqal;SY020501;Mahshiet Elsheikh Obeid;C1832;55
+Aleppo;SY02;Menbij;SY0205;Abu Qalqal;SY020501;Qeshlet Yusef Basha;C1834;55
+Aleppo;SY02;Menbij;SY0205;Abu Qalqal;SY020501;Nmuqbilet Hassan Agha;C1835;108
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Kherbet Barguth;C1838;18
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Rasm Elahmar;C1841;500
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Upper Nasriyeh;C1842;300
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Ghadini;C1845;500
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Little Aruda;C1846;500
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Jeb Qahwa;C1847;450
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Kherbet Elkhathdraf;C1851;500
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Big Rasm Elharmal;C1852;250
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Ras El Ein Homor;C1855;35
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Abaja;C1857;500
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Sheikh Abyad;C1858;350
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Abu Hanaya;C1864;18
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Little Western Rasm Elkhamis;C1867;42
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Rasm Abbud Jaftalak;C1873;21
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Kasra;C1876;35
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Dakhireh;C1878;20
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Khofiyet Elhomor;C1880;250
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Rasm Elhamam Miri;C1882;100
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Big Arbaa ;C1883;100
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Big Sheib Elhomor;C1884;400
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Mahsana Khefseh;C1886;70
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Little Habbuba;C1888;100
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Shajra;C1889;100
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Kherbet Salameh;C1890;85
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Tal Hassan;C1891;96
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Dreisiyeh;C1893;100
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Al-Khafsa;C1894;4000
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Tal Aswad;C1895;150
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Kisumeh;C1897;70
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Kherbet Shihab ;C1899;60
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Tabara Kalash;C1900;100
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Big Drubiyeh;C1901;125
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Big Habbuba;C1902;100
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Kiyariya;C1904;125
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Big Qobab;C1905;110
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Mazyunet Eljaberi;C1906;500
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Mazyunet Elhomor;C1907;350
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Big Maarada;C1908;350
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Majmaa Mbaqer Maskana;C1909;250
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Little Qobab;C1910;72
+Aleppo;SY02;Menbij;SY0205;Maskana;SY020503;Rasm Elbokhar;C1917;42
+Aleppo;SY02;Menbij;SY0205;Maskana;SY020503;Tal Totun;C1918;30
+Aleppo;SY02;Menbij;SY0205;Maskana;SY020503;Hamra;C1919;70
+Aleppo;SY02;Menbij;SY0205;Maskana;SY020503;Big Raddeh;C1920;30
+Aleppo;SY02;Menbij;SY0205;Maskana;SY020503;Kherbet Salib;C1922;18
+Aleppo;SY02;Menbij;SY0205;Maskana;SY020503;Neimiyeh;C1923;45
+Aleppo;SY02;Menbij;SY0205;Maskana;SY020503;Muftahiyeh;C1924;50
+Aleppo;SY02;Menbij;SY0205;Maskana;SY020503;Hurriyeh;C1925;65
+Aleppo;SY02;Menbij;SY0205;Maskana;SY020503;Shahda;C1926;30
+Aleppo;SY02;Menbij;SY0205;Maskana;SY020503;Rajm Elaqraa;C1929;60
+Aleppo;SY02;Menbij;SY0205;Maskana;SY020503;Khan Elshaar;C1930;24
+Aleppo;SY02;Menbij;SY0205;Maskana;SY020503;Ras El Ein Bumane;C1931;132
+Aleppo;SY02;Menbij;SY0205;Maskana;SY020503;Maskana - Onaiza;C1933;960
+Aleppo;SY02;Menbij;SY0205;Maskana;SY020503;Madinet Elghar;C1935;135
+Aleppo;SY02;Ain Al Arab;SY0206;Sarin;SY020602;Jableh - Berdag;C2063;15
+Aleppo;SY02;Ain Al Arab;SY0206;Sarin;SY020602;Sarin;C2074;35
+Aleppo;SY02;Jarablus;SY0208;Jarablus;SY020800;Tal Elamara;C2213;15
+Aleppo;SY02;Jarablus;SY0208;Jarablus;SY020800;Halawanji;C2214;40
+Aleppo;SY02;Jarablus;SY0208;Jarablus;SY020800;Dabis;C2217;40
+Aleppo;SY02;Jarablus;SY0208;Jarablus;SY020800;Maghayer - Qorq Mghar;C2218;35
+Aleppo;SY02;Jarablus;SY0208;Jarablus;SY020800;Halawaniyeh;C2219;10
+Aleppo;SY02;Jarablus;SY0208;Jarablus;SY020800;Zoghra;C2220;10
+Aleppo;SY02;Jarablus;SY0208;Jarablus;SY020800;Treikhem;C2222;24
+Aleppo;SY02;Jarablus;SY0208;Jarablus;SY020800;Jamel;C2224;35
+Aleppo;SY02;Jarablus;SY0208;Jarablus;SY020800;Lower Jrables;C2226;40
+Aleppo;SY02;Jarablus;SY0208;Jarablus;SY020800;Jarablus;C2227;5300
+Aleppo;SY02;Jarablus;SY0208;Jarablus;SY020800;Big Majra;C2235;25
+Aleppo;SY02;Jarablus;SY0208;Jarablus;SY020800;Yusef Elbeik;C2236;20
+Aleppo;SY02;Jarablus;SY0208;Ghandorah;SY020801;Arab Azzah;C2242;50
+Aleppo;SY02;Jarablus;SY0208;Ghandorah;SY020801;Tal Elhajar - Tal Elahamar;C2244;12
+Aleppo;SY02;Jarablus;SY0208;Ghandorah;SY020801;Bilis;C2246;35
+Aleppo;SY02;Jarablus;SY0208;Ghandorah;SY020801;Ghandorah;C2250;3360
+Aleppo;SY02;Jarablus;SY0208;Ghandorah;SY020801;Forsan - Sabahiler;C2252;15
+Aleppo;SY02;Jarablus;SY0208;Ghandorah;SY020801;Qadi Jrables;C2254;120
+Aleppo;SY02;Jarablus;SY0208;Ghandorah;SY020801;Jeb Eldam Jrables;C2262;25
+Aleppo;SY02;Jarablus;SY0208;Ghandorah;SY020801;Qubbet Elturkman;C2263;427
+Aleppo;SY02;Jarablus;SY0208;Ghandorah;SY020801;Big Nabgha;C2264;80
+Aleppo;SY02;Jarablus;SY0208;Ghandorah;SY020801;Big Qantara;C2267;18
+Rural Damascus;SY03;Rural Damascus;SY0301;Kisweh;SY030101;Kisweh;C2280;7
+Rural Damascus;SY03;Rural Damascus;SY0301;Babella;SY030102;Hosh Sahya;C2294;11
+Rural Damascus;SY03;Rural Damascus;SY0301;Babella;SY030102;Kherbet Elward;C2298;18
+Rural Damascus;SY03;Rural Damascus;SY0301;Babella;SY030102;Sayyeda Zeinab;C2299;25
+Rural Damascus;SY03;Rural Damascus;SY0301;Babella;SY030102;Babella;C2300;11
+Rural Damascus;SY03;Rural Damascus;SY0301;Babella;SY030102;Yalda;C2302;18
+Rural Damascus;SY03;Rural Damascus;SY0301;Babella;SY030102;Najha;C2303;11
+Rural Damascus;SY03;Rural Damascus;SY0301;Jaramana;SY030103;Jaramana;C2304;30
+Rural Damascus;SY03;Rural Damascus;SY0301;Kafr Batna;SY030105;Eftreis;C2312;11
+Rural Damascus;SY03;Rural Damascus;SY0301;Kafr Batna;SY030105;Hezzeh;C2313;24
+Rural Damascus;SY03;Rural Damascus;SY0301;Kafr Batna;SY030105;Saqba;C2314;2028
+Rural Damascus;SY03;Rural Damascus;SY0301;Kafr Batna;SY030105;Ein Terma;C2315;40
+Rural Damascus;SY03;Rural Damascus;SY0301;Kafr Batna;SY030105;Hammura;C2316;40
+Rural Damascus;SY03;Rural Damascus;SY0301;Kafr Batna;SY030105;Jisrein;C2317;56
+Rural Damascus;SY03;Rural Damascus;SY0301;Kafr Batna;SY030105;Beit Sawa;C2318;20
+Rural Damascus;SY03;Rural Damascus;SY0301;Kafr Batna;SY030105;Kafr Batna;C2319;3340
+Rural Damascus;SY03;Rural Damascus;SY0301;Arbin;SY030106;Zamalka;C2320;3500
+Rural Damascus;SY03;Rural Damascus;SY0301;Arbin;SY030106;Arbin;C2321;4060
+Rural Damascus;SY03;Rural Damascus;SY0301;Qudsiya;SY030107;Al-Hama;C2323;20
+Rural Damascus;SY03;Rural Damascus;SY0301;Qudsiya;SY030107;Jamraya;C2325;20
+Rural Damascus;SY03;Rural Damascus;SY0301;Qudsiya;SY030107;New Dahiet Qdosiya Elsakina;C2327;20
+Rural Damascus;SY03;Duma;SY0302;Duma;SY030200;Hosh Eldawahreh;C2332;60
+Rural Damascus;SY03;Duma;SY0302;Duma;SY030200;Shafuniyeh;C2334;100
+Rural Damascus;SY03;Duma;SY0302;Duma;SY030200;Duma;C2338;1060
+Rural Damascus;SY03;Duma;SY0302;Harasta;SY030201;Dahiet Elasad;C2341;40
+Rural Damascus;SY03;Duma;SY0302;Harasta;SY030201;Modira;C2343;28
+Rural Damascus;SY03;Duma;SY0302;Harasta;SY030201;Misraba;C2344;1109
+Rural Damascus;SY03;At Tall;SY0304;At Tall;SY030400;At Tall;C2395;16
+Rural Damascus;SY03;At Tall;SY0304;At Tall;SY030400;Monin;C2399;26
+Rural Damascus;SY03;Yabroud;SY0305;Yabroud;SY030500;Yabroud;C2416;16
+Rural Damascus;SY03;An Nabk;SY0306;Deir Attiyeh;SY030601;Jarajir;C2426;100
+Rural Damascus;SY03;Qatana;SY0308;Qatana;SY030800;Jdidet Artuz;C2457;10
+Rural Damascus;SY03;Darayya;SY0309;Sahnaya;SY030901;Sahnaya;C2501;30
+Homs;SY04;Homs;SY0401;Homs;SY040100;Daffa - Halmuz;C2511;20
+Homs;SY04;Homs;SY0401;Homs;SY040100;Dar Kabira;C2524;20
+Homs;SY04;Homs;SY0401;Homs;SY040100;Homs;C2528;36
+Homs;SY04;Homs;SY0401;Taldu;SY040101;Tal Dahab;C2547;18
+Homs;SY04;Homs;SY0401;Ein Elniser;SY040103;Hmeimeh;C2612;4
+Homs;SY04;Al-Qusayr;SY0402;Al-Qusayr;SY040200;Western Zeita;C2718;12
+Homs;SY04;Al-Qusayr;SY0402;Al-Qusayr;SY040200;Diyabiyeh;C2738;4
+Homs;SY04;Tall Kalakh;SY0403;Nasra;SY040303;Mishtaya;C2824;4
+Homs;SY04;Tall Kalakh;SY0403;Nasra;SY040303;Habnumra;C2827;4
+Homs;SY04;Tall Kalakh;SY0403;Nasra;SY040303;Marmarita;C2838;8
+Homs;SY04;Tall Kalakh;SY0403;Hawash;SY040304;Ennaz;C2847;8
+Homs;SY04;Tall Kalakh;SY0403;Hawash;SY040304;Bsas;C2850;4
+Homs;SY04;Ar-Rastan;SY0404;Ar-Rastan;SY040400;Ez Eldin;C2860;20
+Homs;SY04;Ar-Rastan;SY0404;Ar-Rastan;SY040400;Asilah;C2863;45
+Homs;SY04;Ar-Rastan;SY0404;Ar-Rastan;SY040400;Manara;C2864;4
+Homs;SY04;Ar-Rastan;SY0404;Ar-Rastan;SY040400;Salim;C2865;4
+Homs;SY04;Ar-Rastan;SY0404;Ar-Rastan;SY040400;Ar-Rastan;C2870;98
+Homs;SY04;Ar-Rastan;SY0404;Ar-Rastan;SY040400;Dalfin;C2871;8
+Homs;SY04;Ar-Rastan;SY0404;Ar-Rastan;SY040400;Marj Eldur;C2874;4
+Homs;SY04;Ar-Rastan;SY0404;Talbiseh;SY040401;Hashemiyeh;C2877;4
+Homs;SY04;Ar-Rastan;SY0404;Talbiseh;SY040401;Deir Fool;C2878;25
+Homs;SY04;Ar-Rastan;SY0404;Talbiseh;SY040401;Makrumiyeh;C2879;4
+Homs;SY04;Al Makhrim;SY0406;Jeb Ej-Jarrah;SY040601;Western Ashrafiyeh - Western Dweir;C2931;8
+Hama;SY05;Hama;SY0501;Hama;SY050100;Jomaqliyeh;C2986;25
+Hama;SY05;Hama;SY0501;Hama;SY050100;Hama;C2987;35
+Hama;SY05;Hama;SY0501;Hama;SY050100;Kasun Eljabal;C3016;35
+Hama;SY05;Hama;SY0501;Suran;SY050101;Eastern Zor Elheisa;C3023;30
+Hama;SY05;Hama;SY0501;Suran;SY050101;Suran;C3026;50
+Hama;SY05;Hama;SY0501;Suran;SY050101;Tiba Elesm;C3027;25
+Hama;SY05;Hama;SY0501;Suran;SY050101;Northern Fan;C3032;24
+Hama;SY05;Hama;SY0501;Suran;SY050101;Qasr Elmakhram;C3039;36
+Hama;SY05;Hama;SY0501;Hamra;SY050103;Rasm Eldaheriyeh;C3071;18
+Hama;SY05;Hama;SY0501;Hamra;SY050103;Um Zahmak;C3079;20
+Hama;SY05;Hama;SY0501;Hamra;SY050103;Janat Elsawarneh;C3080;25
+Hama;SY05;Hama;SY0501;Hamra;SY050103;Aziziyeh;C3085;20
+Hama;SY05;Hama;SY0501;Hamra;SY050103;Tleihat;C3087;15
+Hama;SY05;Hama;SY0501;Hamra;SY050103;Arfa;C3091;10
+Hama;SY05;Hama;SY0501;Hamra;SY050103;Tarfawi;C3093;5
+Hama;SY05;Hama;SY0501;Hamra;SY050103;Abu Ajwa;C3098;30
+Hama;SY05;Hama;SY0501;Hamra;SY050103;Hazm;C3101;11
+Hama;SY05;Hama;SY0501;Hamra;SY050103;Qasr Bin Wardan;C3105;48
+Hama;SY05;Hama;SY0501;Hamra;SY050103;Mweileh Elsirwana;C3106;15
+Hama;SY05;As-Suqaylabiyah;SY0502;As-Suqaylabiyah;SY050200;Hiyalin;C3111;25
+Hama;SY05;As-Suqaylabiyah;SY0502;As-Suqaylabiyah;SY050200;Jarniyet Eltar;C3120;25
+Hama;SY05;As-Suqaylabiyah;SY0502;Ziyara;SY050202;Lower Amiqa;C3154;25
+Hama;SY05;As-Suqaylabiyah;SY0502;Ziyara;SY050202;Ankawi;C3155;15
+Hama;SY05;As-Suqaylabiyah;SY0502;Ziyara;SY050202;Zayzun;C3161;35
+Hama;SY05;As-Suqaylabiyah;SY0502;Ziyara;SY050202;Qalidin;C3167;25
+Hama;SY05;As-Suqaylabiyah;SY0502;Ziyara;SY050202;Qastun;C3170;60
+Hama;SY05;As-Suqaylabiyah;SY0502;Madiq Castle;SY050204;Shahranaz;C3191;72
+Hama;SY05;As-Suqaylabiyah;SY0502;Madiq Castle;SY050204;Jamasa Odayat - Alshareeah;C3193;60
+Hama;SY05;As-Suqaylabiyah;SY0502;Madiq Castle;SY050204;Eastern Huweiz;C3194;60
+Hama;SY05;As-Suqaylabiyah;SY0502;Madiq Castle;SY050204;Tamanet Elghab;C3200;42
+Hama;SY05;As-Suqaylabiyah;SY0502;Madiq Castle;SY050204;Sehriyeh;C3204;96
+Hama;SY05;As-Salamiyeh;SY0503;As-Salamiyeh;SY050300;As-Salamiyeh;C3244;4
+Hama;SY05;As-Salamiyeh;SY0503;As-Saan;SY050302;Abul Kusour;C3279;35
+Hama;SY05;Muhradah;SY0505;Muhradah;SY050500;Halfaya;C3453;90
+Hama;SY05;Muhradah;SY0505;Muhradah;SY050500;Jdideh;C3454;24
+Lattakia;SY06;Lattakia;SY0600;Lattakia;SY060000;Lattakia;C3480;650
+Lattakia;SY06;Lattakia;SY0600;Bahlawaniyeh;SY060001;Bahloliyeh;C3487;10
+Lattakia;SY06;Lattakia;SY0600;Ein El-Bayda;SY060003;Ein El-Bayda;C3519;10
+Lattakia;SY06;Lattakia;SY0600;Ein El-Bayda;SY060003;Qasmin;C3534;5
+Lattakia;SY06;Lattakia;SY0600;Qastal Maaf;SY060004;Um Eltoyur - Taranja;C3544;10
+Lattakia;SY06;Lattakia;SY0600;Kasab;SY060005;Kasab;C3557;10
+Lattakia;SY06;Lattakia;SY0600;Hanadi;SY060006;Hanadi;C3567;9
+Tartous;SY10;Banyas;SY1002;Banyas;SY100200;Arab Elmalik Jerkes;C3571;5
+Lattakia;SY06;Jablah;SY0602;Jablah;SY060200;Jablah;C3585;30
+Lattakia;SY06;Jablah;SY0602;Jablah;SY060200;Hmeimim;C3588;10
+Lattakia;SY06;Jablah;SY0602;Ein Elsharqiyeh;SY060201;Bteryas;C3598;4
+Lattakia;SY06;Jablah;SY0602;Qteilbiyyeh;SY060202;Bitmana;C3615;10
+Lattakia;SY06;Jablah;SY0602;Qteilbiyyeh;SY060202;Qteilbiyyeh;C3625;5
+Lattakia;SY06;Al-Haffa;SY0603;Al-Haffa;SY060300;Al-Haffa;C3671;15
+Lattakia;SY06;Al-Haffa;SY0603;Mzair'a;SY060304;Mzair'a;C3774;20
+Lattakia;SY06;Al-Qardaha;SY0604;Al-Qardaha;SY060400;Al-Qardaha;C3809;10
+Lattakia;SY06;Al-Qardaha;SY0604;Harf Elmseitra;SY060401;Harf Elmseitra;C3829;10
+Lattakia;SY06;Al-Qardaha;SY0604;Fakhura;SY060402;Fakhura;C3843;10
+Idleb;SY07;Idleb;SY0700;Idleb;SY070000;Nayrab;C3867;110
+Idleb;SY07;Idleb;SY0700;Idleb;SY070000;Ein Shib;C3868;35
+Idleb;SY07;Idleb;SY0700;Idleb;SY070000;Idleb;C3871;408
+Idleb;SY07;Idleb;SY0700;Idleb;SY070000;Sijer - Bqesemtoh;C3873;91
+Idleb;SY07;Idleb;SY0700;Idleb;SY070000;Qminas;C3876;27
+Idleb;SY07;Idleb;SY0700;Idleb;SY070000;Falyun;C3877;144
+Idleb;SY07;Idleb;SY0700;Idleb;SY070000;Martein;C3878;35
+Idleb;SY07;Idleb;SY0700;Abul Thohur;SY070001;Ballisa;C3881;21
+Idleb;SY07;Idleb;SY0700;Abul Thohur;SY070001;Harmala;C3886;16
+Idleb;SY07;Idleb;SY0700;Abul Thohur;SY070001;Abul Thohur;C3891;51
+Idleb;SY07;Idleb;SY0700;Abul Thohur;SY070001;Baragethi;C3893;35
+Idleb;SY07;Idleb;SY0700;Abul Thohur;SY070001;Rasm Abed;C3895;21
+Idleb;SY07;Idleb;SY0700;Abul Thohur;SY070001;Hseiniyeh - Tal Kalba;C3897;28
+Idleb;SY07;Idleb;SY0700;Abul Thohur;SY070001;Tal Sultan;C3898;11
+Idleb;SY07;Idleb;SY0700;Abul Thohur;SY070001;Hmeimat Eldayer;C3900;7
+Idleb;SY07;Idleb;SY0700;Abul Thohur;SY070001;Ras El Ein;C3902;78
+Idleb;SY07;Idleb;SY0700;Bennsh;SY070002;Bennsh;C3904;151
+Idleb;SY07;Idleb;SY0700;Bennsh;SY070002;Toum;C3906;70
+Idleb;SY07;Idleb;SY0700;Saraqab;SY070003;Anqrati;C3907;4
+Idleb;SY07;Idleb;SY0700;Saraqab;SY070003;Tromba;C3908;28
+Idleb;SY07;Idleb;SY0700;Saraqab;SY070003;Jobas;C3909;11
+Idleb;SY07;Idleb;SY0700;Saraqab;SY070003;Bijfas;C3912;12
+Idleb;SY07;Idleb;SY0700;Saraqab;SY070003;Saraqab;C3916;4
+Idleb;SY07;Idleb;SY0700;Saraqab;SY070003;Afs;C3920;18
+Idleb;SY07;Idleb;SY0700;Saraqab;SY070003;Khuwara;C3922;7
+Idleb;SY07;Idleb;SY0700;Saraqab;SY070003;Sheikh Idris;C3924;70
+Idleb;SY07;Idleb;SY0700;Saraqab;SY070003;Khan Elsobol;C3925;32
+Idleb;SY07;Idleb;SY0700;Saraqab;SY070003;Lof;C3929;35
+Idleb;SY07;Idleb;SY0700;Saraqab;SY070003;Mardikh;C3930;35
+Idleb;SY07;Idleb;SY0700;Saraqab;SY070003;Maar Dibsi;C3931;80
+Idleb;SY07;Idleb;SY0700;Teftnaz;SY070004;Teftnaz;C3932;35
+Idleb;SY07;Idleb;SY0700;Teftnaz;SY070004;Maaret Elnaasan - Maaret Elhaski;C3935;28
+Idleb;SY07;Idleb;SY0700;Teftnaz;SY070004;Ketyan;C3936;7
+Idleb;SY07;Idleb;SY0700;Maaret Tamsrin;SY070005;Zardana Mashehad;C3938;25
+Idleb;SY07;Idleb;SY0700;Maaret Tamsrin;SY070005;Ram Hamdan;C3941;105
+Idleb;SY07;Idleb;SY0700;Maaret Tamsrin;SY070005;Haranbush;C3943;108
+Idleb;SY07;Idleb;SY0700;Maaret Tamsrin;SY070005;Hazano;C3944;21
+Idleb;SY07;Idleb;SY0700;Maaret Tamsrin;SY070005;Kafr Jales;C3945;126
+Idleb;SY07;Idleb;SY0700;Maaret Tamsrin;SY070005;Ma'arrat Tamasrin;C3947;390
+Idleb;SY07;Idleb;SY0700;Maaret Tamsrin;SY070005;Maaret Elekhwan;C3950;273
+Idleb;SY07;Idleb;SY0700;Sarmin;SY070006;Sarmin;C3953;70
+Idleb;SY07;Al Ma'ra;SY0702;Ma'arrat An Nu'man;SY070200;Hantutin;C3957;8
+Idleb;SY07;Al Ma'ra;SY0702;Ma'arrat An Nu'man;SY070200;Tal Dibis;C3959;8
+Idleb;SY07;Al Ma'ra;SY0702;Ma'arrat An Nu'man;SY070200;Hazzan;C3960;12
+Idleb;SY07;Al Ma'ra;SY0702;Ma'arrat An Nu'man;SY070200;Eastern Deir;C3962;400
+Idleb;SY07;Al Ma'ra;SY0702;Ma'arrat An Nu'man;SY070200;Ghadqa;C3963;58
+Idleb;SY07;Al Ma'ra;SY0702;Ma'arrat An Nu'man;SY070200;Babilla;C3964;36
+Idleb;SY07;Al Ma'ra;SY0702;Ma'arrat An Nu'man;SY070200;Halbeh;C3966;12
+Idleb;SY07;Al Ma'ra;SY0702;Ma'arrat An Nu'man;SY070200;Thahrat Talamnas;C3967;24
+Idleb;SY07;Al Ma'ra;SY0702;Ma'arrat An Nu'man;SY070200;Western Deir;C3968;20
+Idleb;SY07;Al Ma'ra;SY0702;Ma'arrat An Nu'man;SY070200;Hraki;C3969;42
+Idleb;SY07;Al Ma'ra;SY0702;Ma'arrat An Nu'man;SY070200;Tal Kersyan;C3971;8
+Idleb;SY07;Al Ma'ra;SY0702;Ma'arrat An Nu'man;SY070200;Sarman;C3972;4
+Idleb;SY07;Al Ma'ra;SY0702;Ma'arrat An Nu'man;SY070200;Abu Makki;C3973;8
+Idleb;SY07;Al Ma'ra;SY0702;Ma'arrat An Nu'man;SY070200;Telamnas;C3974;75
+Idleb;SY07;Al Ma'ra;SY0702;Ma'arrat An Nu'man;SY070200;Jarjnaz;C3977;40
+Idleb;SY07;Al Ma'ra;SY0702;Ma'arrat An Nu'man;SY070200;Maar Shurin;C3978;85
+Idleb;SY07;Al Ma'ra;SY0702;Ma'arrat An Nu'man;SY070200;Maasaran;C3980;36
+Idleb;SY07;Al Ma'ra;SY0702;Ma'arrat An Nu'man;SY070200;Maar Shamsheh;C3981;40
+Idleb;SY07;Al Ma'ra;SY0702;Ma'arrat An Nu'man;SY070200;Maar Shamarin;C3983;168
+Idleb;SY07;Al Ma'ra;SY0702;Ma'arrat An Nu'man;SY070200;Kafruma;C3984;48
+Idleb;SY07;Al Ma'ra;SY0702;Khan Shaykun;SY070201;Khan Shaykun;C3987;20
+Idleb;SY07;Al Ma'ra;SY0702;Sanjar;SY070202;Little Khayrieyh;C3994;56
+Idleb;SY07;Al Ma'ra;SY0702;Sanjar;SY070202;Mreiheb;C3996;21
+Idleb;SY07;Al Ma'ra;SY0702;Sanjar;SY070202;Rasm Elabed;C3998;10
+Idleb;SY07;Al Ma'ra;SY0702;Sanjar;SY070202;Maksar;C4005;12
+Idleb;SY07;Al Ma'ra;SY0702;Sanjar;SY070202;Ojeh;C4006;30
+Idleb;SY07;Al Ma'ra;SY0702;Sanjar;SY070202;Thleijeh;C4008;14
+Idleb;SY07;Al Ma'ra;SY0702;Sanjar;SY070202;Um Sehrij;C4012;12
+Idleb;SY07;Al Ma'ra;SY0702;Sanjar;SY070202;Jaberiyeh;C4016;18
+Idleb;SY07;Al Ma'ra;SY0702;Sanjar;SY070202;Tal Halawa;C4018;42
+Idleb;SY07;Al Ma'ra;SY0702;Sanjar;SY070202;Rabeeah Brennan;C4019;4
+Idleb;SY07;Al Ma'ra;SY0702;Sanjar;SY070202;Seraa;C4022;28
+Idleb;SY07;Al Ma'ra;SY0702;Sanjar;SY070202;Jahman;C4023;30
+Idleb;SY07;Al Ma'ra;SY0702;Sanjar;SY070202;Rabeeah Musa;C4034;4
+Idleb;SY07;Al Ma'ra;SY0702;Sanjar;SY070202;Fahil Jallas;C4037;24
+Idleb;SY07;Al Ma'ra;SY0702;Sanjar;SY070202;Little Karatin;C4040;6
+Idleb;SY07;Al Ma'ra;SY0702;Sanjar;SY070202;Eastern Lweibdeh;C4047;28
+Idleb;SY07;Al Ma'ra;SY0702;Kafr Nobol;SY070203;Shorlin;C4053;28
+Idleb;SY07;Al Ma'ra;SY0702;Kafr Nobol;SY070203;Sfuhen;C4054;142
+Idleb;SY07;Al Ma'ra;SY0702;Kafr Nobol;SY070203;Hazarin;C4056;24
+Idleb;SY07;Al Ma'ra;SY0702;Kafr Nobol;SY070203;Big Dara ;C4057;28
+Idleb;SY07;Al Ma'ra;SY0702;Kafr Nobol;SY070203;Has;C4058;28
+Idleb;SY07;Al Ma'ra;SY0702;Kafr Nobol;SY070203;Basqala;C4061;12
+Idleb;SY07;Al Ma'ra;SY0702;Kafr Nobol;SY070203;Kafr Oweid;C4062;144
+Idleb;SY07;Al Ma'ra;SY0702;Kafr Nobol;SY070203;Maarzita;C4066;16
+Idleb;SY07;Al Ma'ra;SY0702;Kafr Nobol;SY070203;Kafr Nobol;C4068;36
+Idleb;SY07;Al Ma'ra;SY0702;Kafr Nobol;SY070203;Maar Tahroma;C4071;88
+Idleb;SY07;Al Ma'ra;SY0702;Kafr Nobol;SY070203;Kawkabeh;C4072;180
+Idleb;SY07;Al Ma'ra;SY0702;Kafr Nobol;SY070203;Karsaa;C4073;28
+Idleb;SY07;Al Ma'ra;SY0702;Tamanaah;SY070204;Um Elkhalayel;C4085;12
+Idleb;SY07;Al Ma'ra;SY0702;Heish;SY070205;Heish;C4105;56
+Idleb;SY07;Al Ma'ra;SY0702;Heish;SY070205;Moqa;C4109;12
+Idleb;SY07;Al Ma'ra;SY0702;Heish;SY070205;Kafrsajna;C4110;36
+Idleb;SY07;Harim;SY0703;Harim;SY070300;Kafr Mu;C4119;20
+Idleb;SY07;Harim;SY0703;Dana;SY070301;Hezreh - Hezri;C4120;90
+Idleb;SY07;Harim;SY0703;Dana;SY070301;Sarmada;C4121;1268
+Idleb;SY07;Harim;SY0703;Dana;SY070301;Tal Elkaramej;C4122;60
+Idleb;SY07;Harim;SY0703;Dana;SY070301;Selwa;C4123;84
+Idleb;SY07;Harim;SY0703;Dana;SY070301;Tilaada;C4124;110
+Idleb;SY07;Harim;SY0703;Dana;SY070301;Termanin;C4125;105
+Idleb;SY07;Harim;SY0703;Dana;SY070301;Dana;C4126;894
+Idleb;SY07;Harim;SY0703;Dana;SY070301;Aqrabat;C4127;4
+Idleb;SY07;Harim;SY0703;Dana;SY070301;Burj Elnumra;C4128;44
+Idleb;SY07;Harim;SY0703;Dana;SY070301;Deir Hassan - Darhashan;C4129;522
+Idleb;SY07;Harim;SY0703;Dana;SY070301;Atma;C4130;204
+Idleb;SY07;Harim;SY0703;Dana;SY070301;Qah;C4131;30
+Idleb;SY07;Harim;SY0703;Dana;SY070301;Kafr Deryan;C4132;110
+Idleb;SY07;Harim;SY0703;Salqin;SY070302;Abu Talha;C4133;16
+Idleb;SY07;Harim;SY0703;Salqin;SY070302;Hamziyeh;C4134;12
+Idleb;SY07;Harim;SY0703;Salqin;SY070302;Ein Elbikara;C4136;52
+Idleb;SY07;Harim;SY0703;Salqin;SY070302;Tlul;C4137;24
+Idleb;SY07;Harim;SY0703;Salqin;SY070302;Salqin;C4140;120
+Idleb;SY07;Harim;SY0703;Salqin;SY070302;Big Hir Jamus;C4141;52
+Idleb;SY07;Harim;SY0703;Salqin;SY070302;Allani;C4142;36
+Idleb;SY07;Harim;SY0703;Salqin;SY070302;Azmarin;C4143;48
+Idleb;SY07;Harim;SY0703;Salqin;SY070302;Eskat;C4145;171
+Idleb;SY07;Harim;SY0703;Salqin;SY070302;Kafr Hind;C4151;32
+Idleb;SY07;Harim;SY0703;Kafr Takharim;SY070303;Kafr Takharim;C4157;71
+Idleb;SY07;Harim;SY0703;Kafr Takharim;SY070303;Kuku - Ein Eljaj;C4160;125
+Idleb;SY07;Harim;SY0703;Qourqeena;SY070304;Sardin;C4165;28
+Idleb;SY07;Harim;SY0703;Qourqeena;SY070304;Radwa ;C4169;25
+Idleb;SY07;Harim;SY0703;Qourqeena;SY070304;Kafr Aruq;C4172;40
+Idleb;SY07;Harim;SY0703;Qourqeena;SY070304;Qalb Lozeh;C4173;61
+Idleb;SY07;Harim;SY0703;Qourqeena;SY070304;Qourqeena;C4174;114
+Idleb;SY07;Harim;SY0703;Armanaz;SY070305;Ghafar;C4175;36
+Idleb;SY07;Harim;SY0703;Armanaz;SY070305;Armanaz;C4176;70
+Idleb;SY07;Harim;SY0703;Armanaz;SY070305;Hafasraja;C4178;26
+Idleb;SY07;Harim;SY0703;Armanaz;SY070305;Biret Armanaz;C4180;7
+Idleb;SY07;Harim;SY0703;Armanaz;SY070305;Dweila;C4182;33
+Idleb;SY07;Harim;SY0703;Armanaz;SY070305;Kuwaro - Um Elriyah;C4183;90
+Idleb;SY07;Harim;SY0703;Armanaz;SY070305;Milis;C4184;63
+Idleb;SY07;Harim;SY0703;Armanaz;SY070305;Kabta;C4185;35
+Idleb;SY07;Jisr-Ash-Shugur;SY0704;Jisr-Ash-Shugur;SY070400;Upper Shghur;C4197;4
+Idleb;SY07;Jisr-Ash-Shugur;SY0704;Jisr-Ash-Shugur;SY070400;Jisr-Ash-Shugur;C4199;56
+Idleb;SY07;Jisr-Ash-Shugur;SY0704;Jisr-Ash-Shugur;SY070400;Ein Elhamra;C4202;20
+Idleb;SY07;Jisr-Ash-Shugur;SY0704;Jisr-Ash-Shugur;SY070400;Sokkariyeh;C4210;92
+Idleb;SY07;Jisr-Ash-Shugur;SY0704;Jisr-Ash-Shugur;SY070400;Um Elgar;C4213;12
+Idleb;SY07;Jisr-Ash-Shugur;SY0704;Jisr-Ash-Shugur;SY070400;Tal Awar;C4217;24
+Idleb;SY07;Jisr-Ash-Shugur;SY0704;Jisr-Ash-Shugur;SY070400;Marj Elzohur;C4221;4
+Idleb;SY07;Jisr-Ash-Shugur;SY0704;Badama;SY070401;Ein El-Bayda;C4229;100
+Idleb;SY07;Jisr-Ash-Shugur;SY0704;Badama;SY070401;Kherbet Eljoz;C4231;252
+Idleb;SY07;Jisr-Ash-Shugur;SY0704;Darkosh;SY070402;Jamiliya;C4241;36
+Idleb;SY07;Jisr-Ash-Shugur;SY0704;Darkosh;SY070402;Ramadiyeh;C4242;28
+Idleb;SY07;Jisr-Ash-Shugur;SY0704;Darkosh;SY070402;Mazuleh;C4243;28
+Idleb;SY07;Jisr-Ash-Shugur;SY0704;Darkosh;SY070402;Amud;C4245;4
+Idleb;SY07;Jisr-Ash-Shugur;SY0704;Darkosh;SY070402;Thahr;C4247;36
+Idleb;SY07;Jisr-Ash-Shugur;SY0704;Darkosh;SY070402;Dorriyeh;C4249;22
+Idleb;SY07;Jisr-Ash-Shugur;SY0704;Darkosh;SY070402;Sheikh Issa Elashury;C4251;16
+Idleb;SY07;Jisr-Ash-Shugur;SY0704;Darkosh;SY070402;Darkosh;C4252;23
+Idleb;SY07;Jisr-Ash-Shugur;SY0704;Darkosh;SY070402;Zanbaqi;C4253;24
+Idleb;SY07;Jisr-Ash-Shugur;SY0704;Darkosh;SY070402;Mreimin;C4254;142
+Idleb;SY07;Jisr-Ash-Shugur;SY0704;Janudiyeh;SY070403;Maland;C4259;4
+Idleb;SY07;Jisr-Ash-Shugur;SY0704;Janudiyeh;SY070403;Foz - Zuf;C4263;148
+Idleb;SY07;Jisr-Ash-Shugur;SY0704;Janudiyeh;SY070403;Hamama - Kafr Debbin;C4267;12
+Idleb;SY07;Ariha;SY0705;Ariha;SY070500;Bazabur;C4268;12
+Idleb;SY07;Ariha;SY0705;Ariha;SY070500;Shinan;C4275;171
+Idleb;SY07;Ariha;SY0705;Ariha;SY070500;Ariha;C4278;270
+Idleb;SY07;Ariha;SY0705;Ariha;SY070500;Nahliya;C4286;94
+Idleb;SY07;Ariha;SY0705;Ariha;SY070500;Korin;C4288;28
+Idleb;SY07;Ariha;SY0705;Ariha;SY070500;Kafr Shalaya;C4289;18
+Idleb;SY07;Ariha;SY0705;Ehsem;SY070501;Abdita;C4291;32
+Idleb;SY07;Ariha;SY0705;Ehsem;SY070501;Ablin;C4292;24
+Idleb;SY07;Ariha;SY0705;Ehsem;SY070501;Mozra;C4298;25
+Idleb;SY07;Ariha;SY0705;Ehsem;SY070501;Ein Laruz;C4299;360
+Idleb;SY07;Ariha;SY0705;Ehsem;SY070501;Arnaba;C4301;27
+Idleb;SY07;Ariha;SY0705;Ehsem;SY070501;Joseph;C4303;150
+Idleb;SY07;Ariha;SY0705;Ehsem;SY070501;Marata;C4307;83
+Idleb;SY07;Ariha;SY0705;Mhambal;SY070502;Shagurit;C4311;22
+Idleb;SY07;Ariha;SY0705;Mhambal;SY070502;Ora Qabli - Edwan;C4312;24
+Idleb;SY07;Ariha;SY0705;Mhambal;SY070502;Northern Laj;C4316;52
+Idleb;SY07;Ariha;SY0705;Mhambal;SY070502;Jadraya;C4320;56
+Idleb;SY07;Ariha;SY0705;Mhambal;SY070502;Anb;C4323;52
+Idleb;SY07;Ariha;SY0705;Mhambal;SY070502;Sahen;C4327;7
+Idleb;SY07;Ariha;SY0705;Mhambal;SY070502;Hila;C4328;6
+Idleb;SY07;Ariha;SY0705;Mhambal;SY070502;Mhambal;C4330;52
+Al-Hasakeh;SY08;Al-Hasakeh;SY0800;Al-Hasakeh;SY080000;Shama;C4338;4
+Al-Hasakeh;SY08;Al-Hasakeh;SY0800;Al-Hasakeh;SY080000;Sofya;C4339;4
+Al-Hasakeh;SY08;Al-Hasakeh;SY0800;Al-Hasakeh;SY080000;Safya;C4354;8
+Al-Hasakeh;SY08;Al-Hasakeh;SY0800;Al-Hasakeh;SY080000;Al-Hasakeh;C4360;594
+Al-Hasakeh;SY08;Al-Hasakeh;SY0800;Al-Hasakeh;SY080000;Mahd Elrijleh;C4381;8
+Al-Hasakeh;SY08;Al-Hasakeh;SY0800;Tal Tamer;SY080001;Tal Nijmeh;C4396;8
+Al-Hasakeh;SY08;Al-Hasakeh;SY0800;Shadadah;SY080002;Shaddadah;C4446;5
+Al-Hasakeh;SY08;Al-Hasakeh;SY0800;Markada;SY080003;Kishkish Zyanat;C4453;5
+Al-Hasakeh;SY08;Al-Hasakeh;SY0800;Hole;SY080006;Motasarrefiyeh;C4511;5
+Al-Hasakeh;SY08;Al-Hasakeh;SY0800;Hole;SY080006;Abu Wishwash;C4512;5
+Al-Hasakeh;SY08;Al-Hasakeh;SY0800;Hole;SY080006;Khatuniya Bahra;C4513;5
+Al-Hasakeh;SY08;Al-Hasakeh;SY0800;Hole;SY080006;Khweitleh Hmud;C4515;5
+Al-Hasakeh;SY08;Al-Hasakeh;SY0800;Hole;SY080006;Atshana;C4518;5
+Al-Hasakeh;SY08;Al-Hasakeh;SY0800;Hole;SY080006;Hole;C4519;672
+Al-Hasakeh;SY08;Quamishli;SY0802;Quamishli;SY080200;Quamishli;C4564;207
+Al-Hasakeh;SY08;Quamishli;SY0802;Amuda;SY080202;Jorhariyeh;C4683;5
+Al-Hasakeh;SY08;Quamishli;SY0802;Amuda;SY080202;Tal Khanzir;C4684;5
+Al-Hasakeh;SY08;Quamishli;SY0802;Amuda;SY080202;Tal Khaled;C4686;6
+Al-Hasakeh;SY08;Quamishli;SY0802;Amuda;SY080202;Amuda;C4688;205
+Al-Hasakeh;SY08;Quamishli;SY0802;Amuda;SY080202;Hettin Amuda;C4689;4
+Al-Hasakeh;SY08;Quamishli;SY0802;Amuda;SY080202;Hallaba;C4692;4
+Al-Hasakeh;SY08;Quamishli;SY0802;Amuda;SY080202;Tor Elyas;C4694;4
+Al-Hasakeh;SY08;Quamishli;SY0802;Amuda;SY080202;Dar;C4697;3
+Al-Hasakeh;SY08;Quamishli;SY0802;Amuda;SY080202;Talil;C4699;4
+Al-Hasakeh;SY08;Quamishli;SY0802;Amuda;SY080202;Tal Eshq;C4700;4
+Al-Hasakeh;SY08;Quamishli;SY0802;Amuda;SY080202;Amara;C4701;3
+Al-Hasakeh;SY08;Quamishli;SY0802;Amuda;SY080202;Tal Aswad Amudeh;C4704;5
+Al-Hasakeh;SY08;Quamishli;SY0802;Amuda;SY080202;Tal Ahmar;C4706;5
+Al-Hasakeh;SY08;Quamishli;SY0802;Amuda;SY080202;Sfira Amuda;C4711;5
+Al-Hasakeh;SY08;Quamishli;SY0802;Amuda;SY080202;Khaled;C4714;5
+Al-Hasakeh;SY08;Quamishli;SY0802;Amuda;SY080202;Kherbet Sheib Amuda;C4715;5
+Al-Hasakeh;SY08;Quamishli;SY0802;Amuda;SY080202;Um Enab;C4716;5
+Al-Hasakeh;SY08;Quamishli;SY0802;Amuda;SY080202;Um Rabee;C4717;4
+Al-Hasakeh;SY08;Quamishli;SY0802;Amuda;SY080202;Jalaq;C4719;4
+Al-Hasakeh;SY08;Quamishli;SY0802;Amuda;SY080202;Rihaniyet Amuda;C4726;4
+Al-Hasakeh;SY08;Quamishli;SY0802;Amuda;SY080202;Jaberiyeh Amudeh;C4729;8
+Al-Hasakeh;SY08;Quamishli;SY0802;Amuda;SY080202;Qaber Ali;C4732;5
+Al-Hasakeh;SY08;Quamishli;SY0802;Amuda;SY080202;Fokhar;C4735;5
+Al-Hasakeh;SY08;Quamishli;SY0802;Amuda;SY080202;Koub;C4737;5
+Al-Hasakeh;SY08;Quamishli;SY0802;Amuda;SY080202;Qleiah;C4738;3
+Al-Hasakeh;SY08;Quamishli;SY0802;Amuda;SY080202;Nif;C4741;5
+Al-Hasakeh;SY08;Quamishli;SY0802;Qahtaniyyeh;SY080203;Qahtaniyyeh;C4751;8
+Al-Hasakeh;SY08;Al-Malikeyyeh;SY0803;Al-Malikeyyeh;SY080300;Maabada;C4841;10
+Al-Hasakeh;SY08;Al-Malikeyyeh;SY0803;Al-Malikeyyeh;SY080300;Al-Malikeyyeh;C4881;24
+Al-Hasakeh;SY08;Al-Malikeyyeh;SY0803;Jawadiyah;SY080301;Jawadiyah;C4919;9
+Al-Hasakeh;SY08;Ras Al Ain;SY0804;Ras Al Ain;SY080400;Siwan;C4984;5
+Al-Hasakeh;SY08;Ras Al Ain;SY0804;Ras Al Ain;SY080400;Dahmaa;C4986;10
+Al-Hasakeh;SY08;Ras Al Ain;SY0804;Ras Al Ain;SY080400;Ras Al Ain;C4988;8
+Al-Hasakeh;SY08;Ras Al Ain;SY0804;Ras Al Ain;SY080400;Zaydiyeh Ras El Ein;C4993;6
+Al-Hasakeh;SY08;Ras Al Ain;SY0804;Ras Al Ain;SY080400;Ajla;C4996;17
+Al-Hasakeh;SY08;Ras Al Ain;SY0804;Ras Al Ain;SY080400;Ahras;C4997;5
+Al-Hasakeh;SY08;Ras Al Ain;SY0804;Ras Al Ain;SY080400;Abu Shakhat;C4998;10
+Al-Hasakeh;SY08;Ras Al Ain;SY0804;Ras Al Ain;SY080400;Tal Halaf;C5002;5
+Al-Hasakeh;SY08;Ras Al Ain;SY0804;Ras Al Ain;SY080400;Western Rabiat;C5003;5
+Al-Hasakeh;SY08;Ras Al Ain;SY0804;Ras Al Ain;SY080400;Assadiya;C5009;6
+Al-Hasakeh;SY08;Ras Al Ain;SY0804;Ras Al Ain;SY080400;Kherbet Hamid;C5010;5
+Al-Hasakeh;SY08;Ras Al Ain;SY0804;Ras Al Ain;SY080400;Tal Sheer Ras El Ein;C5012;5
+Al-Hasakeh;SY08;Ras Al Ain;SY0804;Ras Al Ain;SY080400;Masjid;C5025;9
+Al-Hasakeh;SY08;Ras Al Ain;SY0804;Ras Al Ain;SY080400;Mbarkiyeh;C5026;5
+Al-Hasakeh;SY08;Ras Al Ain;SY0804;Ras Al Ain;SY080400;Mabruka;C5027;207
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Deir-ez-Zor;SY090100;Kaba Jeb;C5091;24
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Kisreh;SY090101;Zghir Jazireh;C5093;15
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Kisreh;SY090101;Harmushiyeh;C5095;40
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Kisreh;SY090101;Kasra;C5096;55
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Kisreh;SY090101;Ali;C5097;25
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Kisreh;SY090101;Jazaret Elbuhmeid;C5100;40
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Kisreh;SY090101;Shate;C5101;15
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Kisreh;SY090101;Sawa;C5102;66
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Kisreh;SY090101;Jazaret Milaj;C5103;35
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Kisreh;SY090101;Hawayej Thyab Jazira;C5104;10
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Kisreh;SY090101;Hawayej Busamaa;C5105;50
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Kisreh;SY090101;Mhemideh;C5106;84
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Basira;SY090102;Daman;C5108;5
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Basira;SY090102;Basira;C5110;49
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Basira;SY090102;Tuwamiyeh;C5111;35
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Basira;SY090102;Hejneh;C5113;18
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Basira;SY090102;Zir;C5114;24
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Basira;SY090102;Shiheil;C5119;49
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Basira;SY090102;Mashekh;C5121;18
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Muhasan;SY090103;Toob;C5122;36
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Muhasan;SY090103;Tabiyet Shamiyeh;C5125;55
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Tabni;SY090104;Masrab;C5130;30
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Tabni;SY090104;Tarif;C5133;18
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Khasham;SY090105;Khasham;C5140;5
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Khasham;SY090105;Dahleh;C5142;36
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Khasham;SY090105;Jdid Ekeidat;C5143;35
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Sur;SY090106;Namliyeh;C5152;63
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Sur;SY090106;Sur;C5157;18
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Sur;SY090106;Western Gharibeh;C5159;36
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Sur;SY090106;Jasmi;C5160;30
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Sur;SY090106;Moeijel;C5161;28
+Deir-ez-Zor;SY09;Abu Kamal;SY0902;Abu Kamal;SY090200;Hura;C5162;7
+Deir-ez-Zor;SY09;Abu Kamal;SY0902;Abu Kamal;SY090200;Siyal;C5163;12
+Deir-ez-Zor;SY09;Abu Kamal;SY0902;Abu Kamal;SY090200;Abu Kamal;C5167;110
+Deir-ez-Zor;SY09;Abu Kamal;SY0902;Abu Kamal;SY090200;Sweiyeh;C5168;4
+Deir-ez-Zor;SY09;Abu Kamal;SY0902;Abu Kamal;SY090200;Ghabra ;C5169;4
+Deir-ez-Zor;SY09;Abu Kamal;SY0902;Hajin;SY090201;Hajin;C5175;25
+Deir-ez-Zor;SY09;Abu Kamal;SY0902;Jalaa;SY090202;Tothiyeh;C5177;15
+Deir-ez-Zor;SY09;Abu Kamal;SY0902;Jalaa;SY090202;Jalaa;C5178;16
+Deir-ez-Zor;SY09;Abu Kamal;SY0902;Jalaa;SY090202;Qataa;C5179;8
+Deir-ez-Zor;SY09;Abu Kamal;SY0902;Jalaa;SY090202;Abbas;C5180;8
+Deir-ez-Zor;SY09;Abu Kamal;SY0902;Jalaa;SY090202;Salhiyeh;C5181;24
+Deir-ez-Zor;SY09;Abu Kamal;SY0902;Susat;SY090203;Upper Baguz;C5184;41
+Deir-ez-Zor;SY09;Abu Kamal;SY0902;Susat;SY090203;Bubadran;C5185;16
+Deir-ez-Zor;SY09;Abu Kamal;SY0902;Susat;SY090203;Sosa;C5186;15
+Deir-ez-Zor;SY09;Al Mayadin;SY0903;Al Mayadin;SY090300;Lower Hawi Baqras;C5187;30
+Deir-ez-Zor;SY09;Al Mayadin;SY0903;Al Mayadin;SY090300;Upper Baqras;C5190;15
+Deir-ez-Zor;SY09;Al Mayadin;SY0903;Al Mayadin;SY090300;Al Mayadin;C5192;60
+Deir-ez-Zor;SY09;Al Mayadin;SY0903;Thiban;SY090301;Abu Hardoub;C5195;9
+Deir-ez-Zor;SY09;Al Mayadin;SY0903;Thiban;SY090301;Sweidan Jazira;C5196;18
+Deir-ez-Zor;SY09;Al Mayadin;SY0903;Ashara;SY090302;Quriyeh;C5207;15
+Deir-ez-Zor;SY09;Al Mayadin;SY0903;Ashara;SY090302;Dablan;C5208;16
+Deir-ez-Zor;SY09;Al Mayadin;SY0903;Ashara;SY090302;Dweir;C5209;12
+Deir-ez-Zor;SY09;Al Mayadin;SY0903;Ashara;SY090302;Ashara;C5210;37
+Deir-ez-Zor;SY09;Al Mayadin;SY0903;Ashara;SY090302;Sbeikhan;C5211;11
+Tartous;SY10;Tartous;SY1000;Tartous;SY100000;Tartous;C5221;198
+Tartous;SY10;Tartous;SY1000;Tartous;SY100000;Dweir Elsheikh Saed;C5226;9
+Tartous;SY10;Tartous;SY1000;Tartous;SY100000;Sheikh Saed;C5236;19
+Tartous;SY10;Tartous;SY1000;Hameidiyyeh;SY100002;Hameidiyyeh;C5262;5
+Tartous;SY10;Tartous;SY1000;Hameidiyyeh;SY100002;Jamasa;C5268;5
+Tartous;SY10;Tartous;SY1000;Kherbet Elma'aza;SY100003;Kherbet Elma'aza;C5272;10
+Tartous;SY10;Tartous;SY1000;Soda Khawabi;SY100004;Sawda;C5299;10
+Tartous;SY10;Tartous;SY1000;Safsafa;SY100006;Safsafa;C5324;8
+Tartous;SY10;Banyas;SY1002;Banyas;SY100200;Beida;C5343;4
+Tartous;SY10;Banyas;SY1002;Banyas;SY100200;Tanita;C5355;5
+Tartous;SY10;Banyas;SY1002;Banyas;SY100200;Banyas;C5360;20
+Tartous;SY10;Banyas;SY1002;Anaza;SY100202;Anaza;C5390;10
+Tartous;SY10;Banyas;SY1002;Qadmous;SY100203;Qadmous;C5404;9
+Tartous;SY10;Banyas;SY1002;Taleen;SY100206;Taleen;C5450;5
+Tartous;SY10;Safita;SY1003;Safita;SY100300;Beit Elmarj;C5453;5
+Tartous;SY10;Safita;SY1003;Safita;SY100300;Safita;C5472;29
+Tartous;SY10;Safita;SY1003;Mashta Elhiu;SY100301;Kafrun;C5496;9
+Tartous;SY10;Safita;SY1003;Mashta Elhiu;SY100301;Jenin;C5507;5
+Tartous;SY10;Safita;SY1003;Mashta Elhiu;SY100301;Mashta Elhiu;C5509;15
+Tartous;SY10;Safita;SY1003;Bariqiyeh;SY100302;Bariqiyeh;C5517;8
+Tartous;SY10;Safita;SY1003;Sibbeh;SY100303;Sibbeh;C5524;5
+Tartous;SY10;Safita;SY1003;Sisniyyeh;SY100304;Sisniyyeh;C5545;10
+Tartous;SY10;Dreikish;SY1004;Dreikish;SY100400;Beit Shbat;C5573;5
+Tartous;SY10;Dreikish;SY1004;Dreikish;SY100400;Dreikish;C5586;15
+Tartous;SY10;Dreikish;SY1004;Jneinet Raslan;SY100401;Jneinet Raslan;C5593;5
+Tartous;SY10;Dreikish;SY1004;Hamin;SY100402;Hamin;C5607;9
+Tartous;SY10;Dreikish;SY1004;Dweir Raslan;SY100403;Dweir Raslan;C5610;15
+Tartous;SY10;Sheikh Badr;SY1005;Sheikh Badr;SY100500;Sheikh Badr;C5638;9
+Tartous;SY10;Sheikh Badr;SY1005;Baramanet Elmashayekh;SY100501;Baramanet Elmashayekh;C5646;9
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Hfeiret Elsoqur;C5679;10
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Wihdeh;C5680;25
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Zahera;C5685;35
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Tawi Rumman;C5686;10
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Eastern Khayala;C5687;30
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Bir Elhasham;C5691;20
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Yamama;C5692;15
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Faraa;C5696;20
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Raeqqet Samra;C5699;17
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Yarmuk;C5701;15
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Hettin;C5703;30
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Hawi Elhawa;C5704;55
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Hilo Abed;C5707;40
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Ar-Raqqa;C5710;564
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Safyan;C5711;20
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Tweilah;C5712;35
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Jalaa;C5713;20
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Rabee'a;C5714;10
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Upper Khneiz;C5717;200
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Sahl;C5719;55
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Adnaniyeh;C5720;30
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Thulth Khneiz;C5722;5300
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Hadba;C5724;15
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Qahtaniyyeh;C5726;10
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Western Sahlabiyeh;C5727;150
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Ghota;C5728;30
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Andalus;C5729;20
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Hweijet Faraj;C5732;30
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Rahmaniya;C5733;40
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Marj Abu Shareb;C5734;25
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Kisret Elsheikh Jomaa;C5735;25
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Milsun;C5736;20
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Kdeiran;C5739;20
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Ar-Raqqa;SY110100;Yaarub;C5741;15
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Sabka;SY110101;Shamra;C5743;5
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Sabka;SY110101;Rabyeh;C5744;5
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Sabka;SY110101;Sfin - Kisret Mohammed Agha;C5745;7
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Sabka;SY110101;Sabka;C5747;175
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Sabka;SY110101;Ojeil;C5748;5
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Sabka;SY110101;Jabli;C5751;10
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Sabka;SY110101;Akeirshi;C5752;16
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Sabka;SY110101;Hweijet Shnan;C5753;35
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Sabka;SY110101;Rahbi;C5754;5
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Sabka;SY110101;Masarra;C5756;5
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Karama;SY110102;Bader;C5759;9
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Karama;SY110102;Jdidet Khabur;C5760;10
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Karama;SY110102;Nasra;C5762;25
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Karama;SY110102;Ojet Btir;C5765;5
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Karama;SY110102;Karama;C5766;75
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Karama;SY110102;Samera - Oweija Hamad Elassaf;C5771;8
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Karama;SY110102;Qadessiyeh Kajla;C5772;10
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Maadan;SY110103;Khamisiyeh;C5778;6
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Maadan;SY110103;Tishrin 6;C5779;6
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Maadan;SY110103;Daama;C5780;40
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Maadan;SY110103;Sweida;C5781;10
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Maadan;SY110103;Jaber;C5784;5
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Maadan;SY110103;Little Maghalla;C5785;6
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Maadan;SY110103;Maadan;C5787;300
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Tell Abiad;SY110200;Shaaleh Mankali;C5789;12
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Tell Abiad;SY110200;Tell Abiad;C5792;78
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Tell Abiad;SY110200;Tal Elkibir;C5793;29
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Tell Abiad;SY110200;Sehrijeh;C5794;5
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Tell Abiad;SY110200;Tal Akhdar;C5797;4
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Tell Abiad;SY110200;Kherbet Elroz;C5801;11
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Tell Abiad;SY110200;Hweijet Abdi;C5805;16
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Tell Abiad;SY110200;Jamailiyeh;C5813;5
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Tell Abiad;SY110200;Western Dik;C5815;8
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Tell Abiad;SY110200;Sokkariyeh;C5820;12
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Suluk;SY110201;Zaydi;C5835;19
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Suluk;SY110201;Kherbet Jreidi;C5840;48
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Suluk;SY110201;Suluk;C5843;250
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Suluk;SY110201;Tal Hammam;C5844;714
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Suluk;SY110201;Shalkhi;C5846;85
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Suluk;SY110201;Rgheilan;C5851;14
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Suluk;SY110201;Iweh;C5859;70
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Suluk;SY110201;Al-Malikeyyeh;C5863;15
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Suluk;SY110201;Arbid;C5867;50
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Suluk;SY110201;Maleh;C5869;19
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Suluk;SY110201;Abu Haya;C5874;8
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Suluk;SY110201;Thadyen;C5880;6
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Suluk;SY110201;Abu Haye El Hoz;C5881;20
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Suluk;SY110201;Bab Elkheir;C5882;6
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Suluk;SY110201;Hiba;C5884;19
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Suluk;SY110201;Sufan;C5887;25
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Ein Issa;SY110202;Abu Khorzeh;C5898;13
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Ein Issa;SY110202;Ein Issa;C5905;107
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Ein Issa;SY110202;Zenbaq;C5907;14
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Ein Issa;SY110202;Sharkrak;C5911;132
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Ein Issa;SY110202;Amin;C5912;350
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Ein Issa;SY110202;Hanano;C5922;160
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Ein Issa;SY110202;Madlaj;C5925;40
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Ein Issa;SY110202;Hisheh;C5927;1765
+Ar-Raqqa;SY11;Ath-Thawrah;SY1103;Al-Thawrah;SY110300;Al-Thawrah;C5929;150
+Ar-Raqqa;SY11;Ath-Thawrah;SY1103;Mansura;SY110301;Ramthan;C5930;25
+Ar-Raqqa;SY11;Ath-Thawrah;SY1103;Mansura;SY110301;Debsi Faraj;C5931;45
+Ar-Raqqa;SY11;Ath-Thawrah;SY1103;Mansura;SY110301;Jeidine;C5935;34
+Ar-Raqqa;SY11;Ath-Thawrah;SY1103;Mansura;SY110301;Abu Kbee - West ;C5936;70
+Ar-Raqqa;SY11;Ath-Thawrah;SY1103;Mansura;SY110301;Debsi Afnan;C5939;70
+Ar-Raqqa;SY11;Ath-Thawrah;SY1103;Mansura;SY110301;Mansura;C5942;210
+Ar-Raqqa;SY11;Ath-Thawrah;SY1103;Mansura;SY110301;Emeirat;C5943;45
+Ar-Raqqa;SY11;Ath-Thawrah;SY1103;Mansura;SY110301;Sheib Eldakar;C5947;30
+Ar-Raqqa;SY11;Ath-Thawrah;SY1103;Mansura;SY110301;Fakhikheh;C5953;75
+Dar'a;SY12;Dar'a;SY1200;Dar'a;SY120000;Um Elmayathen;C5996;700
+Dar'a;SY12;Dar'a;SY1200;Dar'a;SY120000;Neimeh;C5997;0
+Dar'a;SY12;Dar'a;SY1200;Busra Esh-Sham;SY120001;Tisiya;C6000;0
+Dar'a;SY12;Dar'a;SY1200;Busra Esh-Sham;SY120001;Smaqiyat;C6001;0
+Dar'a;SY12;Dar'a;SY1200;Busra Esh-Sham;SY120001;Busra Esh-Sham;C6002;0
+Dar'a;SY12;Dar'a;SY1200;Busra Esh-Sham;SY120001;Simej;C6003;0
+Dar'a;SY12;Dar'a;SY1200;Busra Esh-Sham;SY120001;Smad;C6004;150
+Dar'a;SY12;Dar'a;SY1200;Busra Esh-Sham;SY120001;Jemrine;C6005;0
+Dar'a;SY12;Dar'a;SY1200;Busra Esh-Sham;SY120001;Abu Katuleh;C6006;0
+Dar'a;SY12;Dar'a;SY1200;Busra Esh-Sham;SY120001;Nada;C6007;0
+Dar'a;SY12;Dar'a;SY1200;Busra Esh-Sham;SY120001;Moraba;C6008;0
+Dar'a;SY12;Dar'a;SY1200;Kherbet Ghazala;SY120002;Eastern Ghariyeh;C6009;0
+Dar'a;SY12;Dar'a;SY1200;Kherbet Ghazala;SY120002;Western Ghariyeh;C6010;0
+Dar'a;SY12;Dar'a;SY1200;Kherbet Ghazala;SY120002;Alma;C6011;50
+Dar'a;SY12;Dar'a;SY1200;Ash-Shajara;SY120003;Hit;C6013;0
+Dar'a;SY12;Dar'a;SY1200;Ash-Shajara;SY120003;Al-Qusayr;C6017;20
+Dar'a;SY12;Dar'a;SY1200;Ash-Shajara;SY120003;Sahm El Golan;C6018;18
+Dar'a;SY12;Dar'a;SY1200;Da'el;SY120004;Da'el;C6030;1800
+Dar'a;SY12;Dar'a;SY1200;Da'el;SY120004;Abtaa;C6031;300
+Dar'a;SY12;Dar'a;SY1200;Mzeireb;SY120005;Yadudeh;C6032;600
+Dar'a;SY12;Dar'a;SY1200;Mzeireb;SY120005;Tal Shihab;C6033;900
+Dar'a;SY12;Dar'a;SY1200;Mzeireb;SY120005;Tafas;C6034;1100
+Dar'a;SY12;Dar'a;SY1200;Mzeireb;SY120005;Ajami;C6035;80
+Dar'a;SY12;Dar'a;SY1200;Mzeireb;SY120005;Tabriyat;C6036;70
+Dar'a;SY12;Dar'a;SY1200;Mzeireb;SY120005;Zayzun;C6037;500
+Dar'a;SY12;Dar'a;SY1200;Mzeireb;SY120005;Jlein;C6038;133
+Dar'a;SY12;Dar'a;SY1200;Mzeireb;SY120005;Mzeireb;C6039;900
+Dar'a;SY12;Dar'a;SY1200;Mzeireb;SY120005;Nahj;C6040;240
+Dar'a;SY12;Dar'a;SY1200;Jizeh;SY120006;Mataeiyeh;C6041;0
+Dar'a;SY12;Dar'a;SY1200;Jizeh;SY120006;Ghasm;C6042;250
+Dar'a;SY12;Dar'a;SY1200;Mseifra;SY120007;Mseifra;C6044;0
+Dar'a;SY12;Dar'a;SY1200;Mseifra;SY120007;Sahwa;C6045;500
+Dar'a;SY12;Dar'a;SY1200;Mseifra;SY120007;Um Walad;C6046;0
+Dar'a;SY12;Dar'a;SY1200;Mseifra;SY120007;Karak;C6047;0
+Dar'a;SY12;As-Sanamayn;SY1202;As-Sanamayn;SY120200;Hara;C6048;0
+Dar'a;SY12;As-Sanamayn;SY1202;As-Sanamayn;SY120200;Zamrin;C6049;0
+Dar'a;SY12;As-Sanamayn;SY1202;As-Sanamayn;SY120200;Barqa;C6052;0
+Dar'a;SY12;As-Sanamayn;SY1202;As-Sanamayn;SY120200;Samlin;C6055;0
+Dar'a;SY12;As-Sanamayn;SY1202;As-Sanamayn;SY120200;Ankhal;C6058;100
+Dar'a;SY12;As-Sanamayn;SY1202;As-Sanamayn;SY120200;Jisri;C6060;0
+Dar'a;SY12;As-Sanamayn;SY1202;Masmiyyeh;SY120201;Sakra;C6065;0
+Dar'a;SY12;As-Sanamayn;SY1202;Masmiyyeh;SY120201;Masmiyyeh;C6068;4
+Dar'a;SY12;As-Sanamayn;SY1202;Ghabagheb;SY120202;Aqraba;C6079;15
+Dar'a;SY12;As-Sanamayn;SY1202;Ghabagheb;SY120202;Mal;C6080;0
+Dar'a;SY12;As-Sanamayn;SY1202;Ghabagheb;SY120202;Tiha;C6085;0
+Dar'a;SY12;As-Sanamayn;SY1202;Ghabagheb;SY120202;Kafr Nassij;C6089;0
+Dar'a;SY12;Izra';SY1203;Izra';SY120300;Rweisat;C6092;0
+Dar'a;SY12;Izra';SY1203;Izra';SY120300;Matleh;C6093;0
+Dar'a;SY12;Izra';SY1203;Izra';SY120300;Hamer;C6094;0
+Dar'a;SY12;Izra';SY1203;Izra';SY120300;Zabayer;C6095;0
+Dar'a;SY12;Izra';SY1203;Izra';SY120300;Jadal;C6096;100
+Dar'a;SY12;Izra';SY1203;Izra';SY120300;Sur;C6098;0
+Dar'a;SY12;Izra';SY1203;Izra';SY120300;Najih;C6100;0
+Dar'a;SY12;Izra';SY1203;Izra';SY120300;Izra';C6101;8
+Dar'a;SY12;Izra';SY1203;Izra';SY120300;Mjeidel;C6102;0
+Dar'a;SY12;Izra';SY1203;Izra';SY120300;Asem;C6103;0
+Dar'a;SY12;Izra';SY1203;Izra';SY120300;Bweir;C6104;0
+Dar'a;SY12;Izra';SY1203;Izra';SY120300;Bisr Elharir;C6105;100
+Dar'a;SY12;Izra';SY1203;Izra';SY120300;Mahjeh;C6107;0
+Dar'a;SY12;Izra';SY1203;Izra';SY120300;Qirata;C6109;0
+Dar'a;SY12;Izra';SY1203;Izra';SY120300;Masikeh-Lajat;C6110;0
+Dar'a;SY12;Izra';SY1203;Jasim;SY120301;Jasim;C6111;400
+Dar'a;SY12;Izra';SY1203;Jasim;SY120301;Nimer;C6112;0
+Dar'a;SY12;Izra';SY1203;Hrak;SY120302;Rikhim;C6113;0
+Dar'a;SY12;Izra';SY1203;Hrak;SY120302;Western Maliha;C6114;0
+Dar'a;SY12;Izra';SY1203;Hrak;SY120302;Sura;C6115;0
+Dar'a;SY12;Izra';SY1203;Hrak;SY120302;Hrak;C6116;0
+Dar'a;SY12;Izra';SY1203;Hrak;SY120302;Eastern Maliha;C6117;0
+Dar'a;SY12;Izra';SY1203;Hrak;SY120302;Nahta;C6118;0
+Dar'a;SY12;Izra';SY1203;Nawa ;SY120303;Edwan;C6119;12
+Dar'a;SY12;Izra';SY1203;Nawa ;SY120303;Sheikh Saed;C6120;0
+Dar'a;SY12;Izra';SY1203;Nawa ;SY120303;Jabaliyeh;C6121;2100
+Dar'a;SY12;Izra';SY1203;Nawa ;SY120303;Sokkariyeh;C6122;0
+Dar'a;SY12;Izra';SY1203;Nawa ;SY120303;Nasriyeh;C6123;0
+Dar'a;SY12;Izra';SY1203;Nawa ;SY120303;Nawa;C6124;4000
+Dar'a;SY12;Izra';SY1203;Tassil;SY120305;Tassil;C6131;48
+Dar'a;SY12;Izra';SY1203;Tassil;SY120305;Bekar;C6132;0
+Dar'a;SY12;Izra';SY1203;Tassil;SY120305;Eastern Bekar;C6133;0
+As-Sweida;SY13;As-Sweida;SY1300;As-Sweida;SY130000;Sahwet Elkhodar;C6139;5
+As-Sweida;SY13;As-Sweida;SY1300;As-Sweida;SY130000;Atil;C6145;10
+As-Sweida;SY13;As-Sweida;SY1300;As-Sweida;SY130000;Rassas;C6146;40
+As-Sweida;SY13;As-Sweida;SY1300;As-Sweida;SY130000;As-Sweida;C6147;225
+As-Sweida;SY13;As-Sweida;SY1300;As-Sweida;SY130000;Mayamas;C6157;10
+As-Sweida;SY13;Salkhad;SY1302;Salkhad;SY130200;Salkhad;C6184;10
+As-Sweida;SY13;Salkhad;SY1302;Qarayya;SY130201;Qarayya;C6200;5
+As-Sweida;SY13;Salkhad;SY1302;Gharyeh;SY130202;Gharyeh;C6201;6
+As-Sweida;SY13;Salkhad;SY1302;Milh;SY130204;Sheab;C6208;5
+As-Sweida;SY13;Salkhad;SY1302;Milh;SY130204;Milh;C6219;15
+As-Sweida;SY13;Shahba;SY1303;Shahba;SY130300;Shahba;C6226;15
+As-Sweida;SY13;Shahba;SY1303;Shaqa;SY130301;Jneineh;C6241;5
+As-Sweida;SY13;Shahba;SY1303;Ariqa;SY130302;Smeid;C6244;10
+As-Sweida;SY13;Shahba;SY1303;Little Sura;SY130303;Khalkhaleh;C6253;5
+As-Sweida;SY13;Shahba;SY1303;Little Sura;SY130303;Lahetheh;C6263;5
+Quneitra;SY14;Quneitra;SY1400;Quneitra;SY140000;Rweheineh;C6264;0
+Quneitra;SY14;Quneitra;SY1400;Quneitra;SY140000;Hameidiyyeh;C6265;0
+Quneitra;SY14;Quneitra;SY1400;Quneitra;SY140000;Western Samadaniyeh ;C6266;0
+Quneitra;SY14;Quneitra;SY1400;Quneitra;SY140000;Bir Ajam;C6267;0
+Quneitra;SY14;Quneitra;SY1400;Quneitra;SY140000;Quneitra;C6268;0
+Quneitra;SY14;Quneitra;SY1400;Quneitra;SY140000;Breiqa ;C6269;0
+Quneitra;SY14;Quneitra;SY1400;Quneitra;SY140000;Qahtaniyyeh;C6270;0
+Quneitra;SY14;Quneitra;SY1400;Khan Arnaba;SY140001;Tarnaja;C6271;0
+Quneitra;SY14;Quneitra;SY1400;Khan Arnaba;SY140001;Um Batna;C6272;0
+Quneitra;SY14;Quneitra;SY1400;Khan Arnaba;SY140001;Kalidiyeh;C6274;0
+Quneitra;SY14;Quneitra;SY1400;Khan Arnaba;SY140001;Jbata Elkhashab;C6281;0
+Quneitra;SY14;Quneitra;SY1400;Khan Arnaba;SY140001;Ofania;C6282;0
+Quneitra;SY14;Quneitra;SY1400;Khan Arnaba;SY140001;Mashara;C6283;0
+Quneitra;SY14;Quneitra;SY1400;Khan Arnaba;SY140001;Momtaneh;C6284;0
+Quneitra;SY14;Quneitra;SY1400;Khan Arnaba;SY140001;Kom Elbasha;C6286;0
+Quneitra;SY14;Quneitra;SY1400;Khan Arnaba;SY140001;Nabe Elsakher;C6287;0
+Quneitra;SY14;Quneitra;SY1400;Al-Khashniyyeh;SY140002;Asbah;C6288;0
+Quneitra;SY14;Quneitra;SY1400;Al-Khashniyyeh;SY140002;Ein Eltineh;C6289;0
+Quneitra;SY14;Quneitra;SY1400;Al-Khashniyyeh;SY140002;Qseibeh;C6290;0
+Quneitra;SY14;Quneitra;SY1400;Al-Khashniyyeh;SY140002;Sweisa;C6291;0
+Quneitra;SY14;Quneitra;SY1400;Al-Khashniyyeh;SY140002;Esheh;C6292;0
+Quneitra;SY14;Quneitra;SY1400;Al-Khashniyyeh;SY140002;Ghadir Elbostan;C6293;0
+Quneitra;SY14;Quneitra;SY1400;Al-Khashniyyeh;SY140002;Eastern Basa - Ein Qadi;C6294;0
+Quneitra;SY14;Quneitra;SY1400;Al-Khashniyyeh;SY140002;Hijeh;C6295;50
+Quneitra;SY14;Quneitra;SY1400;Al-Khashniyyeh;SY140002;Rafid;C6296;0
+Quneitra;SY14;Quneitra;SY1400;Al-Khashniyyeh;SY140002;Maalaqa;C6298;0
+Quneitra;SY14;Quneitra;SY1400;Al-Khashniyyeh;SY140002;Kodneh;C6299;0
+Quneitra;SY14;Quneitra;SY1400;Al-Khashniyyeh;SY140002;Qarqas;C6300;0
+Quneitra;SY14;Quneitra;SY1400;Al-Khashniyyeh;SY140002;Manshiyet Sweisa;C6301;0
+Quneitra;SY14;Al Fiq;SY1402;Fiq;SY140200;Sayda;C6302;0
+Quneitra;SY14;Al Fiq;SY1402;Fiq;SY140200;Razaniyet Saida;C6303;0
+Aleppo;SY02;Menbij;SY0205;Maskana;SY020503;Mujamaa Hettin;C6305;150
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Suluk;SY110201;Hammam At-Turkman;C6319;70
+Aleppo;SY02;Menbij;SY0205;Abu Qalqal;SY020501;Kherbet Tweini ;C6336;60
+Aleppo;SY02;Menbij;SY0205;Al-Khafsa;SY020502;Aridiyeh;C6338;100
+Al-Hasakeh;SY08;Ras Al Ain;SY0804;Ras Al Ain;SY080400;Eastern Alyeh;C6367;5
+Al-Hasakeh;SY08;Ras Al Ain;SY0804;Ras Al Ain;SY080400;Western Alyeh;C6369;5
+Al-Hasakeh;SY08;Ras Al Ain;SY0804;Ras Al Ain;SY080400;Bir Noah;C6370;5
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Karama;SY110102;Shweihan Trifawi;C6380;14
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Karama;SY110102;Qadessiyeh;C6381;5
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Maadan;SY110103;Hamadaniyeh;C6382;86
+Quneitra;SY14;Quneitra;SY1400;Khan Arnaba;SY140001;Hurriyeh;C6388;0
+Idleb;SY07;Harim;SY0703;Dana;SY070301;Bab El Hawa;C6389;100
+Aleppo;SY02;Al Bab;SY0202;A'rima;SY020206;Eastern-Thalja;C6413;35
+Aleppo;SY02;A'zaz;SY0204;Mare';SY020403;Tal Maled;C6418;30
+Aleppo;SY02;A'zaz;SY0204;Suran;SY020405;Qazal;C6421;60
+Aleppo;SY02;A'zaz;SY0204;Suran;SY020405;Dalha;C6423;50
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Om Adas Fars;C6431;18
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Qanat Shekh Tabbash;C6432;50
+Al-Hasakeh;SY08;Al-Hasakeh;SY0800;Hole;SY080006;Abu Jern;C6452;5
+Al-Hasakeh;SY08;Ras Al Ain;SY0804;Ras Al Ain;SY080400;Tal Al-Bougha;C6476;5
+Al-Hasakeh;SY08;Ras Al Ain;SY0804;Ras Al Ain;SY080400;Al-Azizieh;C6479;48
+Al-Hasakeh;SY08;Ras Al Ain;SY0804;Ras Al Ain;SY080400;Khirbet Ghazal;C6482;5
+Al-Hasakeh;SY08;Ras Al Ain;SY0804;Ras Al Ain;SY080400;Al-Maqsumeh;C6490;5
+Al-Hasakeh;SY08;Ras Al Ain;SY0804;Ras Al Ain;SY080400;Alia;C6491;5
+Ar-Raqqa;SY11;Ar-Raqqa;SY1101;Sabka;SY110101;Zur Shummar;C6500;10
+Ar-Raqqa;SY11;Ath-Thawrah;SY1103;Mansura;SY110301;Almajar;C6501;50
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Suluk;SY110201;Alhoz;C6507;32
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Suluk;SY110201;Muheisen;C6508;17
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Suluk;SY110201;Ranin;C6509;15
+Ar-Raqqa;SY11;Tell Abiad;SY1102;Suluk;SY110201;Al-Wastah;C6511;15
+As-Sweida;SY13;Shahba;SY1303;Ariqa;SY130302;Al-Shomarah;C6519;15
+Dar'a;SY12;Dar'a;SY1200;Mzeireb;SY120005;Kharab Shahem;C6522;200
+Deir-ez-Zor;SY09;Abu Kamal;SY0902;Hajin;SY090201;Bahra;C6526;16
+Deir-ez-Zor;SY09;Deir-ez-Zor;SY0901;Deir-ez-Zor;SY090100;Al-Shola;C6529;20
+Hama;SY05;As-Salamiyeh;SY0503;Saboura;SY050303;Abyan;C6539;5
+Hama;SY05;Hama;SY0501;Hamra;SY050103;Qbebat;C6558;5
+Idleb;SY07;Al Ma'ra;SY0702;Ma'arrat An Nu'man;SY070200;Hamdieh;C6596;40
+Idleb;SY07;Al Ma'ra;SY0702;Ma'arrat An Nu'man;SY070200;Maarata;C6598;32
+Idleb;SY07;Ariha;SY0705;Mhambal;SY070502;Alyeh;C6613;12
+Idleb;SY07;Ariha;SY0705;Mhambal;SY070502;Qrsaya;C6615;48
+Idleb;SY07;Jisr-Ash-Shugur;SY0704;Darkosh;SY070402;Kharab Khalil;C6637;24
+Idleb;SY07;Jisr-Ash-Shugur;SY0704;Jisr-Ash-Shugur;SY070400;Kastanah Fawqan;C6640;4
+Quneitra;SY14;Quneitra;SY1400;Al-Khashniyyeh;SY140002;Ein Frekha;C6658;0
+Quneitra;SY14;Quneitra;SY1400;Khan Arnaba;SY140001;Majdolieah;C6661;0
+Aleppo;SY02;A'zaz;SY0204;A'zaz;SY020400;Bab Alsalameh;C6669;125
+Rural Damascus;SY03;Rural Damascus;SY0301;Kafr Batna;SY030105;Hosh Al-Ashary;C6671;10
+Dar'a;SY12;Dar'a;SY1200;Mzeireb;SY120005;Nabe Elfawar;C6673;0
+Aleppo;SY02;Al Bab;SY0202;Al Bab;SY020200;Su Sinbat;C1190;2965
+Aleppo;SY02;Menbij;SY0205;Menbij;SY020500;Menbij;C1767;4702
+Idleb;SY07;Al Ma'ra;SY0702;Ma'arrat An Nu'man;SY070200;Ma'arrat An Nu'man;C3985;184
+Dar'a;SY12;Dar'a;SY1200;Dar'a;SY120000;Tiba;C5992;10913
+Dar'a;SY12;Dar'a;SY1200;Dar'a;SY120000;Dar'a;C5993;2005
+Dar'a;SY12;Dar'a;SY1200;Dar'a;SY120000;Sayda;C5995;1721
+Dar'a;SY12;Dar'a;SY1200;Dar'a;SY120000;Kahil;C5998;158
+Dar'a;SY12;Dar'a;SY1200;Dar'a;SY120000;Nasib;C5999;677
+Dar'a;SY12;Dar'a;SY1200;Jizeh;SY120006;Jizeh;C6043;462
