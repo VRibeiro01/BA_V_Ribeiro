@@ -16,7 +16,6 @@ The intent of the project is to replicate and extend the research presented in t
 
 This repository contains the code for the software developed as part of my bachelor thesis in computer science. It revolves around the study and analysis of forced migration, particularly within the context of the Syrian Refugee Crisis.
 
-The core of this project revolves around the study and analysis of forced migration, particularly within the context of the Syrian Refugee Crisis. 
 The paper I base my work on introduces an agent-based model that predicts the distribution of refugees across a host country, taking social networks into account. 
 In my thesis, I take this model and reimplement it in C# using the MARS Framework. Then apply it to the prediction of routes of Internally Displaced Persons (IDPs).
 
