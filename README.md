@@ -47,22 +47,22 @@ To run the simulation, follow these steps:
 
 1. Navigate to the RefugeeSimulation project and open the Program.cs file
 2. The first line of code in the Program file contains the string simulationMode. Initialize it with "Turkey" if you wish to simulate the movement of Syrian refugees in Turkey. Initialize it with "Syria" if you wish to simulate the movement of IDPs in Syria.
-3. ![image](https://github.com/VRibeiro01/BA_V_Ribeiro/assets/103310770/ee6f0127-3a2c-4d35-b91c-fbb67aac32c2)
+ ![image](https://github.com/VRibeiro01/BA_V_Ribeiro/assets/103310770/ee6f0127-3a2c-4d35-b91c-fbb67aac32c2)
 
-4. Configure the simulation if necessary. Click here to learn about the configuration options:
-6. The simulation outputs are created in the RefugeeSimulation/Model/Validation folder. You can analyse the output files as you wish or run them through the Jupyter Notebook designated for analysis.
-   For more information on the available Jupyter Notebooks, click here:
-   Details on simulation output files can be found in the following section.
+3. Configure the simulation if necessary. Click here to learn about the configuration options:
+4. The simulation outputs are created in the RefugeeSimulation/Model/Validation folder. You can analyse the output files as you wish or run them through the Jupyter Notebook designated for analysis.
+   For more information on the available Jupyter Notebooks, click here:<\br>
+   Details on simulation output files can be found in the following section.<\br>
 
 ## Simulation Output
 
 As part of our simulation, the model generates three important output files in CSV format:
 
-1. InitPop.csv: This file contains the Syrian Refugee or IDP population of each region of the country at the beginning of the simulation. It serves as the initial population distribution data.
+1. **InitPop.csv**: This file contains the Syrian Refugee or IDP population of each region of the country at the beginning of the simulation. It serves as the initial population distribution data.
 
-2. RefPop.csv: This file contains the Syrian Refugee or IDP population of each region of the country after the simulation run. It provides insights into how the population distribution has changed due to the modeled processes.
+2. **RefPop.csv**: This file contains the Syrian Refugee or IDP population of each region of the country after the simulation run. It provides insights into how the population distribution has changed due to the modeled processes.
 
-3. Routes.csv: This file contains all the routes taken by the agents during the simulation, along with the number of agents who took each route. Each route is defined by an origin and a destination, allowing for a detailed analysis of migration patterns within the simulated environment.
+3. **Routes.csv**: This file contains all the routes taken by the agents during the simulation, along with the number of agents who took each route. Each route is defined by an origin and a destination, allowing for a detailed analysis of migration patterns within the simulated environment.
 
 
 
