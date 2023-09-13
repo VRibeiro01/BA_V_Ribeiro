@@ -46,7 +46,7 @@ To run this project, follow these steps:
 To run the simulation, follow these steps:
 
 1. Navigate to the RefugeeSimulation project and open the Program.cs file
-2. The first line of code in the Program file contains the string simulationMode. Initialize it with "Turkey" if you wish to simulation the movement of Syrian refugees in Turkey. Initialize it with "Syria" if you wish to simulate the movement of IDPs in Syria.
+2. The first line of code in the Program file contains the string simulationMode. Initialize it with "Turkey" if you wish to simulate the movement of Syrian refugees in Turkey. Initialize it with "Syria" if you wish to simulate the movement of IDPs in Syria.
 3. ![image](https://github.com/VRibeiro01/BA_V_Ribeiro/assets/103310770/ee6f0127-3a2c-4d35-b91c-fbb67aac32c2)
 
 4. Configure the simulation if necessary. Click here to learn about the configuration options:
