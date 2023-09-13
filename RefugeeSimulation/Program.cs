@@ -63,13 +63,13 @@ namespace LaserTagBox
             Validation.NumSimRuns++;
             Validation.NumRuns = (int) loopResults.Iterations;
             Validation.FillRoutes(refugeeLayer.RefugeeAgents);
-            Validation.Print();
             if(simulationMode.EqualsIgnoreCase("Syria"))  Validation.FillSyrianDistrictsPop(nodeLayer.GetEntities().ToList());
             else Validation.FillTurkishDistrictsPop(nodeLayer.GetEntities().ToList());
          
 
             if (RefugeeAgent.Validate)
             {
+                Validation.Print();
                 for (int i = 0; i < 4; i++)
                 {
                     refugeeLayer = loopResults.Model.Layers.Values.OfType<RefugeeLayer>().First();
@@ -83,11 +83,11 @@ namespace LaserTagBox
                     task = SimulationStarter.Start(description, config);
                     loopResults = task.Run();
                 }
-                Validation.CalcAverageDistribution();
-                if(simulationMode.EqualsIgnoreCase("Syria"))  Validation.WriteToFileSyria("");
-                else Validation.WriteToFileTurkey("");
-                
+               
             }
+            Validation.CalcAverageDistribution();
+            if(simulationMode.EqualsIgnoreCase("Syria"))  Validation.WriteToFileSyria("");
+            else Validation.WriteToFileTurkey("");
 
 
             // Feedback to user that simulation run was successful

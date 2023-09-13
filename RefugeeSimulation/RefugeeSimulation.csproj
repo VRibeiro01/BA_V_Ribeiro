@@ -21,8 +21,4 @@
         <PackageReference Include="Mars.Life.Simulations" Version="4.3.0-beta-5" />
     </ItemGroup>
 
-    <ItemGroup>
-        <Folder Include="Model\Shared" />
-    </ItemGroup>
-
 </Project>
