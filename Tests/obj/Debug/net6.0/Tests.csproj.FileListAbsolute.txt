@@ -217,3 +217,4 @@ C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\s
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\config_syria.json
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\config_turkey.json
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\idp_pop_2016.csv
+C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\syrPop_adm3.csv

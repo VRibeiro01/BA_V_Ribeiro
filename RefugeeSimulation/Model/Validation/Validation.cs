@@ -87,7 +87,7 @@ public class Validation
             if (!agent.OriginNode.GetName().EqualsIgnoreCase(agent.LocationName))
             {
                 Tuple<string, string> route = new Tuple<String, String>(
-                    agent.OriginNode.GetName(), agent.LocationName);
+                    agent.OriginNode.GetProvinceName(), agent.LocationName);
 
 
                 if (Routes.ContainsKey(route))
@@ -124,7 +124,7 @@ public class Validation
         var syrianDistricts = districts.Where(d => d.Country.EqualsIgnoreCase("Syria"));
         foreach (var district in syrianDistricts)
         {
-            var name = district.GetName();
+            var name = district.GetProvinceName(); //GetName()
             if (!SyrianDistrictsPop.ContainsKey(name))
             {
                 SyrianDistrictsPop.Add(name, district.RefPop);
@@ -154,8 +154,13 @@ public class Validation
         var syrianDistricts = districts.Where(d => d.Country.EqualsIgnoreCase("Syria"));
         foreach (var district in syrianDistricts)
         {
-            var name = district.GetName();
+            var name = district.GetProvinceName();
+            if(!SyrianDistrictsInitPop.ContainsKey(name))
             SyrianDistrictsInitPop.Add(name, district.RefPop);
+            else
+            {
+                SyrianDistrictsInitPop[name]+= district.RefPop;
+            }
         }
     }
 

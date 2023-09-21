@@ -24,6 +24,11 @@ public class LocationNode : IVectorFeature
     public int NumCamps { get; set; }
 
     public int NumConflicts { get; set; }
+    
+    public int RefPop;
+    
+    
+    public HashSet<LocationNode> Neighbours = new();
 
     public double NormNumCamps { get; set; }
 
@@ -34,15 +39,17 @@ public class LocationNode : IVectorFeature
     public double NormAnchorScore { get; set; }
 
     public double AnchorScore { get; private set; }
-
-    public HashSet<LocationNode> Neighbours = new();
-
-    public int RefPop;
+    
+    
 
 
-    // -----------------------------------------Layers -------------------------------------
+    // -----------------------------------------Layers -----------------------------------------------------------
     public NodeLayer NodeLayer;
     
+    //------------------------ Variables Syria IDP experiment: population as infrastructure----------------------------------------------
+    
+    public int Population { get; set; }
+    public double NormPop { get; set; }
     
     // ----------------------------------------------------------------------------------------------
     public VectorStructuredData VectorStructured { get; private set; }
@@ -150,17 +157,32 @@ public class LocationNode : IVectorFeature
     public void InitConflicts(ConflictLayer conflictLayer)
     {
         var conflicts = conflictLayer.GetConflicts();
+        NumConflicts = 0;
 
 
-        
         foreach (var conflict in conflicts)
         {
-            if (conflict.Month >= NodeLayer.StartMonth && conflict.Month <= NodeLayer.EndMonth &&
-                conflict.GetCoordinates().IsWithinDistance(VectorStructured.Geometry, 0))
+            if (NodeLayer.Mode.EqualsIgnoreCase("Syria"))
             {
-                NumConflicts++;
+                if (conflict.Day == NodeLayer.GetCurrentTimePoint().Day
+                    //conflict.Month >= NodeLayer.StartMonth && conflict.Month <= NodeLayer.EndMonth
+                    && 
+                    conflict.GetCoordinates().IsWithinDistance(VectorStructured.Geometry, 0))
+                {
+                    NumConflicts++;
+                } 
+            }
+            else
+            {
+                if (conflict.Month >= NodeLayer.StartMonth && conflict.Month <= NodeLayer.EndMonth
+                    &&
+                    conflict.GetCoordinates().IsWithinDistance(VectorStructured.Geometry, 0))
+                {
+                    NumConflicts++;
+                }
             }
         }
+        
     }
 
     public void InitCamps(CampLayer campLayer)
@@ -214,9 +236,7 @@ public class LocationNode : IVectorFeature
     }
 
    
-    public void Update(VectorStructuredData data)
-    {
-    }
+    public void Update(VectorStructuredData data){ }
 
 
     public void GetRandomRefugeesAtNode(GeoHashEnvironment<RefugeeAgent> environment)
@@ -242,7 +262,9 @@ public class LocationNode : IVectorFeature
     public void UpdateNormRefPop(int maxRefPop)
     {
         // ReSharper disable once InconsistentlySynchronizedField
-        NormRefPop = RefPop * 1.0 / (maxRefPop * 1.0);
+        
+            NormRefPop = RefPop * 1.0 / (maxRefPop * 1.0);
+        
     }
 
     public int GetRefPop()

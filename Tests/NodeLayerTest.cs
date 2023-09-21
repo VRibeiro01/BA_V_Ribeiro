@@ -25,9 +25,8 @@ public class NodeLayerTest
     private readonly ITestOutputHelper _testOutputHelper;
     private NodeLayer _nodeLayer;
     private ConflictLayer _conflictLayer;
-
-
     private CampLayer _campLayer;
+  
 
 
     public NodeLayerTest(ITestOutputHelper testOutputHelper)
@@ -64,6 +63,7 @@ public class NodeLayerTest
                     "C:\\Users\\vivia\\mars\\RefugeeSimulationSolution\\RefugeeSimulation\\Resources\\turkey_camps_idps.geojson")
             }
         });
+        
     }
 
     [Fact]
@@ -115,6 +115,7 @@ public class NodeLayerTest
 
         _nodeLayer.StartMonth = 9;
         _nodeLayer.EndMonth = 9;
+        
 
         // Act
 
@@ -125,7 +126,8 @@ public class NodeLayerTest
         }
 
         _nodeLayer.InitLocationParams();
-        _nodeLayer.PreTick();
+        _nodeLayer.UpdateNodeScores();
+        
 
 
         //Assert
@@ -146,6 +148,7 @@ public class NodeLayerTest
                 Assert.True(node.NormAnchorScore > 0);
                 Assert.True(node.Score != 0);
                 Assert.True(node.Neighbours.Count > 0);
+                
             }
 
 
@@ -199,6 +202,44 @@ public class NodeLayerTest
         }
     }
 
+    [Fact]
+    public void PopulationParameterTest()
+    {
+
+        //-------------------Test Initialization of Population------------------
+        //Arrange
+        _nodeLayer.InitLayer(new LayerInitData
+        {
+            LayerInitConfig =
+            {
+                File = Path.Combine("C:\\Users\\vivia\\mars\\RefugeeSimulationSolution\\RefugeeSimulation\\Resources",
+                    "syrian_districts_3.geojson")
+            }
+        });
+        
+    
+       var  populationLayer = new PopulationLayer();
+        populationLayer.InitLayer(new LayerInitData
+        {
+            LayerInitConfig =
+            {
+                File = Path.Combine(
+                    "C:\\Users\\vivia\\mars\\RefugeeSimulationSolution\\RefugeeSimulation\\Resources\\syrPop_adm3.csv")
+            }
+        });
+        
+        _nodeLayer.Mode = "Syria";
+        _nodeLayer.PopulationLayer = populationLayer;
+        //Act
+        _nodeLayer.InitLocationParams();
+        var testNode = _nodeLayer.GetLocationByName("Tell Abiad");
+        
+        //Assert
+        Assert.True(testNode.Population > 0);
+        Assert.Equal(44671,testNode.Population);
+        Assert.True(testNode.NormPop > 0 && testNode.NormPop<1);
+        
+    }
 
     [Fact]
     public void UpdateNodeScoresTest()

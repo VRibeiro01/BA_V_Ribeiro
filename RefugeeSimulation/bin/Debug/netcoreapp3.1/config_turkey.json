@@ -95,6 +95,10 @@
         {
           "parameter": "NumberNewTiesUpper",
           "value": 10
+        },
+        {
+          "parameter": "Mode",
+          "value": "Syria"
         }
       ]
     },
@@ -103,7 +107,7 @@
       "file": "Resources/refpop_turkey.csv",
       "mapping": [
         {
-          "parameter": "RefsToSpawnAtBorder",
+          "parameter": "NumAgentsToSpawn",
           "value": 10
         }
       ]
@@ -117,7 +121,13 @@
       "file": "Resources/Conflicts_Syr_Tur_2022.geojson"
     },
     {
-      "name": "BorderCrossingScheduleLayer"
+      "name": "SchedulerLayer",
+      "mapping": [
+        {
+          "parameter": "Mode",
+          "value": "Turkey"
+        }
+      ]
     }
   ]
 }

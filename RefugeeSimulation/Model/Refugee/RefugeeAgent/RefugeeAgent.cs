@@ -179,7 +179,7 @@ public class RefugeeAgent : IAgent<RefugeeLayer>, IPositionable
 
     private double CalcNodeDesirability(int numFriendsAtNode, int numKinsAtNode, double score)
     {
-        return ((numKinsAtNode * KinWeight) + (numFriendsAtNode * FriendWeight) + score);
+        return (numKinsAtNode * KinWeight) + (numFriendsAtNode * FriendWeight) + score;
     }
 
     public void MoveToNode(LocationNode newNode)

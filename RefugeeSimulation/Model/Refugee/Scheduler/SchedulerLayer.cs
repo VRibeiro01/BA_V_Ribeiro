@@ -1,15 +1,25 @@
-﻿using Mars.Interfaces;
+﻿using System;
+using System.Collections.Generic;
+using Mars.Interfaces;
 using Mars.Interfaces.Annotations;
 using Mars.Interfaces.Data;
 using Mars.Interfaces.Layers;
+using ServiceStack;
 
-namespace LaserTagBox.Model.Refugee;
+namespace LaserTagBox.Model.Refugee.Scheduler;
 
-public class BorderCrossingScheduleLayer : ISteppedActiveLayer
+public class SchedulerLayer : ISteppedActiveLayer
 {
+    
+    
     private ISimulationContext _simulationContext;
 
-    [PropertyDescription] public RefugeeLayer RefugeeLayer { get; set; }
+    [PropertyDescription] 
+    public RefugeeLayer RefugeeLayer { get; set; }
+    
+    
+    [PropertyDescription]
+    public string Mode { get; set; }
 
     public bool InitLayer(LayerInitData layerInitData, RegisterAgent registerAgentHandle = null,
         UnregisterAgent unregisterAgent = null)
@@ -33,7 +43,14 @@ public class BorderCrossingScheduleLayer : ISteppedActiveLayer
 
     public void PreTick()
     {
-        RefugeeLayer.SpawnNewRefs();
+        if (Mode.EqualsIgnoreCase("Syria"))
+        {
+            RefugeeLayer.SpawnNewIDPs();
+        }
+        else
+        {
+            RefugeeLayer.SpawnNewRefs();
+        }
     }
 
     public void PostTick()

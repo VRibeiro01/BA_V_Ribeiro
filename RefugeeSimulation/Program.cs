@@ -8,6 +8,7 @@ using LaserTagBox.Model.Refugee;
 using Mars.Components.Starter;
 using Mars.Interfaces.Model;
 using ServiceStack;
+using SchedulerLayer = LaserTagBox.Model.Refugee.Scheduler.SchedulerLayer;
 
 namespace LaserTagBox
 {
@@ -27,9 +28,10 @@ namespace LaserTagBox
 
             description.AddLayer<ConflictLayer>();
             description.AddLayer<CampLayer>();
+            description.AddLayer<PopulationLayer>();
             description.AddLayer<NodeLayer>();
             description.AddLayer<RefugeeLayer>();
-            description.AddLayer<BorderCrossingScheduleLayer>();
+            description.AddLayer<SchedulerLayer>();
             description.AddAgent<RefugeeAgent, RefugeeLayer>();
 
 
@@ -86,7 +88,7 @@ namespace LaserTagBox
                
             }
             Validation.CalcAverageDistribution();
-            if(simulationMode.EqualsIgnoreCase("Syria"))  Validation.WriteToFileSyria("");
+            if(simulationMode.EqualsIgnoreCase("Syria"))  Validation.WriteToFileSyria("adm3.Exp6.5V2.4.2.12_01_02");
             else Validation.WriteToFileTurkey("");
 
 

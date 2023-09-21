@@ -25,7 +25,7 @@ public class RefugeeLayer : AbstractLayer
 
 
     [PropertyDescription] 
-    public int RefsToSpawnAtBorder { get; set; }
+    public int NumAgentsToSpawn { get; set; }
     
     
     // -------------------------------------- Layers ----------------------------------------
@@ -53,6 +53,7 @@ public class RefugeeLayer : AbstractLayer
         Validation.FillTurkishDistrictsInitPop(NodeLayer.GetEntities());
         Validation.FillSyrianDistrictsInitPop(NodeLayer.GetEntities());
         
+        
 
 
         return true;
@@ -77,7 +78,7 @@ public class RefugeeLayer : AbstractLayer
             {
                 newRefs.AddRange(AgentManager.Spawn<RefugeeAgent, RefugeeLayer>(null,
                         agent => agent.Spawn(province))
-                    .Take(nodePopPair.Value/provinces.Count
+                    .Take(nodePopPair.Value/provinces.Count/12
                     ));
             }
         }
@@ -92,10 +93,28 @@ public class RefugeeLayer : AbstractLayer
         {
             newRefs.AddRange(AgentManager.Spawn<RefugeeAgent, RefugeeLayer>(null,
                     agent => agent.Spawn(NodeLayer.GetLocationByName(borderCrossingNode)))
-                .Take(RefsToSpawnAtBorder
+                .Take(NumAgentsToSpawn
                 ));
         }
 
+        PostSpawnWork(newRefs);
+    }
+
+    public void SpawnNewIDPs()
+    {
+        var newRefs = new List<RefugeeAgent>();
+        var remainingAgentsToSpawn = NumAgentsToSpawn;
+        foreach (var locationNode in NodeLayer.EntitiesList)
+        {
+            var agentsToSpawnAtLocation = (int)(remainingAgentsToSpawn * (locationNode.NormPop*locationNode.NormNumConflicts));
+            newRefs.AddRange(AgentManager.Spawn<RefugeeAgent, RefugeeLayer>(null,
+                    agent => agent.Spawn(locationNode))
+                .Take(agentsToSpawnAtLocation
+                ));
+            remainingAgentsToSpawn -= agentsToSpawnAtLocation;
+
+        }
+        
         PostSpawnWork(newRefs);
     }
 

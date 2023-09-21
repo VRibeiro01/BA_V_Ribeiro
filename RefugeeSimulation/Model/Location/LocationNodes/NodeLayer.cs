@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using LaserTagBox.Model.Location.Camps;
@@ -51,6 +52,7 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
     [PropertyDescription] public CampLayer CampLayer { get; set; }
 
     [PropertyDescription] public ConflictLayer ConflictLayer { get; set; }
+    
 
  //-----------------------------------------Environments------------------------------------------------------
     private GeoHashEnvironment<RefugeeAgent> _refugeeEnvironment;
@@ -63,6 +65,15 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
     public ISimulationContext SimulationContext;
     public int StartMonth;
     public int EndMonth;
+    
+    //---------------------------------------Variables Syria IDP simulation----------------------------------------
+    [PropertyDescription]
+    public string Mode { get; set; }
+    
+    public double MaxSpawnFactor { get; set; }
+    
+    [PropertyDescription] 
+    public PopulationLayer PopulationLayer { get; set; }
     
     // ----------------------------------------------------------------------------------------------
 
@@ -93,10 +104,26 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         EntitiesList = Entities.ToList();
         RemoveDupes();
         Debug();
+        PopulationLayer.InitLayer(new LayerInitData
+        {
+            LayerInitConfig =
+            {
+                File = Path.Combine(
+                    "C:\\Users\\vivia\\mars\\RefugeeSimulationSolution\\RefugeeSimulation\\Resources\\syrPop_adm3.csv")
+            }
+        });
         InitLocationParams();
         return true;
     }
 
+    public DateTime GetCurrentTimePoint()
+    {
+        if (SimulationContext.CurrentTimePoint is null)
+        {
+            throw new NoNullAllowedException("Simulation is not time based. Access to time point not possible");
+        }
+        return (DateTime) SimulationContext.CurrentTimePoint;
+    }
     private void RemoveDupes()
     {
         var list = new List<String>();
@@ -109,7 +136,16 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
             }
             else
             {
-                EntitiesList.Remove(locationNode);
+                // Different district same english name spelling in SyriaADM3
+                if(locationNode.GetName().EqualsIgnoreCase("Suran") && 
+                   locationNode.GetProvinceName().EqualsIgnoreCase("Hama"))
+                {
+                    locationNode.VectorStructured.Data["Name3"] = "Sawran";
+                }
+                else
+                {
+                    EntitiesList.Remove(locationNode);
+                }
             }
         }
     }
@@ -125,7 +161,21 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         var maxNumCamps = EntitiesList.Max(location => location.NumCamps) + 1; // add one to prevent division by zero
         var maxNumConflicts = EntitiesList.Max(location => location.NumConflicts) + 1;
         var maxAnchorScore = EntitiesList.Max(location => location.AnchorScore);
-        
+
+       
+            double maxPop = 1.0;
+            if (Mode.EqualsIgnoreCase("Syria"))
+            {
+                foreach (var locationPopPair in PopulationLayer.SyriaPopulationData)
+                {
+                    GetLocationByName(locationPopPair.Key).Population = locationPopPair.Value;
+                }
+                maxPop = EntitiesList.Max(l => l.Population) + 1.0;
+            }
+
+            
+            
+            
         
 
         foreach (var locationNode in EntitiesList)
@@ -144,6 +194,11 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
             locationNode.NormNumCamps = locationNode.NumCamps * 1.0 / (maxNumCamps * 1.0);
             locationNode.NormNumConflicts = locationNode.NumConflicts * 1.0 / (maxNumConflicts * 1.0);
             locationNode.NormAnchorScore = locationNode.AnchorScore * 1.0 / (maxAnchorScore * 1.0);
+            if (Mode.EqualsIgnoreCase("Syria"))
+            {
+                locationNode.NormPop = locationNode.Population * 1.0 / maxPop;
+            }
+            
         }
     }
 
@@ -195,24 +250,40 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         {
             Console.WriteLine(c.GetName());
         }
-
-        Console.WriteLine("Conflict Weight Data Type Test:  " + (ConflictWeight + LocationWeight));
-        BorderCrossingNodes.Select(
+        
+        /*BorderCrossingNodes.Select(
             i
-                => string.Join(",", i)).ToList().ForEach(Console.WriteLine);
+                => string.Join(",", i)).ToList().ForEach(Console.WriteLine);*/
     }
 
 
     public void Tick()
     {
+       
     }
 
     public void PreTick()
     {
+        if (Mode.EqualsIgnoreCase("Syria"))
+        {
+            foreach (var location in EntitiesList)
+            {
+                location.InitConflicts(ConflictLayer);
+            }
+        }
     }
 
     public void UpdateNodeScores()
     {
+        /*if (Mode.EqualsIgnoreCase("Syria"))
+        {
+            foreach (var location in EntitiesList)
+            {
+                CalcScore(location);
+            }
+
+            return;
+        }*/
         var maxRefPop = MaxRefPop();
         foreach (var location in EntitiesList)
         {
@@ -248,6 +319,15 @@ public class NodeLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 
     private void CalcScore(LocationNode location)
     {
+        /*if (Mode.EqualsIgnoreCase("Syria"))
+        {
+            location.Score = (location.NormPop * PopulationWeight) + (location.NormAnchorScore * LocationWeight)
+                                                                      + (location.NormNumCamps * CampWeight) +
+                                                                      (location.NormNumConflicts * (-1) *
+                                                                       ConflictWeight);
+            return;
+        }*/
+        
         location.Score = (location.NormRefPop * PopulationWeight) + (location.NormAnchorScore * LocationWeight)
                                                                   + (location.NormNumCamps * CampWeight) +
                                                                   (location.NormNumConflicts * (-1) *

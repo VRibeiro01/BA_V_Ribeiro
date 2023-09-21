@@ -1,4 +1,4 @@
-{
+﻿{
   "globals": {
     "startTime": "2017-01-01T00:00",
     "endTime": "2017-02-01T00:00",
@@ -29,11 +29,11 @@
         },
         {
           "parameter": "KinWeight",
-          "value": 0.2
+          "value": 0.75
         },
         {
           "parameter": "FriendWeight",
-          "value": 0.2
+          "value": 0.75
         },
         {
           "parameter": "MoveProbabilityCamp",
@@ -49,7 +49,7 @@
         },
         {
           "parameter": "Validate",
-          "value": false
+          "value": true
         }
       ],
       "outputs": [
@@ -62,7 +62,7 @@
   "layers": [
     {
       "name": "NodeLayer",
-      "file": "Resources/syrian_districts_1.geojson",
+      "file": "Resources/syrian_districts_3.geojson",
       "mapping": [
         {
           "parameter": "PopulationWeight",
@@ -78,7 +78,7 @@
         },
         {
           "parameter": "LocationWeight",
-          "value": 0.75
+          "value": 0.1
         },
         {
           "parameter": "AnchorLong",
@@ -95,7 +95,11 @@
         {
           "parameter": "NumberNewTiesUpper",
           "value": 10
-        }
+        },
+        {
+          "parameter": "Mode",
+          "value": "Syria"
+        }        
       ]
     },
     {
@@ -103,8 +107,8 @@
       "file": "Resources/idp_pop_2016.csv",
       "mapping": [
         {
-          "parameter": "RefsToSpawnAtBorder",
-          "value": 0
+          "parameter": "NumAgentsToSpawn",
+          "value": 790
         }
       ]
     },
@@ -117,7 +121,17 @@
       "file": "Resources/conflicts_syria_17.geojson"
     },
     {
-      "name": "BorderCrossingScheduleLayer"
+      "name": "PopulationLayer",
+      "file":"Resources/syrPop_adm3.csv"
+    },
+    {
+      "name": "SchedulerLayer",
+      "mapping": [
+        {
+          "parameter": "Mode",
+          "value": "Syria"
+        }
+        ]      
     }
   ]
 }
