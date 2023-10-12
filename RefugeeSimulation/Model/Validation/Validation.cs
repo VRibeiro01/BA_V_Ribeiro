@@ -8,7 +8,7 @@ using ServiceStack;
 
 namespace LaserTagBox;
 
-public class Validation
+public static class Validation
 {
     //
     public static Dictionary<Tuple<string, string>, int> Routes = new();
@@ -26,7 +26,7 @@ public class Validation
     public static Dictionary<string, int> SyrianDistrictsInitPop =
         new();
 
-    public static int NumRuns = 0;
+    public static int NumSteps = 0;
 
     public static int NumSimRuns = 0;
 
@@ -43,7 +43,11 @@ public class Validation
     public static int HasCampAndContacts;
     public static int HasNone;
     public static int HasAll;
-
+    public static int PopOver50k;
+    public static int PopUnder1k;
+    public static int Pop20_50k;
+    public static int Pop1_20k;
+    
     public static int NumDecisions;
 
     public static double PercentageRefsActivated;
@@ -62,7 +66,11 @@ public class Validation
             "OnlyHasConflictPercentage: " + OnlyHasConflict * 1.0 / NumDecisions * 100 + '\n' +
             "HasCampAndContactsPercentage: " + HasCampAndContacts * 1.0 / NumDecisions * 100 + '\n' +
             "HasNonePercentage: " + HasNone * 1.0 / NumDecisions * 100 + '\n' +
-            "HasAllPercentage: " + HasAll * 1.0 / NumDecisions * 100 + '\n'
+            "HasAllPercentage: " + HasAll * 1.0 / NumDecisions * 100 + '\n' +
+            "IDP Pop Under 1K Percentage: " + PopUnder1k * 1.0 / NumDecisions * 100 + '\n' +
+            "IDP Pop 1-20K Percentage: " + Pop1_20k * 1.0 / NumDecisions * 100 + '\n' +
+            "IDP Pop 20-50K Percentage: " + Pop20_50k * 1.0 / NumDecisions * 100 + '\n' +
+            "IDP Pop Over 50K Percentage: " + PopOver50k * 1.0 / NumDecisions * 100 + '\n'
         );
 
        
@@ -70,7 +78,7 @@ public class Validation
 
     public static double CalcPercentageRefsActivated()
     {
-        PercentageRefsActivated = PercentageRefsActivated / (NumRuns * 1.0) * 100;
+        PercentageRefsActivated = PercentageRefsActivated / (NumSteps * 1.0) * 100;
         return PercentageRefsActivated;
     }
 
@@ -80,14 +88,14 @@ public class Validation
         RefsActivated = 0;
     }
 
-    public static void FillRoutes(List<RefugeeAgent> agentsResult)
+    public static void FillRoutes(List<MigrantAgent> agentsResult)
     {
         foreach (var agent in agentsResult)
         {
             if (!agent.OriginNode.GetName().EqualsIgnoreCase(agent.LocationName))
             {
                 Tuple<string, string> route = new Tuple<String, String>(
-                    agent.OriginNode.GetProvinceName(), agent.LocationName);
+                    agent.OriginNode.GetProvinceName(), agent.CurrentNode.GetProvinceName());
 
 
                 if (Routes.ContainsKey(route))
@@ -104,10 +112,10 @@ public class Validation
 
     public static void FillTurkishDistrictsPop(List<LocationNode> districts)
     {
-        var turkeyDistricts = districts.Where(d => d.Country.EqualsIgnoreCase("Turkey"));
+        var turkeyDistricts = districts;
         foreach (var district in turkeyDistricts)
         {
-            var name = district.GetName();
+            var name = district.GetName(); //GetName()
             if (!TurkishDistrictsPop.ContainsKey(name))
             {
                 TurkishDistrictsPop.Add(name, district.RefPop);
@@ -121,7 +129,7 @@ public class Validation
     }
     public static void FillSyrianDistrictsPop(List<LocationNode> districts)
     {
-        var syrianDistricts = districts.Where(d => d.Country.EqualsIgnoreCase("Syria"));
+        var syrianDistricts = districts;
         foreach (var district in syrianDistricts)
         {
             var name = district.GetProvinceName(); //GetName()
@@ -140,18 +148,23 @@ public class Validation
     public static void FillTurkishDistrictsInitPop(List<LocationNode> districts)
     {
         if (TurkishDistrictsInitPop.Count > 0) return;
-        var turkeyDistricts = districts.Where(d => d.Country.EqualsIgnoreCase("Turkey"));
+        var turkeyDistricts = districts;
         foreach (var district in turkeyDistricts)
         {
             var name = district.GetName();
-            TurkishDistrictsInitPop.Add(name, district.RefPop);
+            if(!TurkishDistrictsInitPop.ContainsKey(name))
+                TurkishDistrictsInitPop.Add(name, district.RefPop);
+            else
+            {
+                TurkishDistrictsInitPop[name]+= district.RefPop;
+            }
         }
     }
     
     public static void FillSyrianDistrictsInitPop(List<LocationNode> districts)
     {
         if (SyrianDistrictsInitPop.Count > 0) return;
-        var syrianDistricts = districts.Where(d => d.Country.EqualsIgnoreCase("Syria"));
+        var syrianDistricts = districts;
         foreach (var district in syrianDistricts)
         {
             var name = district.GetProvinceName();

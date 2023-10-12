@@ -1,7 +1,7 @@
 ﻿{
   "globals": {
     "startTime": "2017-01-01T00:00",
-    "endTime": "2017-02-01T00:00",
+    "endTime": "2017-04-01T00:00",
     "deltaTUnit": "days",
     "output": "csv",
     "options": {
@@ -17,7 +17,7 @@
   },
   "agents": [
     {
-      "name": "RefugeeAgent",
+      "name": "MigrantAgent",
       "mapping": [
         {
           "parameter": "_initNumKins",
@@ -29,23 +29,23 @@
         },
         {
           "parameter": "KinWeight",
-          "value": 0.75
+          "value": 0.2
         },
         {
           "parameter": "FriendWeight",
-          "value": 0.75
+          "value": 0.2
         },
         {
           "parameter": "MoveProbabilityCamp",
-          "value": 0.3
+          "value": 0.1
         },
         {
           "parameter": "MoveProbabilityConflict",
-          "value": 0.7
+          "value": 0.5
         },
         {
           "parameter": "MoveProbabilityOther",
-          "value": 0.85
+          "value": 0.25
         },
         {
           "parameter": "Validate",
@@ -61,24 +61,24 @@
   ],
   "layers": [
     {
-      "name": "NodeLayer",
+      "name": "LocationLayer",
       "file": "Resources/syrian_districts_3.geojson",
       "mapping": [
         {
           "parameter": "PopulationWeight",
-          "value": 0.75
-        },
-        {
-          "parameter": "CampWeight",
-          "value": 0.25
-        },
-        {
-          "parameter": "ConflictWeight",
           "value": 0.5
         },
         {
+          "parameter": "CampWeight",
+          "value": 0.05
+        },
+        {
+          "parameter": "ConflictWeight",
+          "value": 0.25
+        },
+        {
           "parameter": "LocationWeight",
-          "value": 0.1
+          "value": 0.25
         },
         {
           "parameter": "AnchorLong",
@@ -103,12 +103,12 @@
       ]
     },
     {
-      "name": "RefugeeLayer",
+      "name": "MigrantLayer",
       "file": "Resources/idp_pop_2016.csv",
       "mapping": [
         {
           "parameter": "NumAgentsToSpawn",
-          "value": 790
+          "value": 9500
         }
       ]
     },

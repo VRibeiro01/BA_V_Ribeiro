@@ -18,7 +18,7 @@ namespace LaserTagBox
         {
             // Simulation mode Turkey: Movement of Syrian Refugees over Turkish territory
             // Simulation mode Syria: Movement of Syrian IDPs over Syrian territory
-            string simulationMode = "Syria";
+            string simulationMode = "Turkey";
             
             // the scenario consists of the model (represented by the model description)
             // and the simulation configuration (see config.json files)
@@ -29,10 +29,10 @@ namespace LaserTagBox
             description.AddLayer<ConflictLayer>();
             description.AddLayer<CampLayer>();
             description.AddLayer<PopulationLayer>();
-            description.AddLayer<NodeLayer>();
-            description.AddLayer<RefugeeLayer>();
+            description.AddLayer<LocationLayer>();
+            description.AddLayer<MigrantLayer>();
             description.AddLayer<SchedulerLayer>();
-            description.AddAgent<RefugeeAgent, RefugeeLayer>();
+            description.AddAgent<MigrantAgent, MigrantLayer>();
 
 
             // scenario definition
@@ -60,36 +60,34 @@ namespace LaserTagBox
             
             
             // Collect results for output files
-            RefugeeLayer refugeeLayer = loopResults.Model.Layers.Values.OfType<RefugeeLayer>().First();
-            NodeLayer nodeLayer = loopResults.Model.Layers.Values.OfType<NodeLayer>().First();
+            MigrantLayer migrantLayer = loopResults.Model.Layers.Values.OfType<MigrantLayer>().First();
+            LocationLayer locationLayer = loopResults.Model.Layers.Values.OfType<LocationLayer>().First();
             Validation.NumSimRuns++;
-            Validation.NumRuns = (int) loopResults.Iterations;
-            Validation.FillRoutes(refugeeLayer.RefugeeAgents);
-            if(simulationMode.EqualsIgnoreCase("Syria"))  Validation.FillSyrianDistrictsPop(nodeLayer.GetEntities().ToList());
-            else Validation.FillTurkishDistrictsPop(nodeLayer.GetEntities().ToList());
+            Validation.NumSteps = (int) loopResults.Iterations;
+            Validation.FillRoutes(migrantLayer.RefugeeAgents);
+            if(simulationMode.EqualsIgnoreCase("Syria"))  Validation.FillSyrianDistrictsPop(locationLayer.GetEntities().ToList());
+            else Validation.FillTurkishDistrictsPop(locationLayer.GetEntities().ToList());
          
 
-            if (RefugeeAgent.Validate)
+            if (MigrantAgent.Validate)
             {
                 Validation.Print();
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < 0; i++)
                 {
-                    refugeeLayer = loopResults.Model.Layers.Values.OfType<RefugeeLayer>().First();
-                    nodeLayer = loopResults.Model.Layers.Values.OfType<NodeLayer>().First();
-                    Validation.NumSimRuns++;
-                    Validation.NumRuns = (int) loopResults.Iterations;
-                    Validation.FillRoutes(refugeeLayer.RefugeeAgents);
-                    if(simulationMode.EqualsIgnoreCase("Syria"))  Validation.FillSyrianDistrictsPop(nodeLayer.GetEntities().ToList());
-                    else Validation.FillTurkishDistrictsPop(nodeLayer.GetEntities().ToList());
-                    
                     task = SimulationStarter.Start(description, config);
                     loopResults = task.Run();
+                    migrantLayer = loopResults.Model.Layers.Values.OfType<MigrantLayer>().First();
+                    locationLayer = loopResults.Model.Layers.Values.OfType<LocationLayer>().First();
+                    Validation.NumSimRuns++;
+                    Validation.FillRoutes(migrantLayer.RefugeeAgents);
+                    if(simulationMode.EqualsIgnoreCase("Syria"))  Validation.FillSyrianDistrictsPop(locationLayer.GetEntities().ToList());
+                    else Validation.FillTurkishDistrictsPop(locationLayer.GetEntities().ToList());
                 }
                
             }
             Validation.CalcAverageDistribution();
-            if(simulationMode.EqualsIgnoreCase("Syria"))  Validation.WriteToFileSyria("adm3.Exp6.5V2.4.2.12_01_02");
-            else Validation.WriteToFileTurkey("");
+            if(simulationMode.EqualsIgnoreCase("Syria"))  Validation.WriteToFileSyria("scen3");
+            else Validation.WriteToFileTurkey("adm2.RefModelData.x650.40");
 
 
             // Feedback to user that simulation run was successful

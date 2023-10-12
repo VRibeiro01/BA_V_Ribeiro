@@ -632,3 +632,8 @@ C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcor
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\config_turkey.json
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\config_syria.json
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\syrPop_adm3.csv
+C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\RefModel_camps.geojson
+C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\RefModel_camps.qmd
+C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\RefModel_Conflicts_0219.geojson
+C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\RefModel_Conflicts_0219.qmd
+C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\RefModel_refPop_0219.csv

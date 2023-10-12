@@ -96,3 +96,13 @@ Cannot resolve parameter 'LaserTagBox.Model.Model.Location.LocationNodes.IEnviro
 [ERROR] 2023-09-02 12:07:07,705 | Mars.Components.Starter.SimulationStarter - ######################################################## 
 [ERROR] 2023-09-02 12:07:07,705 | Mars.Components.Starter.SimulationStarter - The location YAYLADAGI  cannot be found in the system. 
 [ERROR] 2023-09-02 12:07:07,706 | Mars.Components.Starter.SimulationStarter - ######################################################## 
+[ERROR] 2023-09-21 21:55:15,776 | Mars.Components.Starter.SimulationStarter - MARS simulation execution crashed by ArgumentException 
+[ERROR] 2023-09-21 21:55:15,796 | Mars.Components.Starter.SimulationStarter - Exception message: 
+[ERROR] 2023-09-21 21:55:15,797 | Mars.Components.Starter.SimulationStarter - ######################################################## 
+[ERROR] 2023-09-21 21:55:15,798 | Mars.Components.Starter.SimulationStarter - The location HATAY  cannot be found in the system. 
+[ERROR] 2023-09-21 21:55:15,799 | Mars.Components.Starter.SimulationStarter - ######################################################## 
+[ERROR] 2023-09-21 22:05:19,070 | Mars.Components.Starter.SimulationStarter - MARS simulation execution crashed by ArgumentException 
+[ERROR] 2023-09-21 22:05:19,085 | Mars.Components.Starter.SimulationStarter - Exception message: 
+[ERROR] 2023-09-21 22:05:19,086 | Mars.Components.Starter.SimulationStarter - ######################################################## 
+[ERROR] 2023-09-21 22:05:19,087 | Mars.Components.Starter.SimulationStarter - The location Karkamis'  cannot be found in the system. 
+[ERROR] 2023-09-21 22:05:19,087 | Mars.Components.Starter.SimulationStarter - ######################################################## 
