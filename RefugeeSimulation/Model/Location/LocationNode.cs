@@ -109,35 +109,6 @@ public class LocationNode : IVectorFeature
         VectorStructured.Data.Add("Name3", name3);
 
 
-        // Extract name of country
-        var country = "Unknown";
-
-        if (VectorStructured.Data.ContainsKey("layer"))
-        {
-            if (!(VectorStructured.Data["layer"] is null) &&
-                VectorStructured.Data["layer"].ToString().Contains("turkey"))
-            {
-                country = "Turkey";
-            }
-            else if (!(VectorStructured.Data["layer"] is null) &&
-                     VectorStructured.Data["layer"].ToString().Contains("syria"))
-            {
-                country = "Syria";
-            }
-        }
-        else if (VectorStructured.Data.ContainsKey("ADM0_EN") && !(VectorStructured.Data["ADM0_EN"] is null) &&
-                 VectorStructured.Data["ADM0_EN"].ToString().EqualsIgnoreCase("Syrian Arab Republic"))
-        {
-            country = "Syria";
-        }
-        else if (VectorStructured.Data.ContainsKey("adm1_tr") && !(VectorStructured.Data["adm1_tr"] is null))
-        {
-            country = "Turkey";
-        }
-
-        Country = country;
-
-
         LocationLayer = (LocationLayer) layer;
 
         if (!(LocationLayer.CampLayer is null) && !(LocationLayer.ConflictLayer is null))
@@ -262,20 +233,6 @@ public class LocationNode : IVectorFeature
         // ReSharper disable once InconsistentlySynchronizedField
         
             NormRefPop = RefPop * 1.0 / (maxRefPop * 1.0);
-        
-    }
-
-    public int GetRefPop()
-    {
-        
-            return RefPop;
-        
-    }
-
-    public void SetRefPop(int newRefPop)
-    {
-        
-            RefPop = newRefPop;
         
     }
 }

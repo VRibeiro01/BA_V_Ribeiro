@@ -19,6 +19,8 @@ namespace LaserTagBox
             // Simulation mode Turkey: Movement of Syrian Refugees over Turkish territory
             // Simulation mode Syria: Movement of Syrian IDPs over Syrian territory
             string simulationMode = "Turkey";
+
+            string outputFileIdentifier = "";
             
             // the scenario consists of the model (represented by the model description)
             // and the simulation configuration (see config.json files)
@@ -72,7 +74,7 @@ namespace LaserTagBox
             if (MigrantAgent.Validate)
             {
                 Validation.Print();
-                for (int i = 0; i < 0; i++)
+                for (int i = 0; i < 3; i++)
                 {
                     task = SimulationStarter.Start(description, config);
                     loopResults = task.Run();
@@ -86,8 +88,8 @@ namespace LaserTagBox
                
             }
             Validation.CalcAverageDistribution();
-            if(simulationMode.EqualsIgnoreCase("Syria"))  Validation.WriteToFileSyria("scen3");
-            else Validation.WriteToFileTurkey("adm2.RefModelData.x650.40");
+            if(simulationMode.EqualsIgnoreCase("Syria"))  Validation.WriteToFileSyria(outputFileIdentifier);
+            else Validation.WriteToFileTurkey(outputFileIdentifier);
 
 
             // Feedback to user that simulation run was successful

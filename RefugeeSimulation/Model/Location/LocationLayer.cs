@@ -262,6 +262,7 @@ public class LocationLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 
     public void PreTick()
     {
+        // Dynamic conflcit calculation for the Syria simulation
         if (Mode.EqualsIgnoreCase("Syria"))
         {
             var maxNumConflicts = MaxNumConflicts();

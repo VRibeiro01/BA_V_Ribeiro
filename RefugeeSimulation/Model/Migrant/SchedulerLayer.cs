@@ -46,16 +46,6 @@ public class SchedulerLayer : ISteppedActiveLayer
 
     public void PreTick()
     {
-        if (_simulationContext.LastDateTime.Value.CompareTo(new DateTime(2017, 1, 31)) == 0||
-            _simulationContext.LastDateTime.Value.CompareTo(new DateTime(2017, 2, 28)) == 0 )
-        {
-            Validation.FillRoutes(MigrantLayer.RefugeeAgents);
-            Validation.FillSyrianDistrictsPop(MigrantLayer.LocationLayer.EntitiesList);
-            Validation.WriteToFileSyria("scen" + months);
-            months++;
-            Validation.Routes.Clear();
-            Validation.SyrianDistrictsPop.Clear();
-        }
         if (Mode.EqualsIgnoreCase("Syria"))
         {
             MigrantLayer.SpawnNewIDPs();
