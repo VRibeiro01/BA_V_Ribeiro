@@ -57,7 +57,7 @@ To run the simulation, follow these steps:
 
 ## Simulation Output
 
-As part of our simulation, the model generates three important output files in CSV format:
+The model generates three important output files in CSV format:
 
 1. **InitPop.csv**: This file contains the Syrian Refugee or IDP population of each region of the country at the beginning of the simulation. It serves as the initial population distribution data.
 
