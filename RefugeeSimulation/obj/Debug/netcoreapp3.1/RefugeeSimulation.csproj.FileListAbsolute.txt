@@ -491,16 +491,10 @@ C:\Users\vivia\mars\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\idp_pop_
 C:\Users\vivia\mars\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\Conflicts_Syr_Tur_2022.geojson
 C:\Users\vivia\mars\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\Conflicts_Syr_Tur_2022.qmd
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\active_turkey_camps.geojson
-C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\Conflicts_Syr_Tur_2022.geojson
-C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\Conflicts_Syr_Tur_2022.qmd
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\syrian_districts_2.geojson
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\syrian_districts_2.qmd
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\syrian_districts_3.geojson
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\syrian_districts_3.qmd
-C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\turkey1_syria2_districts.geojson
-C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\turkey1_syria2_districts.qmd
-C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\turkey2_syria3_districts.geojson
-C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\turkey2_syria3_districts.qmd
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\turkey_districts_1.geojson
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\turkey_districts_1.qmd
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\turkey_districts_2.geojson
@@ -622,7 +616,6 @@ C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\obj\Debug\netcor
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\obj\Debug\netcoreapp3.1\RefugeeSimulation.genruntimeconfig.cache
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\turkey_camps_idps.geojson
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\turkey_camps_idps.qmd
-C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\refpop_turkey.csv
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\border_crossing_points.csv
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\syrian_districts_1.geojson
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\syrian_districts_1.qmd
@@ -637,3 +630,4 @@ C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcor
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\RefModel_Conflicts_0219.geojson
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\RefModel_Conflicts_0219.qmd
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\RefModel_refPop_0219.csv
+C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\idpPop_16_01_02_17.csv

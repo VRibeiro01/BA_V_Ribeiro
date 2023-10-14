@@ -32,7 +32,7 @@ public class MigrantAgent : IAgent<MigrantLayer>, IPositionable
     [PropertyDescription] public static int InitNumFriends { get; set; }
     
     private double _highestDesirabilityScore;
-    private LocationNode _mostDesirableNode;
+    private Location.LocationNodes.Location _mostDesirable;
     
     
     
@@ -46,9 +46,9 @@ public class MigrantAgent : IAgent<MigrantLayer>, IPositionable
     public HashSet<MigrantAgent> Kins { get; set; }
     public string LocationName { get; set; }
 
-    public LocationNode OriginNode { get; set; }
+    public Location.LocationNodes.Location Origin { get; set; }
 
-    public LocationNode CurrentNode { get; set; }
+    public Location.LocationNodes.Location Current { get; set; }
     
     
     // Validation mode
@@ -69,8 +69,8 @@ public class MigrantAgent : IAgent<MigrantLayer>, IPositionable
 
     public void Tick()
     {
-        var numCamps = CurrentNode.NumCamps;
-        var numConflicts = CurrentNode.NumConflicts;
+        var numCamps = Current.NumCamps;
+        var numConflicts = Current.NumConflicts;
 
         if (!Activate(numCamps, numConflicts))
         {
@@ -80,7 +80,7 @@ public class MigrantAgent : IAgent<MigrantLayer>, IPositionable
 
         _highestDesirabilityScore = 0;
 
-        var neighbours = CurrentNode.Neighbours;
+        var neighbours = Current.Neighbours;
 
 
         if (neighbours.Count >= 1)
@@ -90,11 +90,11 @@ public class MigrantAgent : IAgent<MigrantLayer>, IPositionable
                 Assess(n);
             }
 
-            MoveToNode(_mostDesirableNode);
+            MoveToNode(_mostDesirable);
             
             // Collect Decision Making statistics
                 Validation.NumDecisions++;
-                switch (_mostDesirableNode.RefPop)
+                switch (_mostDesirable.RefPop)
                 {
                     case < 1000:
                         Validation.PopUnder1k++;
@@ -109,12 +109,12 @@ public class MigrantAgent : IAgent<MigrantLayer>, IPositionable
                         Validation.PopOver50k++;
                         break;
                 }
-                if (_mostDesirableNode.NumConflicts > 0)
+                if (_mostDesirable.NumConflicts > 0)
                 {
-                    if (_mostDesirableNode.NumCamps > 0)
+                    if (_mostDesirable.NumCamps > 0)
                     {
-                        if (GetNumFriendsAtNode(_mostDesirableNode) > 0 ||
-                            GetNumKinsAtNode(_mostDesirableNode) > 0)
+                        if (GetNumFriendsAtNode(_mostDesirable) > 0 ||
+                            GetNumKinsAtNode(_mostDesirable) > 0)
                         {
                             Validation.HasAll++;
                         }
@@ -123,8 +123,8 @@ public class MigrantAgent : IAgent<MigrantLayer>, IPositionable
                             Validation.HasConflictAndCamp++;
                         }
                     }
-                    else if (GetNumFriendsAtNode(_mostDesirableNode) > 0 ||
-                             GetNumKinsAtNode(_mostDesirableNode) > 0)
+                    else if (GetNumFriendsAtNode(_mostDesirable) > 0 ||
+                             GetNumKinsAtNode(_mostDesirable) > 0)
                     {
                         Validation.HasConflictAndContacts++;
                     }
@@ -133,10 +133,10 @@ public class MigrantAgent : IAgent<MigrantLayer>, IPositionable
                         Validation.OnlyHasConflict++;
                     }
                 }
-                else if (GetNumFriendsAtNode(_mostDesirableNode) > 0 ||
-                         GetNumKinsAtNode(_mostDesirableNode) > 0)
+                else if (GetNumFriendsAtNode(_mostDesirable) > 0 ||
+                         GetNumKinsAtNode(_mostDesirable) > 0)
                 {
-                    if (_mostDesirableNode.NumCamps > 0)
+                    if (_mostDesirable.NumCamps > 0)
                     {
                         Validation.HasCampAndContacts++;
                     }
@@ -145,7 +145,7 @@ public class MigrantAgent : IAgent<MigrantLayer>, IPositionable
                         Validation.OnlyHasContacts++;
                     }
                 }
-                else if (_mostDesirableNode.NumCamps > 0)
+                else if (_mostDesirable.NumCamps > 0)
                 {
                     Validation.OnlyHasCamp++;
                 }
@@ -180,7 +180,7 @@ public class MigrantAgent : IAgent<MigrantLayer>, IPositionable
         return move;
     }
 
-    private void Assess(LocationNode node)
+    private void Assess(Location.LocationNodes.Location node)
     {
         var nodeDesirability =
             CalcNodeDesirability(GetNumFriendsAtNode(node), GetNumKinsAtNode(node), node.Score);
@@ -188,7 +188,7 @@ public class MigrantAgent : IAgent<MigrantLayer>, IPositionable
         if (nodeDesirability > _highestDesirabilityScore)
         {
             _highestDesirabilityScore = nodeDesirability;
-            _mostDesirableNode = node;
+            _mostDesirable = node;
         }
     }
 
@@ -197,14 +197,14 @@ public class MigrantAgent : IAgent<MigrantLayer>, IPositionable
         return (numKinsAtNode * KinWeight) + (numFriendsAtNode * FriendWeight) + score;
     }
 
-    public void MoveToNode(LocationNode newNode)
+    public void MoveToNode(Location.LocationNodes.Location @new)
     {
-        Interlocked.Decrement(ref CurrentNode.RefPop);
-        CurrentNode = newNode;
-        LocationName = newNode.GetName();
+        Interlocked.Decrement(ref Current.RefPop);
+        Current = @new;
+        LocationName = @new.GetName();
 
-        Environment.MoveToPosition(this, newNode.Position.Latitude, newNode.Position.Longitude);
-        Interlocked.Increment(ref newNode.RefPop);
+        Environment.MoveToPosition(this, @new.Position.Latitude, @new.Position.Longitude);
+        Interlocked.Increment(ref @new.RefPop);
     }
 
     public void InitSocialLinks()
@@ -236,7 +236,7 @@ public class MigrantAgent : IAgent<MigrantLayer>, IPositionable
     }
 
 
-    public int GetNumFriendsAtNode(LocationNode node)
+    public int GetNumFriendsAtNode(Location.LocationNodes.Location node)
     {
 
         var friendsAtNode = Friends.Where(agent => agent.LocationName.EqualsIgnoreCase(node.GetName())).ToList();
@@ -245,7 +245,7 @@ public class MigrantAgent : IAgent<MigrantLayer>, IPositionable
         return friendsAtNode.Count;
     }
     
-    public int GetNumKinsAtNode(LocationNode node)
+    public int GetNumKinsAtNode(Location.LocationNodes.Location node)
     {
 
         var kinsAtNode = Kins
@@ -262,15 +262,15 @@ public class MigrantAgent : IAgent<MigrantLayer>, IPositionable
         other.Friends.Add(this);
     }
 
-    public void Spawn(LocationNode node)
+    public void Spawn(Location.LocationNodes.Location node)
     {
-        OriginNode = node;
-        CurrentNode = node;
+        Origin = node;
+        Current = node;
         LocationName = node.GetName();
-        Interlocked.Increment(ref CurrentNode.RefPop);
+        Interlocked.Increment(ref Current.RefPop);
         Position = Position.CreateGeoPosition(node.Position.Longitude,
             node.Position.Latitude);
-        _mostDesirableNode = node;
+        _mostDesirable = node;
     }
 
 

@@ -18,9 +18,9 @@ namespace LaserTagBox
         {
             // Simulation mode Turkey: Movement of Syrian Refugees over Turkish territory
             // Simulation mode Syria: Movement of Syrian IDPs over Syrian territory
-            string simulationMode = "Turkey";
+            string simulationMode = "Syria";
 
-            string outputFileIdentifier = "";
+            string outputFileIdentifier = ".0.FebToMarch";
             
             // the scenario consists of the model (represented by the model description)
             // and the simulation configuration (see config.json files)

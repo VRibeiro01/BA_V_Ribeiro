@@ -70,7 +70,7 @@ public class SimulationTest
     public void EnvironmentTest()
     {
         var agent = new MigrantAgent();
-        LocationNode moveTestNode = _locationLayer.Entities.First();
+        Location moveTest = _locationLayer.Entities.First();
        
         foreach (var node in _locationLayer.Entities)
         {
@@ -93,7 +93,7 @@ public class SimulationTest
 
         // Act
        
-       agent.MoveToNode(moveTestNode);
+       agent.MoveToNode(moveTest);
         MigrantAgent[] refsAtNodeAfterMoving = environment.Explore(_locationLayer.GetLocationByName("Tell Abiad").Position,
             -1D, -1, elem => elem is not null &&
             elem.Position.DistanceInKmTo(_locationLayer.GetLocationByName("Tell Abiad").Position) < 1).ToArray();
@@ -261,7 +261,7 @@ public class SimulationTest
         }
 
 
-        LocationNode? updateNormRefPopTestNode = _locationLayer.Entities
+        Location? updateNormRefPopTestNode = _locationLayer.Entities
             .First(n => n.GetName().EqualsIgnoreCase("Tell Abiad"));
 
         var environment = _locationLayer.GetEnvironment();

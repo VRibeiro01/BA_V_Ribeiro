@@ -1,6 +1,6 @@
 ﻿{
   "globals": {
-    "startTime": "2017-01-01T00:00",
+    "startTime": "2017-03-01T00:00",
     "endTime": "2017-04-01T00:00",
     "deltaTUnit": "days",
     "output": "csv",
@@ -17,7 +17,7 @@
   },
   "agents": [
     {
-      "name": "RefugeeAgent",
+      "name": "MigrantAgent",
       "mapping": [
         {
           "parameter": "_initNumKins",
@@ -49,7 +49,7 @@
         },
         {
           "parameter": "Validate",
-          "value": true
+          "value": false
         }
       ],
       "outputs": [
@@ -103,8 +103,8 @@
       ]
     },
     {
-      "name": "RefugeeLayer",
-      "file": "Resources/idp_pop_2016.csv",
+      "name": "MigrantLayer",
+      "file": "Resources/idpPop_16_01_02_17.csv",
       "mapping": [
         {
           "parameter": "NumAgentsToSpawn",

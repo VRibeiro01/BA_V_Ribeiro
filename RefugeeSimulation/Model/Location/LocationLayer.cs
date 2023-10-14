@@ -21,7 +21,7 @@ using Position = Mars.Interfaces.Environments.Position;
 
 namespace LaserTagBox.Model.Location.LocationNodes;
 
-public class LocationLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
+public class LocationLayer : VectorLayer<Location>, ISteppedActiveLayer
 {
 
     //------------------------------- Parameters needed to calculate location scores ------------------------
@@ -61,7 +61,7 @@ public class LocationLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
     // ---------------------------------------------------------------------------------------------------------
     
     public List<String> BorderCrossingNodes;
-    public List<LocationNode> EntitiesList { get; set; }
+    public List<Location> EntitiesList { get; set; }
     public ISimulationContext SimulationContext;
     public int StartMonth;
     public int EndMonth;
@@ -201,7 +201,7 @@ public class LocationLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
     }
 
 
-    public LocationNode GetLocationByName(string locationName)
+    public Location GetLocationByName(string locationName)
     {
         var locationByName = EntitiesList.Where(city =>
             city.GetName().Trim().EqualsIgnoreCase(locationName.Trim()));
@@ -220,7 +220,7 @@ public class LocationLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
     }
 
   
-    public List<LocationNode> GetLocationsInProvince(string provinceName)
+    public List<Location> GetLocationsInProvince(string provinceName)
     {
         var locationsInProvince = EntitiesList.Where(prov =>
             prov.GetProvinceName().Trim().EqualsIgnoreCase(provinceName.Trim()));
@@ -234,8 +234,8 @@ public class LocationLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
             return locationNodes;
         }
 
-        // error handling
-        throw new ArgumentException("The province " + provinceName + "  cannot be found in the system.");
+        return new List<Location>{GetLocationByName(provinceName)};
+
     }
 
     private void Debug()
@@ -262,7 +262,7 @@ public class LocationLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
 
     public void PreTick()
     {
-        // Dynamic conflcit calculation for the Syria simulation
+        // Dynamic conflict calculation for the Syria simulation
         if (Mode.EqualsIgnoreCase("Syria"))
         {
             var maxNumConflicts = MaxNumConflicts();
@@ -309,7 +309,7 @@ public class LocationLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
     }
 
 
-    private void CalcScore(LocationNode location)
+    private void CalcScore(Location location)
     {
       
         location.Score = (location.NormRefPop * PopulationWeight) + (location.NormAnchorScore * LocationWeight)
@@ -328,7 +328,7 @@ public class LocationLayer : VectorLayer<LocationNode>, ISteppedActiveLayer
         return EntitiesList.Max(location => location.NumConflicts) + 1;
     }
 
-    public List<LocationNode> GetEntities()
+    public List<Location> GetEntities()
     {
         return EntitiesList;
     }

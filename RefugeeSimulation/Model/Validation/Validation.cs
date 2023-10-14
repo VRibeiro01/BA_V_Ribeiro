@@ -92,10 +92,10 @@ public static class Validation
     {
         foreach (var agent in agentsResult)
         {
-            if (!agent.OriginNode.GetName().EqualsIgnoreCase(agent.LocationName))
+            if (!agent.Origin.GetName().EqualsIgnoreCase(agent.LocationName))
             {
                 Tuple<string, string> route = new Tuple<String, String>(
-                    agent.OriginNode.GetProvinceName(), agent.CurrentNode.GetProvinceName());
+                    agent.Origin.GetProvinceName(), agent.Current.GetProvinceName());
 
 
                 if (Routes.ContainsKey(route))
@@ -110,7 +110,7 @@ public static class Validation
         }
     }
 
-    public static void FillTurkishDistrictsPop(List<LocationNode> districts)
+    public static void FillTurkishDistrictsPop(List<Location> districts)
     {
         var turkeyDistricts = districts;
         foreach (var district in turkeyDistricts)
@@ -127,9 +127,41 @@ public static class Validation
             
         }
     }
-    public static void FillSyrianDistrictsPop(List<LocationNode> districts)
+    public static void FillSyrianDistrictsPop(List<Location> districts)
     {
         var syrianDistricts = districts;
+        foreach (var district in syrianDistricts)
+        {
+            var name = district.GetName();
+            if (!SyrianDistrictsPop.ContainsKey(name))
+            {
+                SyrianDistrictsPop.Add(name, district.RefPop);
+            }
+            else
+            {
+                SyrianDistrictsPop[name] += district.RefPop;
+            }
+            
+        }
+        WriteToFileSyria("adm3");
+        SyrianDistrictsPop.Clear();
+        
+        foreach (var district in syrianDistricts)
+        {
+            var name = district.GetName2();
+            if (!SyrianDistrictsPop.ContainsKey(name))
+            {
+                SyrianDistrictsPop.Add(name, district.RefPop);
+            }
+            else
+            {
+                SyrianDistrictsPop[name] += district.RefPop;
+            }
+            
+        }
+        WriteToFileSyria("adm2");
+        SyrianDistrictsPop.Clear();
+        
         foreach (var district in syrianDistricts)
         {
             var name = district.GetProvinceName(); //GetName()
@@ -145,7 +177,7 @@ public static class Validation
         }
     }
     
-    public static void FillTurkishDistrictsInitPop(List<LocationNode> districts)
+    public static void FillTurkishDistrictsInitPop(List<Location> districts)
     {
         if (TurkishDistrictsInitPop.Count > 0) return;
         var turkeyDistricts = districts;
@@ -161,7 +193,7 @@ public static class Validation
         }
     }
     
-    public static void FillSyrianDistrictsInitPop(List<LocationNode> districts)
+    public static void FillSyrianDistrictsInitPop(List<Location> districts)
     {
         if (SyrianDistrictsInitPop.Count > 0) return;
         var syrianDistricts = districts;

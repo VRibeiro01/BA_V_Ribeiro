@@ -17,7 +17,7 @@
   },
   "agents": [
     {
-      "name": "RefugeeAgent",
+      "name": "MigrantAgent",
       "mapping": [
         {
           "parameter": "_initNumKins",
@@ -103,7 +103,7 @@
       ]
     },
     {
-      "name": "RefugeeLayer",
+      "name": "MigrantLayer",
       "file": "Resources/RefModel_refPop_0219.csv",
       "mapping": [
         {
