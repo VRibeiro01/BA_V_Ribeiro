@@ -22,8 +22,6 @@ public class SchedulerLayer : ISteppedActiveLayer
     [PropertyDescription]
     public string Mode { get; set; }
 
-    private int months = 1;
-
     public bool InitLayer(LayerInitData layerInitData, RegisterAgent registerAgentHandle = null,
         UnregisterAgent unregisterAgent = null)
     {
