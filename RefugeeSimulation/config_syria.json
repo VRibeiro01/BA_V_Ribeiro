@@ -108,7 +108,7 @@
       "mapping": [
         {
           "parameter": "NumAgentsToSpawn",
-          "value": 0
+          "value": 9500
         }
       ]
     },

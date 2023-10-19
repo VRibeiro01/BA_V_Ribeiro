@@ -103,7 +103,7 @@
       ]
     },
     {
-      "name": "MigrantLayer",
+      "name": "Layer",
       "file": "Resources/RefModel_refPop_0219.csv",
       "mapping": [
         {

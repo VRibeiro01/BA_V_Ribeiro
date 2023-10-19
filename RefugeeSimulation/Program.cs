@@ -16,7 +16,7 @@ namespace LaserTagBox
         {
             // Simulation mode Turkey: Movement of Syrian Refugees over Turkish territory
             // Simulation mode Syria: Movement of Syrian IDPs over Syrian territory
-            string simulationMode = "Syria";
+            string simulationMode = "Turkey";
         
             string outputFileIdentifier = "";
             

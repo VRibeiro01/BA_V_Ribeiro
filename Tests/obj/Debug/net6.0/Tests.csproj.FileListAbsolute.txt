@@ -215,3 +215,4 @@ C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\R
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\RefModel_Conflicts_0219.geojson
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\RefModel_Conflicts_0219.qmd
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\RefModel_refPop_0219.csv
+C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\RefModel_camps.geojson

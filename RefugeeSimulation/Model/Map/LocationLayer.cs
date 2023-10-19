@@ -229,8 +229,9 @@ public class LocationLayer : VectorLayer<Location>, ISteppedActiveLayer
         {
             return locationNodes;
         }
+        
 
-        return new List<Location>{GetLocationByName(provinceName)};
+       return new List<Location>{GetLocationByName(provinceName)};
 
     }
 

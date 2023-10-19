@@ -23,6 +23,6 @@
     </spatialrefsys>
   </crs>
   <extent>
-    <spatial dimensions="2" crs="EPSG:4326" minz="0" miny="35.88888899999999893" maxx="41.39271500000000259" maxz="0" maxy="38.33955000000000268" minx="35.49165899999999851"/>
+    <spatial maxx="41.39271500000000259" minz="0" crs="EPSG:4326" minx="35.49165899999999851" miny="35.88888899999999893" dimensions="2" maxz="0" maxy="38.33955000000000268"/>
   </extent>
 </qgis>

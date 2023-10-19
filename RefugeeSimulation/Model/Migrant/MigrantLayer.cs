@@ -77,7 +77,7 @@ public class MigrantLayer : AbstractLayer
             {
                 newRefs.AddRange(AgentManager.Spawn<MigrantAgent, MigrantLayer>(null,
                         agent => agent.Spawn(province))
-                    .Take( (nodePopPair.Value/100/provinces.Count)
+                    .Take( nodePopPair.Value/provinces.Count
                     ));
             }
         }

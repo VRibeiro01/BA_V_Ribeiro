@@ -629,3 +629,4 @@ C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcor
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\RefModel_Conflicts_0219.qmd
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\RefModel_refPop_0219.csv
 C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\idpPop_16_01_02_17.csv
+C:\Users\vivia\mars\RefugeeSimulationSolution\RefugeeSimulation\bin\Debug\netcoreapp3.1\Resources\RefModel_camps.geojson
