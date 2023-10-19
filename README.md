@@ -49,8 +49,13 @@ To run the simulation, follow these steps:
 2. The first line of code in the Program file contains the string simulationMode. Initialize it with "Turkey" if you wish to simulate the movement of Syrian refugees in Turkey. Initialize it with "Syria" if you wish to simulate the movement of IDPs in Syria.
  ![image](https://github.com/VRibeiro01/BA_V_Ribeiro/assets/103310770/ee6f0127-3a2c-4d35-b91c-fbb67aac32c2)
 
-3. Configure the simulation if necessary. Click here for detailed information on the configuration options of the model: [Model Configuration Options](RefugeeSimulation/README.md)
-4. The simulation outputs are created in the RefugeeSimulation/Model/Validation folder. You can analyse the output files as you wish or run them through the Jupyter Notebook designated for analysis.
+4. Add your own name extension for the simulation output files, if you wish. To do that, just change the value of the "outputFileIdentifier" variable located directly under the 'simulationMode' variable.
+
+   ![image](https://github.com/VRibeiro01/BA_V_Ribeiro/assets/103310770/6c2be1d9-05dd-4037-b37d-85e90d54a2b0)
+
+
+5. Configure the simulation if necessary. Click here for detailed information on the configuration options of the model: [Model Configuration Options](RefugeeSimulation/README.md)
+6. The simulation outputs are created in the RefugeeSimulation/Model/Validation folder. You can analyse the output files as you wish or run them through the Jupyter Notebook designated for analysis.
    For more information on the available Jupyter Notebooks, click here: [Jupyter Notebooks Guide](Notebooks/README.md)
 
    Details on simulation output files can be found in the following section.
@@ -64,6 +69,8 @@ The model generates three important output files in CSV format:
 2. **RefPop.csv**: This file contains the Syrian Refugee or IDP population of each region of the country after the simulation run. It provides insights into how the population distribution has changed due to the modeled processes.
 
 3. **Routes.csv**: This file contains all the routes taken by the agents during the simulation, along with the number of agents who took each route. Each route is defined by an origin and a destination, allowing for a detailed analysis of migration patterns within the simulated environment.
+
+In Syria mode, the 'InitPop' and 'RefPop' files are available three times: each file is aggregated by a different administrative level (from 1 to 3).
 
 
 
