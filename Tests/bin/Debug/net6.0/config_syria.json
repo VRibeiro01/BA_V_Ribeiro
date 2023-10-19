@@ -1,0 +1,137 @@
+﻿{
+  "globals": {
+    "startTime": "2017-01-01T00:00",
+    "endTime": "2017-02-01T00:00",
+    "deltaTUnit": "days",
+    "output": "csv",
+    "options": {
+      "delimiter": ";",
+      "format": "en-EN"
+    },
+    "csvOptions": {
+      "outputPath": "../../../."
+    },
+    "tripsOptions": {
+      "outputPath": "../../../."
+    }
+  },
+  "agents": [
+    {
+      "name": "MigrantAgent",
+      "mapping": [
+        {
+          "parameter": "_initNumKins",
+          "value": 5
+        },
+        {
+          "parameter": "_initNumFriends",
+          "value": 5
+        },
+        {
+          "parameter": "KinWeight",
+          "value": 0.2
+        },
+        {
+          "parameter": "FriendWeight",
+          "value": 0.2
+        },
+        {
+          "parameter": "MoveProbabilityCamp",
+          "value": 0.1
+        },
+        {
+          "parameter": "MoveProbabilityConflict",
+          "value": 0.5
+        },
+        {
+          "parameter": "MoveProbabilityOther",
+          "value": 0.25
+        },
+        {
+          "parameter": "Validate",
+          "value": false
+        }
+      ],
+      "outputs": [
+        {
+          "kind": "csv"
+        }
+      ]
+    }
+  ],
+  "layers": [
+    {
+      "name": "LocationLayer",
+      "file": "Resources/syrian_districts_3.geojson",
+      "mapping": [
+        {
+          "parameter": "PopulationWeight",
+          "value": 0.5
+        },
+        {
+          "parameter": "CampWeight",
+          "value": 0.05
+        },
+        {
+          "parameter": "ConflictWeight",
+          "value": 0.25
+        },
+        {
+          "parameter": "LocationWeight",
+          "value": 0.25
+        },
+        {
+          "parameter": "AnchorLong",
+          "value": -0.1278
+        },
+        {
+          "parameter": "AnchorLat",
+          "value": 51.5074
+        },
+        {
+          "parameter": "NumberNewTiesLower",
+          "value": 5
+        },
+        {
+          "parameter": "NumberNewTiesUpper",
+          "value": 10
+        },
+        {
+          "parameter": "Mode",
+          "value": "Syria"
+        }        
+      ]
+    },
+    {
+      "name": "MigrantLayer",
+      "file": "Resources/idp_pop_2016.csv",
+      "mapping": [
+        {
+          "parameter": "NumAgentsToSpawn",
+          "value": 9500
+        }
+      ]
+    },
+    {
+      "name": "CampLayer",
+      "file": "Resources/turkey_camps_idps.geojson"
+    },
+    {
+      "name": "ConflictLayer",
+      "file": "Resources/conflicts_syria_17.geojson"
+    },
+    {
+      "name": "PopulationLayer",
+      "file":"Resources/syrPop_adm3.csv"
+    },
+    {
+      "name": "SchedulerLayer",
+      "mapping": [
+        {
+          "parameter": "Mode",
+          "value": "Syria"
+        }
+        ]      
+    }
+  ]
+}

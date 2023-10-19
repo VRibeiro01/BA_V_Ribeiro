@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using LaserTagBox.Model.Location.LocationNodes;
+using LaserTagBox.Model.Location;
 using LaserTagBox.Model.Refugee;
 using ServiceStack;
 
@@ -20,12 +20,19 @@ public static class Validation
     public static Dictionary<string, int> SyrianDistrictsPop =
         new();
     
+    public static Dictionary<string, int> SyrianDistrictsPop2 =
+        new();
+    
+    public static Dictionary<string, int> SyrianDistrictsPop3 =
+        new();
+    
     public static Dictionary<string, int> TurkishDistrictsInitPop =
         new();
     
     public static Dictionary<string, int> SyrianDistrictsInitPop =
         new();
-
+    
+    
     public static int NumSteps = 0;
 
     public static int NumSimRuns = 0;
@@ -118,11 +125,11 @@ public static class Validation
             var name = district.GetName(); //GetName()
             if (!TurkishDistrictsPop.ContainsKey(name))
             {
-                TurkishDistrictsPop.Add(name, district.RefPop);
+                TurkishDistrictsPop.Add(name, district.MigPop);
             }
             else
             {
-                TurkishDistrictsPop[name] += district.RefPop;
+                TurkishDistrictsPop[name] += district.MigPop;
             }
             
         }
@@ -130,48 +137,42 @@ public static class Validation
     public static void FillSyrianDistrictsPop(List<Location> districts)
     {
         var syrianDistricts = districts;
-        foreach (var district in syrianDistricts)
-        {
-            var name = district.GetName();
-            if (!SyrianDistrictsPop.ContainsKey(name))
-            {
-                SyrianDistrictsPop.Add(name, district.RefPop);
-            }
-            else
-            {
-                SyrianDistrictsPop[name] += district.RefPop;
-            }
-            
-        }
-        WriteToFileSyria("adm3");
-        SyrianDistrictsPop.Clear();
         
         foreach (var district in syrianDistricts)
         {
-            var name = district.GetName2();
+            var name = district.GetProvinceName(); 
             if (!SyrianDistrictsPop.ContainsKey(name))
             {
-                SyrianDistrictsPop.Add(name, district.RefPop);
+                SyrianDistrictsPop.Add(name, district.MigPop);
             }
             else
             {
-                SyrianDistrictsPop[name] += district.RefPop;
+                SyrianDistrictsPop[name] += district.MigPop;
             }
             
-        }
-        WriteToFileSyria("adm2");
-        SyrianDistrictsPop.Clear();
-        
-        foreach (var district in syrianDistricts)
-        {
-            var name = district.GetProvinceName(); //GetName()
-            if (!SyrianDistrictsPop.ContainsKey(name))
+            // adm2
+            
+            var name2 = district.GetName2();
+            if (name2.EqualsIgnoreCase("0")) continue;
+            if (!SyrianDistrictsPop2.ContainsKey(name2))
             {
-                SyrianDistrictsPop.Add(name, district.RefPop);
+                SyrianDistrictsPop2.Add(name2, district.MigPop);
             }
             else
             {
-                SyrianDistrictsPop[name] += district.RefPop;
+                SyrianDistrictsPop2[name2] += district.MigPop;
+            }
+            
+            //adm3
+            
+            var name3 = district.GetProvinceName(); 
+            if (!SyrianDistrictsPop3.ContainsKey(name))
+            {
+                SyrianDistrictsPop3.Add(name3, district.MigPop);
+            }
+            else
+            {
+                SyrianDistrictsPop3[name3] += district.MigPop;
             }
             
         }
@@ -185,10 +186,10 @@ public static class Validation
         {
             var name = district.GetName();
             if(!TurkishDistrictsInitPop.ContainsKey(name))
-                TurkishDistrictsInitPop.Add(name, district.RefPop);
+                TurkishDistrictsInitPop.Add(name, district.MigPop);
             else
             {
-                TurkishDistrictsInitPop[name]+= district.RefPop;
+                TurkishDistrictsInitPop[name]+= district.MigPop;
             }
         }
     }
@@ -197,16 +198,52 @@ public static class Validation
     {
         if (SyrianDistrictsInitPop.Count > 0) return;
         var syrianDistricts = districts;
+        
         foreach (var district in syrianDistricts)
         {
             var name = district.GetProvinceName();
             if(!SyrianDistrictsInitPop.ContainsKey(name))
-            SyrianDistrictsInitPop.Add(name, district.RefPop);
+                SyrianDistrictsInitPop.Add(name, district.MigPop);
             else
             {
-                SyrianDistrictsInitPop[name]+= district.RefPop;
+                SyrianDistrictsInitPop[name]+= district.MigPop;
             }
         }
+        WriteToFileSyriaInit("adm1");
+        
+        
+        foreach (var district in syrianDistricts)
+        {
+            var name = district.GetName2();
+            if (name.EqualsIgnoreCase("0")) continue;
+            if(!SyrianDistrictsInitPop.ContainsKey(name))
+                SyrianDistrictsInitPop.Add(name, district.MigPop);
+            else
+            {
+                SyrianDistrictsInitPop[name]+= district.MigPop;
+            }
+        }
+        
+        WriteToFileSyriaInit("adm2");
+        
+        
+        foreach (var district in syrianDistricts)
+        {
+            var name = district.GetName();
+            if(!SyrianDistrictsInitPop.ContainsKey(name))
+                SyrianDistrictsInitPop.Add(name, district.MigPop);
+            else
+            {
+                SyrianDistrictsInitPop[name]+= district.MigPop;
+            }
+        }
+        WriteToFileSyriaInit("adm3");
+        
+        
+       
+        
+        
+        
     }
 
     public static void CalcAverageDistribution()
@@ -220,6 +257,21 @@ public static class Validation
         {
             Routes[key] /= NumSimRuns;
         }
+        
+        foreach (var key in SyrianDistrictsPop.Keys.ToList())
+        {
+            SyrianDistrictsPop[key]   /= NumSimRuns;
+        }
+        foreach (var key in SyrianDistrictsPop2.Keys.ToList())
+        {
+            SyrianDistrictsPop2[key]   /= NumSimRuns;
+        }
+        foreach (var key in SyrianDistrictsPop3.Keys.ToList())
+        {
+            SyrianDistrictsPop3[key]   /= NumSimRuns;
+        }
+        
+       
     }
     
 
@@ -233,10 +285,10 @@ public static class Validation
         }
         
         
-        File.WriteAllText(Path.Combine(docPath,"RefPop"+identifier+".csv"),"Region,RefPop\n");
+        File.WriteAllText(Path.Combine(docPath,"MigPop"+identifier+".csv"),"Region,MigPop\n");
         foreach (var districtPopPair in TurkishDistrictsPop)
         {
-            File.AppendAllText(Path.Combine(docPath,"RefPop"+identifier+".csv"),districtPopPair.Key+","+districtPopPair.Value+'\n');
+            File.AppendAllText(Path.Combine(docPath,"MigPop"+identifier+".csv"),districtPopPair.Key+","+districtPopPair.Value+'\n');
         }
         
         File.WriteAllText(Path.Combine(docPath,"Routes"+identifier+".csv"),"Origin,Destination,Number\n");
@@ -253,17 +305,23 @@ public static class Validation
     public static void WriteToFileSyria(string identifier)
     {
         var docPath = "Model/Validation";
-        File.WriteAllText(Path.Combine(docPath,"SyrInitPop.csv"),"Region,InitPop\n");
-        foreach (var districtPopPair in SyrianDistrictsInitPop)
-        {
-            File.AppendAllText(Path.Combine(docPath,"SyrInitPop.csv"),districtPopPair.Key+","+districtPopPair.Value+'\n');
-        }
         
-        
-        File.WriteAllText(Path.Combine(docPath,"SyrRefPop"+identifier+".csv"),"Region,RefPop\n");
+        File.WriteAllText(Path.Combine(docPath,"SyrRefPopadm1"+identifier+".csv"),"Region,RefPop\n");
         foreach (var districtPopPair in SyrianDistrictsPop)
         {
             File.AppendAllText(Path.Combine(docPath,"SyrRefPop"+identifier+".csv"),districtPopPair.Key+","+districtPopPair.Value+'\n');
+        }
+        
+        File.WriteAllText(Path.Combine(docPath,"SyrRefPopadm2"+identifier+".csv"),"Region,RefPop\n");
+        foreach (var districtPopPair in SyrianDistrictsPop2)
+        {
+            File.AppendAllText(Path.Combine(docPath,"SyrRefPopadm2"+identifier+".csv"),districtPopPair.Key+","+districtPopPair.Value+'\n');
+        }
+        
+        File.WriteAllText(Path.Combine(docPath,"SyrRefPopadm3"+identifier+".csv"),"Region,RefPop\n");
+        foreach (var districtPopPair in SyrianDistrictsPop3)
+        {
+            File.AppendAllText(Path.Combine(docPath,"SyrRefPopadm3"+identifier+".csv"),districtPopPair.Key+","+districtPopPair.Value+'\n');
         }
         
         File.WriteAllText(Path.Combine(docPath,"SyrRoutes"+identifier+".csv"),"Origin,Destination,Number\n");
@@ -276,4 +334,15 @@ public static class Validation
         }
         
     }
+
+    public static void WriteToFileSyriaInit(string identifier)
+    {
+        var docPath = "Model/Validation";
+        File.WriteAllText(Path.Combine(docPath,"SyrInitPop" + identifier + ".csv"),"Region,InitPop\n");
+        foreach (var districtPopPair in SyrianDistrictsInitPop)
+        {
+            File.AppendAllText(Path.Combine(docPath,"SyrInitPop" + identifier + ".csv"),districtPopPair.Key+","+districtPopPair.Value+'\n');
+        }
+    }
+    
 }

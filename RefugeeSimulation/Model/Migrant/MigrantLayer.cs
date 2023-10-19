@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using LaserTagBox.Model.Location.LocationNodes;
-using Mars.Common.Core.Collections;
+using LaserTagBox.Model.Location;
 using Mars.Common.Data;
 using Mars.Components.Environments;
 using Mars.Components.Layers;
@@ -47,7 +46,7 @@ public class MigrantLayer : AbstractLayer
         AgentManager = layerInitData.Container.Resolve<IAgentManager>();
         RefugeeAgents = new List<MigrantAgent>();
 
-        InitRefs();
+        InitAgents();
         
         
         Validation.FillTurkishDistrictsInitPop(LocationLayer.GetEntities());
@@ -68,7 +67,7 @@ public class MigrantLayer : AbstractLayer
         }
     }
 
-    private void InitRefs()
+    private void InitAgents()
     {
         var newRefs = new List<MigrantAgent>();
         foreach (var nodePopPair in RefugeeDistributionData)
@@ -78,7 +77,7 @@ public class MigrantLayer : AbstractLayer
             {
                 newRefs.AddRange(AgentManager.Spawn<MigrantAgent, MigrantLayer>(null,
                         agent => agent.Spawn(province))
-                    .Take((int) (nodePopPair.Value/1.15/provinces.Count)
+                    .Take( (nodePopPair.Value/100/provinces.Count)
                     ));
             }
         }

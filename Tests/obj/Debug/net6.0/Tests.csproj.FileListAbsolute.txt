@@ -3,17 +3,10 @@ C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\testhost.dl
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\RefugeeSimulation.deps.json
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\RefugeeSimulation.runtimeconfig.json
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\RefugeeSimulation.runtimeconfig.dev.json
-C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\active_turkey_camps.geojson
-C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\Conflicts_Syr_Tur_2022.geojson
-C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\Conflicts_Syr_Tur_2022.qmd
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\syrian_districts_2.geojson
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\syrian_districts_2.qmd
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\syrian_districts_3.geojson
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\syrian_districts_3.qmd
-C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\turkey1_syria2_districts.geojson
-C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\turkey1_syria2_districts.qmd
-C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\turkey2_syria3_districts.geojson
-C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\turkey2_syria3_districts.qmd
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\turkey_camps_idps.geojson
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\turkey_camps_idps.qmd
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\turkey_districts_1.geojson
@@ -208,7 +201,6 @@ C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\obj\Debug\net6.0\refint\Test
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\obj\Debug\net6.0\Tests.pdb
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\obj\Debug\net6.0\Tests.genruntimeconfig.cache
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\obj\Debug\net6.0\ref\Tests.dll
-C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\refpop_turkey.csv
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\border_crossing_points.csv
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\conflicts_syria_17.geojson
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\conflicts_syria_17.qmd
@@ -218,3 +210,8 @@ C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\config_syri
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\config_turkey.json
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\idp_pop_2016.csv
 C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\syrPop_adm3.csv
+C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\idpPop_16_01_02_17.csv
+C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\RefModel_camps.qmd
+C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\RefModel_Conflicts_0219.geojson
+C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\RefModel_Conflicts_0219.qmd
+C:\Users\vivia\mars\RefugeeSimulationSolution\Tests\bin\Debug\net6.0\Resources\RefModel_refPop_0219.csv

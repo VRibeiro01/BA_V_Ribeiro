@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using LaserTagBox.Model.Location.LocationNodes;
 using Mars.Components.Environments;
 using Mars.Interfaces.Agents;
 using Mars.Interfaces.Annotations;
@@ -32,7 +31,7 @@ public class MigrantAgent : IAgent<MigrantLayer>, IPositionable
     [PropertyDescription] public static int InitNumFriends { get; set; }
     
     private double _highestDesirabilityScore;
-    private Location.LocationNodes.Location _mostDesirable;
+    private Location.Location _mostDesirable;
     
     
     
@@ -46,9 +45,9 @@ public class MigrantAgent : IAgent<MigrantLayer>, IPositionable
     public HashSet<MigrantAgent> Kins { get; set; }
     public string LocationName { get; set; }
 
-    public Location.LocationNodes.Location Origin { get; set; }
+    public Location.Location Origin { get; set; }
 
-    public Location.LocationNodes.Location Current { get; set; }
+    public Location.Location Current { get; set; }
     
     
     // Validation mode
@@ -80,7 +79,7 @@ public class MigrantAgent : IAgent<MigrantLayer>, IPositionable
 
         _highestDesirabilityScore = 0;
 
-        var neighbours = Current.Neighbours;
+        var neighbours = Current.Neighbors;
 
 
         if (neighbours.Count >= 1)
@@ -94,7 +93,7 @@ public class MigrantAgent : IAgent<MigrantLayer>, IPositionable
             
             // Collect Decision Making statistics
                 Validation.NumDecisions++;
-                switch (_mostDesirable.RefPop)
+                switch (_mostDesirable.MigPop)
                 {
                     case < 1000:
                         Validation.PopUnder1k++;
@@ -180,7 +179,7 @@ public class MigrantAgent : IAgent<MigrantLayer>, IPositionable
         return move;
     }
 
-    private void Assess(Location.LocationNodes.Location node)
+    private void Assess(Location.Location node)
     {
         var nodeDesirability =
             CalcNodeDesirability(GetNumFriendsAtNode(node), GetNumKinsAtNode(node), node.Score);
@@ -197,14 +196,14 @@ public class MigrantAgent : IAgent<MigrantLayer>, IPositionable
         return (numKinsAtNode * KinWeight) + (numFriendsAtNode * FriendWeight) + score;
     }
 
-    public void MoveToNode(Location.LocationNodes.Location @new)
+    public void MoveToNode(Location.Location @new)
     {
-        Interlocked.Decrement(ref Current.RefPop);
+        Interlocked.Decrement(ref Current.MigPop);
         Current = @new;
         LocationName = @new.GetName();
 
         Environment.MoveToPosition(this, @new.Position.Latitude, @new.Position.Longitude);
-        Interlocked.Increment(ref @new.RefPop);
+        Interlocked.Increment(ref @new.MigPop);
     }
 
     public void InitSocialLinks()
@@ -236,7 +235,7 @@ public class MigrantAgent : IAgent<MigrantLayer>, IPositionable
     }
 
 
-    public int GetNumFriendsAtNode(Location.LocationNodes.Location node)
+    public int GetNumFriendsAtNode(Location.Location node)
     {
 
         var friendsAtNode = Friends.Where(agent => agent.LocationName.EqualsIgnoreCase(node.GetName())).ToList();
@@ -245,7 +244,7 @@ public class MigrantAgent : IAgent<MigrantLayer>, IPositionable
         return friendsAtNode.Count;
     }
     
-    public int GetNumKinsAtNode(Location.LocationNodes.Location node)
+    public int GetNumKinsAtNode(Location.Location node)
     {
 
         var kinsAtNode = Kins
@@ -255,19 +254,19 @@ public class MigrantAgent : IAgent<MigrantLayer>, IPositionable
         return kinsAtNode.Count;
     }
 
-    public void UpdateSocialNetwork(MigrantAgent newFriend)
+    public void FormFriendshipWith(MigrantAgent newFriend)
     {
         var other = newFriend;
         Friends.Add(other);
         other.Friends.Add(this);
     }
 
-    public void Spawn(Location.LocationNodes.Location node)
+    public void Spawn(Location.Location node)
     {
         Origin = node;
         Current = node;
         LocationName = node.GetName();
-        Interlocked.Increment(ref Current.RefPop);
+        Interlocked.Increment(ref Current.MigPop);
         Position = Position.CreateGeoPosition(node.Position.Longitude,
             node.Position.Latitude);
         _mostDesirable = node;

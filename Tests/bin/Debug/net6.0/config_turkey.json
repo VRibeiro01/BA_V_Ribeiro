@@ -1,0 +1,133 @@
+{
+  "globals": {
+    "startTime": "2019-02-01T00:00",
+    "endTime": "2019-02-21T00:00",
+    "deltaTUnit": "days",
+    "output": "csv",
+    "options": {
+      "delimiter": ";",
+      "format": "en-EN"
+    },
+    "csvOptions": {
+      "outputPath": "../../../."
+    },
+    "tripsOptions": {
+      "outputPath": "../../../."
+    }
+  },
+  "agents": [
+    {
+      "name": "MigrantAgent",
+      "mapping": [
+        {
+          "parameter": "_initNumKins",
+          "value": 5
+        },
+        {
+          "parameter": "_initNumFriends",
+          "value": 5
+        },
+        {
+          "parameter": "KinWeight",
+          "value": 0.2
+        },
+        {
+          "parameter": "FriendWeight",
+          "value": 0.2
+        },
+        {
+          "parameter": "MoveProbabilityCamp",
+          "value": 0.3
+        },
+        {
+          "parameter": "MoveProbabilityConflict",
+          "value": 0.7
+        },
+        {
+          "parameter": "MoveProbabilityOther",
+          "value": 0.85
+        },
+        {
+          "parameter": "Validate",
+          "value": false
+        }
+      ],
+      "outputs": [
+        {
+          "kind": "csv"
+        }
+      ]
+    }
+  ],
+  "layers": [
+    {
+      "name": "LocationLayer",
+      "file": "Resources/turkey_districts_2.geojson",
+      "mapping": [
+        {
+          "parameter": "PopulationWeight",
+          "value": 0.75
+        },
+        {
+          "parameter": "CampWeight",
+          "value": 0.25
+        },
+        {
+          "parameter": "ConflictWeight",
+          "value": 0.5
+        },
+        {
+          "parameter": "LocationWeight",
+          "value": 0.75
+        },
+        {
+          "parameter": "AnchorLong",
+          "value": -0.1278
+        },
+        {
+          "parameter": "AnchorLat",
+          "value": 51.5074
+        },
+        {
+          "parameter": "NumberNewTiesLower",
+          "value": 5
+        },
+        {
+          "parameter": "NumberNewTiesUpper",
+          "value": 10
+        },
+        {
+          "parameter": "Mode",
+          "value": "Turkey"
+        }
+      ]
+    },
+    {
+      "name": "MigrantLayer",
+      "file": "Resources/RefModel_refPop_0219.csv",
+      "mapping": [
+        {
+          "parameter": "NumAgentsToSpawn",
+          "value": 50
+        }
+      ]
+    },
+    {
+      "name": "CampLayer",
+      "file": "Resources/RefModel_camps.geojson"
+    },
+    {
+      "name": "ConflictLayer",
+      "file": "Resources/RefModel_Conflicts_0219.geojson"
+    },
+    {
+      "name": "SchedulerLayer",
+      "mapping": [
+        {
+          "parameter": "Mode",
+          "value": "Turkey"
+        }
+      ]
+    }
+  ]
+}

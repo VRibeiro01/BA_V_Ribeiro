@@ -1,9 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using LaserTagBox.Model.Location.Camps;
-using LaserTagBox.Model.Location.Conflict;
-using LaserTagBox.Model.Location.LocationNodes;
+using LaserTagBox.Model.Location;
 using LaserTagBox.Model.Refugee;
 using Mars.Components.Starter;
 using Mars.Interfaces.Model;
@@ -19,8 +17,8 @@ namespace LaserTagBox
             // Simulation mode Turkey: Movement of Syrian Refugees over Turkish territory
             // Simulation mode Syria: Movement of Syrian IDPs over Syrian territory
             string simulationMode = "Syria";
-
-            string outputFileIdentifier = ".0.FebToMarch";
+        
+            string outputFileIdentifier = "";
             
             // the scenario consists of the model (represented by the model description)
             // and the simulation configuration (see config.json files)

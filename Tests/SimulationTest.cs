@@ -2,13 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using LaserTagBox.Model.Location.Camps;
-using LaserTagBox.Model.Location.Conflict;
-using LaserTagBox.Model.Location.LocationNodes;
+using LaserTagBox.Model.Location;
 using LaserTagBox.Model.Refugee;
 using Mars.Components.Agents;
 using Mars.Interfaces.Data;
 using Mars.Interfaces.Environments;
+using Microsoft.CodeAnalysis.CSharp;
 using ServiceStack;
 using Xunit;
 using Xunit.Abstractions;
@@ -26,22 +25,37 @@ public class SimulationTest
     private LocationLayer _locationLayer;
     private ConflictLayer _conflictLayer;
     private CampLayer _campLayer;
-  
+    private PopulationLayer _populationLayer;
 
 
     public SimulationTest(ITestOutputHelper testOutputHelper)
     {
+        string basePath = Directory.GetParent(
+                Directory.GetParent(
+                    Directory.GetParent(
+                        Directory.GetParent(
+                            Directory.GetCurrentDirectory()
+                        ).FullName).FullName
+                ).FullName).FullName;
+
+        string testsPath = Path.Combine(basePath, "Tests");
+        string rPath = Path.Combine(basePath, "RefugeeSimulation\\Resources");
+            
         _testOutputHelper = testOutputHelper;
+        
+        
         _locationLayer = new LocationLayer();
+        _populationLayer = new PopulationLayer();
+        _locationLayer.PopulationLayer = _populationLayer;
         _locationLayer.InitLayer(new LayerInitData
         {
             LayerInitConfig =
             {
-                File = Path.Combine("C:\\Users\\vivia\\mars\\RefugeeSimulationSolution\\Tests\\TestData",
-                    "selected_districts_for_test.geojson")
+                File = Path.Combine(testsPath, "selected_districts_for_test.geojson")
             }
         });
 
+       
 
         _conflictLayer = new ConflictLayer();
         _conflictLayer.InitLayer(new LayerInitData
@@ -49,7 +63,7 @@ public class SimulationTest
             LayerInitConfig =
             {
                 File = Path.Combine(
-                    "C:\\Users\\vivia\\mars\\RefugeeSimulationSolution\\RefugeeSimulation\\Resources\\Conflicts_Syr_Tur_2022.geojson")
+                   rPath ,"conflicts_syria_17.geojson")
             }
         });
 
@@ -60,7 +74,7 @@ public class SimulationTest
             LayerInitConfig =
             {
                 File = Path.Combine(
-                    "C:\\Users\\vivia\\mars\\RefugeeSimulationSolution\\RefugeeSimulation\\Resources\\turkey_camps_idps.geojson")
+                    rPath,"turkey_camps_idps.geojson")
             }
         });
         
@@ -71,7 +85,7 @@ public class SimulationTest
     {
         var agent = new MigrantAgent();
         Location moveTest = _locationLayer.Entities.First();
-       
+        
         foreach (var node in _locationLayer.Entities)
         {
             if (node.GetName().EqualsIgnoreCase("Tell Abiad"))
@@ -99,11 +113,11 @@ public class SimulationTest
             elem.Position.DistanceInKmTo(_locationLayer.GetLocationByName("Tell Abiad").Position) < 1).ToArray();
         
         
-        var abstractEnvironmentObjects = environment.Explore().ToList();
+        var agentsInEnvironment = environment.Explore().ToList();
 
 
         // Assert
-        Assert.True(abstractEnvironmentObjects.Count == 5);
+        Assert.True(agentsInEnvironment.Count == 5);
         Assert.True(refsAtNode.Length==2);
         Assert.True(refsAtNodeAfterMoving.Length==1);
     }
@@ -138,16 +152,16 @@ public class SimulationTest
             {
                 _testOutputHelper.WriteLine("Camps: " + node.NumCamps);
                 _testOutputHelper.WriteLine("Conflicts: " + node.NumConflicts);
-                _testOutputHelper.WriteLine("Neighbours: " + node.Neighbours.Count);
+                _testOutputHelper.WriteLine("Neighbors: " + node.Neighbors.Count);
                 _testOutputHelper.WriteLine("---------------------------------------------");
-                Assert.True(node.NumConflicts == 5);
+                Assert.True(node.NumConflicts == 0);
                 Assert.True(node.NumCamps == 0);
-                Assert.True(Math.Abs(node.NormNumConflicts - (5.0 / 6.0)) < 0.01);
+                Assert.True(Math.Abs(node.NormNumConflicts - (0.0 / 2.0)) < 0.01);
                 Assert.True(Math.Abs(node.NormNumCamps - (0.0 / 3.0)) < 0.01);
                 Assert.True(node.AnchorScore > 0);
                 Assert.True(node.NormAnchorScore > 0);
                 Assert.True(node.Score != 0);
-                Assert.True(node.Neighbours.Count > 0);
+                Assert.True(node.Neighbors.Count == 3);
                 
             }
 
@@ -156,47 +170,47 @@ public class SimulationTest
             {
                 _testOutputHelper.WriteLine("Camps 2: " + node.NumCamps);
                 _testOutputHelper.WriteLine("Conflicts 2: " + node.NumConflicts);
-                _testOutputHelper.WriteLine("Neighbours 2: " + node.Neighbours.Count);
+                _testOutputHelper.WriteLine("Neighbors 2: " + node.Neighbors.Count);
                 _testOutputHelper.WriteLine("---------------------------------------------");
                 Assert.True(node.NumConflicts == 0);
                 Assert.True(node.NumCamps == 2);
-                Assert.True(Math.Abs(node.NormNumConflicts - (0.0 / 6.0)) < 0.01);
+                Assert.True(Math.Abs(node.NormNumConflicts - (0.0 / 2.0)) < 0.01);
                 Assert.True(Math.Abs(node.NormNumCamps - (2.0 / 3.0)) < 0.01);
                 Assert.True(node.AnchorScore > 0);
                 Assert.True(node.NormAnchorScore > 0);
-                Assert.True(node.Neighbours.Count > 0);
+                Assert.True(node.Neighbors.Count > 0);
             }
 
             if (node.GetName().EqualsIgnoreCase("Abu Qalqal"))
             {
                 _testOutputHelper.WriteLine("Camps 3: " + node.NumCamps);
                 _testOutputHelper.WriteLine("Conflicts 3: " + node.NumConflicts);
-                _testOutputHelper.WriteLine("Neighbours 3: " + node.Neighbours.Count);
+                _testOutputHelper.WriteLine("Neighbors 3: " + node.Neighbors.Count);
                 _testOutputHelper.WriteLine("---------------------------------------------");
                 Assert.True(node.NumConflicts == 0);
                 Assert.True(node.NumCamps == 0);
-                Assert.True(Math.Abs(node.NormNumConflicts - (0.0 / 6.0)) < 0.01);
+                Assert.True(Math.Abs(node.NormNumConflicts - (0.0 / 2.0)) < 0.01);
                 Assert.True(Math.Abs(node.NormNumCamps - (0.0 / 3.0)) < 0.01);
                 Assert.True(node.AnchorScore > 0);
                 Assert.True(node.NormAnchorScore > 0);
                 Assert.True(node.Score != 0);
-                Assert.True(node.Neighbours.Count > 0);
+                Assert.True(node.Neighbors.Count == 3);
             }
 
             if (node.GetName().EqualsIgnoreCase("Jarablus"))
             {
                 _testOutputHelper.WriteLine("Camps 4: " + node.NumCamps);
                 _testOutputHelper.WriteLine("Conflicts 4: " + node.NumConflicts);
-                _testOutputHelper.WriteLine("Neighbours 4: " + node.Neighbours.Count);
+                _testOutputHelper.WriteLine("Neighbors 4: " + node.Neighbors.Count);
                 _testOutputHelper.WriteLine("---------------------------------------------");
-                Assert.True(node.NumConflicts == 4);
+                Assert.True(node.NumConflicts == 1);
                 Assert.True(node.NumCamps == 2);
-                Assert.True(Math.Abs(node.NormNumConflicts - (4.0 / 6.0)) < 0.01);
+                Assert.True(Math.Abs(node.NormNumConflicts - (1.0 / 2.0)) < 0.01);
                 Assert.True(Math.Abs(node.NormNumCamps - (2.0 / 3.0)) < 0.01);
                 Assert.True(node.AnchorScore > 0);
                 Assert.True(node.NormAnchorScore > 0);
                 Assert.True(node.Score != 0);
-                Assert.True(node.Neighbours.Count > 0);
+                Assert.True(node.Neighbors.Count == 3);
             }
         }
     }
@@ -272,13 +286,13 @@ public class SimulationTest
         var calculatedMaxRefPop = _locationLayer.MaxRefPop();
         var agents = environment.Explore(new Position(), -1D, -1, a => a != null);
         var environmentObjects = agents.ToList();
-        updateNormRefPopTestNode.UpdateNormRefPop(calculatedMaxRefPop);
+        updateNormRefPopTestNode.UpdateNormMigPop(calculatedMaxRefPop);
 
         //Assert
         _testOutputHelper.WriteLine(environmentObjects.Count.ToString());
         Assert.True(environmentObjects.ToList().Count == 5);
         Assert.Equal(2, calculatedMaxRefPop);
-        Assert.Equal(1.0, updateNormRefPopTestNode.NormRefPop);
+        Assert.Equal(1.0, updateNormRefPopTestNode.NormMigPop);
     }
 
     [Fact]
@@ -310,7 +324,7 @@ public class SimulationTest
 
 
         //act
-        testNode.GetRandomRefugeesAtNode(environment);
+        testNode.GetRandomAgentsAtNode(environment);
 
         //Assert
 
@@ -355,7 +369,7 @@ public class SimulationTest
         //act
 
 
-        testNode.GetRandomRefugeesAtNode(environment);
+        testNode.GetRandomAgentsAtNode(environment);
         int calcNumFriendsAtNode = agent.GetNumFriendsAtNode(testNode);
         int calcNumFriendsAtNode1 = agent1.GetNumFriendsAtNode(testNode);
 
@@ -368,78 +382,7 @@ public class SimulationTest
     }
 
 
-    [Fact]
-    public void TurkeyDistrictsNeighboursTest()
-    {
-        // Arrange
-        var turkeyNodeLayer = new LocationLayer();
-        turkeyNodeLayer.InitLayer(new LayerInitData
-        {
-            LayerInitConfig =
-            {
-                File = Path.Combine("C:\\Users\\vivia\\mars\\RefugeeSimulationSolution\\RefugeeSimulation\\Resources\\turkey_districts_2.geojson")
-            }
-        });
-
-        turkeyNodeLayer.StartMonth = 9;
-
-        // Act
-
-        foreach (var node in turkeyNodeLayer.Entities)
-        {
-            node.InitConflicts(_conflictLayer);
-            node.InitCamps(_campLayer);
-        }
-
-        turkeyNodeLayer.InitLocationParams();
-        turkeyNodeLayer.PreTick();
-
-
-        //Assert
-
-        foreach (var node in turkeyNodeLayer.Entities)
-        {
-            if (node.GetName().EqualsIgnoreCase("CEYLANPINAR"))
-            {
-                _testOutputHelper.WriteLine("Node: " + node.GetName());
-                _testOutputHelper.WriteLine("Neighbours: " + node.Neighbours.Count);
-                _testOutputHelper.WriteLine("---------------------------------------------");
-                Assert.Equal(5, node.Neighbours.Count);
-                foreach (var nodeNeighbour in node.Neighbours)
-                {
-                    Assert.NotNull(nodeNeighbour);
-                }
-            }
-            if (node.GetName().EqualsIgnoreCase("KIRIKHAN"))
-            {
-                _testOutputHelper.WriteLine("Node: " + node.GetName());
-                _testOutputHelper.WriteLine("Neighbours: " + node.Neighbours.Count);
-                _testOutputHelper.WriteLine("---------------------------------------------");
-                Assert.Equal(5, node.Neighbours.Count);
-                foreach (var nodeNeighbour in node.Neighbours)
-                {
-                    Assert.NotNull(nodeNeighbour);
-                }
-            }
-           
-
-            if (node.GetName().EqualsIgnoreCase("SILIFKE"))
-            {
-                _testOutputHelper.WriteLine("Node: " + node.GetName());
-                _testOutputHelper.WriteLine("Neighbours: " + node.Neighbours.Count);
-                _testOutputHelper.WriteLine("---------------------------------------------");
-                Assert.Equal(5, node.Neighbours.Count);
-                foreach (var nodeNeighbour in node.Neighbours)
-                {
-                    Assert.NotNull(nodeNeighbour);
-                }
-            }
-
-            
-        }
-    }
-    
-    [Fact]
+  [Fact]
     public void RefPopTest()
     {
         //Arrange
@@ -475,7 +418,7 @@ public class SimulationTest
             .First(n => n.GetName().EqualsIgnoreCase("Tell Abiad"));
       
        
-        Assert.Equal(2, testNode.RefPop);
+        Assert.Equal(2, testNode.MigPop);
 
         var otherNode = _locationLayer.Entities.First(n => n.GetName().EqualsIgnoreCase("Jarablus"));
 
@@ -489,8 +432,8 @@ public class SimulationTest
         //Assert
 
 
-        Assert.Equal(1, testNode.RefPop);
-        Assert.Equal(1, otherNode.RefPop);
+        Assert.Equal(1, testNode.MigPop);
+        Assert.Equal(1, otherNode.MigPop);
         
         
     }

@@ -1,0 +1,40 @@
+Origin,Destination,Number
+Quneitra,Dar'a,64
+Quneitra,Quneitra,1
+As-Sweida,Dar'a,80
+As-Sweida,As-Sweida,31
+Tartous,Tartous,66
+Tartous,Lattakia,2
+Tartous,Hama,22
+Tartous,Homs,36
+Lattakia,Lattakia,113
+Lattakia,Idleb,33
+Damascus,Rural Damascus,245
+Deir-ez-Zor,Deir-ez-Zor,304
+Deir-ez-Zor,Ar-Raqqa,88
+Deir-ez-Zor,Al-Hasakeh,4
+Hama,Aleppo,41
+Hama,Homs,165
+Hama,Idleb,185
+Hama,Lattakia,10
+Hama,Hama,45
+Hama,Tartous,47
+Al-Hasakeh,Al-Hasakeh,510
+Al-Hasakeh,Deir-ez-Zor,6
+Al-Hasakeh,Ar-Raqqa,37
+Homs,Homs,533
+Homs,Rural Damascus,3
+Homs,Hama,2
+Homs,Deir-ez-Zor,27
+Homs,Idleb,1
+Ar-Raqqa,Aleppo,253
+Ar-Raqqa,Ar-Raqqa,318
+Rural Damascus,Rural Damascus,757
+Rural Damascus,Homs,155
+Rural Damascus,Dar'a,205
+Rural Damascus,Hama,1
+Dar'a,Dar'a,1897
+Idleb,Idleb,3608
+Idleb,Aleppo,1152
+Aleppo,Aleppo,6669
+Aleppo,Idleb,581

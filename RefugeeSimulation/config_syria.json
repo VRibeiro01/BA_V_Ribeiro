@@ -1,7 +1,7 @@
 ﻿{
   "globals": {
-    "startTime": "2017-03-01T00:00",
-    "endTime": "2017-04-01T00:00",
+    "startTime": "2017-01-01T00:00",
+    "endTime": "2017-02-01T00:00",
     "deltaTUnit": "days",
     "output": "csv",
     "options": {
@@ -104,11 +104,11 @@
     },
     {
       "name": "MigrantLayer",
-      "file": "Resources/idpPop_16_01_02_17.csv",
+      "file": "Resources/idp_pop_2016.csv",
       "mapping": [
         {
           "parameter": "NumAgentsToSpawn",
-          "value": 9500
+          "value": 0
         }
       ]
     },

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using LaserTagBox.Model.Location.LocationNodes;
 using Mars.Interfaces;
 using Mars.Interfaces.Annotations;
 using Mars.Interfaces.Data;
